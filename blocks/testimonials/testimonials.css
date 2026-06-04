@@ -1,75 +1,109 @@
 .testimonials {
-  padding: var(--space-section-y, 7.5rem) var(--section-pad-x, 2.5rem);
   background-color: var(--color-white);
+  padding: 0 var(--section-pad-x, 2.5rem) var(--space-section-y, 7.5rem);
 }
 
 .testimonials-inner {
-  max-width: var(--content-width);
+  max-width: var(--content-width, 71.25rem);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2.5rem;
 }
 
+/* ── Item ── */
 .testimonials-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
   text-align: center;
+  width: 100%;
+}
+
+/* ── Quote row: mark + text + mark ── */
+.testimonials-quote-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.testimonials-quote-mark {
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.testimonials-quote-mark--close {
+  align-self: flex-end;
+  margin-bottom: 0.1em;
 }
 
 .testimonials-quote {
   margin: 0;
+  padding: 0;
   border: none;
-  position: relative;
-  padding: 0 2rem;
-}
-
-.testimonials-quote::before {
-  content: '\201C';
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--color-secondary);
-  position: absolute;
-  left: 0;
-  top: -0.25rem;
-}
-
-.testimonials-quote::after {
-  content: '\201D';
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--color-secondary);
-  position: absolute;
-  right: 0;
-  bottom: -1rem;
 }
 
 .testimonials-quote p {
-  font-size: var(--font-size-p1);
-  line-height: var(--line-height-body);
-  color: var(--color-primary);
-  letter-spacing: var(--letter-spacing-base);
+  font-size: var(--font-size-p1, 1.125rem);
+  line-height: var(--line-height-body, 1.6);
+  color: var(--color-primary, #10142a);
+  font-weight: var(--font-weight-medium, 500);
+  letter-spacing: var(--letter-spacing-base, 0.01em);
   max-width: 37.5rem;
+  margin: 0;
 }
 
+/* ── Attribution row ── */
 .testimonials-author {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
-.testimonials-author img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
+.testimonials-logo {
+  display: flex;
+  align-items: center;
 }
 
-.testimonials-author p {
-  font-size: var(--font-size-p3);
-  line-height: var(--line-height-body);
-  color: var(--color-primary);
-  text-align: left;
+.testimonials-logo img {
+  height: 1.25rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.testimonials-avatar img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonials-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.testimonials-name {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold, 700);
+  line-height: 1.1;
+  color: var(--color-primary, #10142a);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.testimonials-role {
+  font-size: var(--font-size-p2, 0.9375rem);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: var(--line-height-body, 1.6);
+  color: var(--color-primary, #10142a);
+  margin: 0;
+  letter-spacing: var(--letter-spacing-base, 0.01em);
 }
