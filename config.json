@@ -1,1 +1,1 @@
-
+{ "plugins": [ { "id": "xwalk", "title": "Content", "environments": ["edit"], "url": "/tools/sidekick/library/plugin.html" } ] }
