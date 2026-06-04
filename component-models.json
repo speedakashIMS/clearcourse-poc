@@ -248,14 +248,14 @@
         "valueType": "string"
       },
       {
-        "component": "image",
+        "component": "reference",
         "name": "industry",
         "label": "Industry",
         "valueType": "string",
         "multi": false
       },
       {
-        "component": "image",
+        "component": "reference",
         "name": "author",
         "label": "Author",
         "valueType": "string",
