@@ -42,7 +42,7 @@
         },
         {
           "component": "richtext",
-          "name": "authorTitle",
+          "name": "authortitle",
           "label": "Author Title",
           "valueType": "string"
         }
