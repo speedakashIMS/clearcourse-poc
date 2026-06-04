@@ -1,0 +1,40 @@
+.logos-container .logos-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.logos {
+  padding: 2.5rem var(--section-pad-x, 2.5rem);
+  background-color: var(--color-white);
+  border-top: 1px solid rgb(16 20 42 / 8%);
+}
+
+.logos-strip {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+}
+
+.logos-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logos-item img {
+  max-height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: opacity var(--transition-fast), filter var(--transition-fast);
+}
+
+.logos-item img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}

@@ -1,0 +1,58 @@
+.cta-container .cta-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.cta {
+  padding: 6rem var(--section-pad-x, 2.5rem);
+  background-color: var(--color-white);
+}
+
+.cta-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.cta-inner img {
+  width: 6rem;
+  height: auto;
+}
+
+.cta-inner h2,
+.cta-inner h3 {
+  font-size: var(--font-size-display-l);
+  line-height: var(--line-height-display-l);
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cta-inner p {
+  font-size: var(--font-size-p1);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cta-inner .button-container {
+  margin-top: 0.5rem;
+}
+
+.cta-inner .button.primary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-white);
+  padding: 1rem 1.5rem;
+  font-size: var(--font-size-btn);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cta-inner .button.primary:hover {
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
+}

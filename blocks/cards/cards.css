@@ -3,25 +3,79 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-section-x);
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-card, 0.5rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .cards .cards-card-image {
-  line-height: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 1.25rem 0;
 }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.cards .cards-card-image picture,
+.cards .cards-card-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: var(--radius-icon, 1.25rem);
+  display: block;
+}
+
+.cards .cards-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.cards .cards-card-body h2,
+.cards .cards-card-body h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  color: var(--color-primary);
+  margin: 0;
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cards .cards-card-body p {
+  font-size: var(--font-size-p2);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cards .cards-card-body .button-container {
+  margin-top: 0.75rem;
+}
+
+.cards .cards-card-body .button {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+  font-size: var(--font-size-btn);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+.cards .cards-card-body .button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }

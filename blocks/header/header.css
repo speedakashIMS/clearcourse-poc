@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--color-primary);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -15,9 +15,10 @@ header nav {
   align-items: center;
   gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
+  max-width: var(--content-width);
+  height: auto;
+  min-height: var(--nav-height, 5rem);
+  padding: 1.25rem 2.5rem;
   font-family: var(--body-font-family);
 }
 
@@ -39,8 +40,9 @@ header nav[aria-expanded='true'] {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: var(--content-width);
+    padding: 1.25rem 2.5rem;
+    height: auto;
   }
 
   header nav[aria-expanded='true'] {
@@ -52,10 +54,11 @@ header nav[aria-expanded='true'] {
 header nav p {
   margin: 0;
   line-height: 1;
+  color: var(--color-white);
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--color-white);
 }
 
 /* hamburger */
@@ -72,8 +75,8 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: inherit;
+  background-color: transparent;
+  color: var(--color-white);
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
@@ -175,6 +178,7 @@ header nav .nav-sections ul {
 
 header nav .nav-sections ul > li {
   font-weight: 500;
+  color: var(--color-white);
 }
 
 header nav .nav-sections ul > li > ul {
@@ -269,4 +273,23 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* Giftpro brand overrides */
+header nav .nav-tools .button,
+header nav .nav-tools a.button {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-btn);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+header nav .nav-tools .button:hover,
+header nav .nav-tools a.button:hover {
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
 }

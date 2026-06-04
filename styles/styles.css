@@ -39,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: var(--font-size-h1);
   line-height: var(--line-height-h1);
+  letter-spacing: var(--letter-spacing-base);
 }
 
 h2 { font-size: var(--font-size-h2); }
@@ -68,41 +69,41 @@ button.button {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3) var(--space-6);
+  padding: 1rem 1.5rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-cta);
-  font-size: var(--font-size-btn-sm);
+  font-size: var(--font-size-btn);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-btn);
-  text-transform: uppercase;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
     border-color var(--transition-fast);
   white-space: nowrap;
   text-decoration: none;
+  letter-spacing: var(--letter-spacing-base);
 }
 
 a.button.primary,
 button.button.primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-white);
-  border-color: var(--color-primary);
+  border-color: var(--color-secondary);
 }
 
 a.button.primary:hover,
 button.button.primary:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
 }
 
 a.button.secondary,
 button.button.secondary {
-  background-color: var(--color-white);
+  background-color: transparent;
   color: var(--color-primary);
-  border-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 a.button.secondary:hover,
@@ -144,7 +145,7 @@ button.button.white-outline:hover {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
 }
