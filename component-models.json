@@ -259,6 +259,23 @@
     "id": "text-image",
     "fields": [
       {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Image Position",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Image Left (Default)",
+            "value": ""
+          },
+          {
+            "name": "Image Right",
+            "value": "reverse"
+          }
+        ]
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
