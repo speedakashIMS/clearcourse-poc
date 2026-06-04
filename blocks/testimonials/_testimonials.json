@@ -27,9 +27,23 @@
           "valueType": "string"
         },
         {
+          "component": "image",
+          "name": "industry",
+          "label": "Industry",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "image",
+          "name": "author",
+          "label": "Author",
+          "valueType": "string",
+          "multi": false
+        },
+        {
           "component": "richtext",
-          "name": "attribution",
-          "label": "Attribution",
+          "name": "authorTitle",
+          "label": "Author Title",
           "valueType": "string"
         }
       ]
