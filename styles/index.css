@@ -1,0 +1,120 @@
+/*
+ * IMS One Pager — Design Tokens
+ * Source: Figma FCpTq6ZxuoQ37AwWwqZbtU  node 330:762
+ */
+
+:root {
+  /* ===========================
+   * COLOUR TOKENS
+   * =========================== */
+
+  /* Brand */
+  --color-primary:         #002e6d;
+  --color-primary-dark:    #001e4a;
+
+  /* Accent palette (from solutions / partner cards) */
+  --color-purple:          #7a2cbe;
+  --color-aqua:            #107f93;
+  --color-red:             #b3005f;
+  --color-green:           #028374;
+
+  /* Neutrals */
+  --color-black:           #000000;
+  --color-white:           #ffffff;
+  --color-text:            #252b42;
+  --color-text-secondary:  #737373;
+  --color-text-muted:      #676665;
+  --color-background:      #f8f8f8;
+
+  /* ===========================
+   * TYPOGRAPHY TOKENS
+   * =========================== */
+
+  --font-heading:   'Azo Sans', sans-serif;
+  --font-body:      'Inter', sans-serif;
+  --font-cta:       'Poppins', sans-serif;
+
+  /* Sizes  (rem = px / 16) */
+  --font-size-h1:     5.625rem;   /* 90px */
+  --font-size-h2:     3.75rem;    /* 60px */
+  --font-size-h3:     1.875rem;   /* 30px */
+  --font-size-h4:     1.25rem;    /* 20px */
+  --font-size-p1:     1.375rem;   /* 22px */
+  --font-size-p2:     1.125rem;   /* 18px */
+  --font-size-p3:     0.875rem;   /* 14px */
+  --font-size-topper: 1rem;       /* 16px */
+  --font-size-btn:    0.875rem;   /* 14px */
+  --font-size-btn-sm: 1rem;       /* 16px */
+
+  /* Weights */
+  --font-weight-black:   900;
+  --font-weight-bold:    700;
+  --font-weight-medium:  500;
+  --font-weight-regular: 400;
+
+  /* Line heights */
+  --line-height-h1:      1.022;   /* 92 / 90 */
+  --line-height-heading: 1;
+  --line-height-body:    1.5;
+  --line-height-btn:     1.5;     /* 24px at 16px */
+
+  /* Letter spacing */
+  --letter-spacing-topper: 0.1em; /* 1.6px at 16px */
+
+  /* ===========================
+   * SPACING TOKENS
+   * =========================== */
+
+  --space-1:  0.5rem;     /*  8px */
+  --space-2:  0.625rem;   /* 10px */
+  --space-3:  0.75rem;    /* 12px */
+  --space-4:  1rem;       /* 16px */
+  --space-5:  1.25rem;    /* 20px */
+  --space-6:  1.5rem;     /* 24px */
+  --space-7:  1.875rem;   /* 30px */
+  --space-8:  2rem;       /* 32px */
+  --space-9:  2.375rem;   /* 38px */
+  --space-10: 2.5rem;     /* 40px */
+  --space-12: 3rem;       /* 48px */
+  --space-13: 3.125rem;   /* 50px */
+  --space-15: 3.75rem;    /* 60px */
+  --space-20: 5rem;       /* 80px */
+  --space-40: 10rem;      /* 160px */
+
+  /* ===========================
+   * BORDER RADIUS TOKENS
+   * =========================== */
+
+  --radius-sm:   0.5rem;    /*   8px */
+  --radius-md:   0.875rem;  /*  14px */
+  --radius-lg:   1rem;      /*  16px */
+  --radius-xl:   1.25rem;   /*  20px */
+  --radius-pill: 6.25rem;   /* 100px */
+
+  /* ===========================
+   * SHADOW TOKENS
+   * =========================== */
+
+  /* accentued-drop-shadow from Figma */
+  --shadow-card:  0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+
+  /* Shadow/Light/Bottom Right from Figma */
+  --shadow-light: 10px 10px 25px 0px rgba(0, 98, 255, 0.03);
+
+  /* ===========================
+   * LAYOUT TOKENS
+   * =========================== */
+
+  --max-width:       90rem;   /* 1440px */
+  --content-width:   80rem;   /* 1280px */
+  --section-pad-x:    5rem;   /*   80px */
+  --section-pad-y:   10rem;   /*  160px */
+
+  /* ===========================
+   * TRANSITION TOKENS
+   * =========================== */
+
+  --transition-fast:  150ms ease;
+  --transition-base:  250ms ease;
+  --transition-slow:  400ms ease;
+}
