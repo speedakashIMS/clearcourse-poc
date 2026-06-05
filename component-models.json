@@ -200,10 +200,16 @@
         "valueType": "string"
       },
       {
-        "component": "button",
-        "name": "cardbutton",
+        "component": "text",
+        "name": "cardbuttonlabel",
         "value": "",
-        "label": "Card Button",
+        "label": "Card Button Label",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "cardbuttonlink",
+        "label": "Card Button Link",
         "valueType": "string"
       }
     ]
