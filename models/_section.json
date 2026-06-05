@@ -49,6 +49,8 @@
         "title",
         "hero",
         "cards",
+        "card",
+        "card-feature",
         "columns",
         "fragment",
         "testimonials",
