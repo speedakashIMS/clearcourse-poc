@@ -22,22 +22,22 @@
   width: 100%;
 }
 
-/* ── Quote row: mark + text + mark ── */
+/* ── Quote row: open-mark + text + close-mark ── */
 .testimonials-quote-wrap {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
 }
 
 .testimonials-quote-mark {
   flex-shrink: 0;
-  margin-top: 0.1em;
+  margin-top: 0.2em;
 }
 
 .testimonials-quote-mark-close {
-  align-self: flex-end;
-  margin-bottom: 0.1em;
+  align-self: flex-start;
+  margin-top: 0.2em;
 }
 
 .testimonials-quote {
@@ -48,20 +48,20 @@
 
 .testimonials-quote p {
   font-size: var(--font-size-p1, 1.125rem);
-  line-height: var(--line-height-body, 1.6);
+  line-height: 1.6;
   color: var(--color-primary, #10142a);
   font-weight: var(--font-weight-medium, 500);
-  letter-spacing: var(--letter-spacing-base, 0.01em);
+  letter-spacing: 0.01em;
   max-width: 37.5rem;
   margin: 0;
 }
 
-/* ── Attribution row ── */
-.testimonials-author {
+/* ── Attribution: logo | avatar | name + title ── */
+.testimonials-attribution {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .testimonials-logo {
@@ -70,9 +70,10 @@
 }
 
 .testimonials-logo img {
-  height: 1.25rem;
+  /* height: 1.25rem; */
   width: auto;
   object-fit: contain;
+  max-height: 2.63rem;
 }
 
 .testimonials-avatar img {
@@ -83,27 +84,24 @@
   display: block;
 }
 
-.testimonials-meta {
+/* ── Name + role ── */
+.testimonials-name-role {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.1rem;
+  gap: 0;
+  text-align: left;
 }
 
-.testimonials-name {
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-bold, 700);
-  line-height: 1.1;
-  color: var(--color-primary, #10142a);
+.testimonials-name-role p {
   margin: 0;
+  color: var(--color-primary, #10142a);
   letter-spacing: 0.01em;
-}
-
-.testimonials-role {
+  line-height: 1.6;
   font-size: var(--font-size-p2, 0.9375rem);
   font-weight: var(--font-weight-regular, 400);
-  line-height: var(--line-height-body, 1.6);
-  color: var(--color-primary, #10142a);
-  margin: 0;
-  letter-spacing: var(--letter-spacing-base, 0.01em);
+}
+
+.testimonials-name-role p:first-child {
+  font-weight: var(--font-weight-bold, 700);
 }
