@@ -142,6 +142,40 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Card Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Cards with icon",
+            "value": "cards-icon"
+          },
+          {
+            "name": "Cards with image",
+            "value": "cards-image"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "header",
+        "label": "Header",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -153,9 +187,23 @@
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "cardheader",
         "value": "",
-        "label": "Text",
+        "label": "Card Header",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "carddescription",
+        "value": "",
+        "label": "Card Description",
+        "valueType": "string"
+      },
+      {
+        "component": "button",
+        "name": "cardbutton",
+        "value": "",
+        "label": "Card Button",
         "valueType": "string"
       }
     ]
