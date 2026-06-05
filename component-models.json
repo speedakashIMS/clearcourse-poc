@@ -158,6 +158,10 @@
           {
             "name": "Cards with image",
             "value": "cards-image"
+          },
+          {
+            "name": "Cards with features",
+            "value": "cards-features"
           }
         ]
       },
@@ -210,6 +214,55 @@
         "component": "aem-content",
         "name": "cardbuttonlink",
         "label": "Card Button Link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-feature",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "industry",
+        "label": "Industry Logo",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "stat",
+        "label": "Stat",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "statlabel",
+        "label": "Stat Label",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "quote",
+        "label": "Quote",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authorname",
+        "label": "Author Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authorrole",
+        "label": "Author Role",
         "valueType": "string"
       }
     ]

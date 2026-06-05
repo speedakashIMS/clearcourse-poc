@@ -30,6 +30,21 @@
           }
         }
       }
+    },
+    {
+      "title": "Card Feature",
+      "id": "card-feature",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Card Feature",
+              "model": "card-feature"
+            }
+          }
+        }
+      }
     }
   ],
   "models": [
@@ -50,6 +65,10 @@
             {
               "name": "Cards with image",
               "value": "cards-image"
+            },
+            {
+              "name": "Cards with features",
+              "value": "cards-features"
             }
           ]
         },
@@ -105,13 +124,63 @@
           "valueType": "string"
         }
       ]
+    },
+    {
+      "id": "card-feature",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "industry",
+          "label": "Industry Logo",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "stat",
+          "label": "Stat",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "statlabel",
+          "label": "Stat Label",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "quote",
+          "label": "Quote",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "authorname",
+          "label": "Author Name",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "authorrole",
+          "label": "Author Role",
+          "valueType": "string"
+        }
+      ]
     }
   ],
   "filters": [
     {
       "id": "cards",
       "components": [
-        "card"
+        "card",
+        "card-feature"
       ]
     }
   ]

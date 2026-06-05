@@ -114,6 +114,21 @@
           }
         },
         {
+          "title": "Card Feature",
+          "id": "card-feature",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card Feature",
+                  "model": "card-feature"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Columns",
           "id": "columns",
           "plugins": {
