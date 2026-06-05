@@ -196,7 +196,7 @@
   display: none;
 }
 
-/* Mobile: 1 card per view */
+/* Mobile: 1 card per view, snap every card */
 .cards-image .cards-item {
   flex: 0 0 100%;
   scroll-snap-align: start;
@@ -208,10 +208,15 @@
   box-shadow: 0.25rem 0.25rem 1.5rem 0 rgb(16 20 42 / 10%);
 }
 
-/* Desktop: 3 cards per view */
+/* Desktop: 3 cards per view, snap on page starts (every 3rd card) */
 @media (width >= 900px) {
   .cards-image .cards-item {
     flex: 0 0 calc((100% - 3rem) / 3);
+    scroll-snap-align: none;
+  }
+
+  .cards-image .cards-item:nth-child(3n+1) {
+    scroll-snap-align: start;
   }
 }
 

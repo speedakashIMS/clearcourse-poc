@@ -167,8 +167,10 @@ function buildFeatureCard(row) {
 }
 
 /**
- * Wire up dot-indicator carousel behaviour for cards-image.
- * Uses native scroll-snap so swipe/drag works on touch devices too.
+ * Wire up page-based dot-indicator carousel for cards-image / cards-features.
+ * Desktop: 3 cards per page. Mobile: 1 card per page.
+ * Dots represent pages; hidden when there is only one page.
+ * Uses ResizeObserver to rebuild dots correctly across breakpoints.
  * @param {HTMLUListElement} ul - the card list
  * @param {HTMLElement} block - the block root
  */
@@ -181,46 +183,59 @@ function buildCarousel(ul, block) {
   track.appendChild(ul);
   carousel.appendChild(track);
 
-  const cardEls = [...ul.children];
-  const total = cardEls.length;
-
-  if (total > 1) {
-    const dots = document.createElement('div');
-    dots.classList.add('cards-dots');
-    dots.setAttribute('aria-label', 'Carousel navigation');
-
-    const setActive = (idx) => {
-      [...dots.children].forEach((d, i) => d.classList.toggle('active', i === idx));
-    };
-
-    for (let i = 0; i < total; i += 1) {
-      const dot = document.createElement('button');
-      dot.classList.add('cards-dot');
-      dot.setAttribute('aria-label', `Go to card ${i + 1}`);
-      if (i === 0) dot.classList.add('active');
-
-      dot.addEventListener('click', () => {
-        const card = ul.children[i];
-        if (card) {
-          ul.scrollTo({ left: card.offsetLeft - ul.offsetLeft, behavior: 'smooth' });
-        }
-        setActive(i);
-      });
-
-      dots.appendChild(dot);
-    }
-
-    // Sync dots on native scroll (swipe / arrow keys)
-    ul.addEventListener('scroll', () => {
-      const cardWidth = ul.children[0]?.offsetWidth || 1;
-      const idx = Math.round(ul.scrollLeft / cardWidth);
-      setActive(Math.min(idx, total - 1));
-    }, { passive: true });
-
-    carousel.appendChild(dots);
-  }
+  const dots = document.createElement('div');
+  dots.classList.add('cards-dots');
+  dots.setAttribute('aria-label', 'Carousel navigation');
+  carousel.appendChild(dots);
 
   block.appendChild(carousel);
+
+  // Derive page count from actual rendered widths (correct for both breakpoints)
+  const getPageCount = () => {
+    const pageWidth = ul.offsetWidth;
+    if (!pageWidth) return 1;
+    return Math.max(1, Math.round(ul.scrollWidth / pageWidth));
+  };
+
+  const getCurrentPage = () => {
+    const pageWidth = ul.offsetWidth || 1;
+    return Math.min(Math.round(ul.scrollLeft / pageWidth), getPageCount() - 1);
+  };
+
+  const syncActive = () => {
+    const current = getCurrentPage();
+    [...dots.children].forEach((d, i) => d.classList.toggle('active', i === current));
+  };
+
+  // Build/rebuild dot buttons whenever page count changes (e.g. on resize)
+  let lastPageCount = 0;
+  const rebuildDots = () => {
+    const pageCount = getPageCount();
+    dots.hidden = pageCount <= 1;
+    if (pageCount === lastPageCount) {
+      syncActive();
+      return;
+    }
+    lastPageCount = pageCount;
+    dots.innerHTML = '';
+    for (let i = 0; i < pageCount; i += 1) {
+      const dot = document.createElement('button');
+      dot.classList.add('cards-dot');
+      dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        ul.scrollTo({ left: i * ul.offsetWidth, behavior: 'smooth' });
+      });
+      dots.appendChild(dot);
+    }
+  };
+
+  // Sync active dot on native scroll (swipe / keyboard)
+  ul.addEventListener('scroll', syncActive, { passive: true });
+
+  // Rebuild when layout changes (initial paint + responsive breakpoint changes)
+  const ro = new ResizeObserver(rebuildDots);
+  ro.observe(ul);
 }
 
 export default function decorate(block) {
