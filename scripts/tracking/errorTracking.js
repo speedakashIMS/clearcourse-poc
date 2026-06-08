@@ -1,4 +1,4 @@
-/***********************************************************
+/** *********************************************************
  * ERROR ANALYTICS — Error Event Tracking Framework
  *
  * Pushes a structured "error" event to window.queueAdobeEvent for any
@@ -9,12 +9,12 @@
  *
  * Initialise by calling ErrorAnalytics.attach() once on page load.
  * For manual error tracking call ErrorAnalytics.trackError(config).
- ***********************************************************/
+ ********************************************************** */
 
 (function (window) {
-  /***********************
+  /** *********************
    * NORMALISATION
-   ***********************/
+   ********************** */
   function normalize(value) {
     if (value == null) return undefined;
     const cleaned = String(value)
@@ -35,9 +35,9 @@
     return out;
   }
 
-  /***********************
+  /** *********************
    * CORE PUSH
-   ***********************/
+   ********************** */
   function trackError(config = {}) {
     const error = cleanObject({
       category: normalize(config.category),
@@ -64,20 +64,20 @@
     window.queueAdobeEvent(payload);
   }
 
-  /***********************
+  /** *********************
    * 404 DETECTION
    * AEM EDS serves 404 pages with a meta[name="status"] tag or
    * falls back to checking document.title.
-   ***********************/
+   ********************** */
   function detect404() {
     if (window.isErrorPage && window.errorCode === '404') return true;
     if (document.querySelector('meta[name="status"]')?.content === '404') return true;
     return false;
   }
 
-  /***********************
+  /** *********************
    * ATTACH — call once on page load
-   ***********************/
+   ********************** */
   function attach() {
     if (detect404()) {
       trackError({
@@ -89,13 +89,13 @@
     }
   }
 
-  /***********************
+  /** *********************
    * PUBLIC API
-   ***********************/
+   ********************** */
   window.ErrorAnalytics = {
     attach,
     trackError,
   };
-})(window);
+}(window));
 
 export default window.ErrorAnalytics;

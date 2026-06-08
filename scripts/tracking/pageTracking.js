@@ -1,4 +1,4 @@
-/***********************************************************
+/** *********************************************************
  * PAGE VIEW ANALYTICS — Advanced Page View Event Tracking Framework
  *
  * Pushes a structured page_view event to window.adobeDataLayer on every
@@ -8,7 +8,7 @@
  *
  * Initialise by calling PageAnalytics.attach(config?) once on page load.
  * For manual SPA navigation calls use PageAnalytics.trackVirtual(config?).
- ***********************************************************/
+ ********************************************************** */
 
 (function (window) {
   window.adobeDataLayer = window.adobeDataLayer || [];
@@ -16,9 +16,9 @@
   let lastPage = null;
   let hasFired = false;
 
-  /***********************
+  /** *********************
    * NORMALISATION
-   ***********************/
+   ********************** */
   function normalize(value) {
     if (value == null) return undefined;
     if (typeof value !== 'string') return value;
@@ -52,9 +52,9 @@
     return out;
   }
 
-  /***********************
+  /** *********************
    * URL PARSING
-   ***********************/
+   ********************** */
   function getPageData(url) {
     try {
       const u = new URL(url || window.location.href);
@@ -70,11 +70,11 @@
     }
   }
 
-  /***********************
+  /** *********************
    * AUTO CONFIG DETECTION
    * Reads available AEM EDS / DOM signals so callers don't have to pass
    * everything manually.
-   ***********************/
+   ********************** */
   function getAutoConfig() {
     // Language from <html lang="...">
     const language = normalize(document.documentElement.lang);
@@ -96,20 +96,22 @@
       || document.querySelector('meta[name="sector"]')?.content,
     );
 
-    return { language, pageType, brand, sector };
+    return {
+      language, pageType, brand, sector,
+    };
   }
 
-  /***********************
+  /** *********************
    * CONTENT METADATA EXTRACTION
    * Reads document meta tags to populate content object fields
-   ***********************/
+   ********************** */
   function getContentMetadata() {
     const publishedTime = document.querySelector('meta[name="published-time"]')?.content;
     const modifiedTime = document.querySelector('meta[name="modified-time"]')?.content;
     const tagsString = document.querySelector('meta[name="cq-tags"]')?.content;
 
     const tags = tagsString
-      ? tagsString.split(',').map(tag => tag.trim()).filter(tag => tag)
+      ? tagsString.split(',').map((tag) => tag.trim()).filter((tag) => tag)
       : undefined;
 
     return cleanObject({
@@ -121,12 +123,12 @@
 
   const SESSION_KEY = '_page_analytics_last_url';
 
-  /***********************
+  /** *********************
    * PREVIOUS PAGE RESOLUTION
    * On the initial page load read from sessionStorage (preserves hash) then
    * fall back to document.referrer. On subsequent SPA navigations use the
    * previously captured current page.
-   ***********************/
+   ********************** */
   function getPreviousPageData() {
     if (lastPage) return lastPage;
     try {
@@ -139,9 +141,9 @@
     return null;
   }
 
-  /***********************
+  /** *********************
    * PERSIST CURRENT URL (with hash) BEFORE UNLOAD
-   ***********************/
+   ********************** */
   function persistCurrentUrl() {
     try {
       sessionStorage.setItem(SESSION_KEY, window.location.href);
@@ -150,9 +152,9 @@
     }
   }
 
-  /***********************
+  /** *********************
    * CORE PUSH
-   ***********************/
+   ********************** */
   function pushPageView(config = {}) {
     const auto = getAutoConfig();
     const current = getPageData();
@@ -190,7 +192,7 @@
     // merge auto-detected metadata with explicit config (config overrides auto)
     const contentConfig = { ...autoContent, ...config.content };
     const tags = Array.isArray(contentConfig.tags) ? contentConfig.tags : undefined;
-    const hasBlogTag = tags?.some(tag => tag.endsWith('blog'));
+    const hasBlogTag = tags?.some((tag) => tag.endsWith('blog'));
 
     if (Object.keys(contentConfig).length > 0 && hasBlogTag) {
       data.content = cleanObject({
@@ -237,24 +239,24 @@
     hasFired = true;
   }
 
-  /***********************
+  /** *********************
    * INIT — full page load (fires once)
-   ***********************/
+   ********************** */
   function init(config = {}) {
     if (hasFired) return;
     pushPageView({ ...config, trigger: 'pageload' });
   }
 
-  /***********************
+  /** *********************
    * SPA — virtual page navigation
-   ***********************/
+   ********************** */
   function trackVirtualPage(config = {}) {
     pushPageView({ ...config, trigger: 'historychange' });
   }
 
-  /***********************
+  /** *********************
    * SPA HISTORY LISTENER
-   ***********************/
+   ********************** */
   function attachSPAListener(config = {}) {
     const originalPushState = history.pushState;
     const originalReplaceState = history.replaceState;
@@ -276,20 +278,20 @@
     window.addEventListener('popstate', handleChange);
   }
 
-  /***********************
+  /** *********************
    * ATTACH — call once on page load from scripts.js
    * Fires the initial page_view and sets up SPA listeners.
    * config is optional; all fields auto-detected where possible.
-   ***********************/
+   ********************** */
   function attach(config = {}) {
     init(config);
     attachSPAListener(config);
     window.addEventListener('pagehide', persistCurrentUrl);
   }
 
-  /***********************
+  /** *********************
    * PUBLIC API
-   ***********************/
+   ********************** */
   window.PageAnalytics = {
     attach,
     init,
@@ -297,6 +299,6 @@
     trackVirtual: trackVirtualPage,
     attachSPA: attachSPAListener,
   };
-})(window);
+}(window));
 
 export default window.PageAnalytics;

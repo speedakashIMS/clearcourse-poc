@@ -28,24 +28,22 @@ export default function decorate(block) {
   const data = {
     ...parentBlock,
     buttons: [...blockItems]
-      .map((b) =>
-        getBlockItemDataV2(b, {
-          id: { key: 'id', defaultValue: '', expectedType: 'string' },
-          text: { key: 'text', defaultValue: '', expectedType: 'string' },
-          href: { key: 'link', defaultValue: null, expectedType: 'link' },
-          variant: {
-            key: 'variant',
-            defaultValue: 'light',
-            expectedType: 'string',
-          },
-        }),
-      )
+      .map((b) => getBlockItemDataV2(b, {
+        id: { key: 'id', defaultValue: '', expectedType: 'string' },
+        text: { key: 'text', defaultValue: '', expectedType: 'string' },
+        href: { key: 'link', defaultValue: null, expectedType: 'link' },
+        variant: {
+          key: 'variant',
+          defaultValue: 'light',
+          expectedType: 'string',
+        },
+      }))
       .map((b) => ({
         ...b,
         size: parentBlock.size,
       })),
   };
-  
+
   const root = createRoot(block);
   root.render(React.createElement(Buttons, data));
 }

@@ -1,4 +1,4 @@
-/***********************************************************
+/** *********************************************************
  * FORM ANALYTICS — Form Tracking Event Framework
  *
  * Tracks three event types via window.adobeDataLayer:
@@ -8,14 +8,14 @@
  *
  * Initialise by calling FormAnalytics.attach() once on page load.
  * For async submission outcomes call FormAnalytics.trackSubmissionResult(form, result).
- ***********************************************************/
+ ********************************************************** */
 
 (function (window) {
   window.adobeDataLayer = window.adobeDataLayer || [];
 
-  /***********************
+  /** *********************
    * NORMALISATION
-   ***********************/
+   ********************** */
   function normalize(value) {
     if (value == null) return undefined;
     const cleaned = String(value)
@@ -36,10 +36,10 @@
     return out;
   }
 
-  /***********************
+  /** *********************
    * FORM REGISTRY
    * Store form properties for access during tracking
-   ***********************/
+   ********************** */
   const formRegistry = new WeakMap();
 
   function registerForm(form, config = {}) {
@@ -54,16 +54,16 @@
       forms = [formsOrSelector];
     }
 
-    forms.forEach(form => registerForm(form, config));
+    forms.forEach((form) => registerForm(form, config));
   }
 
   function getFormConfig(form) {
     return formRegistry.get(form) || {};
   }
 
-  /***********************
+  /** *********************
    * FORM NAME RESOLUTION
-   ***********************/
+   ********************** */
   function getFormName(form, config = {}) {
     const registeredConfig = getFormConfig(form);
     const mergedConfig = { ...registeredConfig, ...config };
@@ -76,9 +76,9 @@
     );
   }
 
-  /***********************
+  /** *********************
    * HASHING / ID UTILS
-   ***********************/
+   ********************** */
   async function hashEmail(email) {
     const normalised = email.toLowerCase().trim();
     const buffer = await crypto.subtle.digest(
@@ -95,9 +95,9 @@
       ?? `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
   }
 
-  /***********************
+  /** *********************
    * CORE PUSH
-   ***********************/
+   ********************** */
   function pushEvent(event, trigger, formData) {
     const payload = {
       event,
@@ -110,9 +110,9 @@
     window.queueAdobeEvent(payload);
   }
 
-  /***********************
+  /** *********************
    * INITIATION TRACKING
-   ***********************/
+   ********************** */
   const initiatedForms = new WeakSet();
 
   function handleFocus(e) {
@@ -125,9 +125,9 @@
     });
   }
 
-  /***********************
+  /** *********************
    * VALIDATION TRACKING
-   ***********************/
+   ********************** */
   const validationDebounce = new Map(); // form -> field -> { status, time }
 
   function trackFieldValidation(field, form, status, message, trigger) {
@@ -213,9 +213,9 @@
     });
   }
 
-  /***********************
+  /** *********************
    * SUBMISSION TRACKING
-   ***********************/
+   ********************** */
 
   // Fires on the native submit event — use trackSubmissionResult for async outcomes
   function handleSubmit(e) {
@@ -232,7 +232,7 @@
     }, 0);
   }
 
-  /***********************
+  /** *********************
    * MANUAL SUBMISSION RESULT
    * Call this after the async fetch resolves so the event fires when the
    * result is actually displayed to the visitor (per spec).
@@ -244,7 +244,7 @@
    *   submissionId: string (on success)
    *   formName:     string (override, optional)
    * }
-   ***********************/
+   ********************** */
   async function trackSubmissionResult(form, result = {}) {
     const formData = {
       name: normalize(getFormName(form, result)),
@@ -267,34 +267,34 @@
     pushEvent('form_submission', 'submit', formData);
   }
 
-  /***********************
+  /** *********************
    * ATTACH LISTENERS
    * Uses document-level delegation so forms added dynamically (e.g. via
    * React) are covered without needing per-form setup.
-   ***********************/
+   ********************** */
   function attach() {
     document.addEventListener('focusin', handleFocus);
     document.addEventListener('blur', handleBlur, true);
     document.addEventListener('change', handleChange);
     document.addEventListener('invalid', handleInvalid, true);
-    //document.addEventListener('submit', handleSubmit);
+    // document.addEventListener('submit', handleSubmit);
   }
 
-  /***********************
+  /** *********************
    * MARKETO FORM TRACKING
-   ***********************/
+   ********************** */
   async function attachMarketo(formId, formName) {
     if (!window.MktoForms2) return Promise.reject('MktoForms2 not loaded');
 
     return new Promise((resolve) => {
-      MktoForms2.whenReady(function (form) {
+      MktoForms2.whenReady((form) => {
         if (form.getId() !== formId) return;
 
         const formElem = form.getFormElem()[0];
         let lastValidationStatus = null;
 
         // Track form validation attempt — isValid is a boolean
-        form.onValidate(function (isValid) {
+        form.onValidate((isValid) => {
           // Only track if validation status changed to avoid duplicates
           if (lastValidationStatus === isValid) return;
           lastValidationStatus = isValid;
@@ -306,7 +306,7 @@
         });
 
         // Track successful submission
-        form.onSuccess(function (values) {
+        form.onSuccess((values) => {
           trackSubmissionResult(formElem, {
             status: 'success',
             email: values.Email,
@@ -321,9 +321,9 @@
     });
   }
 
-  /***********************
+  /** *********************
    * PUBLIC API
-   ***********************/
+   ********************** */
   window.FormAnalytics = {
     attach,
     attachMarketo,
@@ -333,6 +333,6 @@
     hashEmail,
     generateSubmissionId,
   };
-})(window);
+}(window));
 
 export default window.FormAnalytics;

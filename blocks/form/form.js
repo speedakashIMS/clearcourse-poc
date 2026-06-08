@@ -1,5 +1,5 @@
 import FormAnalytics from '../../scripts/tracking/formTracking.js';
-import { blockToMap } from "../../scripts/utils/block.js";
+import { blockToMap } from '../../scripts/utils/block.js';
 
 const siteKey = '6Lfok2YsAAAAANgwFBU-7z04b-jAL-8Ua4HJDdIa';
 
@@ -12,25 +12,43 @@ const HEAR_ABOUT_US = {
 };
 
 const GENERAL_FIELDS = [
-  { type: 'text', name: 'first_name', label: 'First Name', required: true, row: 'name' },
-  { type: 'text', name: 'last_name', label: 'Last Name', required: true, row: 'name' },
-  { type: 'email', name: 'email', label: 'Email', required: true },
-  { type: 'tel', name: 'phone', label: 'Phone', required: true, validationRegex: 'phoneNo' },
-  { type: 'text', name: 'company', label: 'Company', required: true },
   {
-    type: 'radio', name: 'customer_type', label: 'New Customer',
-    id: 'customer-type-new', required: true, row: 'customer_type',
+    type: 'text', name: 'first_name', label: 'First Name', required: true, row: 'name',
   },
   {
-    type: 'radio', name: 'customer_type', label: 'Existing Customer',
-    id: 'customer-type-existing', row: 'customer_type',
+    type: 'text', name: 'last_name', label: 'Last Name', required: true, row: 'name',
+  },
+  {
+    type: 'email', name: 'email', label: 'Email', required: true,
+  },
+  {
+    type: 'tel', name: 'phone', label: 'Phone', required: true, validationRegex: 'phoneNo',
+  },
+  {
+    type: 'text', name: 'company', label: 'Company', required: true,
+  },
+  {
+    type: 'radio',
+    name: 'customer_type',
+    label: 'New Customer',
+    id: 'customer-type-new',
+    required: true,
+    row: 'customer_type',
+  },
+  {
+    type: 'radio',
+    name: 'customer_type',
+    label: 'Existing Customer',
+    id: 'customer-type-existing',
+    row: 'customer_type',
   },
 ];
 
 const GENERAL_SUFFIX = [
   { type: 'textarea', name: 'message', label: 'Comment or Message' },
   {
-    type: 'checkbox', name: 'terms',
+    type: 'checkbox',
+    name: 'terms',
     label: 'I agree to the <a href="/terms" target="_blank">Terms &amp; Conditions</a>',
     required: true,
   },
@@ -50,8 +68,12 @@ const FORM_CONFIGS = {
   contact: {
     submitLabel: 'Send Message',
     fields: buildFields([
-      { type: 'text', name: 'sector', label: 'Sector', required: true },
-      { type: 'text', name: 'website', label: 'Website Address', validationRegex: 'alphanumeric' },
+      {
+        type: 'text', name: 'sector', label: 'Sector', required: true,
+      },
+      {
+        type: 'text', name: 'website', label: 'Website Address', validationRegex: 'alphanumeric',
+      },
       HEAR_ABOUT_US,
     ]),
   },
@@ -70,7 +92,7 @@ const FORM_CONFIGS = {
 };
 
 function getFormConfig(type) {
-  return { type: type, ...FORM_CONFIGS[type] };
+  return { type, ...FORM_CONFIGS[type] };
 }
 
 function extractScriptsAndHtml(htmlContent) {
@@ -111,7 +133,7 @@ export default async function decorate(block) {
     root.render(React.createElement(Form, {
       htmlContent: html,
       scripts,
-      submitLabel: null
+      submitLabel: null,
     }));
 
     // Attach form tracking after scripts load
@@ -144,7 +166,9 @@ export default async function decorate(block) {
         if (!token) {
           const msg = 'reCAPTCHA verification failed. Please try again.';
           showMessage(msg, 'error');
-          await FormAnalytics.trackSubmissionResult(form, { status: 'failure', message: msg, email, formName: blockData.title || 'unknown' });
+          await FormAnalytics.trackSubmissionResult(form, {
+            status: 'failure', message: msg, email, formName: blockData.title || 'unknown',
+          });
           return;
         }
 
@@ -188,20 +212,26 @@ export default async function decorate(block) {
 
           console.log('Form successfully sent:', responseBody);
           showMessage(successMsg, 'success');
-          await FormAnalytics.trackSubmissionResult(form, { status: 'success', message: successMsg, email, submissionId, formName: blockData.title || 'unknown' });
+          await FormAnalytics.trackSubmissionResult(form, {
+            status: 'success', message: successMsg, email, submissionId, formName: blockData.title || 'unknown',
+          });
 
           form.reset();
         } else {
           const msg = getHttpErrorMessage(response.status, response);
           showMessage(msg, 'error');
-          await FormAnalytics.trackSubmissionResult(form, { status: 'failure', message: msg, email, formName: blockData.title || 'unknown' });
+          await FormAnalytics.trackSubmissionResult(form, {
+            status: 'failure', message: msg, email, formName: blockData.title || 'unknown',
+          });
           console.error('HTTP Error:', response.status, responseBody);
         }
       } catch (error) {
         const msg = 'Network or reCAPTCHA error. Please try again.';
         console.error('Error:', error);
         showMessage(msg, 'error');
-        await FormAnalytics.trackSubmissionResult(form, { status: 'failure', message: msg, email, formName: blockData.title || 'unknown' });
+        await FormAnalytics.trackSubmissionResult(form, {
+          status: 'failure', message: msg, email, formName: blockData.title || 'unknown',
+        });
       } finally {
         submitButton?.removeAttribute('disabled');
       }

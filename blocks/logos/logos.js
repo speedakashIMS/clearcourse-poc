@@ -29,32 +29,30 @@ export default function decorate(block) {
   );
 
   const logos = [...blockItems]
-    .map((b) =>
-      getBlockItemDataV2(b, {
-        id: { key: 'id', defaultValue: '', expectedType: 'string' },
-        uploadImage: {
-          key: 'uploadImage',
-          defaultValue: '',
-          expectedType: 'picture',
-        },
-        externalImage: {
-          key: 'externalImage',
-          defaultValue: '',
-          expectedType: 'string',
-        },
-        imageAltText: {
-          key: 'imageAltText',
-          defaultValue: 'Logo',
-          expectedType: 'string',
-        },
-        href: { key: 'link', defaultValue: '', expectedType: 'string' },
-      }),
-    )
+    .map((b) => getBlockItemDataV2(b, {
+      id: { key: 'id', defaultValue: '', expectedType: 'string' },
+      uploadImage: {
+        key: 'uploadImage',
+        defaultValue: '',
+        expectedType: 'picture',
+      },
+      externalImage: {
+        key: 'externalImage',
+        defaultValue: '',
+        expectedType: 'string',
+      },
+      imageAltText: {
+        key: 'imageAltText',
+        defaultValue: 'Logo',
+        expectedType: 'string',
+      },
+      href: { key: 'link', defaultValue: '', expectedType: 'string' },
+    }))
     .map((l) => ({
       id: l.id,
       attributes: l.attributes,
       href: l.href,
-      src: !!l.uploadImage ? l.uploadImage : l.externalImage,
+      src: l.uploadImage ? l.uploadImage : l.externalImage,
       alt: l.imageAltText,
     }));
 
@@ -62,7 +60,7 @@ export default function decorate(block) {
     ...getBlockData(block, blockSchema),
     logos,
   };
-  
+
   const root = createRoot(block);
   root.render(React.createElement(Logos, data));
 }

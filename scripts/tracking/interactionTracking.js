@@ -1,20 +1,20 @@
 /* eslint-env browser */
 
-/***********************************************************
+/** *********************************************************
  * INTERACTION ANALYTICS UTILITY
- ***********************************************************/
+ ********************************************************** */
 
 (function (window) {
   window.adobeDataLayer = window.adobeDataLayer || [];
 
-  /*********************
+  /** *******************
    * CONSTANTS
-   *********************/
+   ******************** */
   const DOWNLOAD_EXTENSIONS = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'zip'];
 
-  /***********************
+  /** *********************
    * NORMALIZATION
-   ***********************/
+   ********************** */
   function stripHtml(value) {
     if (value == null) return '';
 
@@ -53,9 +53,9 @@
     );
   }
 
-  /***********************
+  /** *********************
    * HELPERS
-   ***********************/
+   ********************** */
   function getClosestAttribute(element, attributeName) {
     return element?.closest?.(`[${attributeName}]`)?.getAttribute(attributeName) || undefined;
   }
@@ -150,9 +150,9 @@
     }
   }
 
-  /***********************
+  /** *********************
    * INFERENCE
-   ***********************/
+   ********************** */
   function inferType(element, overrideValue) {
     if (overrideValue) return normalizeString(overrideValue);
 
@@ -209,9 +209,9 @@
     return index >= 0 ? index + 1 : undefined;
   }
 
-  /***********************
+  /** *********************
    * BUILD INTERACTION
-   ***********************/
+   ********************** */
   function buildInteraction(element, overrides = {}) {
     const href = overrides.href || getHref(element);
     const linkClassification = overrides.linkClassification || classifyLink(href);
@@ -240,9 +240,9 @@
     return interaction;
   }
 
-  /***********************
+  /** *********************
    * CORE PUSH
-   ***********************/
+   ********************** */
   function pushEvent(eventName, trigger, interaction) {
     console.log('Pushing event:', eventName, { trigger, interaction });
     if (!eventName || !interaction?.type || !interaction?.location) return false;
@@ -258,9 +258,9 @@
     return true;
   }
 
-  /***********************
+  /** *********************
    * TRACK INTERACTION
-   ***********************/
+   ********************** */
   function trackInteraction(element, overrides = {}) {
     if (!element) return false;
 
@@ -282,9 +282,9 @@
     );
   }
 
-  /***********************
+  /** *********************
    * STATE CHANGE TRACKING
-   ***********************/
+   ********************** */
   function trackStateChange(element, overrides = {}) {
     if (!element) return false;
 
@@ -295,9 +295,9 @@
     );
   }
 
-  /***********************
+  /** *********************
    * GUARD FUNCTIONS
-   ***********************/
+   ********************** */
   function isNativeInteractive(element) {
     return element?.matches?.('a[href], button, input, select, textarea, summary');
   }
@@ -306,9 +306,9 @@
     return element?.closest?.('[data-analytics-skip-generic="true"]') != null;
   }
 
-  /***********************
+  /** *********************
    * CLICK HANDLER
-   ***********************/
+   ********************** */
   function handleClick(event) {
     if (!event.isTrusted) return;
 
@@ -327,9 +327,9 @@
     trackInteraction(interactiveElement, { eventTrigger: 'click' });
   }
 
-  /***********************
+  /** *********************
    * KEYDOWN HANDLER
-   ***********************/
+   ********************** */
   function handleKeyDown(event) {
     if (!event.isTrusted || event.repeat || !['Enter', ' '].includes(event.key)) return;
 
@@ -340,9 +340,9 @@
     trackInteraction(interactiveElement, { eventTrigger: 'keypress' });
   }
 
-  /***********************
+  /** *********************
    * ATTACH LISTENERS
-   ***********************/
+   ********************** */
   function attachInteractionTracking() {
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeyDown);
@@ -353,9 +353,9 @@
     };
   }
 
-  /***********************
+  /** *********************
    * PUBLIC API
-   ***********************/
+   ********************** */
   window.InteractionAnalytics = {
     attach: attachInteractionTracking,
     trackInteraction,

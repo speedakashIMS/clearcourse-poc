@@ -1,31 +1,30 @@
-
-import React from "react";
-import { createRoot } from "react-dom/client";
-import Hero from "../../scripts/components/Hero.js";
-import { blockToMap } from "../../scripts/utils/block.js";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Hero from '../../scripts/components/Hero.js';
+import { blockToMap } from '../../scripts/utils/block.js';
 import { origin } from '../../scripts/configuration.js';
 
 function appendOriginIfNeeded(value) {
   if (typeof value !== 'string') {
-      return '';
+    return '';
   }
 
   if (typeof origin !== 'string' || !origin) {
-      return value;
+    return value;
   }
 
   return value.replace(/\/content\/dam/g, `${origin}/content/dam`);
 }
 
 function decodeToPlainString(input) {
-  if (!input) return "";
+  if (!input) return '';
 
   let str = input.trim();
   if (str.startsWith('"') && str.endsWith('"')) {
     str = str.slice(1, -1);
   }
 
-  const textarea = document.createElement("textarea");
+  const textarea = document.createElement('textarea');
   textarea.innerHTML = str;
 
   return textarea.value;
@@ -34,36 +33,34 @@ function decodeToPlainString(input) {
 function createMedia(blockData) {
   if (!blockData?.mediatype) return null;
 
-  const imageUrl =
-      blockData.mediaimagesource === 'url'
-          ? blockData.mediaimageurl
-          : blockData.mediaimageasset?.src;
-  
+  const imageUrl = blockData.mediaimagesource === 'url'
+    ? blockData.mediaimageurl
+    : blockData.mediaimageasset?.src;
+
   const videoUrl = blockData.mediavideosource === 'url'
-        ? blockData.mediavideourl
-        : appendOriginIfNeeded(blockData.mediavideoasset);
+    ? blockData.mediavideourl
+    : appendOriginIfNeeded(blockData.mediavideoasset);
 
   const lottieData = blockData.medialottiedata
-      ? JSON.parse(blockData.medialottiedata)
-      : null;
+    ? JSON.parse(blockData.medialottiedata)
+    : null;
 
-  const hasMedia =
-      imageUrl ||
-      videoUrl ||
-      blockData.medialottieurl ||
-      lottieData ||
-      blockData.mediaiframeurl;
+  const hasMedia = imageUrl
+      || videoUrl
+      || blockData.medialottieurl
+      || lottieData
+      || blockData.mediaiframeurl;
 
   if (!hasMedia) return null;
 
   return {
-      type: blockData.mediatype,
-      imageUrl,
-      videoUrl,
-      lottieUrl: blockData.medialottieurl,
-      lottieData,
-      iframeUrl: blockData.mediaiframeurl,
-      title: blockData?.mediatitle || 'Hero Media'
+    type: blockData.mediatype,
+    imageUrl,
+    videoUrl,
+    lottieUrl: blockData.medialottieurl,
+    lottieData,
+    iframeUrl: blockData.mediaiframeurl,
+    title: blockData?.mediatitle || 'Hero Media',
   };
 }
 
@@ -76,7 +73,7 @@ export default async function decorate(block) {
         'logosource',
         'logourl',
         'logoasset',
-        'logoalt'
+        'logoalt',
       ],
       buttons: [
         'buttontext',
@@ -105,39 +102,39 @@ export default async function decorate(block) {
         'medialottieurl',
         'medialottiedata',
         'mediaiframeurl',
-        'mediatitle'
-      ]
-    }
+        'mediatitle',
+      ],
+    },
   });
 
   const data = {
     id: blockData.id,
     slides: []
       .concat(blockData.items ?? [])
-      .map(item => ({
+      .map((item) => ({
         titleAccent: item.titleaccent,
         titleAccentColor: item.titleaccentcolor,
         title: item.title,
         description: item.description,
-        buttons: asArray(item.buttons).map(button => ({
+        buttons: asArray(item.buttons).map((button) => ({
           text: button.buttontext,
           href: button.buttonlink,
-          variant: button.buttonvariant || "light"
+          variant: button.buttonvariant || 'light',
         })),
-        logos: asArray(item.logos).map(logo => ({
+        logos: asArray(item.logos).map((logo) => ({
           src: logo.logosource === 'url' ? logo.logourl : logo.logoasset?.src,
-          alt: logo.logoalt
+          alt: logo.logoalt,
         })),
         media: createMedia(item),
         trustpilotWidget: decodeToPlainString(item.widget),
-        attributes: item._meta || {}
+        attributes: item._meta || {},
       })),
     order: blockData.order || 'content-first',
     mediaStyle: blockData.mediastyle || 'flush',
-    buttonSize: blockData.buttonsize || "btn-md",
+    buttonSize: blockData.buttonsize || 'btn-md',
     mobileOverlay: blockData.mobileoverlay === 'true',
     overlayColor: blockData.overlaycolor || 'secondary',
-    infinite: false
+    infinite: false,
   };
   const root = createRoot(block);
   root.render(React.createElement(Hero, data));

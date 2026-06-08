@@ -1,8 +1,7 @@
-
-import React from "react";
-import { createRoot } from "react-dom/client";
-import CTA from "../../scripts/components/CTA.js";
-import { blockToMap } from "../../scripts/utils/block.js";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import CTA from '../../scripts/components/CTA.js';
+import { blockToMap } from '../../scripts/utils/block.js';
 
 export default async function decorate(block) {
   const blockData = blockToMap(block);
@@ -14,7 +13,7 @@ export default async function decorate(block) {
     items: [],
   };
 
-  (blockData.items || []).forEach(item => {
+  (blockData.items || []).forEach((item) => {
     if (item.type === 'mediactaitem') {
       data.items.push({
         type: 'media',

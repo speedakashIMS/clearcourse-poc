@@ -11,11 +11,11 @@ import { origin } from '../../scripts/configuration.js';
 
 function appendOriginIfNeeded(value) {
   if (typeof value !== 'string') {
-      return '';
+    return '';
   }
 
   if (typeof origin !== 'string' || !origin) {
-      return value;
+    return value;
   }
 
   return value.replace(/\/content\/dam/g, `${origin}/content/dam`);
@@ -46,92 +46,90 @@ export default function decorate(block) {
   const data = {
     ...b,
     data: [...blockItems]
-      .map((b) =>
-        getBlockItemDataV2(b, {
-          id: { key: 'id', defaultValue: '', expectedType: 'string' },
-          title: { key: 'title', defaultValue: '', expectedType: 'string' },
-          description: {
-            key: 'description',
-            defaultValue: '',
-            expectedType: 'string',
-          },
-          isStacked: {
-            key: 'isStacked',
-            defaultValue: true,
-            expectedType: 'boolean',
-          },
-          mediaVariant: {
-            key: 'mediaVariant',
-            defaultValue: 'flushed',
-            expectedType: 'string',
-          },
-          mediaPosition: {
-            key: 'mediaPosition',
-            defaultValue: 'left',
-            expectedType: 'string',
-          },
-          mediaType: {
-            key: 'mediaType',
-            defaultValue: 'image',
-            expectedType: 'string',
-          },
-          imageUrl: {
-            key: 'imageUrl',
-            defaultValue: null,
-            expectedType: 'picture',
-          },
-          iframeText: {
-            key: 'iframeText',
-            defaultValue: '',
-            expectedType: 'string',
-          },
-          videoType: {
-            key: 'videoType',
-            defaultValue: 'upload',
-            expectedType: 'string',
-          },
-          videoUpload: {
-            key: 'videoUpload',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          videoExternal: {
-            key: 'videoExternal',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          lottieType: {
-            key: 'lottieType',
-            defaultValue: 'url',
-            expectedType: 'string',
-          },
-          lottieUrl: {
-            key: 'lottieUrl',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          lottieData: {
-            key: 'lottieData',
-            defaultValue: null,
-            expectedType: 'json',
-          },
-          buttonText: {
-            key: 'buttonText',
-            defaultValue: '',
-            expectedType: 'string',
-          },
-          buttonLink: {
-            key: 'buttonLink',
-            defaultValue: '',
-            expectedType: 'link',
-          },
-          buttonVariant: {
-            key: 'buttonVariant',
-            defaultValue: 'light',
-            expectedType: 'string',
-          },
-        }),
-      )
+      .map((b) => getBlockItemDataV2(b, {
+        id: { key: 'id', defaultValue: '', expectedType: 'string' },
+        title: { key: 'title', defaultValue: '', expectedType: 'string' },
+        description: {
+          key: 'description',
+          defaultValue: '',
+          expectedType: 'string',
+        },
+        isStacked: {
+          key: 'isStacked',
+          defaultValue: true,
+          expectedType: 'boolean',
+        },
+        mediaVariant: {
+          key: 'mediaVariant',
+          defaultValue: 'flushed',
+          expectedType: 'string',
+        },
+        mediaPosition: {
+          key: 'mediaPosition',
+          defaultValue: 'left',
+          expectedType: 'string',
+        },
+        mediaType: {
+          key: 'mediaType',
+          defaultValue: 'image',
+          expectedType: 'string',
+        },
+        imageUrl: {
+          key: 'imageUrl',
+          defaultValue: null,
+          expectedType: 'picture',
+        },
+        iframeText: {
+          key: 'iframeText',
+          defaultValue: '',
+          expectedType: 'string',
+        },
+        videoType: {
+          key: 'videoType',
+          defaultValue: 'upload',
+          expectedType: 'string',
+        },
+        videoUpload: {
+          key: 'videoUpload',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        videoExternal: {
+          key: 'videoExternal',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        lottieType: {
+          key: 'lottieType',
+          defaultValue: 'url',
+          expectedType: 'string',
+        },
+        lottieUrl: {
+          key: 'lottieUrl',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        lottieData: {
+          key: 'lottieData',
+          defaultValue: null,
+          expectedType: 'json',
+        },
+        buttonText: {
+          key: 'buttonText',
+          defaultValue: '',
+          expectedType: 'string',
+        },
+        buttonLink: {
+          key: 'buttonLink',
+          defaultValue: '',
+          expectedType: 'link',
+        },
+        buttonVariant: {
+          key: 'buttonVariant',
+          defaultValue: 'light',
+          expectedType: 'string',
+        },
+      }))
       .map((l) => ({
         id: l.id,
         attributes: l.attributes,
@@ -151,7 +149,7 @@ export default function decorate(block) {
         buttonVariant: l.buttonVariant,
       })),
   };
-  
+
   const root = createRoot(block);
   root.render(React.createElement(Cards, data));
 }

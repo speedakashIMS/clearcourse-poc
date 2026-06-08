@@ -15,20 +15,18 @@ export default async function decorate(block) {
     phone: blockData.phone,
     email: blockData.email,
     logo: blockData.logosource === 'url' ? blockData.logourl : blockData.logoasset?.src,
-    socialMedia: socialMedia.map(type => {
-      return {
-        type: type,
-        url: blockData[type]
-      }
-    }).filter(item => Boolean(item.url)),
+    socialMedia: socialMedia.map((type) => ({
+      type,
+      url: blockData[type],
+    })).filter((item) => Boolean(item.url)),
     navigation: []
-    .concat(blockData.navigation ?? [])
-    .map(item => ({
-      label: item.navigationlabel || '',
-      href: item.navigationlink || '#'
-    })),
-    colorVariant: blockData.color || 'dark'
-  }
+      .concat(blockData.navigation ?? [])
+      .map((item) => ({
+        label: item.navigationlabel || '',
+        href: item.navigationlink || '#',
+      })),
+    colorVariant: blockData.color || 'dark',
+  };
 
   const root = createRoot(block);
   root.render(React.createElement(SecondaryInfo, data));

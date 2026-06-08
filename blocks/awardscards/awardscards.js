@@ -10,11 +10,11 @@ import { origin } from '../../scripts/configuration.js';
 
 function appendOriginIfNeeded(value) {
   if (typeof value !== 'string') {
-      return '';
+    return '';
   }
 
   if (typeof origin !== 'string' || !origin) {
-      return value;
+    return value;
   }
 
   return value.replace(/\/content\/dam/g, `${origin}/content/dam`);
@@ -40,87 +40,85 @@ export default function decorate(block) {
   const data = {
     ...b,
     items: [...blockItems]
-      .map((b) =>
-        getBlockItemDataV2(b, {
-          id: { key: 'id', defaultValue: '', expectedType: 'string' },
-          title: { key: 'title', defaultValue: '', expectedType: 'string' },
-          subtitle: {
-            key: 'subtitle',
-            defaultValue: '',
-            expectedType: 'string',
-          },
-          linkText: {
-            key: 'linkText',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          linkHref: {
-            key: 'linkUrl',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          linkVariant: {
-            key: 'linkVariant',
-            defaultValue: 'light',
-            expectedType: 'string',
-          },
-          mediaType: {
-            key: 'mediaType',
-            defaultValue: 'image',
-            expectedType: 'string',
-          },
-          imageUrl: {
-            key: 'imageUrl',
-            defaultValue: null,
-            expectedType: 'picture',
-          },
-          iframeText: {
-            key: 'iframeText',
-            defaultValue: '',
-            expectedType: 'string',
-          },
-          videoType: {
-            key: 'videoType',
-            defaultValue: 'upload',
-            expectedType: 'string',
-          },
-          videoUpload: {
-            key: 'videoUpload',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          videoExternal: {
-            key: 'videoExternal',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          lottieType: {
-            key: 'lottieType',
-            defaultValue: 'url',
-            expectedType: 'string',
-          },
-          lottieUrl: {
-            key: 'lottieUrl',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          lottieData: {
-            key: 'lottieData',
-            defaultValue: null,
-            expectedType: 'json',
-          },
-          mediaText: {
-            key: 'mediaText',
-            defaultValue: null,
-            expectedType: 'string',
-          },
-          mediaAspectRatio: {
-            key: 'mediaAspectRatio',
-            defaultValue: 'default',
-            expectedType: 'string',
-          },
-        }),
-      )
+      .map((b) => getBlockItemDataV2(b, {
+        id: { key: 'id', defaultValue: '', expectedType: 'string' },
+        title: { key: 'title', defaultValue: '', expectedType: 'string' },
+        subtitle: {
+          key: 'subtitle',
+          defaultValue: '',
+          expectedType: 'string',
+        },
+        linkText: {
+          key: 'linkText',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        linkHref: {
+          key: 'linkUrl',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        linkVariant: {
+          key: 'linkVariant',
+          defaultValue: 'light',
+          expectedType: 'string',
+        },
+        mediaType: {
+          key: 'mediaType',
+          defaultValue: 'image',
+          expectedType: 'string',
+        },
+        imageUrl: {
+          key: 'imageUrl',
+          defaultValue: null,
+          expectedType: 'picture',
+        },
+        iframeText: {
+          key: 'iframeText',
+          defaultValue: '',
+          expectedType: 'string',
+        },
+        videoType: {
+          key: 'videoType',
+          defaultValue: 'upload',
+          expectedType: 'string',
+        },
+        videoUpload: {
+          key: 'videoUpload',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        videoExternal: {
+          key: 'videoExternal',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        lottieType: {
+          key: 'lottieType',
+          defaultValue: 'url',
+          expectedType: 'string',
+        },
+        lottieUrl: {
+          key: 'lottieUrl',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        lottieData: {
+          key: 'lottieData',
+          defaultValue: null,
+          expectedType: 'json',
+        },
+        mediaText: {
+          key: 'mediaText',
+          defaultValue: null,
+          expectedType: 'string',
+        },
+        mediaAspectRatio: {
+          key: 'mediaAspectRatio',
+          defaultValue: 'default',
+          expectedType: 'string',
+        },
+      }))
       .map((l) => ({
         id: l.id,
         attributes: l.attributes,
@@ -141,7 +139,7 @@ export default function decorate(block) {
         },
       })),
   };
-  
+
   const root = createRoot(block);
   root.render(React.createElement(AwardsCards, data));
 }

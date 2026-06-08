@@ -388,7 +388,7 @@ export function extractAueAttributes(node) {
   const attrs = {};
   if (!node || !node.attributes) return attrs;
 
-  Array.from(node.attributes).forEach(attr => {
+  Array.from(node.attributes).forEach((attr) => {
     if (attr.name.startsWith('data-aue-')) {
       attrs[attr.name] = attr.value;
     }
@@ -405,12 +405,12 @@ function pairGroup(nodes, allowedKeys, context) {
   const obj = {};
   let i = 0;
 
-  const isKnownKeyNode = node => {
+  const isKnownKeyNode = (node) => {
     const value = extractValue(node, context);
     return (
-      allowedKeys &&
-      typeof value === 'string' &&
-      allowedKeys.includes(value)
+      allowedKeys
+      && typeof value === 'string'
+      && allowedKeys.includes(value)
     );
   };
 
@@ -446,7 +446,7 @@ function pairGroup(nodes, allowedKeys, context) {
 
     // Multiple nodes → treat as rich HTML block
     obj[key] = valueParts
-      .map(node => node.outerHTML)
+      .map((node) => node.outerHTML)
       .join('')
       .trim();
   }
@@ -458,7 +458,7 @@ function parseHrContainer(container, allowedKeys, context) {
   const items = [];
   let group = [];
 
-  Array.from(container.children).forEach(el => {
+  Array.from(container.children).forEach((el) => {
     if (el.tagName === 'HR') {
       if (group.length) {
         items.push(pairGroup(group, allowedKeys, context));
@@ -489,46 +489,46 @@ export function extractValue(node, context = {}) {
 
   /* HR container */
   if (
-    schema &&
-    Array.isArray(schema) &&
-    node.querySelector &&
-    node.querySelector(':scope > hr')
+    schema
+    && Array.isArray(schema)
+    && node.querySelector
+    && node.querySelector(':scope > hr')
   ) {
     return parseHrContainer(node, schema, context);
   }
 
   /* List as sole child */
   if (
-    node.children.length === 1 &&
-    (node.firstElementChild.tagName === 'UL' ||
-      node.firstElementChild.tagName === 'OL')
+    node.children.length === 1
+    && (node.firstElementChild.tagName === 'UL'
+      || node.firstElementChild.tagName === 'OL')
   ) {
     return Array.from(
-      node.firstElementChild.querySelectorAll('li')
-    ).map(li => li.textContent.trim());
+      node.firstElementChild.querySelectorAll('li'),
+    ).map((li) => li.textContent.trim());
   }
 
   /* Single <p> wrapper */
   if (
-    node.children.length === 1 &&
-    node.firstElementChild.tagName === 'P'
+    node.children.length === 1
+    && node.firstElementChild.tagName === 'P'
   ) {
     const p = node.firstElementChild;
     const links = p.querySelectorAll('a[href]');
-  
+
     // pure link → return href
     if (
-      links.length === 1 &&
-      p.textContent.trim() === links[0].textContent.trim()
+      links.length === 1
+      && p.textContent.trim() === links[0].textContent.trim()
     ) {
       return links[0].getAttribute('href');
     }
-  
+
     // richtext if formatting tags exist
     if (p.children.length > 0) {
       return p.innerHTML.trim();
     }
-  
+
     // plain text
     return p.textContent.trim();
   }
@@ -595,15 +595,15 @@ function parseField(fieldNode, config) {
 
   const context = {
     schema: fieldSchema,
-    schemas: config.schemas
+    schemas: config.schemas,
   };
 
-  const values = cells.map(cell => extractValue(cell, context));
+  const values = cells.map((cell) => extractValue(cell, context));
 
   const typeIndex = values.indexOf('type');
   if (typeIndex !== -1 && values[typeIndex + 1]) {
     const item = {
-      type: values[typeIndex + 1]
+      type: values[typeIndex + 1],
     };
 
     const meta = extractAueAttributes(fieldNode);
@@ -622,7 +622,7 @@ function parseField(fieldNode, config) {
 
         const value = extractValue(valueNode, {
           schema: nestedSchema,
-          schemas: config.schemas
+          schemas: config.schemas,
         });
 
         item[key] = value ?? '';
@@ -657,7 +657,7 @@ function blockToMap(block, config = {}) {
     result._meta = blockMeta;
   }
 
-  Array.from(block.children).forEach(field => {
+  Array.from(block.children).forEach((field) => {
     const parsed = parseField(field, config);
     if (!parsed) return;
 
