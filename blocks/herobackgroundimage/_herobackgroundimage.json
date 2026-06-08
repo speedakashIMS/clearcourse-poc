@@ -1,0 +1,467 @@
+{
+  "definitions": [
+    {
+      "title": "HeroBackgroundImage",
+      "id": "herobackgroundimage",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "HeroBackgroundImage",
+              "model": "herobackgroundimage",
+              "filter": "herobackgroundimage",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "HeroBackgroundImageItem",
+      "id": "herobackgroundimageitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "HeroBackgroundImageItem",
+              "model": "herobackgroundimageitem",
+              "typekey": "type",
+              "typevalue": "herobackgroundimageitem",
+              "titlekey": "title",
+              "titleaccentkey": "titleaccent",
+              "titleaccentcolorkey": "titleaccentcolor",
+              "titlecolorkey": "titlecolor",
+              "titlesizekey": "titlesize",
+              "descriptionkey": "description",
+              "backgroundimagesourcekey": "backgroundimagesource",
+              "backgroundimageurlkey": "backgroundimageurl",
+              "backgroundimageassetkey": "backgroundimageasset"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "herobackgroundimage",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "buttonsize",
+          "label": "Button Size",
+          "valueType": "string",
+          "options": [
+            { "name": "Small", "value": "btn-sm" },
+            { "name": "Medium", "value": "btn-md" }
+          ],
+          "value": "btn-md"
+        },
+        {
+          "component": "select",
+          "name": "size",
+          "label": "Size",
+          "valueType": "string",
+          "options": [
+            { "name": "Default", "value": "default" },
+            { "name": "Bigger", "value": "bigger" }
+          ],
+          "value": "default"
+        },
+        {
+          "component": "select",
+          "name": "height",
+          "label": "Height",
+          "valueType": "string",
+          "options": [
+            { "name": "Normal", "value": "normal" },
+            { "name": "Small", "value": "small" }
+          ],
+          "value": "normal"
+        }
+      ]
+    },
+    {
+      "id": "herobackgroundimageitem",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
+        },
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "titleaccentkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "titleaccent"
+        },
+        {
+          "component": "text",
+          "name": "titleaccentvalue",
+          "label": "Title Accent",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "titleaccentcolorkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "titleaccentcolorvalue",
+          "label": "Title Accent Color",
+          "valueType": "string",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Tertiary", "value": "tertiary" },
+            { "name": "White", "value": "white" }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "titlecolorkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "titlecolor"
+        },
+        {
+          "component": "select",
+          "name": "titlecolorvalue",
+          "label": "Title Color",
+          "valueType": "string",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Tertiary", "value": "tertiary" },
+            { "name": "White", "value": "white" }
+          ],
+          "value": "white"
+        },
+        {
+          "component": "text",
+          "name": "titlesizekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "titlesize"
+        },
+        {
+          "component": "select",
+          "name": "titlesizevalue",
+          "label": "Title Size",
+          "valueType": "string",
+          "options": [
+            { "name": "Normal", "value": "normal" },
+            { "name": "Big", "value": "big" }
+          ],
+          "value": "normal"
+        },
+        {
+          "component": "text",
+          "name": "descriptionkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "descriptionvalue",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "backgroundimagesourcekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "backgroundimagesourcevalue",
+          "label": "Background Image Source",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "URL",
+              "value": "url"
+            },
+            {
+              "name": "Assets",
+              "value": "assets"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "backgroundimageurlkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "backgroundimageurlvalue",
+          "label": "Background Image URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "backgroundimagesourcevalue"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "backgroundimageassetkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "backgroundimageassetvalue",
+          "label": "Background Image Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "backgroundimagesourcevalue"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "textalignmentkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "textalignment"
+        },
+        {
+          "component": "select",
+          "name": "textalignmentvalue",
+          "label": "Text Alignment",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Center",
+              "value": "center"
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ],
+          "value": "left"
+        },
+        {
+          "component": "text",
+          "name": "widgetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "widget"
+        },
+        {
+          "component": "textarea",
+          "name": "widget",
+          "valueType": "string",
+          "label": "Widget HTML",
+          "description": "(E.g \"<div></div>\")"
+        },
+        {
+          "component": "tab",
+          "name": "buttonstab",
+          "label": "Buttons"
+        },
+        {
+          "component": "text",
+          "name": "buttonskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "buttons"
+        },
+        {
+          "component": "container",
+          "name": "buttonscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "buttontextkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttontext"
+            },
+            {
+              "component": "text",
+              "name": "buttontextvalue",
+              "label": "Text", 
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "buttonlinkkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttonlink"
+            },
+            {
+              "component": "aem-content",
+              "name": "buttonlinkvalue",
+              "label": "Link",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "buttonvariantkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttonvariant"
+            },
+            {
+              "component": "select",
+              "name": "buttonvariant",
+              "label": "Variant",
+              "valueType": "string",
+              "options": [
+                { "name": "Light", "value": "light" },
+                { "name": "Dark", "value": "dark" },
+                { "name": "Light Outlined", "value": "light-outlined" },
+                { "name": "Dark Outlined", "value": "dark-outlined" },
+                { "name": "Light No Outline", "value": "light-no-outline" },
+                { "name": "Dark No Outline", "value": "dark-no-outline" }
+              ],
+              "value": "light"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "logostab",
+          "label": "Logos"
+        },
+        {
+          "component": "text",
+          "name": "logoskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logos"
+        },
+        {
+          "component": "container",
+          "name": "logoscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "logosourcekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logosource"
+            },
+            {
+              "component": "select",
+              "name": "logosourcevalue",
+              "label": "Source",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "URL",
+                  "value": "url"
+                },
+                {
+                  "name": "Assets",
+                  "value": "assets"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "name": "logourlkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logourl"
+            },
+            {
+              "component": "text",
+              "name": "logourlvalue",
+              "valueType": "string",
+              "label": "URL",
+              "value": ""
+            },
+            {
+              "component": "text",
+              "name": "logoassetkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logoasset"
+            },
+            {
+              "component": "reference",
+              "name": "logoassetvalue",
+              "valueType": "string",
+              "label": "Asset"
+            },
+            {
+              "component": "text",
+              "name": "logoaltkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logoalt"
+            },
+            {
+              "component": "text",
+              "name": "logoaltvalue",
+              "valueType": "string",
+              "label": "Image Alt Text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "herobackgroundimage",
+      "components": ["herobackgroundimageitem"]
+    }
+  ]
+}

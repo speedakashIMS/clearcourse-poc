@@ -1,0 +1,53 @@
+{
+  "definitions": [
+    {
+      "title": "RichText",
+      "id": "richtext",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "RichText",
+              "model": "richtext",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "richtext",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "content",
+          "label": "Content",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "select",
+          "name": "size",
+          "label": "Size",
+          "options": [
+            { "name": "normal", "value": "normal" },
+            { "name": "small", "value": "small" },
+            { "name": "large", "value": "large" }
+          ],
+          "valueType": "string",
+          "value": "normal"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

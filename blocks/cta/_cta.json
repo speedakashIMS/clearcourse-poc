@@ -9,7 +9,68 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "CTA",
-              "model": "cta"
+              "model": "cta",
+              "filter": "cta",
+              "key-value": true,
+              "columns": "2",
+              "gridtype": "50-50"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "MediaCTAItem",
+      "id": "mediactaitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "MediaCTAItem",
+              "model": "mediactaitem",
+              "typekey": "type",
+              "typevalue": "mediactaitem",
+              "variantkey": "variant",
+              "variantvalue": "image",
+              "imagesourcekey": "imagesource",
+              "imageurlkey": "imageurl",
+              "titlekey": "title",
+              "aspectkey": "aspect",
+              "aspectvalue": "default",
+              "imageassetkey": "imageasset",
+              "lottieurlkey": "lottieurl",
+              "lottiedatakey": "lottiedata",
+              "iframeurlkey": "iframeurl"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "TextCTAItem",
+      "id": "textctaitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "TextCTAItem",
+              "model": "textctaitem",
+              "typekey": "type",
+              "typevalue": "textctaitem",
+              "headingkey": "heading",
+              "paragraphkey": "paragraph",
+              "imagesourcekey": "imagesource",
+              "imageurlkey": "imageurl",
+              "imageassetkey": "imageasset",
+              "imagealtkey": "imagealt",
+              "textalignmentkey": "textalignment",
+              "textalignmentvalue": "left",
+              "buttontextkey": "buttontext",
+              "buttonvariantkey": "buttonvariant",
+              "buttonlinkkey": "buttonlink",
+              "listkey": "list"
             }
           }
         }
@@ -21,13 +82,494 @@
       "id": "cta",
       "fields": [
         {
-          "component": "richtext",
-          "name": "content",
-          "label": "Content",
+          "component": "text",
+          "label": "Id",
+          "name": "id",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "label": "Columns",
+          "name": "columns",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "1",
+              "value": "1"
+            },
+            {
+              "name": "2",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "label": "Grid Type",
+          "name": "gridtype",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "50-50",
+              "value": "50-50"
+            },
+            {
+              "name": "75-25",
+              "value": "75-25"
+            },
+            {
+              "name": "25-75",
+              "value": "25-75"
+            }
+          ],
+          "condition": { "===": [{ "var": "columns" }, "2"] }
+        }
+      ]
+    },
+    {
+      "id": "mediactaitem",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Media Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "aspectkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "label": "Aspect",
+          "name": "aspectvalue",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Rectangle",
+              "value": "rectangle"
+            },
+            {
+              "name": "Square",
+              "value": "square"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "variantkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "variantvalue",
+          "label": "Variant",
+          "options": [
+            { "name": "Image", "value": "image" },
+            { "name": "Video", "value": "video" },
+            { "name": "Lottie", "value": "lottie" },
+            { "name": "iFrame", "value": "iframe" }
+          ],
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "imagesourcekey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "imagesourcevalue",
+          "label": "Source",
+          "options": [
+            { "name": "Assets", "value": "assets" },
+            { "name": "URL", "value": "url" }
+          ],
+          "condition": { "===": [{ "var": "variantvalue" }, "image"] }
+        },
+        {
+          "component": "text",
+          "name": "imageurlkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "imageurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              { "===": [{ "var": "variantvalue" }, "image"] },
+              { "===": [{ "var": "imagesourcevalue" }, "url"] }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageassetkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "imageassetvalue",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              { "===": [{ "var": "variantvalue" }, "image"] },
+              { "===": [{ "var": "imagesourcevalue" }, "assets"] }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "videourlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": { "===": [{ "var": "variantvalue" }, "video"] }
+        },
+        {
+          "component": "text",
+          "name": "lottieurlkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "lottieurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "hidden": true,
+          "condition": { "===": [{ "var": "variantvalue" }, "lottie"] }
+        },
+        {
+          "component": "text",
+          "name": "lottiedatakey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "lottiedatavalue",
+          "label": "Data",
+          "valueType": "string",
+          "condition": { "===": [{ "var": "variantvalue" }, "lottie"] }
+        },
+        {
+          "component": "text",
+          "name": "iframeurlkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "iframeurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": { "===": [{ "var": "variantvalue" }, "iframe"] }
+        }
+      ]
+    },
+    {
+      "id": "textctaitem",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "label": "Heading",
+          "name": "headingcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "headingkey",
+              "valueType": "string",
+              "required": true,
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "headingvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Paragraph",
+          "name": "paragraphcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "paragraphkey",
+              "valueType": "string",
+              "required": true,
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "paragraphvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "imagesourcekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "imagesource",
+          "label": "Image Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "imageurlkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "imageurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesource"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageassetkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "imageasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesource"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "container",
+          "label": "Image Alt Text",
+          "name": "imagealtcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "imagealtkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "imagealtvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Text Alignment",
+          "name": "textalignmentcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "textalignmentkey",
+              "valueType": "string",
+              "required": true,
+              "hidden": true
+            },
+            {
+              "component": "select",
+              "name": "textalignmentvalue",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "Left",
+                  "value": "left"
+                },
+                {
+                  "name": "Right",
+                  "value": "right"
+                },
+                {
+                  "name": "Center",
+                  "value": "center"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "buttontextkey",
+          "label": "Button Text",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "buttontextvalue",
+          "label": "Button Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "buttonvariantkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "buttonvariantvalue",
+          "label": "Button Variant",
+          "options": [
+            {
+              "name": "Light",
+              "value": "light"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Light Outlined",
+              "value": "light-outlined"
+            },
+            {
+              "name": "Dark Outlined",
+              "value": "dark-outlined"
+            },
+            {
+              "name": "Light No Outline",
+              "value": "light-no-outline"
+            },
+            {
+              "name": "Dark No Outline",
+              "value": "dark-no-outline"
+            }
+          ],
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "buttonlinkkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "aem-content",
+          "name": "buttonlinkvalue",
+          "label": "Button Link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "listkey",
+          "valueType": "string",
+          "required": true,
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "list",
+          "label": "Bullet Points",
+          "valueType": "string",
+          "multi": true
         }
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "cta",
+      "components": [
+        "mediactaitem",
+        "textctaitem"
+      ]
+    }
+  ]
 }

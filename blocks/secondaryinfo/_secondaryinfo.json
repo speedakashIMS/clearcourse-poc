@@ -1,0 +1,276 @@
+{
+  "definitions": [
+    {
+      "title": "SecondaryInfo",
+      "id": "secondaryinfo",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "SecondaryInfo",
+              "model": "secondaryinfo",
+              "key-value": true,
+              "navigationlabelkey": "navigationlabel",
+              "navigationlinkkey": "navigationlink"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "secondaryinfo",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Secondary Info",
+              "value": "secondary-info"
+            },
+            {
+              "name": "Sub Navigation",
+              "value": "sub-navigation"
+            }
+          ],
+          "valueType": "string",
+          "value": "secondary-info"
+        },
+        {
+          "component": "text",
+          "name": "text",
+          "label": "Text",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "secondary-info"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "phone",
+          "label": "Phone",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "secondary-info"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "email",
+          "label": "Email",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "secondary-info"
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "color",
+          "label": "Color",
+          "options": [
+            {
+              "name": "Light",
+              "value": "light"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            }
+          ],
+          "valueType": "string",
+          "value": "dark"
+        },
+        {
+          "component": "select",
+          "name": "logosource",
+          "label": "Logo Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "sub-navigation"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "logourl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "variant"
+                  },
+                  "sub-navigation"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "logosource"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "logoasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "variant"
+                  },
+                  "sub-navigation"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "logosource"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "container",
+          "label": "Social Media",
+          "name": "socialmedia",
+          "collapsible": false,
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "secondary-info"
+            ]
+          },
+          "fields": [
+            {
+              "component": "text",
+              "name": "facebook",
+              "label": "Facebook URL",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "google",
+              "label": "Google  URL",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "x",
+              "label": "X URL",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "instagram",
+              "label": "Instagram  URL",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "linkedin",
+              "label": "LinkedIn URL",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Navigation",
+          "name": "navigation",
+          "multi": true,
+          "collapsible": false,
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "sub-navigation"
+            ]
+          },
+          "fields": [
+            {
+              "component": "text",
+              "name": "navigationlabelkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "navigationlabel"
+            },
+            {
+              "component": "text",
+              "name": "navigationlabelvalue",
+              "label": "Label",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "navigationlinkkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "navigationlink"
+            },
+            {
+              "component": "aem-content",
+              "name": "navigationlinkvalue",
+              "label": "Link",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

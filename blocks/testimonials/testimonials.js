@@ -1,71 +1,84 @@
-const QUOTE_MARK = `<svg class="testimonials-quote-mark" width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M 20.896 16 L 13.197 16 L 19.796 0 L 25 0 L 20.896 16 Z M 7.699 16 L 0 16 L 6.599 0 L 11.829 0 L 7.699 16 Z" fill="#26b3c3"/>
-</svg>`;
 
-const QUOTE_MARK_CLOSE = `<svg class="testimonials-quote-mark testimonials-quote-mark-close" width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M 4.104 0 L 11.803 0 L 5.204 16 L 0 16 L 4.104 0 Z M 17.302 0 L 25 0 L 18.401 16 L 13.171 16 L 17.302 0 Z" fill="#26b3c3"/>
-</svg>`;
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Testimonials from "../../scripts/components/Testimonials.js";
+import { blockToMap } from "../../scripts/utils/block.js";
+import { origin } from '../../scripts/configuration.js';
 
-export default function decorate(block) {
-  const rows = [...block.children];
-
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('testimonials-inner');
-
-  const item = document.createElement('div');
-  item.classList.add('testimonials-item');
-
-  // Row 0: quote text
-  if (rows[0]) {
-    const quoteWrap = document.createElement('div');
-    quoteWrap.classList.add('testimonials-quote-wrap');
-    quoteWrap.innerHTML = QUOTE_MARK;
-
-    const quote = document.createElement('blockquote');
-    quote.classList.add('testimonials-quote');
-    quote.append(...rows[0].children[0].childNodes);
-    quoteWrap.appendChild(quote);
-    quoteWrap.insertAdjacentHTML('beforeend', QUOTE_MARK_CLOSE);
-    item.appendChild(quoteWrap);
-  }
-
-  // Attribution: logo | avatar | name + title — all in one row
-  const attribution = document.createElement('div');
-  attribution.classList.add('testimonials-attribution');
-
-  // Row 1: industry logo (reference → image)
-  if (rows[1]) {
-    const img = rows[1].querySelector('img');
-    if (img) {
-      const logoWrap = document.createElement('div');
-      logoWrap.classList.add('testimonials-logo');
-      logoWrap.appendChild(img.closest('picture') || img);
-      attribution.appendChild(logoWrap);
+function appendOriginIfNeeded(value) {
+    if (typeof value !== 'string') {
+        return '';
     }
-  }
 
-  // Row 2: author avatar (reference → image)
-  if (rows[2]) {
-    const img = rows[2].querySelector('img');
-    if (img) {
-      const avatarWrap = document.createElement('div');
-      avatarWrap.classList.add('testimonials-avatar');
-      avatarWrap.appendChild(img.closest('picture') || img);
-      attribution.appendChild(avatarWrap);
+    if (typeof origin !== 'string' || !origin) {
+        return value;
     }
-  }
 
-  // Row 3: author name + title (richtext — first <p> is name, second is title)
-  if (rows[3]) {
-    const nameRole = document.createElement('div');
-    nameRole.classList.add('testimonials-name-role');
-    nameRole.append(...rows[3].children[0].childNodes);
-    attribution.appendChild(nameRole);
-  }
-
-  item.appendChild(attribution);
-  wrapper.appendChild(item);
-
-  block.innerHTML = '';
-  block.appendChild(wrapper);
+    return value.replace(/\/content\/dam/g, `${origin}/content/dam`);
 }
+
+export default async function decorate(block) {
+    const blockData = blockToMap(block);
+
+    function createMedia(blockData) {
+        if (!blockData?.mediatype) return null;
+    
+        const imageUrl =
+            blockData.mediaimagesource === 'url'
+                ? blockData.mediaimageurl
+                : blockData.mediaimageasset?.src;
+    
+        const lottieData = blockData.medialottiedata
+            ? JSON.parse(blockData.medialottiedata)
+            : null;
+    
+        const hasMedia =
+            imageUrl ||
+            blockData.mediavideourl ||
+            blockData.medialottieurl ||
+            lottieData ||
+            blockData.mediaiframeurl;
+    
+        if (!hasMedia) return null;
+    
+        return {
+            type: blockData.mediatype,
+            imageUrl,
+            videoUrl: appendOriginIfNeeded(blockData.mediavideourl),
+            lottieUrl: blockData.medialottieurl,
+            lottieData,
+            iframeUrl: blockData.mediaiframeurl,
+            title: blockData?.mediatitle || 'Testimonial Media'
+        };
+    }    
+
+    const data = {
+        id: blockData.id,
+        variant: blockData.variant || 'columns',
+        testimonials: []
+        .concat(blockData.items ?? [])
+        .map(
+            item => ({
+                testimonial: item.testimonial,
+                name: item.name,
+                role: item.role,
+                rating: item.rating,
+                imageUrl: item.imagesource === 'url' ? item.imageurl : item.imageasset?.src,
+                logoUrl: item.logosource === 'url' ? item.logourl : item.logoasset?.src,
+                align: item.alignment || 'left',
+                attributes: item._meta || {}
+            })),
+        media: createMedia(blockData),
+        order: blockData.order || 'testimonial-first',
+        columns: Number(blockData.columns) || 1,
+        alignment: blockData.alignment || 'left',
+        withPadding: blockData.withpadding === 'true',
+        mediaPosition: blockData.mediaposition || 'left',
+        carousel: blockData.iscarousel === 'true' || false,
+        infinite: false
+    };
+
+    const root = createRoot(block);
+    root.render(React.createElement(Testimonials, data));
+}
+  

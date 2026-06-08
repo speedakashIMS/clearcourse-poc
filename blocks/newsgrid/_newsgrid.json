@@ -1,0 +1,324 @@
+{
+  "definitions": [
+    {
+      "title": "NewsGrid",
+      "id": "newsgrid",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "NewsGrid",
+              "model": "newsgrid",
+              "filter": "newsgrid",
+              "key-value": true,
+              "variant": "stacked",
+              "stackedcolumns": "3",
+              "rowcolumns": "1",
+              "iscarousel": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "NewsGridItem",
+      "id": "newsgriditem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "NewsGridItem",
+              "model": "newsgriditem",
+             "typekey": "type",
+              "typevalue": "newsgriditem",
+              "titlekey": "title",
+              "descriptionkey": "description",
+              "imagesourcekey": "imagesource",
+              "imagesource": "assets",
+              "imageurlkey": "imageurl",
+              "imageassetkey": "imageasset",
+              "imagealtkey": "imagealt",
+              "linktextkey": "linktext",
+              "linkkey": "link"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "newsgrid",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Vertical",
+              "value": "stacked"
+            },
+            {
+              "name": "Horizontal",
+              "value": "row"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "stackedcolumns",
+          "label": "Columns",
+          "options": [
+            {
+              "name": "2",
+              "value": "2"
+            },
+            {
+              "name": "3",
+              "value": "3"
+            },
+            {
+              "name": "4",
+              "value": "4"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "stacked"
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "rowcolumns",
+          "label": "Columns",
+          "options": [
+            {
+              "name": "1",
+              "value": "1"
+            },
+            {
+              "name": "2",
+              "value": "2"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "row"
+            ]
+          }
+        },
+        {
+          "component": "boolean",
+          "name": "iscarousel",
+          "label": "Carousel",
+          "valueType": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "newsgriditem",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "label": "Title",
+          "name": "titlecontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "titlekey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "titlevalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Description",
+          "name": "descriptioncontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "descriptionkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "descriptionvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "imagesourcekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "imagesource",
+          "label": "Image Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "imageurlkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "imageurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesource"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageassetkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "imageasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesource"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "container",
+          "label": "Image Alt Text",
+          "name": "imagealtcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "imagealtkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "imagealtvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Link Text",
+          "name": "linktextcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "linktextkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "linktextvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Link",
+          "name": "linkcontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "linkkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "aem-content",
+              "name": "linkvalue",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "newsgrid",
+      "components": ["newsgriditem"]
+    }
+  ]
+}

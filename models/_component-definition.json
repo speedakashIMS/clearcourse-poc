@@ -3,20 +3,7 @@
     {
       "title": "Default Content",
       "id": "default",
-      "components": [
-        {
-          "...": "./_text.json#/definitions"
-        },
-        {
-          "...": "./_title.json#/definitions"
-        },
-        {
-          "...": "./_image.json#/definitions"
-        },
-        {
-          "...": "./_button.json#/definitions"
-        }
-      ]
+      "components": []
     },
     {
       "title": "Sections",

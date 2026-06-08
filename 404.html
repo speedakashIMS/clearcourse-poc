@@ -33,7 +33,17 @@
   </script>
   <script nonce="aem" type="module">
     import { sampleRUM } from '/scripts/aem.js';
+    import ErrorAnalytics from '/scripts/tracking/errorTracking.js';
     sampleRUM('404', { source: document.referrer });
+
+    window.addEventListener('load', () => {
+      ErrorAnalytics.trackError({
+        category: 'system',
+        code: '404',
+        message: "sorry, the page you're looking for was not found",
+        severity: 'warning',
+      });
+    });
   </script>
   <link rel="stylesheet" href="/styles/styles.css">
   <style>

@@ -1,0 +1,337 @@
+{
+  "definitions": [
+    {
+      "title": "Table",
+      "id": "table",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Table",
+              "model": "table",
+              "filter": "table",
+              "key-value": true,
+              "headerkey": "header",
+              "variant": "pricing"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "TableRow",
+      "id": "tablerow",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "TableRow",
+              "model": "tablerow",
+              "typekey": "type",
+              "typevalue": "tablerow",
+              "titlekey": "title",
+              "valuekey": "value",
+              "valueskey": "values"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "PricingTableRow",
+      "id": "pricingtablerow",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "PricingTableRow",
+              "model": "pricingtablerow",
+              "typekey": "type",
+              "typevalue": "pricingtablerow",
+              "titlekey": "title",
+              "valuekey": "value",
+              "valueskey": "values"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "ComparisonTableRow",
+      "id": "comparisontablerow",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "ComparisonTableRow",
+              "model": "comparisontablerow",
+              "typekey": "type",
+              "typevalue": "comparisontablerow",
+              "titlekey": "title",
+              "valuekey": "value",
+              "valueskey": "values"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "table",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Pricing Table",
+              "value": "pricing"
+            },
+            {
+              "name": "Comparison Table",
+              "value": "comparison"
+            },
+            {
+              "name": "Normal",
+              "value": "normal"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "headerstab",
+          "label": "Headers"
+        },
+        {
+          "component": "container",
+          "name": "headers",
+          "valueType": "string",
+          "collapsible": false,
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "headerkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "header"
+            },
+            {
+              "component": "text",
+              "name": "headervalue",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tablerow",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "tab",
+          "name": "valuestab",
+          "label": "Values"
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "valueskey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "name": "valuescontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "valuekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "value"
+            },
+            {
+              "component": "text",
+              "name": "valuevalue",
+              "label": "Value",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pricingtablerow",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "tab",
+          "name": "valuestab",
+          "label": "Values"
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "valueskey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "name": "valuescontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "valuekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "value"
+            },
+            {
+              "component": "text",
+              "name": "valuevalue",
+              "label": "Value",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comparisontablerow",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "tab",
+          "name": "valuestab",
+          "label": "Values"
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "valueskey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "name": "valuescontainer",
+          "collapsible": false,
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "valuekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "value"
+            },
+            {
+              "component": "boolean",
+              "name": "valuevalue",
+              "label": "Value", 
+              "valueType": "boolean"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "table",
+      "components": ["tablerow", "pricingtablerow", "comparisontablerow"]
+    }
+  ]
+}

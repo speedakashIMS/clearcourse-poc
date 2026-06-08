@@ -1,0 +1,759 @@
+{
+  "definitions": [
+    {
+      "title": "StatsWithTestimonials",
+      "id": "statswithtestimonials",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "StatsWithTestimonials",
+              "model": "statswithtestimonials",
+              "filter": "statswithtestimonials",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "StatsWithTestimonialsItem",
+      "id": "statswithtestimonialsitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "StatsWithTestimonialsItem",
+              "model": "statswithtestimonialsitem",
+              "typekey": "type",
+              "typevalue": "statswithtestimonialsitem"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "statswithtestimonials",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "fontsize",
+          "label": "Font Size",
+          "options": [
+            {
+              "name": "Small",
+              "value": "sm"
+            },
+            {
+              "name": "Medium",
+              "value": "md"
+            },
+            {
+              "name": "Large",
+              "value": "lg"
+            },
+            {
+              "name": "Extra Large",
+              "value": "xl"
+            }
+          ],
+          "valueType": "string",
+          "value": "sm"
+        },
+        {
+          "component": "select",
+          "name": "order",
+          "label": "Order",
+          "options": [
+            {
+              "name": "Stat First",
+              "value": "stat-first"
+            },
+            {
+              "name": "Testimonial First",
+              "value": "testimonial-first"
+            }
+          ],
+          "valueType": "string",
+          "value": "stat-first"
+        }
+      ]
+    },
+    {
+      "id": "statswithtestimonialsitem",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
+        },
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "statkey",
+          "hidden": true,
+          "value": "stat"
+        },
+        {
+          "component": "text",
+          "name": "statvalue",
+          "label": "Stat",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "descriptionkey",
+          "hidden": true,
+          "value": "description"
+        },
+        {
+          "component": "text",
+          "name": "descriptionvalue",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "textalignmentkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "textalignment"
+        },
+        {
+          "component": "select",
+          "name": "textalignmentvalue",
+          "label": "Text Alignment",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Center",
+              "value": "center"
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ],
+          "value": "center"
+        },
+        {
+          "component": "text",
+          "name": "fontsizekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "fontsize"
+        },
+        {
+          "component": "select",
+          "name": "fontsizevalue",
+          "label": "Stat Font Size",
+          "options": [
+            {
+              "name": "Small",
+              "value": "sm"
+            },
+            {
+              "name": "Medium",
+              "value": "md"
+            },
+            {
+              "name": "Large",
+              "value": "lg"
+            },
+            {
+              "name": "Extra Large",
+              "value": "xl"
+            }
+          ],
+          "valueType": "string",
+          "value": "sm"
+        },
+        {
+          "component": "tab",
+          "name": "testimonialtab",
+          "label": "Testimonial"
+        },
+        {
+          "component": "text",
+          "name": "testimonialkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "testimonial"
+        },
+        {
+          "component": "text",
+          "label": "Testimonial",
+          "name": "testimonialvalue",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "namekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "name"
+        },
+        {
+          "component": "text",
+          "label": "Name",
+          "name": "namevalue",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "rolekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "role"
+        },
+        {
+          "component": "text",
+          "label": "Role",
+          "name": "rolevalue",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ratingkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "rating"
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "ratingvalue",
+          "label": "Rating",
+          "validation": {
+            "numberMin": 1,
+            "numberMax": 5
+          }
+        },
+        {
+          "component": "text",
+          "name": "imagesourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "imagesource"
+        },
+        {
+          "component": "select",
+          "name": "imagesourcevalue",
+          "label": "Image Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "imageurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "imageurl"
+        },
+        {
+          "component": "text",
+          "name": "imageurl",
+          "label": "Image URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesourcevalue"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "imageasset"
+        },
+        {
+          "component": "reference",
+          "name": "imageasset",
+          "label": "Image Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "imagesourcevalue"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "logosourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logosource"
+        },
+        {
+          "component": "select",
+          "name": "logosourcevalue",
+          "label": "Logo Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "logourlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logourl"
+        },
+        {
+          "component": "text",
+          "name": "logourl",
+          "label": "Logo URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosourcevalue"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "logoassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logoasset"
+        },
+        {
+          "component": "reference",
+          "name": "logoassetvalue",
+          "label": "Logo Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosourcevalue"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediapositionkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaposition"
+        },
+        {
+          "component": "select",
+          "name": "mediapositionvalue",
+          "label": "Media Position",
+          "options": [
+            {
+              "name": "Top",
+              "value": "top"
+            },
+            {
+              "name": "Bottom",
+              "value": "bottom"
+            },
+            {
+              "name": "With Name",
+              "value": "with-name"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "alignmentkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "alignment"
+        },
+        {
+          "component": "select",
+          "name": "alignmentvalue",
+          "label": "Alignment",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Center",
+              "value": "center"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "withpaddingkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "withpadding"
+        },
+        {
+          "component": "boolean",
+          "name": "withpaddingvalue",
+          "label": "With Padding",
+          "valueType": "boolean"
+        },
+        {
+          "component": "tab",
+          "name": "mediatab",
+          "label": "Stat Media"
+        },
+        {
+          "component": "text",
+          "name": "statmediavariantkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediavariant"
+        },
+        {
+          "component": "select",
+          "name": "statmediavariantvalue",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Image",
+              "value": "image"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Lottie",
+              "value": "lottie"
+            },
+            {
+              "name": "iFrame",
+              "value": "iframe"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "statmediaimagesourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediaimagesource"
+        },
+        {
+          "component": "select",
+          "name": "statmediaimagesourcevalue",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "statmediavariantvalue"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediaimageurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediaimageurlkey"
+        },
+        {
+          "component": "text",
+          "name": "statmediaimageurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "statmediavariantvalue"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "statmediaimagesourcevalue"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediaimageassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediaimageasset"
+        },
+        {
+          "component": "reference",
+          "name": "statmediaimageassetvalue",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "statmediavariantvalue"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "statmediaimagesourcevalue"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediavideosourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediavideosource"
+        },
+        {
+          "component": "select",
+          "name": "statmediavideosourcevalue",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "statmediavariantvalue"
+              },
+              "video"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediavideourlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediavideourlkey"
+        },
+        {
+          "component": "text",
+          "name": "statmediavideourlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "statmediavariantvalue"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "statmediavideosourcevalue"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediavideoassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediavideoasset"
+        },
+        {
+          "component": "reference",
+          "name": "statmediavideoassetvalue",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "statmediavariantvalue"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "statmediavideosourcevalue"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmedialottieurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmedialottieurl"
+        },
+        {
+          "component": "text",
+          "name": "statmedialottieurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "hidden": true,
+          "condition": {
+            "===": [
+              {
+                "var": "statmediavariantvalue"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmedialottiedatakey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmedialottiedata"
+        },
+        {
+          "component": "text",
+          "name": "statmedialottiedatavalue",
+          "label": "Data",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "statmediavariantvalue"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediaiframeurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediaiframeurl"
+        },
+        {
+          "component": "text",
+          "name": "statmediaiframeurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "statmediavariantvalue"
+              },
+              "iframe"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "statmediatitlekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "statmediatitle"
+        },
+        {
+          "component": "text",
+          "name": "statmediatitlevalue",
+          "label": "Media Alt Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "statswithtestimonials",
+      "components": ["statswithtestimonialsitem"]
+    }
+  ]
+}

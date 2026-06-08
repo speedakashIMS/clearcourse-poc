@@ -9,7 +9,33 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Hero",
-              "model": "hero"
+              "model": "hero",
+              "filter": "hero",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "HeroItem",
+      "id": "heroitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "HeroItem",
+              "model": "heroitem",
+              "typekey": "type",
+              "typevalue": "heroitem",
+              "titlekey": "title",
+              "titleaccentkey": "titleaccent",
+              "titleaccentcolorkey": "titleaccentcolor",
+              "descriptionkey": "description",
+              "backgroundimagesourcekey": "backgroundimagesource",
+              "backgroundimageurlkey": "backgroundimageurl",
+              "backgroundimageassetkey": "backgroundimageasset"
             }
           }
         }
@@ -21,28 +47,626 @@
       "id": "hero",
       "fields": [
         {
-          "component": "reference",
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "order",
+          "label": "Order",
           "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
+          "options": [
+            {
+              "name": "Content First",
+              "value": "content-first"
+            },
+            {
+              "name": "Media First",
+              "value": "media-first"
+            }
+          ],
+          "value": "content-first"
+        },
+        {
+          "component": "select",
+          "name": "mediastyle",
+          "label": "Media Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Flush",
+              "value": "flush"
+            },
+            {
+              "name": "Framed",
+              "value": "framed"
+            }
+          ],
+          "value": "flush"
+        },
+        {
+          "component": "select",
+          "name": "buttonsize",
+          "label": "Button Size",
+          "valueType": "string",
+          "options": [
+            { "name": "Small", "value": "btn-sm" },
+            { "name": "Medium", "value": "btn-md" }
+          ],
+          "value": "btn-md"
+        },
+        {
+          "component": "boolean",
+          "name": "mobileoverlay",
+          "label": "Mobile Overlay",
+          "valueType": "boolean",
+          "value": false
+        },
+        {
+          "component": "select",
+          "name": "overlaycolor",
+          "label": "Overlay Color",
+          "valueType": "string",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Tertiary", "value": "tertiary" },
+            { "name": "White", "value": "white" }
+          ],
+          "value": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "heroitem",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
         },
         {
           "component": "text",
+          "name": "typekey",
           "valueType": "string",
-          "name": "imageAlt",
-          "label": "Alt",
-          "value": ""
+          "hidden": true
         },
         {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titlevalue",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "titleaccentkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "titleaccentvalue",
+          "label": "Title Accent",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "titleaccentcolorkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "titleaccentcolorvalue",
+          "label": "Title Accent Color",
+          "valueType": "string",
+          "options": [
+            { "name": "Primary", "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Tertiary", "value": "tertiary" },
+            { "name": "White", "value": "white" }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "descriptionkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "descriptionvalue",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "widgetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "widget"
+        },
+        {
+          "component": "textarea",
+          "name": "widget",
+          "valueType": "string",
+          "label": "Widget HTML",
+          "description": "(E.g \"<div></div>\")"
+        },
+        {
+          "component": "tab",
+          "name": "buttonstab",
+          "label": "Buttons"
+        },
+        {
+          "component": "text",
+          "name": "buttonskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "buttons"
+        },
+        {
+          "component": "container",
+          "name": "buttonscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "buttontextkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttontext"
+            },
+            {
+              "component": "text",
+              "name": "buttontextvalue",
+              "label": "Text", 
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "buttonlinkkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttonlink"
+            },
+            {
+              "component": "aem-content",
+              "name": "buttonlinkvalue",
+              "label": "Link",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "buttonvariantkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttonvariant"
+            },
+            {
+              "component": "select",
+              "name": "buttonvariant",
+              "label": "Variant",
+              "valueType": "string",
+              "options": [
+                { "name": "Light", "value": "light" },
+                { "name": "Dark", "value": "dark" },
+                { "name": "Light Outlined", "value": "light-outlined" },
+                { "name": "Dark Outlined", "value": "dark-outlined" },
+                { "name": "Light No Outline", "value": "light-no-outline" },
+                { "name": "Dark No Outline", "value": "dark-no-outline" }
+              ],
+              "value": "light"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "logostab",
+          "label": "Logos"
+        },
+        {
+          "component": "text",
+          "name": "logoskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logos"
+        },
+        {
+          "component": "container",
+          "name": "logoscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "logosourcekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logosource"
+            },
+            {
+              "component": "select",
+              "name": "logosourcevalue",
+              "label": "Source",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "URL",
+                  "value": "url"
+                },
+                {
+                  "name": "Assets",
+                  "value": "assets"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "name": "logourlkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logourl"
+            },
+            {
+              "component": "text",
+              "name": "logourlvalue",
+              "valueType": "string",
+              "label": "URL",
+              "value": ""
+            },
+            {
+              "component": "text",
+              "name": "logoassetkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logoasset"
+            },
+            {
+              "component": "reference",
+              "name": "logoassetvalue",
+              "valueType": "string",
+              "label": "Asset"
+            },
+            {
+              "component": "text",
+              "name": "logoaltkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "logoalt"
+            },
+            {
+              "component": "text",
+              "name": "logoaltvalue",
+              "valueType": "string",
+              "label": "Image Alt Text"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "mediatab",
+          "label": "Media"
+        },
+        {
+          "component": "text",
+          "name": "mediatypekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediatype"
+        },
+        {
+          "component": "select",
+          "name": "mediatypevalue",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Image",
+              "value": "image"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Lottie",
+              "value": "lottie"
+            },
+            {
+              "name": "iFrame",
+              "value": "iframe"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "mediaimagesourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaimagesource"
+        },
+        {
+          "component": "select",
+          "name": "mediaimagesourcevalue",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "mediatypevalue"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaimageurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaimageurl"
+        },
+        {
+          "component": "text",
+          "name": "mediaimageurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatypevalue"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediaimagesourcevalue"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaimageassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaimageasset"
+        },
+        {
+          "component": "reference",
+          "name": "mediaimageassetvalue",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatypevalue"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediaimagesourcevalue"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediavideosourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediavideosource"
+        },
+        {
+          "component": "select",
+          "name": "mediavideosourcevalue",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "mediatypevalue"
+              },
+              "video"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediavideourlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediavideourl"
+        },
+        {
+          "component": "text",
+          "name": "mediavideourlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatypevalue"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediavideosourcevalue"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediavideoassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediavideoasset"
+        },
+        {
+          "component": "reference",
+          "name": "mediavideoassetvalue",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatypevalue"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediavideosourcevalue"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "medialottieurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "medialottieurl"
+        },
+        {
+          "component": "text",
+          "name": "medialottieurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "hidden": true,
+          "condition": {
+            "===": [
+              {
+                "var": "mediatypevalue"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "medialottiedatakey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "medialottiedata"
+        },
+        {
+          "component": "text",
+          "name": "medialottiedatavalue",
+          "label": "Data",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediatypevalue"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaiframeurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaiframeurl"
+        },
+        {
+          "component": "text",
+          "name": "mediaiframeurlvalue",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediatypevalue"
+              },
+              "iframe"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediatitlekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediatitle"
+        },
+        {
+          "component": "text",
+          "name": "mediatitlevalue",
+          "label": "Media Alt Text",
           "valueType": "string"
         }
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "hero",
+      "components": ["heroitem"]
+    }
+  ]
 }

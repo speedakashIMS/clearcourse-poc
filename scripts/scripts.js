@@ -1,6 +1,10 @@
+import React from 'react';
+// eslint-disable-next-line import/extensions
+import { createRoot } from 'react-dom/client';
 import {
   loadHeader,
   loadFooter,
+  decorateButtons,
   decorateIcons,
   decorateSections,
   decorateBlocks,
@@ -9,7 +13,17 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  loadScript,
+  getMetadata
 } from './aem.js';
+import './tracking/queue.js';
+import VideoAnalytics from './tracking/videoTracking.js';
+import FilterAnalytics from './tracking/filterTracking.js';
+import FormAnalytics from './tracking/formTracking.js';
+import PageAnalytics from './tracking/pageTracking.js';
+import InteractionAnalytics from './tracking/interactionTracking.js';
+import ErrorAnalytics from './tracking/errorTracking.js';
+import { isAuthor, origin } from './configuration.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -71,55 +85,17 @@ function buildAutoBlocks() {
 }
 
 /**
- * Decorates formatted links to style them as buttons.
- * @param {HTMLElement} main The main container element
- */
-export function decorateButtons(main) {
-  main.querySelectorAll('p a[href]').forEach((a) => {
-    a.title = a.title || a.textContent;
-    const p = a.closest('p');
-    const text = a.textContent.trim();
-
-    // quick structural checks
-    if (a.querySelector('img') || p.textContent.trim() !== text) return;
-
-    // skip URL display links
-    try {
-      if (new URL(a.href).href === new URL(text, window.location).href) return;
-    } catch { /* continue */ }
-
-    // require authored formatting for buttonization
-    const strong = a.closest('strong');
-    const em = a.closest('em');
-    if (!strong && !em) return;
-
-    p.className = 'button-wrapper';
-    a.className = 'button';
-    if (strong && em) { // high-impact call-to-action
-      a.classList.add('accent');
-      const outer = strong.contains(em) ? strong : em;
-      outer.replaceWith(a);
-    } else if (strong) {
-      a.classList.add('primary');
-      strong.replaceWith(a);
-    } else {
-      a.classList.add('secondary');
-      em.replaceWith(a);
-    }
-  });
-}
-
-/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  // hopefully forward compatible button decoration
+  decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateButtons(main);
 }
 
 /**
@@ -139,7 +115,7 @@ async function loadEager(doc) {
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-      loadFonts();
+      //loadFonts();
     }
   } catch (e) {
     // do nothing
@@ -151,8 +127,6 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header'));
-
   const main = doc.querySelector('main');
   await loadSections(main);
 
@@ -160,10 +134,18 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(doc.querySelector('footer'));
+  if (
+    !window.location.href.endsWith('nav.html')
+    && !window.location.href.endsWith('footer.html')
+    && !window.location.href.endsWith('nav')
+    && !window.location.href.endsWith('footer')
+  ) {
+    await loadHeader(doc.querySelector('header'));
+    await loadFooter(doc.querySelector('footer'));
+  }
 
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  loadFonts();
+  //loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  //loadFonts();
 }
 
 /**
@@ -176,10 +158,160 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+function loadAdobe() {
+  loadScript('https://assets.adobedtm.com/aad7f78d39f2/90269375e547/launch-2ff07a801680-development.min.js')
+    .then(() => {
+      if (typeof window.flushAdobeEvents === 'function') {
+        window.flushAdobeEvents();
+      }
+    })
+    .catch((err) => {
+      console.error('Adobe Launch failed to load', err);
+    });
+}
+
 async function loadPage() {
+  PageAnalytics.attach();
+  VideoAnalytics.attach();
+  //FilterAnalytics.attach();
+  FormAnalytics.attach();
+  InteractionAnalytics.attach();
+  ErrorAnalytics.attach();
+  
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadAdobe);
+  } else {
+    setTimeout(loadAdobe, 2000);
+  }
+
+  if (location.hash) {
+    const hash = location.hash;
+  
+    history.replaceState(null, '', location.pathname + location.search);
+    requestAnimationFrame(() => {
+      history.replaceState(null, '', hash);
+    });
+  }
 }
 
-loadPage();
+// function showLoader() {
+//   const loader = document.createElement('div');
+//   loader.id = 'site-loader';
+//   document.body.appendChild(loader);
+// }
+
+// function hideLoader() {
+//   document.getElementById('site-loader')?.remove();
+// }
+
+// showLoader();
+
+async function loadPopup() {
+  if (isAuthor) { return; }
+
+  try {
+    let popupPath = getMetadata('popupcfpath');
+
+    if (!popupPath) {
+      try {
+        const resp = await fetch('/popup');
+        if (resp.ok) {
+          const html = await resp.text();
+          const match = html.match(/<meta\s+name=["']popupcfpath["']\s+content=["']([^"']+)["']/);
+          if (match) {
+            [, popupPath] = match;
+          }
+        }
+      } catch (e) {
+        // do nothing
+      }
+    }
+
+    if (popupPath && popupPath.length > 0) {
+      const persistedQueriesBaseUrl = `${origin}/graphql/execute.json/ims-foundational-kit`;
+      const resp = await fetch(`${persistedQueriesBaseUrl}/getPopupByPath;path=${popupPath}`);
+      const json = await resp.json();
+      const popup = json?.data?.popupcfByPath?.item;
+
+      if (!popup) {
+        return;
+      }
+
+      if (popup.storageKey) {
+        const storedTime = localStorage.getItem(popup.storageKey);
+        const durationMs = (popup.storageDuration || 24) * 60 * 60 * 1000;
+        const now = Date.now();
+
+        if (storedTime) {
+          const expirationTime = parseInt(storedTime, 10) + durationMs;
+          if (now < expirationTime) {
+            return;
+          }
+        }
+      }
+
+      const renderPopupModal = async () => {
+        const { default: PopUpModal } = await import('./components/PopUpModal.js');
+
+        const modalRoot = document.createElement('div');
+        document.body.appendChild(modalRoot);
+        const root = createRoot(modalRoot);
+
+        const closeModal = () => {
+          if (popup.storageKey) {
+            localStorage.setItem(popup.storageKey, Date.now().toString());
+          }
+          root.unmount();
+          modalRoot.remove();
+        };
+
+        // eslint-disable-next-line no-underscore-dangle
+        const mediaPublishUrl = popup.media?._publishUrl;
+
+        root.render(React.createElement(PopUpModal, {
+          isOpen: true,
+          onClose: closeModal,
+          title: popup.title,
+          subtitle: popup.subtitle,
+          media: mediaPublishUrl ? {
+            media: 'image',
+            aspect: 'rectangle',
+            imageUrl: mediaPublishUrl,
+          } : undefined,
+          buttons: popup.buttons.map((button) => ({
+            text: button.text,
+            href: button.link,
+            variant: button.variant,
+            closeOnClick: button.closeOnClick,
+          })),
+          placement: popup.position || 'center',
+          trigger: popup.showOnExit ? 'exit-popup' : 'manual',
+        }));
+      };
+
+      if (popup.showOnExit) {
+        renderPopupModal();
+      } else {
+        const delayMs = (popup.delay || 0) * 1000;
+        setTimeout(renderPopupModal, delayMs);
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load popup:', error);
+  }
+}
+
+await loadPage();
+
+loadPopup();
+// hideLoader();
+
+// document.querySelectorAll('main div').forEach(div => {
+//   div.style.visibility = 'visible';
+// });
+
+// document.querySelector('header').style.visibility = 'visible';

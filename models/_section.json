@@ -26,15 +26,41 @@
           "description": "The label shown for this section in the Content Tree"
         },
         {
-          "component": "multiselect",
-          "name": "style",
-          "label": "Style",
+          "component": "select",
+          "name": "backgroundColor",
+          "label": "Background Color",
           "options": [
             {
-              "name": "Highlight",
-              "value": "highlight"
+              "name": "Default",
+              "value": "bg-default"
+            },
+            {
+              "name": "Primary",
+              "value": "bg-primary"
+            },
+            {
+              "name": "Secondary",
+              "value": "bg-secondary"
+            },
+            {
+              "name": "Tertiary",
+              "value": "bg-tertiary"
             }
-          ]
+          ],
+          "valueType": "string",
+          "value": "bg-default"
+        },
+        {
+          "component": "reference",
+          "name": "backgroundImage",
+          "label": "Background Image",
+          "valueType": "boolean"
+        },
+        {
+          "component": "boolean",
+          "name": "negativeMargin",
+          "label": "Negative Margin",
+          "valueType": "boolean"
         }
       ]
     }
@@ -43,19 +69,40 @@
     {
       "id": "section",
       "components": [
-        "text",
-        "image",
-        "button",
-        "title",
+        "accordion",
+        "awardscards",
+        "awardsmedia",
+        "breadcrumbs",
+        "buttons",
+        "cardsicon",
+        "cardsimage",
+        "cta",
+        "downloads",
+        "eventandwebinar",
+        "footer",
+        "form",
         "hero",
-        "cards",
-        "card",
-        "card-feature",
-        "columns",
-        "fragment",
+        "heroarticle",
+        "herobackgroundimage",
+        "introductionheader",
+        "logos",
+        "maplocations",
+        "mapwithinfo",
+        "media",
+        "navigationsimple",
+        "newsgrid",
+        "richtext",
+        "secondaryinfo",
+        "spacer",
+        "statscolumns",
+        "statswithmedia",
+        "statswithtestimonials",
+        "table",
         "testimonials",
-        "logos",  
-        "text-image"
+        "trust",
+        "textandmedia",
+        "tiles",
+        "video"
       ]
     }
   ]

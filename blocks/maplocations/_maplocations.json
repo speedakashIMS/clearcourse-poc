@@ -1,0 +1,602 @@
+{
+  "definitions": [
+    {
+      "title": "MapLocations",
+      "id": "maplocations",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "MapLocations",
+              "model": "maplocations",
+              "filter": "maplocations",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "MapLocationsItem",
+      "id": "maplocationsitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "MapLocationsItem",
+              "model": "maplocationsitem",
+              "typekey": "type",
+              "typevalue": "maplocationsitem",
+              "titlekey": "title",
+              "descriptionkey": "description",
+              "logosourcekey": "logosource",
+              "logosource": "assets",
+              "logourlkey": "logourl",
+              "logoassetkey": "logoasset",
+              "pin1textkey": "pin1text",
+              "pin1iconkey": "pin1icon",
+              "pin1typekey": "pin1type",
+              "pin2textkey": "pin2text",
+              "pin2iconkey": "pin2icon",
+              "pin2typekey": "pin2type",
+              "pin3textkey": "pin3text",
+              "pin3iconkey": "pin3icon",
+              "pin3typekey": "pin3type"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "maplocations",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "General",
+          "name": "general"
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "mapsource",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Image",
+              "value": "image"
+            },
+            {
+              "name": "iFrame",
+              "value": "iframe"
+            }
+          ],
+          "required": true
+        },
+        {
+          "component": "select",
+          "name": "mapimagesource",
+          "label": "Image Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "mapsource"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mapimageurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mapsource"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mapimagesource"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "mapimageasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mapsource"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mapimagesource"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mapimagealt",
+          "label": "Image Alt Text",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mapsource"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mapiframeurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mapsource"
+              },
+              "iframe"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "maplocationsitem",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "container",
+          "label": "Title",
+          "name": "titlecontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "titlekey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "titlevalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Description",
+          "name": "descriptioncontainer",
+          "valueType": "string",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "descriptionkey",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "descriptionvalue",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "logotab",
+          "label": "Logo"
+        },
+        {
+          "component": "text",
+          "name": "logosourcekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "logosource",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "logourlkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "logourl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosource"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "logoassetkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "logoasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosource"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "tab",
+          "name": "pinstab",
+          "label": "Pins"
+        },
+        {
+          "component": "container",
+          "name": "pin1container",
+          "label": "Pin #1",
+          "valueType": "string",
+          "fields": [
+            {
+              "component": "text",
+              "name": "pin1textkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "pin1text",
+              "label": "Text",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "pin1iconkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "select",
+              "name": "pin1icon",
+              "label": "Icon",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "Check",
+                  "value": "check"
+                },
+                {
+                  "name": "Map",
+                  "value": "map"
+                },
+                {
+                  "name": "Building",
+                  "value": "building"
+                },
+                {
+                  "name": "Globe",
+                  "value": "globe"
+                },
+                {
+                  "name": "Pin",
+                  "value": "pin"
+                },
+                {
+                  "name": "Envelope",
+                  "value": "envelope"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "name": "pin1typekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "pin1type"
+            },
+            {
+              "component": "select",
+              "name": "pin1type",
+              "label": "Type",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "E-mail",
+                  "value": "email"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                },
+                {
+                  "name": "Text",
+                  "value": "text"
+                }
+              ],
+              "value": "text"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "name": "pin2container",
+          "label": "Pin #2",
+          "valueType": "string",
+          "fields": [
+            {
+              "component": "text",
+              "name": "pin2textkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "pin2text",
+              "label": "Text",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "pin2iconkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "select",
+              "name": "pin2icon",
+              "label": "Icon",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "Check",
+                  "value": "check"
+                },
+                {
+                  "name": "Map",
+                  "value": "map"
+                },
+                {
+                  "name": "Building",
+                  "value": "building"
+                },
+                {
+                  "name": "Globe",
+                  "value": "globe"
+                },
+                {
+                  "name": "Pin",
+                  "value": "pin"
+                },
+                {
+                  "name": "Envelope",
+                  "value": "envelope"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "name": "pin2typekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "pin2type"
+            },
+            {
+              "component": "select",
+              "name": "pin2type",
+              "label": "Type",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "E-mail",
+                  "value": "email"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                },
+                {
+                  "name": "Text",
+                  "value": "text"
+                }
+              ],
+              "value": "text"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "name": "pin3container",
+          "label": "Pin #3",
+          "valueType": "string",
+          "fields": [
+            {
+              "component": "text",
+              "name": "pin3textkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "text",
+              "name": "pin3textvalue",
+              "label": "Text",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "pin3iconkey",
+              "label": "Text",
+              "valueType": "string",
+              "hidden": true
+            },
+            {
+              "component": "select",
+              "name": "pin3icon",
+              "label": "Icon",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "Check",
+                  "value": "check"
+                },
+                {
+                  "name": "Map",
+                  "value": "map"
+                },
+                {
+                  "name": "Building",
+                  "value": "building"
+                },
+                {
+                  "name": "Globe",
+                  "value": "globe"
+                },
+                {
+                  "name": "Pin",
+                  "value": "pin"
+                },
+                {
+                  "name": "Envelope",
+                  "value": "envelope"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "name": "pin3typekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "pin3type"
+            },
+            {
+              "component": "select",
+              "name": "pin3type",
+              "label": "Type",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "E-mail",
+                  "value": "email"
+                },
+                {
+                  "name": "Phone",
+                  "value": "phone"
+                },
+                {
+                  "name": "Text",
+                  "value": "text"
+                }
+              ],
+              "value": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "maplocations",
+      "components": [
+        "maplocationsitem"
+      ]
+    }
+  ]
+}

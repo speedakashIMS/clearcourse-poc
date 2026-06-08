@@ -1,6 +1,7 @@
 import {
   decorateBlock,
   decorateBlocks,
+  decorateButtons,
   decorateIcons,
   decorateSections,
   loadBlock,
@@ -8,13 +9,9 @@ import {
   loadSections,
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
-import { decorateButtons, decorateMain } from './scripts.js';
-
-let promiseChanges$ = Promise.resolve();
+import { decorateMain } from './scripts.js';
 
 async function applyChanges(event) {
-  await promiseChanges$;
-
   // redecorate default content and blocks on patches (in the properties rail)
   const { detail } = event;
 
@@ -30,23 +27,22 @@ async function applyChanges(event) {
   // load dompurify
   await loadScript(`${window.hlx.codeBasePath}/scripts/dompurify.min.js`);
 
-  const sanitizedContent = window.DOMPurify.sanitize(content, { USE_PROFILES: { html: true } });
-  const parsedUpdate = new DOMParser().parseFromString(sanitizedContent, 'text/html');
+  // const sanitizedContent = window.DOMPurify.sanitize(content, { USE_PROFILES: { html: true } });
+  const parsedUpdate = new DOMParser().parseFromString(content, 'text/html');
   const element = document.querySelector(`[data-aue-resource="${resource}"]`);
 
   if (element) {
     if (element.matches('main')) {
       const newMain = parsedUpdate.querySelector(`[data-aue-resource="${resource}"]`);
-      if (!newMain) return false;
       newMain.style.display = 'none';
       element.insertAdjacentElement('afterend', newMain);
+      element.remove();
       decorateMain(newMain);
       decorateRichtext(newMain);
       await loadSections(newMain);
-      element.remove();
       newMain.style.display = null;
       // eslint-disable-next-line no-use-before-define
-      attachEventListeners(newMain);
+      attachEventListners(newMain);
       return true;
     }
 
@@ -57,12 +53,12 @@ async function applyChanges(event) {
       if (newBlock) {
         newBlock.style.display = 'none';
         block.insertAdjacentElement('afterend', newBlock);
+        block.remove();
         decorateButtons(newBlock);
         decorateIcons(newBlock);
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
-        block.remove();
         newBlock.style.display = null;
         return true;
       }
@@ -75,13 +71,13 @@ async function applyChanges(event) {
           const [newSection] = newElements;
           newSection.style.display = 'none';
           element.insertAdjacentElement('afterend', newSection);
+          element.remove();
           decorateButtons(newSection);
           decorateIcons(newSection);
           decorateRichtext(newSection);
           decorateSections(parentElement);
           decorateBlocks(parentElement);
           await loadSections(parentElement);
-          element.remove();
           newSection.style.display = null;
         } else {
           element.replaceWith(...newElements);
@@ -97,7 +93,7 @@ async function applyChanges(event) {
   return false;
 }
 
-function attachEventListeners(main) {
+function attachEventListners(main) {
   [
     'aue:content-patch',
     'aue:content-update',
@@ -107,13 +103,12 @@ function attachEventListeners(main) {
     'aue:content-copy',
   ].forEach((eventType) => main?.addEventListener(eventType, async (event) => {
     event.stopPropagation();
-    promiseChanges$ = applyChanges(event);
-    const applied = await promiseChanges$;
+    const applied = await applyChanges(event);
     if (!applied) window.location.reload();
   }));
 }
 
-attachEventListeners(document.querySelector('main'));
+attachEventListners(document.querySelector('main'));
 
 // decorate rich text
 // this has to happen after decorateMain(), and everythime decorateBlocks() is called

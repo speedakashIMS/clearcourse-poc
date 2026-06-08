@@ -1,0 +1,376 @@
+{
+  "definitions": [
+    {
+      "title": "Downloads",
+      "id": "downloads",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Downloads",
+              "model": "downloads",
+              "filter": "downloads",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "DownloadsItem",
+      "id": "downloadsitem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "DownloadsItem",
+              "model": "downloadsitem",
+              "typekey": "type",
+              "typevalue": "downloadsitem"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "downloads",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Variant",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Vertical",
+              "value": "vertical"
+            },
+            {
+              "name": "Horizontal",
+              "value": "horizontal"
+            }
+          ],
+          "value": "vertical"
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "columns",
+          "label": "Columns",
+          "validation": {
+            "numberMin": 1,
+            "numberMax": 4
+          },
+          "value": 1,
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "vertical"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "downloadsitem",
+      "fields": [
+        {
+          "component": "tab",
+          "name": "generaltab",
+          "label": "General"
+        },
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "mediasourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediasource"
+        },
+        {
+          "component": "select",
+          "name": "mediasource",
+          "label": "Media Image Source",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "URL",
+              "value": "url"
+            },
+            {
+              "name": "Assets",
+              "value": "assets"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "mediaurlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaurl"
+        },
+        {
+          "component": "text",
+          "name": "mediaurl",
+          "label": "Media URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediasource"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaasset"
+        },
+        {
+          "component": "reference",
+          "name": "mediaasset",
+          "label": "Media Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediasource"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaaltkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "mediaalt"
+        },
+        {
+          "component": "text",
+          "name": "mediaalt",
+          "label": "Media Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "titlekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "title"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "descriptionkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "description"
+        },
+        {
+          "component": "text",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "logosourcekey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logosource"
+        },
+        {
+          "component": "select",
+          "name": "logosource",
+          "label": "Logo Source",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "URL",
+              "value": "url"
+            },
+            {
+              "name": "Assets",
+              "value": "assets"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "logourlkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logourl"
+        },
+        {
+          "component": "text",
+          "name": "logourl",
+          "label": "Logo URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosource"
+              },
+              "url"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "logoassetkey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "logoasset"
+        },
+        {
+          "component": "reference",
+          "name": "logoasset",
+          "label": "Logo Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "logosource"
+              },
+              "assets"
+            ]
+          }
+        },
+        {
+          "component": "tab",
+          "name": "buttonstab",
+          "label": "Buttons"
+        },
+        {
+          "component": "text",
+          "name": "buttonskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "buttons"
+        },
+        {
+          "component": "container",
+          "name": "buttonscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "buttontextkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttontext"
+            },
+            {
+              "component": "text",
+              "name": "buttontextvalue",
+              "label": "Text", 
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "buttonlinkkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "buttonlink"
+            },
+            {
+              "component": "aem-content",
+              "name": "buttonlinkvalue",
+              "label": "Link",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "tab",
+          "name": "accordionstab",
+          "label": "Accordions"
+        },
+        {
+          "component": "text",
+          "name": "accordionskey",
+          "valueType": "string",
+          "hidden": true,
+          "value": "accordions"
+        },
+        {
+          "component": "container",
+          "name": "accordionscontainer",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "accordiontitlekey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "accordiontitle"
+            },
+            {
+              "component": "text",
+              "name": "accordiontitlevalue",
+              "label": "Title",
+              "valueType": "string"
+            },
+            {
+              "component": "text",
+              "name": "accordioncontentkey",
+              "valueType": "string",
+              "hidden": true,
+              "value": "accordioncontent"
+            },
+            {
+              "component": "richtext",
+              "name": "accordioncontentvalue",
+              "label": "Content",
+              "valueType": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "downloads",
+      "components": [
+        "downloadsitem"
+      ]
+    }
+  ]
+}

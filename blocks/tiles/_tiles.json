@@ -1,0 +1,329 @@
+{
+  "definitions": [
+    {
+      "title": "Tiles",
+      "id": "tiles",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Tiles",
+              "model": "tiles",
+              "key-value": true,
+              "filter": "tiles"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tile",
+      "id": "tile",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Tile",
+              "model": "tile",
+              "type": "tile",
+              "id": "id",
+              "title": "title",
+              "description": "description",
+              "backgroundImage": "backgroundImage",
+              "backgroundcolor": "backgroundcolor",
+              "text": "text",
+              "useicon": "useicon",
+              "iconsize": "iconsize",
+              "stacked": "stacked",
+              "valuelistitems": "valuelistitems",
+              "buttonText": "buttonText",
+              "buttonLink": "buttonLink",
+              "buttonVariant": "buttonVariant",
+              "buttonType": "buttonType"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "tiles",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "columns",
+          "label": "Columns",
+          "options": [
+            { "name": "1", "value": "1" },
+            { "name": "2", "value": "2" },
+            { "name": "3", "value": "3" },
+            { "name": "4", "value": "4" },
+            { "name": "5", "value": "5" },
+            { "name": "6", "value": "6" }
+          ],
+          "valueType": "string",
+          "value": "3"
+        },
+        {
+          "component": "select",
+          "name": "gridVariant",
+          "label": "Grid Variant",
+          "options": [
+            { "name": "Image Framed", "value": "contained" },
+            { "name": "Image Flush", "value": "full" }
+          ],
+          "valueType": "string",
+          "value": "contained"
+        }
+      ]
+    },
+    {
+      "id": "tile",
+      "fields": [
+        { "component": "text", "name": "type", "hidden": true },
+        {
+          "component": "container",
+          "label": "Id",
+          "name": "idContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "id", "hidden": true },
+            { "component": "text", "name": "idval", "valueType": "string" }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Title",
+          "name": "titleContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "title", "hidden": true },
+            { "component": "text", "name": "titleval", "valueType": "string" }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Description",
+          "name": "descriptionContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "description", "hidden": true },
+            {
+              "component": "text",
+              "name": "descriptionval",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Background Image",
+          "name": "backgroundImageContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "backgroundImage", "hidden": true },
+            {
+              "component": "reference",
+              "name": "backgroundImageval",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "backgroundcolor",
+          "hidden": true,
+          "value": "backgroundcolor"
+        },
+        {
+          "component": "select",
+          "name": "backgroundcolorvalue",
+          "label": "Background Color",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            },
+            {
+              "name": "Tertiary",
+              "value": "tertiary"
+            },
+            {
+              "name": "White",
+              "value": "white"
+            }
+          ],
+          "value": "primary"
+        },
+        {
+          "component": "text",
+          "name": "text",
+          "hidden": true,
+          "value": "text"
+        },
+        {
+          "component": "richtext",
+          "name": "textvalue",
+          "valueType": "string",
+          "label": "Text"
+        },
+        {
+          "component": "text",
+          "name": "useicon",
+          "hidden": true,
+          "value": "useicon"
+        },
+        {
+          "component": "boolean",
+          "name": "useiconvalue",
+          "label": "Use Icon",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "iconsize",
+          "hidden": true,
+          "value": "iconsize"
+        },
+        {
+          "component": "select",
+          "name": "iconsizevalue",
+          "label": "Icon Size",
+          "options": [
+            {
+              "name": "Small",
+              "value": "small"
+            },
+            {
+              "name": "Medium",
+              "value": "medium"
+            },
+            {
+              "name": "Large",
+              "value": "large"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "stacked",
+          "hidden": true,
+          "value": "stacked"
+        },
+        {
+          "component": "boolean",
+          "name": "stackedvalue",
+          "label": "Stacked",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "valuelistitems",
+          "hidden": true,
+          "value": "valuelistitems"
+        },
+        {
+          "component": "text",
+          "name": "valuelistitemsvalue",
+          "label": "Items",
+          "valueType": "string",
+          "multi": true
+        },
+        {
+          "component": "container",
+          "label": "Button Text",
+          "name": "buttonTextContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "buttonText", "hidden": true },
+            {
+              "component": "text",
+              "name": "buttonTextval",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Button Link",
+          "name": "buttonLinkContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "buttonLink", "hidden": true },
+            {
+              "component": "aem-content",
+              "name": "buttonLinkval",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Button Variant",
+          "name": "buttonVariantContainer",
+          "collapsible": false,
+          "fields": [
+            { "component": "text", "name": "buttonVariant", "hidden": true },
+            {
+              "component": "select",
+              "name": "buttonVariantval",
+              "valueType": "string",
+              "options": [
+                { "name": "Light", "value": "light" },
+                { "name": "Dark", "value": "dark" },
+                { "name": "Light Outlined", "value": "light-outlined" },
+                { "name": "Dark Outlined", "value": "dark-outlined" },
+                { "name": "Light No Outline", "value": "light-no-outline" },
+                { "name": "Dark No Outline", "value": "dark-no-outline" }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "label": "Button Type",
+          "name": "buttonTypeContainer",
+          "collapsible": false,
+          "fields": [
+            {
+              "component": "text",
+              "name": "buttonType",
+              "hidden": true
+            },
+            {
+              "component": "select",
+              "name": "buttonTypeval",
+              "valueType": "string",
+              "options": [
+                {
+                  "name": "Link",
+                  "value": "link"
+                },
+                {
+                  "name": "Button",
+                  "value": "button"
+                }
+              ],
+              "value": "link"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [{ "id": "tiles", "components": ["tile"] }]
+}

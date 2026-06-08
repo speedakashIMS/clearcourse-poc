@@ -1,0 +1,314 @@
+{
+  "definitions": [
+    {
+      "title": "HeroArticle",
+      "id": "heroarticle",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "HeroArticle",
+              "model": "heroarticle",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "heroarticle",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "imageposition",
+          "label": "Image Position",
+          "options": [
+            {
+              "name": "Top",
+              "value": "top"
+            },
+            {
+              "name": "Bottom",
+              "value": "bottom"
+            }
+          ],
+          "value": "bottom"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "date-time",
+          "name": "date",
+          "label": "Date",
+          "valueType": "date"
+        },
+        {
+          "component": "select",
+          "name": "mediatype",
+          "label": "Media Type",
+          "options": [
+            {
+              "name": "Image",
+              "value": "image"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Lottie",
+              "value": "lottie"
+            },
+            {
+              "name": "iFrame",
+              "value": "iframe"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "mediaimagesource",
+          "label": "Media Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "mediatype"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaimageurl",
+          "label": "Media URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatype"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediaimagesource"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "mediaimageasset",
+          "label": "Media Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatype"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediaimagesource"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "mediavideosource",
+          "label": "Media Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "mediatype"
+              },
+              "video"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediavideourl",
+          "label": "Media URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatype"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediavideosource"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "mediavideoasset",
+          "label": "Media Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "mediatype"
+                  },
+                  "video"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "mediavideosource"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "medialottieurl",
+          "label": "Media URL",
+          "valueType": "string",
+          "hidden": true,
+          "condition": {
+            "===": [
+              {
+                "var": "mediatype"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "medialottiedata",
+          "label": "Media Data",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediatype"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediaiframeurl",
+          "label": "Media URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "mediatype"
+              },
+              "iframe"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mediatitle",
+          "label": "Media Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "multiselect",
+          "name": "categories",
+          "label": "Categories",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Category A",
+              "value": "Category A"
+            },
+            {
+              "name": "Category B",
+              "value": "Category B"
+            },
+            {
+              "name": "Category C",
+              "value": "Category C"
+            },
+            {
+              "name": "Category D",
+              "value": "Category D"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

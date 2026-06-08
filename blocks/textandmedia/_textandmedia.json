@@ -1,0 +1,348 @@
+{
+  "definitions": [
+    {
+      "title": "TextAndMedia",
+      "id": "textandmedia",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "TextAndMedia",
+              "model": "textandmedia",
+              "key-value": true,
+              "itemtextkey": "itemtext"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "textandmedia",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "General",
+          "name": "general"
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Image",
+              "value": "image"
+            },
+            {
+              "name": "Video",
+              "value": "video"
+            },
+            {
+              "name": "Lottie",
+              "value": "lottie"
+            },
+            {
+              "name": "iFrame",
+              "value": "iframe"
+            },
+            {
+              "name": "FlipBook",
+              "value": "flipbook"
+            }
+          ],
+          "required": true
+        },
+        {
+          "component": "select",
+          "name": "imagesource",
+          "label": "Source",
+          "options": [
+            {
+              "name": "Assets",
+              "value": "assets"
+            },
+            {
+              "name": "URL",
+              "value": "url"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "image"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "variant"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "imagesource"
+                  },
+                  "url"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "imageasset",
+          "label": "Asset",
+          "valueType": "string",
+          "condition": {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "variant"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "imagesource"
+                  },
+                  "assets"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "videourl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "video"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "lottieurl",
+          "label": "URL",
+          "valueType": "string",
+          "hidden": true,
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "lottiedata",
+          "label": "Data",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "lottie"
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "iframeurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "iframe"
+            ]
+          }
+        },
+        {
+          "component": "reference",
+          "name": "flipbookurl",
+          "label": "URL",
+          "valueType": "string",
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "flipbook"
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "mediaposition",
+          "label": "Media Position",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "name": "mediaframed",
+          "label": "Framed",
+          "valueType": "boolean",
+          "value": false
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "textalignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Center",
+              "value": "center"
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ],
+          "value": "left"
+        },
+        {
+          "component": "boolean",
+          "name": "useicon",
+          "label": "Use Icon",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "iconsize",
+          "label": "Icon Size",
+          "options": [
+            {
+              "name": "Small",
+              "value": "small"
+            },
+            {
+              "name": "Medium",
+              "value": "medium"
+            },
+            {
+              "name": "Large",
+              "value": "large"
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "name": "stacked",
+          "label": "Stacked",
+          "valueType": "boolean"
+        },
+        {
+          "component": "text",
+          "name": "itemtextvalue",
+          "label": "Items",
+          "valueType": "string",
+          "multi": true
+        },
+        {
+          "component": "tab",
+          "label": "Button",
+          "name": "button"
+        },
+        {
+          "component": "text",
+          "name": "buttontext",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "buttonhref",
+          "label": "Link",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "buttonvariant",
+          "label": "Variant",
+          "options": [
+            {
+              "name": "Light",
+              "value": "light"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Light Outlined",
+              "value": "light-outlined"
+            },
+            {
+              "name": "Dark Outlined",
+              "value": "dark-outlined"
+            },
+            {
+              "name": "Light No Outline",
+              "value": "light-no-outline"
+            },
+            {
+              "name": "Dark No Outline",
+              "value": "dark-no-outline"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

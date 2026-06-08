@@ -8,26 +8,82 @@
   {
     "id": "section",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
+      "accordion",
+      "awardscards",
+      "awardsmedia",
+      "breadcrumbs",
+      "buttons",
+      "cardsicon",
+      "cardsimage",
+      "cta",
+      "downloads",
+      "eventandwebinar",
+      "footer",
+      "form",
       "hero",
-      "cards",
-      "card",
-      "card-feature",
-      "columns",
-      "fragment",
-      "testimonials",
+      "heroarticle",
+      "herobackgroundimage",
+      "introductionheader",
       "logos",
-      "text-image"
+      "maplocations",
+      "mapwithinfo",
+      "media",
+      "navigationsimple",
+      "newsgrid",
+      "richtext",
+      "secondaryinfo",
+      "spacer",
+      "statscolumns",
+      "statswithmedia",
+      "statswithtestimonials",
+      "table",
+      "testimonials",
+      "trust",
+      "textandmedia",
+      "tiles",
+      "video"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordionlistitem"
+    ]
+  },
+  {
+    "id": "awardscards",
+    "components": [
+      "awardscard"
+    ]
+  },
+  {
+    "id": "awardsmedia",
+    "components": [
+      "awardsmediaitem"
+    ]
+  },
+  {
+    "id": "buttons",
+    "components": [
+      "button"
     ]
   },
   {
     "id": "cards",
     "components": [
-      "card",
-      "card-feature"
+      "card"
+    ]
+  },
+  {
+    "id": "cardsicon",
+    "components": [
+      "cardsiconitem"
+    ]
+  },
+  {
+    "id": "cardsimage",
+    "components": [
+      "cardsimageitem"
     ]
   },
   {
@@ -43,6 +99,106 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "cta",
+    "components": [
+      "mediactaitem",
+      "textctaitem"
+    ]
+  },
+  {
+    "id": "downloads",
+    "components": [
+      "downloadsitem"
+    ]
+  },
+  {
+    "id": "eventandwebinar",
+    "components": [
+      "eventandwebinaritem"
+    ]
+  },
+  {
+    "id": "hero",
+    "components": [
+      "heroitem"
+    ]
+  },
+  {
+    "id": "herobackgroundimage",
+    "components": [
+      "herobackgroundimageitem"
+    ]
+  },
+  {
+    "id": "logos",
+    "components": [
+      "uploadedlogo",
+      "extenalsourcedlogo"
+    ]
+  },
+  {
+    "id": "maplocations",
+    "components": [
+      "maplocationsitem"
+    ]
+  },
+  {
+    "id": "mapwithinfo",
+    "components": [
+      "valuelistitem"
+    ]
+  },
+  {
+    "id": "newsgrid",
+    "components": [
+      "newsgriditem"
+    ]
+  },
+  {
+    "id": "statscolumns",
+    "components": [
+      "statscolumnsitem"
+    ]
+  },
+  {
+    "id": "statswithmedia",
+    "components": [
+      "statswithmediaitem"
+    ]
+  },
+  {
+    "id": "statswithtestimonials",
+    "components": [
+      "statswithtestimonialsitem"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "tablerow",
+      "pricingtablerow",
+      "comparisontablerow"
+    ]
+  },
+  {
+    "id": "testimonials",
+    "components": [
+      "testimonialsitem"
+    ]
+  },
+  {
+    "id": "tiles",
+    "components": [
+      "tile"
+    ]
+  },
+  {
+    "id": "trust",
+    "components": [
+      "trustitem"
     ]
   }
 ]
