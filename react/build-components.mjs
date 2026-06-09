@@ -1,5 +1,5 @@
 import { build } from "vite";
-import { resolve } from "path";
+import { resolve, basename } from "path";
 import { readdirSync, statSync } from "fs";
 import { createComponentConfig } from "./vite.components.config.js";
 
@@ -16,10 +16,7 @@ const componentsDir = resolve("src/components");
 const componentFiles = findComponentFiles(componentsDir);
 
 for (const file of componentFiles) {
-  const name = file
-    .replace(componentsDir + "/", "")
-    .replace(/\.jsx$/, "")
-    .replace(/[\/\\]/g, "-");
+  const name = basename(file, ".jsx");
 
   console.log(`🔨 Building ${name}`);
 

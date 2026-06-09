@@ -41,7 +41,7 @@ const C = ({ type: r, className: s = "" }) => {
     4: "grid grid-cols-1 xl:grid-cols-4 gap-24",
     5: "grid grid-cols-1 xl:grid-cols-3 xl:grid-cols-5 gap-24"
   }, y = o.slice(0, g);
-  return /* @__PURE__ */ c("footer", { className: `bg-grey-600 text-white ${w}`.trim(), ...m, children: [
+  return /* @__PURE__ */ c("footer", { className: `bg-grey-950 text-white ${w}`.trim(), ...m, children: [
     /* @__PURE__ */ e("div", { className: "container py-40", children: /* @__PURE__ */ c("div", { className: "flex flex-col xl:flex-row gap-20", children: [
       /* @__PURE__ */ c("div", { className: "w-full xl:max-w-[280px] flex flex-col gap-60", children: [
         /* @__PURE__ */ c("div", { className: "space-y-16", children: [
@@ -76,7 +76,7 @@ const C = ({ type: r, className: s = "" }) => {
         ) }, h)) })
       ] }, d)) }) })
     ] }) }),
-    (a || i) && /* @__PURE__ */ e("div", { className: "bg-grey-500", children: /* @__PURE__ */ c("div", { className: "p-16 flex flex-row items-center justify-between gap-12 text-body-small text-white", children: [
+    (a || i) && /* @__PURE__ */ e("div", { className: "bg-grey-950", children: /* @__PURE__ */ c("div", { className: "p-16 flex flex-row items-center justify-between gap-12 text-body-small text-white", children: [
       a && /* @__PURE__ */ e("div", { ...typeof a == "string" ? { dangerouslySetInnerHTML: { __html: a } } : { children: a } }),
       i && /* @__PURE__ */ e(
         "div",

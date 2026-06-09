@@ -25,7 +25,7 @@ const Footer = ({
   const visibleColumns = columns.slice(0, resolvedCount);
 
   return (
-    <footer className={`bg-grey-600 text-white ${className}`.trim()} {...props}>
+    <footer className={`bg-grey-950 text-white ${className}`.trim()} {...props}>
       <div className="container py-40">
         <div className="flex flex-col xl:flex-row gap-20">
           <div className="w-full xl:max-w-[280px] flex flex-col gap-60">
@@ -97,7 +97,7 @@ const Footer = ({
       </div>
 
       {(bottomLeft || bottomRight) && (
-        <div className="bg-grey-500">
+        <div className="bg-grey-950">
           <div className="p-16 flex flex-row items-center justify-between gap-12 text-body-small text-white">
             {bottomLeft && (
               <div {...(typeof bottomLeft === 'string' ? { dangerouslySetInnerHTML: { __html: bottomLeft } } : { children: bottomLeft })} />

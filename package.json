@@ -17,7 +17,8 @@
     "build:react-components": "npm --prefix react run build:components",
     "build:react-css": "npm --prefix react run build:css",
     "build:react-copy": "mkdir -p scripts/components styles && cp react/dist-components/*.js scripts/components/ && cp react/dist-css/styles.css styles/styles.css",
-    "build:react": "npm run build:react-components && npm run build:react-css && npm run build:react-copy",
+    "build:react-copy-window": "powershell -Command \"New-Item -ItemType Directory -Force -Path scripts/components,styles; Copy-Item react/dist-components/*.js scripts/components/; Copy-Item react/dist-css/styles.css styles/styles.css\"",
+    "build:react": "npm run build:react-components && npm run build:react-css && npm run build:react-copy-window",
     "prepare": "husky"
   },
   "repository": {
