@@ -19,6 +19,38 @@
     @apply px-[var(--spacing-atom-buttons-m-padding-x)] py-[var(--spacing-atom-buttons-m-padding-y)] text-base;
   }
 
+  .btn-primary {
+    @apply bg-primary text-white;
+    &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), var(--color-white);
+    }
+    &:active {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), var(--color-white);
+    }
+    &:focus {
+      box-shadow: 0 0 0 3px #4F66C9;
+    }
+    &:disabled {
+      @apply bg-grey-200 text-grey-400;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white;
+    &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), var(--color-white);
+    }
+    &:active {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), var(--color-white);
+    }
+    &:focus {
+      box-shadow: 0 0 0 3px #4F66C9;
+    }
+    &:disabled {
+      @apply bg-grey-200 text-grey-400;
+    }
+  }
+
   .btn-light {
     @apply bg-white/100 text-grey-950;
     &:hover {

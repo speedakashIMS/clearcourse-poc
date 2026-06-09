@@ -34,7 +34,7 @@ function NavigationPage() {
 
         <div className="">
           <NavigationSimple
-            variant="light"
+            variant="dark"
             logo="https://placehold.co/120x40?text=Logo"
             navItems={[
               { label: 'Text', href: '#' },

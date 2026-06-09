@@ -1650,6 +1650,14 @@
             "valueType": "string",
             "options": [
               {
+                "name": "Primary",
+                "value": "btn-primary"
+              },
+              {
+                "name": "Secondary",
+                "value": "btn-secondary"
+              },
+              {
                 "name": "Light",
                 "value": "light"
               },
@@ -11275,6 +11283,41 @@
             "value": "center"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "text-image",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Image Position",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Image Left (Default)",
+            "value": ""
+          },
+          {
+            "name": "Image Right",
+            "value": "reverse"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },

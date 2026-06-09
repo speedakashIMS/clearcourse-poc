@@ -11,6 +11,16 @@
   --color-brand-primary: #10142a;
   --color-brand-secondary: #26b3c3;
   --color-brand-tertiary: #9b85fc;
+
+  /* Primary aliases */
+  --color-primary: #10142a;
+  --color-primary-dark: #0a0d1e;
+  --color-primary-light: #1e2548;
+
+  /* Secondary aliases */
+  --color-secondary: #26b3c3;
+  --color-secondary-dark: #1d8d9a;
+  --color-secondary-light: #4ecad8;
   --color-grey-100: #EDF2FFFF;
   --color-grey-200: #DCE4FFFF;
   --color-grey-300: #C8D3FEFF;
@@ -527,7 +537,8 @@
   .font-accent {
     font-family: var(--font-family-accent);
   }
-  
+
+
 }
 
 @layer base {

@@ -116,6 +116,8 @@
               "name": "variantval",
               "valueType": "string",
               "options": [
+                { "name": "Primary", "value": "btn-primary" },
+                { "name": "Secondary", "value": "btn-secondary" },
                 { "name": "Light", "value": "light" },
                 { "name": "Dark", "value": "dark" },
                 { "name": "Light Outlined", "value": "light-outlined" },
