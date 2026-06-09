@@ -1,9 +1,9 @@
 {
-  "public": {
-    "xwalk": {
-      "multi-field": {
-        "enabled": true
-      }
+    "public": {
+        "xwalk": {
+            "multi-field": {
+                "enabled": true
+            }
+        }
     }
-  }
 }

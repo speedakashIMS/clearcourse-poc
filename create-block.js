@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const names = process.argv.slice(2);
 
 if (!names.length) {
-  console.error('❌ Please provide at least one block name.');
-  console.error('Example: npm run block:create Hero Banner Card');
+  console.error("❌ Please provide at least one block name.");
+  console.error("Example: npm run block:create Hero Banner Card");
   process.exit(1);
 }
 
-const blocksDir = path.join(process.cwd(), 'blocks');
+const blocksDir = path.join(process.cwd(), "blocks");
 
 if (!fs.existsSync(blocksDir)) {
   fs.mkdirSync(blocksDir);
@@ -41,31 +41,31 @@ names.forEach((originalName) => {
           plugins: {
             xwalk: {
               page: {
-                resourceType: 'core/franklin/components/block/v1/block',
+                resourceType: "core/franklin/components/block/v1/block",
                 template: {
                   name: originalName,
                   model: lowerName,
-                  'key-value': true,
-                },
-              },
-            },
-          },
-        },
+                  'key-value': true
+                }
+              }
+            }
+          }
+        }
       ],
       models: [
         {
-          id: lowerName,
-          fields: [],
-        },
+          "id": lowerName,
+          "fields": []
+        }
       ],
-      filters: [],
+      filters: []
     },
     null,
-    2,
+    2
   );
 
   fs.writeFileSync(jsonFile, jsonContent);
-  fs.writeFileSync(cssFile, '');
+  fs.writeFileSync(cssFile, "");
 
   const jsContent = `
 import React from "react";
@@ -89,4 +89,4 @@ export default async function decorate(block) {
   console.log(`✅ Created block: ${lowerName}`);
 });
 
-console.log('🎉 Done.');
+console.log("🎉 Done.");

@@ -1,0 +1,49 @@
+/* Font Definitions */
+
+/* Lato Font Family - Default Font */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/Lato-Light.woff2') format('woff2'),
+    url('../fonts/Lato-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Lato-Regular.woff2') format('woff2'),
+    url('../fonts/Lato-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/Lato-Bold.woff2') format('woff2'),
+    url('../fonts/Lato-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/Lato-Black.woff2') format('woff2'),
+    url('../fonts/Lato-Black.woff') format('woff');
+}
+
+/* Story Script Font Family - Accent Font */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/DancingScript-Regular.woff2') format('woff2'),
+    url('../fonts/DancingScript-Regular.woff') format('woff');
+}
+

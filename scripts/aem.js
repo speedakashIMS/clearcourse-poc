@@ -692,7 +692,7 @@ async function loadSection(section, loadCallback) {
     section.style.display = null;
 
     if (section.dataset.backgroundcolor) {
-      section.classList.add(section.dataset.backgroundcolor);
+      section.classList.add(section.dataset.backgroundcolor)
     }
 
     if (section.dataset.backgroundimage) {
@@ -700,7 +700,7 @@ async function loadSection(section, loadCallback) {
     }
 
     if (section.dataset.negativemargin) {
-      section.classList.add('negative-margin-t');
+      section.classList.add('negative-margin-t')
     }
   }
 }

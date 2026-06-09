@@ -1,10 +1,10 @@
-/** *********************************************************
+/***********************************************************
  * ADOBE DATA LAYER — Event Queue
  *
  * Must be imported before any tracking module so that all
  * adobeDataLayer.push calls are intercepted and buffered
  * until Adobe Launch has loaded and flushAdobeEvents() is called.
- ********************************************************** */
+ ***********************************************************/
 
 window.adobeDataLayer = window.adobeDataLayer || [];
 

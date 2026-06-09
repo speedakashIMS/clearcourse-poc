@@ -10,11 +10,11 @@ import { origin } from '../../scripts/configuration.js';
 
 function appendOriginIfNeeded(value) {
   if (typeof value !== 'string') {
-    return '';
+      return '';
   }
 
   if (typeof origin !== 'string' || !origin) {
-    return value;
+      return value;
   }
 
   return value.replace(/\/content\/dam/g, `${origin}/content/dam`);
@@ -98,13 +98,15 @@ export default function decorate(block) {
         iframeUrl: b.iframeText,
       },
     },
-    list: [...blockItems].map((b) => getBlockItemDataV2(b, {
-      id: { key: 'id', defaultValue: '', expectedType: 'string' },
-      title: { key: 'title', defaultValue: '', expectedType: 'string' },
-      content: { key: 'content', defaultValue: '', expectedType: 'richtext' },
-    })),
+    list: [...blockItems].map((b) =>
+      getBlockItemDataV2(b, {
+        id: { key: 'id', defaultValue: '', expectedType: 'string' },
+        title: { key: 'title', defaultValue: '', expectedType: 'string' },
+        content: { key: 'content', defaultValue: '', expectedType: 'richtext' },
+      }),
+    ),
   };
-
+  
   const root = createRoot(block);
   root.render(React.createElement(Accordion, data));
 

@@ -14,7 +14,7 @@ import {
   loadSections,
   loadCSS,
   loadScript,
-  getMetadata,
+  getMetadata
 } from './aem.js';
 import './tracking/queue.js';
 import VideoAnalytics from './tracking/videoTracking.js';
@@ -115,7 +115,7 @@ async function loadEager(doc) {
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-      // loadFonts();
+      //loadFonts();
     }
   } catch (e) {
     // do nothing
@@ -144,8 +144,8 @@ async function loadLazy(doc) {
     await loadFooter(doc.querySelector('footer'));
   }
 
-  // loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  // loadFonts();
+  //loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  //loadFonts();
 }
 
 /**
@@ -173,11 +173,11 @@ function loadAdobe() {
 async function loadPage() {
   PageAnalytics.attach();
   VideoAnalytics.attach();
-  // FilterAnalytics.attach();
+  //FilterAnalytics.attach();
   FormAnalytics.attach();
   InteractionAnalytics.attach();
   ErrorAnalytics.attach();
-
+  
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
@@ -189,8 +189,8 @@ async function loadPage() {
   }
 
   if (location.hash) {
-    const { hash } = location;
-
+    const hash = location.hash;
+  
     history.replaceState(null, '', location.pathname + location.search);
     requestAnimationFrame(() => {
       history.replaceState(null, '', hash);

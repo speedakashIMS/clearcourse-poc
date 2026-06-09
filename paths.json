@@ -1,0 +1,11 @@
+{
+  "mappings": [
+    "/content/ims-foundational-kit/:/",
+    "/content/ims-foundational-kit/configuration:/.helix/config.json",
+    "/content/ims-foundational-kit/metadata:/metadata.json",
+    "/content/ims-foundational-kit/taxonomy:/taxonomy.json"
+  ],
+  "includes": [
+    "/content/ims-foundational-kit/"
+  ]
+}

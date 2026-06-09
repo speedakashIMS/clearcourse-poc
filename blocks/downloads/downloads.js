@@ -1,7 +1,8 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import Downloads from '../../scripts/components/Downloads.js';
-import { blockToMap } from '../../scripts/utils/block.js';
+
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Downloads from "../../scripts/components/Downloads.js";
+import { blockToMap } from "../../scripts/utils/block.js";
 
 const asArray = (v) => (v ? (Array.isArray(v) ? v : [v]) : []);
 
@@ -10,13 +11,13 @@ export default async function decorate(block) {
     schemas: {
       buttons: [
         'buttontext',
-        'buttonlink',
+        'buttonlink'
       ],
       accordions: [
         'accordiontitle',
-        'accordioncontent',
-      ],
-    },
+        'accordioncontent'
+      ]
+    }
   });
 
   const data = {
@@ -25,7 +26,7 @@ export default async function decorate(block) {
     columns: Number(blockData.columns) || 0,
     items: []
       .concat(blockData.items ?? [])
-      .map((item) => ({
+      .map(item => ({
         media: {
           imageUrl: item.mediasource === 'url' ? item.mediaurl : item.mediaasset?.src,
           title: item.mediaalt,
@@ -33,16 +34,16 @@ export default async function decorate(block) {
         title: item.title,
         description: item.description,
         logoUrl: item.logosource === 'url' ? item.logourl : item.logoasset?.src,
-        buttons: asArray(item.buttons).map((item) => ({
+        buttons: asArray(item.buttons).map(item => ({
           text: item.buttontext,
-          href: item.buttonlink,
+          href: item.buttonlink
         })),
-        accordions: asArray(item.accordions).map((item) => ({
+        accordions: asArray(item.accordions).map(item => ({
           title: item.accordiontitle,
-          content: item.accordioncontent,
+          content: item.accordioncontent
         })),
-        attributes: item._meta || {},
-      })),
+        attributes: item._meta || {}
+      }))
   };
   const root = createRoot(block);
   root.render(React.createElement(Downloads, data));

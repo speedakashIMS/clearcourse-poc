@@ -1,0 +1,56 @@
+{
+  "name": "ims-aem-foundational-kit-components",
+  "version": "1.0.0",
+  "description": "A foundational React component library designed to provide reusable, accessible, and consistent UI components for use in IMS AEM projects.",
+  "type": "module",
+  "main": "./dist/ims-aem-foundational-kit-components.cjs",
+  "module": "./dist/ims-aem-foundational-kit-components.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ims-aem-foundational-kit-components.js",
+      "require": "./dist/ims-aem-foundational-kit-components.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:lib": "BUILD_MODE=lib vite build",
+    "build:app": "BUILD_MODE=app vite build",
+    "build:all": "npm run build:lib && npm run build:app",
+    "preview": "vite preview",
+    "preview:app": "vite preview --outDir dist-app",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "build:tailwind-config": "node scripts/build-tailwind-config.js",
+    "build:components": "node build-components.mjs",
+    "build:css": "vite build --config vite.css.config.js && mv dist-css/assets/style-*.css dist-css/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "lottie-react": "^2.4.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-pageflip": "^2.0.3",
+    "react-pdf": "^10.4.1",
+    "react-router-dom": "^7.11.0",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.23",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "vite": "^6.4.1"
+  }
+}

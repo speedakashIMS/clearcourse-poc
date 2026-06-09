@@ -82,5 +82,6 @@ module.exports = {
     'prefer-spread': 'off',
     'radix': 'off',
     'vars-on-top': 'off',
+    'linebreak-style': 'off',
   },
 };
