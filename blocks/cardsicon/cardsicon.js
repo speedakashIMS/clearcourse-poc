@@ -47,6 +47,7 @@ export default async function decorate(block) {
         stacked: blockData.stacked === "true",
         iconPosition: blockData.iconposition || 'left',
         itemBackgroundVariant: blockData.itembackgroundvariant || 'default',
+        textAlign: blockData.textalign || 'left',
     };
     const root = createRoot(block);
     root.render(React.createElement(CardsIcon, data));
