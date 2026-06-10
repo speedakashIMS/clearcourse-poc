@@ -23,7 +23,7 @@ export default function decorate(block) {
     autoplaySpeed: {
       key: 'autoplaySpeed',
       defaultValue: 3000,
-      expectedType: 'number',
+      expectedType: 'int',
     },
   };
 

@@ -2389,7 +2389,7 @@ const It = /* @__PURE__ */ ot(Ht), qt = ({
     slidesToScroll: 3,
     centerPadding: "0",
     autoplay: h,
-    autoplaySpeed: S,
+    autoplaySpeed: Number(S) || 3e3,
     pauseOnHover: !0,
     pauseOnFocus: !0,
     afterChange: F,

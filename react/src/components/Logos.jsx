@@ -52,7 +52,7 @@ const Logos = ({
     slidesToScroll: 3,
     centerPadding: '0',
     autoplay,
-    autoplaySpeed,
+    autoplaySpeed: Number(autoplaySpeed) || 3000,
     pauseOnHover: true,
     pauseOnFocus: true,
     afterChange: setCurrentSlide,
