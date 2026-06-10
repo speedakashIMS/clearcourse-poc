@@ -5079,6 +5079,264 @@
     ]
   },
   {
+    "id": "giftprocardandtext",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "generaltab",
+        "label": "General"
+      },
+      {
+        "component": "text",
+        "name": "id",
+        "label": "Id",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "align",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          }
+        ],
+        "value": "left"
+      },
+      {
+        "component": "boolean",
+        "name": "infinite",
+        "label": "Loop Carousel",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "giftprocardandtextitem",
+    "fields": [
+      {
+        "component": "text",
+        "name": "typekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "typevalue",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "cardtitlekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "cardtitlevalue",
+        "label": "Card Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodylargekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodylargevalue",
+        "label": "Body Large",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodydefaultkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodydefaultvalue",
+        "label": "Body Default",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodysmallkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodysmallvalue",
+        "label": "Body Small",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "iconsourcekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "iconsourcevalue",
+        "label": "Icon Source",
+        "options": [
+          {
+            "name": "URL",
+            "value": "url"
+          },
+          {
+            "name": "Assets",
+            "value": "assets"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "iconurlkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "iconurl",
+        "label": "Icon URL",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "iconsourcevalue"
+            },
+            "url"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "iconassetkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "name": "iconasset",
+        "label": "Icon Asset",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "iconsourcevalue"
+            },
+            "assets"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imagesourcekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "imagesourcevalue",
+        "label": "Image Source",
+        "options": [
+          {
+            "name": "URL",
+            "value": "url"
+          },
+          {
+            "name": "Assets",
+            "value": "assets"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "imageurlkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "imageurl",
+        "label": "Image URL",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "imagesourcevalue"
+            },
+            "url"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imageassetkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "name": "imageasset",
+        "label": "Image Asset",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "imagesourcevalue"
+            },
+            "assets"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imagetitlekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "imagetitlevalue",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "alignmentkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "alignmentvalue",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {

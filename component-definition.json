@@ -536,6 +536,56 @@
           }
         },
         {
+          "title": "GiftPro Card and Text",
+          "id": "giftprocardandtext",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "GiftProCardAndText",
+                  "model": "giftprocardandtext",
+                  "filter": "giftprocardandtext",
+                  "key-value": true,
+                  "align": "left"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "GiftPro Card and Text Item",
+          "id": "giftprocardandtextitem",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "GiftProCardAndTextItem",
+                  "model": "giftprocardandtextitem",
+                  "typekey": "type",
+                  "typevalue": "giftprocardandtextitem",
+                  "cardtitlekey": "cardtitle",
+                  "bodylargekey": "bodylarge",
+                  "bodydefaultkey": "bodydefault",
+                  "bodysmallkey": "bodysmall",
+                  "iconsourcekey": "iconsource",
+                  "iconsourcevalue": "url",
+                  "iconurlkey": "iconurl",
+                  "iconassetkey": "iconasset",
+                  "imagesourcekey": "imagesource",
+                  "imagesourcevalue": "url",
+                  "imageurlkey": "imageurl",
+                  "imageassetkey": "imageasset",
+                  "imagetitlekey": "imagetitle",
+                  "alignmentkey": "alignment",
+                  "alignmentvalue": "left"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
