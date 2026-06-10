@@ -702,6 +702,14 @@ async function loadSection(section, loadCallback) {
     if (section.dataset.negativemargin) {
       section.classList.add('negative-margin-t')
     }
+
+    if (section.dataset.containerdesktop) {
+      section.classList.add(`section-d-${section.dataset.containerdesktop}`);
+    }
+
+    if (section.dataset.containermobile) {
+      section.classList.add(`section-m-${section.dataset.containermobile}`);
+    }
   }
 }
 

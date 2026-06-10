@@ -61,6 +61,50 @@
           "name": "negativeMargin",
           "label": "Negative Margin",
           "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "containerDesktop",
+          "label": "Container Width (Desktop)",
+          "description": "Restrict the section width on desktop. 1100/700 centre the section on the page.",
+          "options": [
+            {
+              "name": "Full",
+              "value": "full"
+            },
+            {
+              "name": "1100",
+              "value": "1100"
+            },
+            {
+              "name": "700",
+              "value": "700"
+            }
+          ],
+          "valueType": "string",
+          "value": "full"
+        },
+        {
+          "component": "select",
+          "name": "containerMobile",
+          "label": "Container Width (Mobile)",
+          "description": "Restrict the section width on mobile. 1100/700 centre the section on the page.",
+          "options": [
+            {
+              "name": "Full",
+              "value": "full"
+            },
+            {
+              "name": "1100",
+              "value": "1100"
+            },
+            {
+              "name": "700",
+              "value": "700"
+            }
+          ],
+          "valueType": "string",
+          "value": "full"
         }
       ]
     }
