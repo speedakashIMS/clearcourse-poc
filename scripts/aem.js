@@ -703,6 +703,10 @@ async function loadSection(section, loadCallback) {
       section.classList.add('negative-margin-t')
     }
 
+    if (section.dataset.backgroundgradient === 'true' && section.dataset.gradienttype) {
+      section.classList.add(section.dataset.gradienttype);
+    }
+
     if (section.dataset.containerdesktop) {
       section.classList.add(`section-d-${section.dataset.containerdesktop}`);
     }

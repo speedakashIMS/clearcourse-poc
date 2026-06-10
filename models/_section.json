@@ -63,6 +63,37 @@
           "valueType": "boolean"
         },
         {
+          "component": "boolean",
+          "name": "backgroundGradient",
+          "label": "Background Gradient",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "gradientType",
+          "label": "Gradient",
+          "options": [
+            {
+              "name": "HERO",
+              "value": "bg-gradient-hero"
+            },
+            {
+              "name": "Other",
+              "value": "bg-gradient-2"
+            }
+          ],
+          "valueType": "string",
+          "value": "bg-gradient-hero",
+          "condition": {
+            "===": [
+              {
+                "var": "backgroundGradient"
+              },
+              true
+            ]
+          }
+        },
+        {
           "component": "select",
           "name": "containerDesktop",
           "label": "Container Width (Desktop)",
