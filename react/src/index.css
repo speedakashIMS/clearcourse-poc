@@ -1389,6 +1389,5 @@
 /* Section horizontal padding (desktop only, authorable via Section model) */
 @media (min-width:900px){.section.section-pd-50{padding-inline:50px}.section.section-pd-100{padding-inline:100px}.section.section-pd-200{padding-inline:200px}.section.section-pd-300{padding-inline:300px}.section.section-pd-500{padding-inline:500px}}
 
-/* GiftPro Card and Text carousel — custom circular arrows (suppress slick's default glyph) */
-.giftpro-slide-arrow::before{content:none}
+
 

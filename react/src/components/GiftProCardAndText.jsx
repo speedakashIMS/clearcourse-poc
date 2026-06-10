@@ -21,19 +21,23 @@ const ARROW_VARIANTS = {
   'dark-no-outline': 'btn-dark-no-outline',
 };
 
-function SlideArrow({ className, onClick, direction, variant = 'light-outlined' }) {
+function SlideArrow({ className, onClick, direction, variant = 'dark-outlined' }) {
   const isNext = direction === 'next';
-  const variantClass = ARROW_VARIANTS[variant] || ARROW_VARIANTS['light-outlined'];
+  const variantClass = ARROW_VARIANTS[variant] || ARROW_VARIANTS['dark-outlined'];
+  const cleanedClassName = (className || '')
+    .split(' ')
+    .filter((c) => !['slick-arrow', 'slick-next', 'slick-prev'].includes(c))
+    .join(' ');
   return (
     <button
       type="button"
       aria-label={isNext ? 'Next slide' : 'Previous slide'}
       onClick={onClick}
       className={[
-        className,
+        cleanedClassName,
         'giftpro-slide-arrow btn', variantClass,
         '!flex items-center justify-center',
-        '!h-48 !w-48 !p-0 !rounded-full z-10 hover:opacity-80',
+        '!h-48 !w-48 min-w-[48px] !p-0 !rounded-full z-10 hover:opacity-80',
         isNext ? '!right-10' : '!left-10',
       ].join(' ')}
     >
@@ -50,7 +54,7 @@ export default function GiftProCardAndText({
   className = '',
   infinite = false,
   textColor = 'text-primary',
-  arrowVariant = 'light-outlined'
+  arrowVariant = 'dark-outlined'
 }) {
   const mapGiftProCardAndTextProps = (item) => ({
     cardTitle: item.cardTitle,
@@ -111,7 +115,7 @@ export default function GiftProCardAndText({
   };
 
   const carouselSettings = {
-    className: "w-full giftpro-cardandtext-slider",
+    className: "w-full giftpro-cardandtext-slider flex items-center gap-60",
     dots: false,
     infinite,
     speed: 400,
