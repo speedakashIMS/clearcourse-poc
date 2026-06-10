@@ -150,6 +150,40 @@
         ],
         "valueType": "string",
         "value": "full"
+      },
+      {
+        "component": "select",
+        "name": "paddingDesktop",
+        "label": "Horizontal Padding (Desktop)",
+        "description": "Adds left/right padding to the section on desktop.",
+        "options": [
+          {
+            "name": "None",
+            "value": "none"
+          },
+          {
+            "name": "p-50",
+            "value": "50"
+          },
+          {
+            "name": "p-100",
+            "value": "100"
+          },
+          {
+            "name": "p-200",
+            "value": "200"
+          },
+          {
+            "name": "p-300",
+            "value": "300"
+          },
+          {
+            "name": "p-500",
+            "value": "500"
+          }
+        ],
+        "valueType": "string",
+        "value": "none"
       }
     ]
   },
