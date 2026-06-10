@@ -45,8 +45,8 @@
               "imagetitlekey": "imagetitle",
               "alignmentkey": "alignment",
               "alignmentvalue": "left",
-              "authorKey": "author",
-              "authorTitleKey": "authorTitle"
+              "authorkey": "author",
+              "authortitlekey": "authortitle"
             }
           }
         }
@@ -372,13 +372,25 @@
         },
         {
           "component": "text",
-          "name": "authorKey",
+          "name": "authorkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "authorvalue",
           "label": "Author",
           "valueType": "string"
         },
         {
           "component": "text",
-          "name": "authorTitleKey",
+          "name": "authortitlekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "authortitlevalue",
           "label": "Author Title",
           "valueType": "string"
         }

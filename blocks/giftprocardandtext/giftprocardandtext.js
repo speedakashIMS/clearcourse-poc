@@ -56,7 +56,7 @@ export default async function decorate(block) {
         attributes: item._meta || {},
         textColor: item.textcolor || blockData.textColor || 'text-white',
         author: item.author,
-        authorTitle: item.authorTitle,
+        authorTitle: item.authortitle,
       })),
   };
 

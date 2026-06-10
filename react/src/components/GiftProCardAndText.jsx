@@ -115,7 +115,7 @@ export default function GiftProCardAndText({
   };
 
   const carouselSettings = {
-    className: "w-full giftpro-cardandtext-slider flex items-center gap-60",
+    className: "w-full giftpro-cardandtext-slider !flex items-center gap-60",
     dots: false,
     infinite,
     speed: 400,
