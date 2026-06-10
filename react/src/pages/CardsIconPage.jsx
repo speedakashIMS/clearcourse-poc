@@ -353,7 +353,7 @@ export default function CardsIconPage() {
                 descriptionSize="normal"
               />
               <Spacer height={40} />
-              <CardsIcon columns={3} stacked data={iconCards3Cols} />
+              <CardsIcon columns={3} stacked textAlign="center" data={iconCards3Cols} />
               <Spacer height={40} />
               <Buttons
                 buttons={[

@@ -1,23 +1,23 @@
 import { jsx as e, jsxs as M } from "react/jsx-runtime";
-import * as S from "react";
-import { lazy as X, Suspense as G, useId as U, useState as A, useEffect as O, useRef as J, useCallback as z, forwardRef as K } from "react";
-import Q from "lottie-react";
-function Z({
+import * as F from "react";
+import { lazy as G, Suspense as J, useId as _, useState as A, useEffect as B, useRef as K, useCallback as U, forwardRef as Q } from "react";
+import Z from "lottie-react";
+function ee({
   tab: t = {},
   // { text: string, image: string, imageAlt: string }
-  isActive: l = !1,
-  onClick: i = () => {
+  isActive: a = !1,
+  onClick: l = () => {
   },
   index: c = 0,
-  className: o = "",
+  className: n = "",
   largeImage: d = !1
   // if true, set image size to 48x48 even to mobile
 }) {
-  return t ? /* @__PURE__ */ e("div", { className: o, children: /* @__PURE__ */ M(
+  return t ? /* @__PURE__ */ e("div", { className: n, children: /* @__PURE__ */ M(
     "button",
     {
-      onClick: i,
-      className: `inline-flex justify-center items-center gap-4 xl:gap-10 rounded-full border transition-all duration-300 p-tabbed-loz--padding cursor-pointer hover:bg-grey-600 hover:text-white focus-visible:bg-grey-600 focus-visible:text-white min-w-[110px] ${l ? "border-grey-600 bg-grey-600 text-white" : "border-grey-600 bg-grey-100 text-grey-950"}`,
+      onClick: l,
+      className: `inline-flex justify-center items-center gap-4 xl:gap-10 rounded-full border transition-all duration-300 p-tabbed-loz--padding cursor-pointer hover:bg-grey-600 hover:text-white focus-visible:bg-grey-600 focus-visible:text-white min-w-[110px] ${a ? "border-grey-600 bg-grey-600 text-white" : "border-grey-600 bg-grey-100 text-grey-950"}`,
       children: [
         t.image && /* @__PURE__ */ e(
           "img",
@@ -32,40 +32,40 @@ function Z({
     }
   ) }, c) : null;
 }
-function ee({
+function te({
   tab: t = {},
-  isActive: l = !1,
-  onClick: i = () => {
+  isActive: a = !1,
+  onClick: l = () => {
   },
   index: c = 0,
-  className: o = ""
+  className: n = ""
 }) {
   return t ? /* @__PURE__ */ e(
     "button",
     {
-      onClick: i,
-      className: `h-44px flex flex-row justify-start items-center gap-10 self-stretch border-b border-x transition-all duration-300  p-tabbed-row--padding cursor-pointer hover:bg-grey-300 focus-visible:bg-grey-300 ${l ? "border-grey-400 bg-grey-300" : "border-grey-400 bg-white"}
+      onClick: l,
+      className: `h-44px flex flex-row justify-start items-center gap-10 self-stretch border-b border-x transition-all duration-300  p-tabbed-row--padding cursor-pointer hover:bg-grey-300 focus-visible:bg-grey-300 ${a ? "border-grey-400 bg-grey-300" : "border-grey-400 bg-white"}
       ${c === 0 ? "border-t" : ""}
-      ${o}`,
+      ${n}`,
       children: t.text && /* @__PURE__ */ e("span", { className: "text-body-default", children: t.text })
     }
   ) : null;
 }
-const _ = ({
+const H = ({
   text: t = "Button",
-  href: l = void 0,
-  variant: i = "light",
+  href: a = void 0,
+  variant: l = "light",
   // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
   size: c = "btn-md",
   // btn-sm , btn-md
-  className: o = "",
+  className: n = "",
   disabled: d = !1,
   onClick: v = void 0,
-  attributes: C = {},
-  ...$
+  attributes: w = {},
+  ...C
 }) => {
-  const h = (a) => {
-    switch (a) {
+  const p = (i) => {
+    switch (i) {
       case "light":
         return "btn-light";
       case "dark":
@@ -81,8 +81,8 @@ const _ = ({
       default:
         return "btn-light";
     }
-  }, n = (a) => {
-    switch (a) {
+  }, $ = (i) => {
+    switch (i) {
       case "btn-sm":
         return "btn-sm";
       case "btn-md":
@@ -90,36 +90,36 @@ const _ = ({
       default:
         return "btn-md";
     }
-  }, b = `btn ${h(i)} ${n(c)} ${o}`.trim();
-  return l ? /* @__PURE__ */ e(
+  }, o = `btn ${p(l)} ${$(c)} ${n}`.trim();
+  return a ? /* @__PURE__ */ e(
     "a",
     {
-      href: l,
-      className: b,
+      href: a,
+      className: o,
       onClick: v,
-      ...$,
-      ...C ?? {},
+      ...C,
+      ...w ?? {},
       children: t
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
-      type: $.type || "button",
-      className: b,
+      type: C.type || "button",
+      className: o,
       disabled: d,
       onClick: v,
-      ...$,
-      ...C ?? {},
+      ...C,
+      ...w ?? {},
       children: t
     }
   );
 };
-function te({
+function re({
   title: t,
-  titleId: l,
-  ...i
+  titleId: a,
+  ...l
 }, c) {
-  return /* @__PURE__ */ S.createElement("svg", Object.assign({
+  return /* @__PURE__ */ F.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -128,26 +128,26 @@ function te({
     "aria-hidden": "true",
     "data-slot": "icon",
     ref: c,
-    "aria-labelledby": l
-  }, i), t ? /* @__PURE__ */ S.createElement("title", {
-    id: l
-  }, t) : null, /* @__PURE__ */ S.createElement("path", {
+    "aria-labelledby": a
+  }, l), t ? /* @__PURE__ */ F.createElement("title", {
+    id: a
+  }, t) : null, /* @__PURE__ */ F.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
     d: "M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
   }));
 }
-const re = /* @__PURE__ */ S.forwardRef(te), H = ({
+const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   text: t = "Link",
-  href: l = "#",
-  variant: i = "dark",
+  href: a = "#",
+  variant: l = "dark",
   // dark, light
   icon: c,
-  className: o = "",
+  className: n = "",
   ...d
 }) => {
-  const v = "text-link", C = (h) => {
-    switch (h) {
+  const v = "text-link", w = (p) => {
+    switch (p) {
       case "light":
         return "link-light";
       case "dark":
@@ -155,37 +155,37 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
       default:
         return "link-dark";
     }
-  }, $ = c || re, u = `${v} ${C(i)} ${o}`.trim();
+  }, C = c || se, u = `${v} ${w(l)} ${n}`.trim();
   return /* @__PURE__ */ M(
     "a",
     {
-      href: l,
+      href: a,
       className: u,
       ...d,
       children: [
         /* @__PURE__ */ e("span", { children: t }),
-        /* @__PURE__ */ e($, { className: "text-link-icon" })
+        /* @__PURE__ */ e(C, { className: "text-link-icon" })
       ]
     }
   );
-}, se = X(() => Promise.resolve().then(() => me)), Y = ({
+}, ie = G(() => Promise.resolve().then(() => fe)), q = ({
   media: t = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
-  aspect: l = "default",
+  aspect: a = "default",
   // 'default' | 'rectangle' | 'square'
-  objectFit: i = "cover",
+  objectFit: l = "cover",
   // 'cover' | 'contain' — how media fills its box (e.g. framed text+media)
   imageUrl: c,
-  videoUrl: o,
+  videoUrl: n,
   lottieUrl: d,
   lottieData: v,
-  iframeUrl: C,
-  flipbookUrl: $,
+  iframeUrl: w,
+  flipbookUrl: C,
   title: u,
-  className: h = ""
+  className: p = ""
 }) => {
-  var w;
-  const n = typeof window < "u" && window.location.origin.indexOf("author") > -1, b = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, g = `relative w-full h-full ${l === "square" ? "aspect-square" : l === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), y = l === "default" ? `w-full h-full ${h}`.trim() : `absolute inset-0 w-full h-full ${h}`.trim(), s = "w-full h-full", r = l === "default" ? `${y}`.trim() : y, m = i === "contain" ? "object-contain" : "object-cover", x = i === "contain" ? "xMidYMid meet" : "xMidYMid slice", f = `relative w-full ${h}`.trim(), N = "w-full min-h-[280px]";
+  var x;
+  const $ = typeof window < "u" && window.location.origin.indexOf("author") > -1, o = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, g = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), b = a === "default" ? `w-full h-full ${p}`.trim() : `absolute inset-0 w-full h-full ${p}`.trim(), s = "w-full h-full", r = a === "default" ? `${b}`.trim() : b, f = l === "contain" ? "object-contain" : "object-cover", y = l === "contain" ? "xMidYMid meet" : "xMidYMid slice", m = `relative w-full ${p}`.trim(), N = "w-full min-h-[280px]";
   switch (t) {
     case "image":
       if (c)
@@ -194,18 +194,18 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
           {
             src: c,
             alt: u || "Media image",
-            className: `${m} ${y}`.trim(),
+            className: `${f} ${b}`.trim(),
             loading: "lazy"
           }
         ) });
       break;
     case "video":
-      if (o) {
-        const p = o.includes("youtube.com/watch") || o.includes("youtu.be/");
-        let k = o;
-        p && (k = `https://www.youtube.com/embed/${o.includes("youtu.be/") ? o.split("youtu.be/")[1].split("?")[0] : (w = o.split("v=")[1]) == null ? void 0 : w.split("&")[0]}`);
+      if (n) {
+        const h = n.includes("youtube.com/watch") || n.includes("youtu.be/");
+        let k = n;
+        h && (k = `https://www.youtube.com/embed/${n.includes("youtu.be/") ? n.split("youtu.be/")[1].split("?")[0] : (x = n.split("v=")[1]) == null ? void 0 : x.split("&")[0]}`);
         const T = (() => {
-          if (!p) return k;
+          if (!h) return k;
           try {
             const j = new URL(k);
             return j.searchParams.set("autoplay", "0"), j.searchParams.set("mute", "0"), j.searchParams.set("playsinline", "1"), j.searchParams.set("controls", "1"), j.searchParams.set("rel", "0"), j.toString();
@@ -213,7 +213,7 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
             return k.includes("?") ? k.includes("autoplay=") ? k : `${k}&autoplay=0` : `${k}?autoplay=0`;
           }
         })();
-        return /* @__PURE__ */ e("div", { className: g, children: p ? /* @__PURE__ */ e(
+        return /* @__PURE__ */ e("div", { className: g, children: h ? /* @__PURE__ */ e(
           "iframe",
           {
             src: T,
@@ -221,28 +221,28 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
             allowFullScreen: !0,
-            className: `${y} ${m}`.trim()
+            className: `${b} ${f}`.trim()
           }
         ) : /* @__PURE__ */ e(
           "video",
           {
-            className: `${y} ${m}`.trim(),
+            className: `${b} ${f}`.trim(),
             autoPlay: !1,
             controls: !0,
             playsInline: !0,
             preload: "metadata",
             title: u || "Video player",
-            children: /* @__PURE__ */ e("source", { src: o })
+            children: /* @__PURE__ */ e("source", { src: n })
           }
         ) });
       }
       break;
     case "lottie":
       if (v)
-        return n ? /* @__PURE__ */ e("div", { className: g, role: "img", "aria-label": u || "Animation", children: /* @__PURE__ */ e(
+        return $ ? /* @__PURE__ */ e("div", { className: g, role: "img", "aria-label": u || "Animation", children: /* @__PURE__ */ e(
           "div",
           {
-            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${y}`.trim(),
+            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${b}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Lottie preview" })
           }
         ) }) : /* @__PURE__ */ e(
@@ -251,15 +251,15 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
             className: g,
             role: "img",
             "aria-label": u || "Animation",
-            children: /* @__PURE__ */ e("div", { className: `${y} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
-              Q,
+            children: /* @__PURE__ */ e("div", { className: `${b} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
+              Z,
               {
                 animationData: v,
-                loop: !b,
-                autoplay: !b,
+                loop: !o,
+                autoplay: !o,
                 className: s,
                 style: { width: "100%", height: "100%" },
-                rendererSettings: { preserveAspectRatio: x }
+                rendererSettings: { preserveAspectRatio: y }
               }
             ) })
           }
@@ -268,72 +268,72 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
         return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
-      if (C)
+      if (w)
         return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e(
           "iframe",
           {
-            src: C,
+            src: w,
             title: u || "Iframe content",
             frameBorder: "0",
-            className: `${r} ${m}`.trim()
+            className: `${r} ${f}`.trim()
           }
         ) });
       break;
     case "flipbook":
-      if ($)
-        return n ? /* @__PURE__ */ e("div", { className: f, role: "img", "aria-label": u || "Flipbook", children: /* @__PURE__ */ e(
+      if (C)
+        return $ ? /* @__PURE__ */ e("div", { className: m, role: "img", "aria-label": u || "Flipbook", children: /* @__PURE__ */ e(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${N}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Flipbook preview" })
           }
-        ) }) : /* @__PURE__ */ e("div", { className: f, children: /* @__PURE__ */ e("div", { className: N, children: /* @__PURE__ */ e(G, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(se, { pdfUrl: $, title: u, className: "w-full" }) }) }) });
+        ) }) : /* @__PURE__ */ e("div", { className: m, children: /* @__PURE__ */ e("div", { className: N, children: /* @__PURE__ */ e(J, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(ie, { pdfUrl: C, title: u, className: "w-full" }) }) }) });
       break;
   }
-  return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${l === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
-}, ie = ({
+  return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${a === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
+}, le = ({
   stacked: t = !0,
   // true = vertical stack, false = horizontal side-by-side
-  imagePosition: l = "left",
+  imagePosition: a = "left",
   // 'left' or 'right' (only applies when stacked = false)
-  variant: i = "flushed",
+  variant: l = "flushed",
   // 'flushed' | 'framed' | 'circle' - flushed = full width, framed = square aspect ratio, circle = 100px x 100px circular
   media: c = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' - selector for media type
-  imageUrl: o,
+  imageUrl: n,
   // URL for image
   videoUrl: d,
   // URL for video (YouTube embed URL or direct video URL)
   lottieUrl: v,
   // URL to Lottie animation JSON file
-  lottieData: C,
+  lottieData: w,
   // Lottie animation JSON data object (alternative to lottieUrl)
-  iframeUrl: $,
+  iframeUrl: C,
   // URL for iframe
   mediaAltTitle: u,
   // Accessible text for media (image alt, video/lottie/iframe title); falls back to title if not set
-  title: h,
-  description: n,
-  descriptionRichText: b,
+  title: p,
+  description: $,
+  descriptionRichText: o,
   // optional HTML from CMS; when set, rendered with .wysiwyg instead of plain `description`
-  buttonText: a,
+  buttonText: i,
   buttonHref: g,
-  buttonVariant: y = "light",
+  buttonVariant: b = "light",
   buttonType: s = "button",
   // button | link
   linkVariant: r,
-  buttonOnClick: m,
-  backgroundVariant: x = "default",
+  buttonOnClick: f,
+  backgroundVariant: y = "default",
   // default | primary | secondary | tertiary
-  className: f = "",
+  className: m = "",
   attributes: N = {}
 }) => {
-  const w = typeof b == "string" && b.trim().length > 0, p = {
+  const x = typeof o == "string" && o.trim().length > 0, h = {
     default: "bg-grey-500 text-grey-950",
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-grey-950",
     tertiary: "bg-tertiary text-grey-950"
-  }, k = p[x] || p.default, T = U(), j = `
+  }, k = h[y] || h.default, T = _(), j = `
     flex
     w-full
     ${k}
@@ -341,27 +341,27 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     ${t ? "" : "md:flex-row"}
     rounded-[var(--spacing-cards-br)]
     overflow-hidden
-    ${f}
+    ${m}
   `.trim().replace(/\s+/g, " "), I = `
     w-full
-    ${t ? "" : i === "framed" ? "md:w-1/2 lg:min-w-[calc(200px+var(--spacing-cards-image--padding-y))]" : i === "circle" ? "md:w-auto" : "md:w-1/2"}
-    ${i === "circle" ? "" : "p-cards-image--padding-y"}
+    ${t ? "" : l === "framed" ? "md:w-1/2 lg:min-w-[calc(200px+var(--spacing-cards-image--padding-y))]" : l === "circle" ? "md:w-auto" : "md:w-1/2"}
+    ${l === "circle" ? "" : "p-cards-image--padding-y"}
     flex
     items-center
     justify-center
     overflow-hidden
-    ${i === "framed" && t ? "rounded-t-[var(--spacing-cards-br)]" : ""}
-    ${i === "framed" && !t && l === "left" ? "md:rounded-l-[var(--spacing-cards-br)]" : ""}
-    ${i === "framed" && !t && l === "right" ? "md:rounded-r-[var(--spacing-cards-br)]" : ""}
-  `.trim().replace(/\s+/g, " "), R = `
-    ${i === "circle" ? "w-[100px] h-[100px]" : i === "framed" ? "w-full aspect-square" : "w-full"}
+    ${l === "framed" && t ? "rounded-t-[var(--spacing-cards-br)]" : ""}
+    ${l === "framed" && !t && a === "left" ? "md:rounded-l-[var(--spacing-cards-br)]" : ""}
+    ${l === "framed" && !t && a === "right" ? "md:rounded-r-[var(--spacing-cards-br)]" : ""}
+  `.trim().replace(/\s+/g, " "), S = `
+    ${l === "circle" ? "w-[100px] h-[100px]" : l === "framed" ? "w-full aspect-square" : "w-full"}
     bg-grey-200
     flex
     items-center
     justify-center
     overflow-hidden
-    ${i === "circle" ? "rounded-full" : i === "framed" ? "rounded-[var(--spacing-cards-image--br)]" : t ? "rounded-t-[var(--spacing-cards-image--br)]" : l === "left" ? "rounded-l-[var(--spacing-cards-image--br)]" : "rounded-r-[var(--spacing-cards-image--br)]"}
-  `.trim().replace(/\s+/g, " "), P = `
+    ${l === "circle" ? "rounded-full" : l === "framed" ? "rounded-[var(--spacing-cards-image--br)]" : t ? "rounded-t-[var(--spacing-cards-image--br)]" : a === "left" ? "rounded-l-[var(--spacing-cards-image--br)]" : "rounded-r-[var(--spacing-cards-image--br)]"}
+  `.trim().replace(/\s+/g, " "), R = `
     w-full
     ${t ? "aspect-[441/269]" : "md:w-1/2"}
     bg-grey-200
@@ -369,190 +369,197 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     items-center
     justify-center
     overflow-hidden
-    ${t ? "rounded-t-[var(--spacing-cards-image--br)]" : l === "left" ? "md:rounded-l-[var(--spacing-cards-image--br)]" : "md:rounded-r-[var(--spacing-cards-image--br)]"}
+    ${t ? "rounded-t-[var(--spacing-cards-image--br)]" : a === "left" ? "md:rounded-l-[var(--spacing-cards-image--br)]" : "md:rounded-r-[var(--spacing-cards-image--br)]"}
   `.trim().replace(/\s+/g, " "), L = `
     w-full
-    ${t ? "" : i === "framed" ? "md:w-3/4" : i === "circle" ? "md:flex-1" : "md:w-1/2"}
+    ${t ? "" : l === "framed" ? "md:w-3/4" : l === "circle" ? "md:flex-1" : "md:w-1/2"}
     py-textmedia-text--padding-y
     px-textmedia-text--padding-x
     flex-grow-1
     flex
     flex-col
     gap-textmedia-btn-text--spacing-y
-    ${t ? "rounded-b-[var(--spacing-cards-image--br)]" : l === "left" ? "md:rounded-r-[var(--spacing-cards-image--br)]" : "md:rounded-l-[var(--spacing-cards-image--br)]"}
-  `.trim().replace(/\s+/g, " "), W = /* @__PURE__ */ e(
-    Y,
+    ${t ? "rounded-b-[var(--spacing-cards-image--br)]" : a === "left" ? "md:rounded-r-[var(--spacing-cards-image--br)]" : "md:rounded-l-[var(--spacing-cards-image--br)]"}
+  `.trim().replace(/\s+/g, " "), D = /* @__PURE__ */ e(
+    q,
     {
       media: c,
       aspect: "default",
-      imageUrl: o,
+      imageUrl: n,
       videoUrl: d,
       lottieUrl: v,
-      lottieData: C,
-      iframeUrl: $,
-      title: u ?? h,
+      lottieData: w,
+      iframeUrl: C,
+      title: u ?? p,
       className: ""
     }
-  ), D = t || l === "left", E = () => i === "framed" || i === "circle" ? /* @__PURE__ */ e("div", { className: I, children: /* @__PURE__ */ e("div", { className: R, children: W }) }) : /* @__PURE__ */ e("div", { className: P, children: W });
+  ), E = t || a === "left", z = () => l === "framed" || l === "circle" ? /* @__PURE__ */ e("div", { className: I, children: /* @__PURE__ */ e("div", { className: S, children: D }) }) : /* @__PURE__ */ e("div", { className: R, children: D });
   return /* @__PURE__ */ M(
     "article",
     {
       className: j,
-      ...h ? { "aria-labelledby": T } : { "aria-label": "Card" },
+      ...p ? { "aria-labelledby": T } : { "aria-label": "Card" },
       ...N ?? {},
       children: [
-        D && E(),
+        E && z(),
         /* @__PURE__ */ M("div", { className: L, children: [
           /* @__PURE__ */ M("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
-            h && /* @__PURE__ */ e("h3", { id: T, className: "text-headings-h3 font-semibold text-white", children: h }),
-            w ? /* @__PURE__ */ e(
+            p && /* @__PURE__ */ e("h3", { id: T, className: "text-headings-h3 font-semibold text-white", children: p }),
+            x ? /* @__PURE__ */ e(
               "div",
               {
                 className: "wysiwyg text-body-default text-white",
-                dangerouslySetInnerHTML: { __html: b }
+                dangerouslySetInnerHTML: { __html: o }
               }
-            ) : n && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: n })
+            ) : $ && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: $ })
           ] }),
-          a && /* @__PURE__ */ e("div", { className: "mt-auto", children: s === "link" ? /* @__PURE__ */ e(
-            H,
+          i && /* @__PURE__ */ e("div", { className: "mt-auto", children: s === "link" ? /* @__PURE__ */ e(
+            Y,
             {
-              text: a,
+              text: i,
               href: g,
-              variant: r || (y.includes("light") ? "light" : "dark"),
-              onClick: m
+              variant: r || (b.includes("light") ? "light" : "dark"),
+              onClick: f
             }
           ) : /* @__PURE__ */ e(
-            _,
+            H,
             {
-              text: a,
+              text: i,
               href: g,
-              variant: y,
-              onClick: m
+              variant: b,
+              onClick: f
             }
           ) })
         ] }),
-        !D && E()
+        !E && z()
       ]
     }
   );
-}, le = ({
+}, ae = ({
   columns: t = 3,
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
-  data: l = [],
+  data: a = [],
   // Array of card data objects
-  buttonType: i = "button",
+  buttonType: l = "button",
   linkVariant: c,
-  stacked: o = !0,
+  stacked: n = !0,
   imagePosition: d = "left",
   variant: v = "flushed",
-  itemBackgroundVariant: C = "default",
-  className: $ = "",
+  itemBackgroundVariant: w = "default",
+  className: C = "",
   ...u
 }) => {
-  const h = () => !o && v === "framed" ? Math.min(t, 2) : t, n = () => {
-    const y = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
-    if (o) {
-      const m = {
+  const p = () => !n && v === "framed" ? Math.min(t, 2) : t, $ = () => {
+    const b = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
+    if (n) {
+      const f = {
         1: "lg:grid-cols-1",
         2: "lg:grid-cols-2",
         3: "lg:grid-cols-3",
         4: "lg:grid-cols-4",
         5: "lg:grid-cols-5",
         6: "lg:grid-cols-6"
-      }, x = h(), f = m[x] ?? m[3];
-      return `${y} md:grid-cols-2 ${f}`;
+      }, y = p(), m = f[y] ?? f[3];
+      return `${b} md:grid-cols-2 ${m}`;
     }
     const s = {
       1: "lg:grid-cols-1",
       2: "lg:grid-cols-2",
       3: "lg:grid-cols-3"
-    }, r = Math.min(h(), 3);
-    return `${y} ${s[r]}`;
-  }, b = (a) => {
+    }, r = Math.min(p(), 3);
+    return `${b} ${s[r]}`;
+  }, o = (i) => {
     const g = "min-w-0 w-full flex items-stretch";
-    return o && l.length === 3 && a === 2 ? `${g} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : g;
+    return n && a.length === 3 && i === 2 ? `${g} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : g;
   };
-  return /* @__PURE__ */ e("div", { className: $, ...u, children: /* @__PURE__ */ e("div", { className: n(), children: l.map((a, g) => /* @__PURE__ */ e("div", { className: b(g), children: /* @__PURE__ */ e(
-    ie,
+  return /* @__PURE__ */ e("div", { className: C, ...u, children: /* @__PURE__ */ e("div", { className: $(), children: a.map((i, g) => /* @__PURE__ */ e("div", { className: o(g), children: /* @__PURE__ */ e(
+    le,
     {
-      stacked: o,
+      stacked: n,
       imagePosition: d,
       variant: v,
-      media: a.media || "image",
-      imageUrl: a.imageUrl,
-      videoUrl: a.videoUrl,
-      lottieUrl: a.lottieUrl,
-      lottieData: a.lottieData,
-      iframeUrl: a.iframeUrl,
-      mediaAltTitle: a.mediaAltTitle,
-      title: a.title,
-      description: a.description,
-      descriptionRichText: a.descriptionRichText,
-      buttonText: a.buttonText,
-      buttonHref: a.buttonHref,
-      buttonVariant: a.buttonVariant || "light",
-      buttonType: a.buttonType || i,
-      linkVariant: a.linkVariant || c,
-      buttonOnClick: a.buttonOnClick,
-      backgroundVariant: C,
-      attributes: a.attributes,
+      media: i.media || "image",
+      imageUrl: i.imageUrl,
+      videoUrl: i.videoUrl,
+      lottieUrl: i.lottieUrl,
+      lottieData: i.lottieData,
+      iframeUrl: i.iframeUrl,
+      mediaAltTitle: i.mediaAltTitle,
+      title: i.title,
+      description: i.description,
+      descriptionRichText: i.descriptionRichText,
+      buttonText: i.buttonText,
+      buttonHref: i.buttonHref,
+      buttonVariant: i.buttonVariant || "light",
+      buttonType: i.buttonType || l,
+      linkVariant: i.linkVariant || c,
+      buttonOnClick: i.buttonOnClick,
+      backgroundVariant: w,
+      attributes: i.attributes,
       className: "h-full w-full"
     }
   ) }, g)) }) });
-}, ae = ({
+}, ne = ({
   stacked: t = !0,
   // true = vertical stack, false = horizontal side-by-side
-  iconPosition: l = "left",
+  iconPosition: a = "left",
   // 'left' or 'right' (only applies when stacked = false)
-  media: i = "image",
+  media: l = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' - selector for media type
   imageUrl: c,
   // URL for image
-  videoUrl: o,
+  videoUrl: n,
   // URL for video (YouTube embed URL or direct video URL)
   lottieUrl: d,
   // URL to Lottie animation JSON file
   lottieData: v,
   // Lottie animation JSON data object (alternative to lottieUrl)
-  iframeUrl: C,
+  iframeUrl: w,
   // URL for iframe
-  mediaAltTitle: $,
+  mediaAltTitle: C,
   // Accessible text for media (image alt, video/lottie/iframe title); falls back to title if not set
   title: u,
-  description: h,
-  buttonText: n,
-  buttonHref: b,
-  buttonVariant: a = "light",
+  description: p,
+  buttonText: $,
+  buttonHref: o,
+  buttonVariant: i = "light",
   buttonType: g = "button",
   // button | link
-  linkVariant: y,
+  linkVariant: b,
   buttonOnClick: s,
   backgroundVariant: r = "default",
   // default | primary | secondary | tertiary
-  className: m = "",
-  attributes: x = {}
+  className: f = "",
+  attributes: y = {},
+  textAlign: m = "left"
+  // 'left' | 'center' (only applies when stacked = true)
 }) => {
-  const f = {
+  console.log("CardWithIconMolecule props:", {
+    stacked: t,
+    iconPosition: a,
+    textAlign: m
+  });
+  const N = {
     default: "bg-grey-500 text-grey-950",
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-grey-950",
     tertiary: "bg-tertiary text-grey-950",
     light: "bg-light text-grey-950"
-  }, N = {
+  }, x = {
     default: "text-white",
     primary: "text-white",
     secondary: "text-grey-950",
     tertiary: "text-grey-950",
     light: "text-grey-950"
-  }, w = f[r] || f.default, p = U(), k = `
+  }, h = N[r] || N.default, k = _(), T = `
     flex
     w-full
-    ${w}
+    ${h}
     ${t ? "flex-col" : "flex-row items-start"}
     rounded-[var(--spacing-cards-br)]
     overflow-hidden
-    ${m}
-  `.trim().replace(/\s+/g, " "), T = `
+    ${f}
+  `.trim().replace(/\s+/g, " "), j = `
     ${t ? "w-full" : "w-auto"}
     flex
     items-center
@@ -560,7 +567,7 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     overflow-hidden
     py-cards-icon--padding-y
     px-cards-icon--padding-x
-  `.trim().replace(/\s+/g, " "), j = `
+  `.trim().replace(/\s+/g, " "), I = `
     w-[94px]
     h-[100px]
     bg-grey-200
@@ -570,7 +577,7 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     aspect-square
     rounded-24
     overflow-hidden
-  `.trim().replace(/\s+/g, " "), I = `
+  `.trim().replace(/\s+/g, " "), S = `
     ${t ? "w-full" : "flex-1"}
     py-textmedia-text--padding-y
     px-textmedia-text--padding-x
@@ -578,139 +585,143 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     flex-col
     flex-grow-1
     gap-textmedia-btn-text--spacing-y
-    ${t ? "rounded-b-cards-br" : l === "left" ? "rounded-r-cards-br" : "rounded-l-cards-br"}
+    ${m === "center" ? "items-center text-center" : "items-start text-left"}
+    ${t ? "rounded-b-cards-br" : a === "left" ? "rounded-r-cards-br" : "rounded-l-cards-br"}
   `.trim().replace(/\s+/g, " "), R = /* @__PURE__ */ e(
-    Y,
+    q,
     {
-      media: i,
+      media: l,
       aspect: "default",
       imageUrl: c,
-      videoUrl: o,
+      videoUrl: n,
       lottieUrl: d,
       lottieData: v,
-      iframeUrl: C,
-      title: $ ?? u,
+      iframeUrl: w,
+      title: C ?? u,
       className: ""
     }
-  ), P = t || l === "left", L = () => /* @__PURE__ */ e("div", { className: T, children: /* @__PURE__ */ e("div", { className: j, children: R }) });
+  ), L = t || a === "left", O = () => /* @__PURE__ */ e("div", { className: j, children: /* @__PURE__ */ e("div", { className: I, children: R }) });
   return /* @__PURE__ */ M(
     "article",
     {
-      className: k,
-      ...u ? { "aria-labelledby": p } : { "aria-label": "Card" },
-      ...x ?? {},
+      className: T,
+      ...u ? { "aria-labelledby": k } : { "aria-label": "Card" },
+      ...y ?? {},
       children: [
-        P && L(),
-        /* @__PURE__ */ M("div", { className: I, children: [
+        L && O(),
+        /* @__PURE__ */ M("div", { className: S, children: [
           /* @__PURE__ */ M("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
-            u && /* @__PURE__ */ e("h3", { id: p, className: `text-headings-h3 font-semibold ${N[r]}`, children: u }),
-            h && /* @__PURE__ */ e("p", { className: `text-body-default ${N[r]}`, children: h })
+            u && /* @__PURE__ */ e("h3", { id: k, className: `text-headings-h3 font-semibold ${x[r]}`, children: u }),
+            p && /* @__PURE__ */ e("p", { className: `text-body-default ${x[r]}`, children: p })
           ] }),
-          n && /* @__PURE__ */ e("div", { className: "mt-auto", children: g === "link" ? /* @__PURE__ */ e(
-            H,
+          $ && /* @__PURE__ */ e("div", { className: "mt-auto", children: g === "link" ? /* @__PURE__ */ e(
+            Y,
             {
-              text: n,
-              href: b,
-              variant: y || (a.includes("light") ? "light" : "dark"),
+              text: $,
+              href: o,
+              variant: b || (i.includes("light") ? "light" : "dark"),
               onClick: s
             }
           ) : /* @__PURE__ */ e(
-            _,
+            H,
             {
-              text: n,
-              href: b,
-              variant: a,
+              text: $,
+              href: o,
+              variant: i,
               onClick: s
             }
           ) })
         ] }),
-        !P && L()
+        !L && O()
       ]
     }
   );
-}, ne = ({
+}, oe = ({
   columns: t = 3,
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
-  data: l = [],
+  data: a = [],
   // Array of card data objects
-  buttonType: i = "button",
+  buttonType: l = "button",
   linkVariant: c,
-  stacked: o = !0,
+  stacked: n = !0,
   iconPosition: d = "left",
   itemBackgroundVariant: v = "default",
+  textAlign: w = "left",
+  // 'left' | 'center' (only applies when stacked = true)
   className: C = "",
-  ...$
+  ...u
 }) => {
-  const u = () => {
-    const a = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
-    if (o) {
-      const s = {
+  const p = () => {
+    const g = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
+    if (n) {
+      const r = {
         1: "md:grid-cols-1",
         2: "md:grid-cols-2",
         3: "md:grid-cols-3",
         4: "md:grid-cols-3",
         5: "md:grid-cols-3",
         6: "md:grid-cols-3"
-      }, r = {
+      }, f = {
         1: "lg:grid-cols-1",
         2: "lg:grid-cols-2",
         3: "lg:grid-cols-3",
         4: "lg:grid-cols-4",
         5: "lg:grid-cols-5",
         6: "lg:grid-cols-6"
-      }, m = s[t] ?? s[3], x = r[t] ?? r[3];
-      return `${a} ${m} ${x}`;
+      }, y = r[t] ?? r[3], m = f[t] ?? f[3];
+      return `${g} ${y} ${m}`;
     }
-    const g = {
+    const b = {
       1: "lg:grid-cols-1",
       2: "lg:grid-cols-2",
       3: "lg:grid-cols-3"
-    }, y = Math.min(t, 3);
-    return `${a} ${g[y]}`;
-  }, h = (n) => {
-    const b = "min-w-0 w-full flex items-stretch";
-    return o && l.length === 3 && n === 2 && t === 2 ? `${b} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : b;
+    }, s = Math.min(t, 3);
+    return `${g} ${b[s]}`;
+  }, $ = (o) => {
+    const i = "min-w-0 w-full flex items-stretch";
+    return n && a.length === 3 && o === 2 && t === 2 ? `${i} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : i;
   };
-  return /* @__PURE__ */ e("div", { className: C, ...$, children: /* @__PURE__ */ e("div", { className: u(), children: l.map((n, b) => /* @__PURE__ */ e("div", { className: h(b), children: /* @__PURE__ */ e(
-    ae,
+  return /* @__PURE__ */ e("div", { className: C, ...u, children: /* @__PURE__ */ e("div", { className: p(), children: a.map((o, i) => /* @__PURE__ */ e("div", { className: $(i), children: /* @__PURE__ */ e(
+    ne,
     {
-      stacked: o,
+      stacked: n,
       iconPosition: d,
-      media: n.media || "image",
-      imageUrl: n.imageUrl,
-      videoUrl: n.videoUrl,
-      lottieUrl: n.lottieUrl,
-      lottieData: n.lottieData,
-      iframeUrl: n.iframeUrl,
-      mediaAltTitle: n.mediaAltTitle,
-      title: n.title,
-      description: n.description,
-      buttonText: n.buttonText,
-      buttonHref: n.buttonHref,
-      buttonVariant: n.buttonVariant || "light",
-      buttonType: n.buttonType || i,
-      linkVariant: n.linkVariant || c,
-      buttonOnClick: n.buttonOnClick,
+      media: o.media || "image",
+      imageUrl: o.imageUrl,
+      videoUrl: o.videoUrl,
+      lottieUrl: o.lottieUrl,
+      lottieData: o.lottieData,
+      iframeUrl: o.iframeUrl,
+      mediaAltTitle: o.mediaAltTitle,
+      title: o.title,
+      description: o.description,
+      buttonText: o.buttonText,
+      buttonHref: o.buttonHref,
+      buttonVariant: o.buttonVariant || "light",
+      buttonType: o.buttonType || l,
+      linkVariant: o.linkVariant || c,
+      buttonOnClick: o.buttonOnClick,
       backgroundVariant: v,
-      attributes: n.attributes,
+      attributes: o.attributes,
+      textAlign: w,
       className: "h-full w-full"
     }
-  ) }, b)) }) });
-}, oe = ({
+  ) }, i)) }) });
+}, ce = ({
   items: t = [],
   // [{ label, href, onClick, isActive, isEllipsis }]
-  className: l = "",
-  ...i
-}) => /* @__PURE__ */ e("nav", { className: l, "aria-label": "Pagination", ...i, children: /* @__PURE__ */ e("ul", { className: "flex items-center justify-center gap-archive-spacing-x", children: t.map((c, o) => {
+  className: a = "",
+  ...l
+}) => /* @__PURE__ */ e("nav", { className: a, "aria-label": "Pagination", ...l, children: /* @__PURE__ */ e("ul", { className: "flex items-center justify-center gap-archive-spacing-x", children: t.map((c, n) => {
   if (c.isEllipsis)
-    return /* @__PURE__ */ e("li", { className: "p-tabbed-loz--padding", children: c.label || "..." }, `ellipsis-${o}`);
-  const d = "inline-flex items-center justify-center p-10 rounded-full border transition-colors", v = c.isActive ? "bg-grey-600 text-white border-grey-600" : "bg-grey-100 border-grey-400 hover:border-grey-600 hover:bg-grey-600 hover:text-white focus-visible:border-grey-600 focus-visible:bg-grey-600 focus-visible:text-white", C = /* @__PURE__ */ e("span", { className: `${d} ${v}`, children: c.label });
+    return /* @__PURE__ */ e("li", { className: "p-tabbed-loz--padding", children: c.label || "..." }, `ellipsis-${n}`);
+  const d = "inline-flex items-center justify-center p-10 rounded-full border transition-colors", v = c.isActive ? "bg-grey-600 text-white border-grey-600" : "bg-grey-100 border-grey-400 hover:border-grey-600 hover:bg-grey-600 hover:text-white focus-visible:border-grey-600 focus-visible:bg-grey-600 focus-visible:text-white", w = /* @__PURE__ */ e("span", { className: `${d} ${v}`, children: c.label });
   return /* @__PURE__ */ e("li", { children: c.href ? /* @__PURE__ */ e(
     "a",
     {
       href: c.href,
       "aria-current": c.isActive ? "page" : void 0,
-      children: C
+      children: w
     }
   ) : /* @__PURE__ */ e(
     "button",
@@ -718,73 +729,73 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
       type: "button",
       onClick: c.onClick,
       "aria-current": c.isActive ? "page" : void 0,
-      children: C
+      children: w
     }
-  ) }, `${c.label}-${o}`);
+  ) }, `${c.label}-${n}`);
 }) }) }), ye = ({
   tabs: t = [],
   // [{ text, key, cardType, columns, itemsPerPage, cards }]
-  tabType: l = "tab-top",
+  tabType: a = "tab-top",
   // 'tab-top' | 'tab-aside' 
-  defaultActiveIndex: i = 0,
+  defaultActiveIndex: l = 0,
   className: c = "",
-  ...o
+  ...n
 }) => {
-  var y;
-  const [d, v] = A(i), [C, $] = A(() => t.map(() => 1)), [u, h] = A(!1);
-  if (O(() => {
-    $(t.map(() => 1)), v(i);
-  }, [t, i]), !t || t.length === 0) return null;
-  const n = (s) => {
+  var b;
+  const [d, v] = A(l), [w, C] = A(() => t.map(() => 1)), [u, p] = A(!1);
+  if (B(() => {
+    C(t.map(() => 1)), v(l);
+  }, [t, l]), !t || t.length === 0) return null;
+  const $ = (s) => {
     v(s);
-  }, b = (s, r) => {
-    $((m) => {
-      const x = [...m];
-      return x[s] = r, x;
+  }, o = (s, r) => {
+    C((f) => {
+      const y = [...f];
+      return y[s] = r, y;
     });
-  }, a = (s, r, m) => {
+  }, i = (s, r, f) => {
     if (r <= 1) return [];
-    const x = [], f = (p) => {
-      x.push({
-        label: String(p),
-        isActive: p === s,
-        onClick: () => m(p)
+    const y = [], m = (h) => {
+      y.push({
+        label: String(h),
+        isActive: h === s,
+        onClick: () => f(h)
       });
     };
-    if (f(1), r <= 7) {
-      for (let p = 2; p <= r; p += 1) f(p);
-      return x;
+    if (m(1), r <= 7) {
+      for (let h = 2; h <= r; h += 1) m(h);
+      return y;
     }
-    const N = Math.max(2, s - 1), w = Math.min(r - 1, s + 1);
-    N > 2 && x.push({ isEllipsis: !0, label: "..." });
-    for (let p = N; p <= w; p += 1) f(p);
-    return w < r - 1 && x.push({ isEllipsis: !0, label: "..." }), f(r), x;
+    const N = Math.max(2, s - 1), x = Math.min(r - 1, s + 1);
+    N > 2 && y.push({ isEllipsis: !0, label: "..." });
+    for (let h = N; h <= x; h += 1) m(h);
+    return x < r - 1 && y.push({ isEllipsis: !0, label: "..." }), m(r), y;
   }, g = (s, r) => {
-    const m = s.cards || [], x = s.itemsPerPage || 6, f = Math.ceil(m.length / x) || 1, N = C[r] || 1, w = (N - 1) * x, p = m.slice(w, w + x), k = a(N, f, (T) => b(r, T));
+    const f = s.cards || [], y = s.itemsPerPage || 6, m = Math.ceil(f.length / y) || 1, N = w[r] || 1, x = (N - 1) * y, h = f.slice(x, x + y), k = i(N, m, (T) => o(r, T));
     return /* @__PURE__ */ M("div", { className: "space-y-24", children: [
       (() => {
-        const T = s.cardType === "icon" ? ne : le;
+        const T = s.cardType === "icon" ? oe : ae;
         return /* @__PURE__ */ e(
           T,
           {
             columns: s.columns || 3,
-            data: p,
+            data: h,
             linkVariant: "light",
             buttonType: "link"
           }
         );
       })(),
-      k.length > 0 && /* @__PURE__ */ e(oe, { items: k })
+      k.length > 0 && /* @__PURE__ */ e(ce, { items: k })
     ] });
   };
-  return l === "tab-aside" ? /* @__PURE__ */ M("div", { className: `container ${c}`, ...o, children: [
+  return a === "tab-aside" ? /* @__PURE__ */ M("div", { className: `container ${c}`, ...n, children: [
     /* @__PURE__ */ M("div", { className: "hidden md:flex md:flex-row gap-20", children: [
       /* @__PURE__ */ e("div", { className: "flex flex-col min-w-[267px]", children: t.map((s, r) => /* @__PURE__ */ e(
-        ee,
+        te,
         {
           tab: s,
           isActive: d === r,
-          onClick: () => n(r),
+          onClick: () => $(r),
           index: r
         },
         s.key || r
@@ -802,10 +813,10 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
       /* @__PURE__ */ M(
         "button",
         {
-          onClick: () => h(!u),
+          onClick: () => p(!u),
           className: "w-full h-11 flex items-center justify-between px-3 rounded-lg border border-grey-900 bg-white",
           children: [
-            /* @__PURE__ */ e("span", { className: "text-body-default", children: ((y = t[d]) == null ? void 0 : y.text) || "Select tab" }),
+            /* @__PURE__ */ e("span", { className: "text-body-default", children: ((b = t[d]) == null ? void 0 : b.text) || "Select tab" }),
             /* @__PURE__ */ e(
               "svg",
               {
@@ -823,7 +834,7 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
         "button",
         {
           onClick: () => {
-            n(r), h(!1);
+            $(r), p(!1);
           },
           className: `w-full text-left px-12 py-10 border-b border-grey-200 last:border-b-0 transition-colors ${d === r ? "bg-grey-100" : "hover:bg-grey-50 focus-visible:bg-grey-50"}`,
           children: /* @__PURE__ */ e("span", { className: "text-body-default", children: s.text })
@@ -839,13 +850,13 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
         s.key || r
       )) })
     ] })
-  ] }) : /* @__PURE__ */ M("div", { className: `container ${c}`, ...o, children: [
+  ] }) : /* @__PURE__ */ M("div", { className: `container ${c}`, ...n, children: [
     /* @__PURE__ */ e("div", { className: "flex flex-wrap justify-center gap-10", children: t.map((s, r) => /* @__PURE__ */ e(
-      Z,
+      ee,
       {
         tab: s,
         isActive: d === r,
-        onClick: () => n(r),
+        onClick: () => $(r),
         index: r
       },
       s.key || r
@@ -860,74 +871,74 @@ const re = /* @__PURE__ */ S.forwardRef(te), H = ({
     )) })
   ] });
 };
-let B, q, V, F;
-const ce = async () => {
-  if (!F) {
+let V, X, W, P;
+const de = async () => {
+  if (!P) {
     const t = await import("react-pdf");
-    F = t.pdfjs, q = t.Document, V = t.Page, F.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${F.version}/build/pdf.worker.min.mjs`;
+    P = t.pdfjs, X = t.Document, W = t.Page, P.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${P.version}/build/pdf.worker.min.mjs`;
   }
-}, de = async () => {
-  B || (B = (await import("react-pageflip")).default);
-}, ue = K(({ children: t }, l) => /* @__PURE__ */ e("div", { ref: l, className: "w-full h-full overflow-hidden", children: t })), ge = ({ pdfUrl: t, title: l, width: i = 280, height: c = 280, className: o = "" }) => {
-  const [d, v] = A(0), [C, $] = A(null), [u, h] = A(!0), [n, b] = A(c / i), [a, g] = A(0), y = J(null);
-  O(() => {
-    Promise.all([ce(), de()]).then(() => h(!1)).catch(() => {
-      $("Failed to load flipbook");
+}, ue = async () => {
+  V || (V = (await import("react-pageflip")).default);
+}, ge = Q(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), me = ({ pdfUrl: t, title: a, width: l = 280, height: c = 280, className: n = "" }) => {
+  const [d, v] = A(0), [w, C] = A(null), [u, p] = A(!0), [$, o] = A(c / l), [i, g] = A(0), b = K(null);
+  B(() => {
+    Promise.all([de(), ue()]).then(() => p(!1)).catch(() => {
+      C("Failed to load flipbook");
     });
-  }, []), O(() => {
-    const f = y.current;
-    if (!f) return;
-    const N = new ResizeObserver(([w]) => {
-      const p = Math.floor(w.contentRect.width);
-      p > 0 && g(p);
+  }, []), B(() => {
+    const m = b.current;
+    if (!m) return;
+    const N = new ResizeObserver(([x]) => {
+      const h = Math.floor(x.contentRect.width);
+      h > 0 && g(h);
     });
-    return N.observe(f), () => N.disconnect();
+    return N.observe(m), () => N.disconnect();
   }, [u]);
-  const s = a > 0 ? Math.floor(a / 2) : Math.floor(i / 2), r = Math.round(s * n), m = z(async (f) => {
+  const s = i > 0 ? Math.floor(i / 2) : Math.floor(l / 2), r = Math.round(s * $), f = U(async (m) => {
     try {
-      const w = (await f.getPage(1)).getViewport({ scale: 1 });
-      w != null && w.width && (w != null && w.height) && b(w.height / w.width);
+      const x = (await m.getPage(1)).getViewport({ scale: 1 });
+      x != null && x.width && (x != null && x.height) && o(x.height / x.width);
     } catch {
     }
-    v(f.numPages || 0);
-  }, []), x = z((f) => {
-    $((f == null ? void 0 : f.message) || "Failed to load PDF");
+    v(m.numPages || 0);
+  }, []), y = U((m) => {
+    C((m == null ? void 0 : m.message) || "Failed to load PDF");
   }, []);
-  return C ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : u ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: y, className: `w-full ${o}`.trim(), children: /* @__PURE__ */ M(
-    q,
+  return w ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : u ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: b, className: `w-full ${n}`.trim(), children: /* @__PURE__ */ M(
+    X,
     {
       file: t,
-      onLoadSuccess: m,
-      onLoadError: x,
+      onLoadSuccess: f,
+      onLoadError: y,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
         d === 1 && /* @__PURE__ */ e(
           "div",
           {
-            className: `w-full flex justify-center items-center ${o}`.trim(),
+            className: `w-full flex justify-center items-center ${n}`.trim(),
             style: { minHeight: `${r}px` },
-            children: /* @__PURE__ */ e(V, { pageNumber: 1, width: i, renderTextLayer: !1, renderAnnotationLayer: !1 })
+            children: /* @__PURE__ */ e(W, { pageNumber: 1, width: l, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
         d > 1 && /* @__PURE__ */ e(
-          B,
+          V,
           {
             width: s,
             height: r,
             size: "stretch",
             showCover: !0,
             mobileScrollSupport: !1,
-            "aria-label": l || "Flipbook",
-            children: Array.from({ length: d }, (f, N) => /* @__PURE__ */ e(ue, { children: /* @__PURE__ */ e(V, { pageNumber: N + 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, N))
+            "aria-label": a || "Flipbook",
+            children: Array.from({ length: d }, (m, N) => /* @__PURE__ */ e(ge, { children: /* @__PURE__ */ e(W, { pageNumber: N + 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, N))
           },
           `${s}-${r}`
         )
       ]
     }
   ) });
-}, me = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, fe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: ge
+  default: me
 }, Symbol.toStringTag, { value: "Module" }));
 export {
   ye as default
