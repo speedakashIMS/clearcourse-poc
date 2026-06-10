@@ -1,33 +1,67 @@
+const QUOTE_COLOR_CLASSES = {
+  secondary: 'text-secondary',
+  primary: 'text-primary',
+  tertiary: 'text-brand-tertiary',
+};
+
+function OpeningQuote({ className = '' }) {
+  return (
+    <svg
+      className={className}
+      width="25"
+      height="16"
+      viewBox="0 0 25 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M20.8959 16H13.1974L19.7961 0H25L20.8959 16ZM7.6985 16H0L6.59871 0H11.8294L7.6985 16Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function ClosingQuote({ className = '' }) {
+  return (
+    <svg
+      className={className}
+      width="25"
+      height="16"
+      viewBox="0 0 25 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M4.10408 0H11.8026L5.20386 16H0L4.10408 0ZM17.3015 0H25L18.4013 16H13.1706L17.3015 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 export default function GiftproTestimonialMolecule({
   testimonial,
   name,
   role,
   imageUrl,
   logoUrl,
+  quoteColor = 'secondary', // 'secondary' | 'primary' | 'tertiary'
   className = '',
   ...props
 }) {
   // strip surrounding quotes from authored copy so we can render our own quote marks
   const cleanTestimonial = (testimonial || '').replace(/^["“”]+|["“”]+$/g, '');
+  const colorClass = QUOTE_COLOR_CLASSES[quoteColor] || QUOTE_COLOR_CLASSES.secondary;
 
   return (
     <figure className={`flex flex-col items-center text-center ${className}`.trim()} {...props} {...props.attributes || {}}>
-      <blockquote className="relative m-0 max-w-[720px] px-30">
-        <span
-          aria-hidden="true"
-          className="absolute -left-6 -top-10 font-serif italic font-bold leading-none text-secondary text-[48px]"
-        >
-          &ldquo;
-        </span>
+      <blockquote className="relative m-0 max-w-[720px] flex flex-row items-start text-center gap-20">
+        <OpeningQuote className={`w-[30px] h-auto ${colorClass}`} />
         <p className="text-headings-h4 font-bold text-grey-950">
           {cleanTestimonial}
-          <span
-            aria-hidden="true"
-            className="ml-4 inline-block translate-y-12 font-serif italic font-bold leading-none text-secondary text-[48px]"
-          >
-            &rdquo;
-          </span>
         </p>
+        <ClosingQuote className={`w-[30px] h-auto ${colorClass}`} />
       </blockquote>
 
       {(logoUrl || imageUrl || name || role) && (

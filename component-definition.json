@@ -1115,6 +1115,7 @@
                   "variant": "columns",
                   "order": "testimonial-first",
                   "columns": "1",
+                  "quotecolor": "secondary",
                   "alignment": "left",
                   "mediaposition": "top",
                   "withpadding": false

@@ -15,6 +15,7 @@
               "variant": "columns",
               "order": "testimonial-first",
               "columns": "1",
+              "quotecolor": "secondary",
               "alignment": "left",
               "mediaposition": "top",
               "withpadding": false
@@ -156,6 +157,33 @@
                 "var": "variant"
               },
               "columns"
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "quotecolor",
+          "label": "Quote Color",
+          "options": [
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            },
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Tertiary",
+              "value": "tertiary"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "giftpro-media"
             ]
           }
         },

@@ -24,7 +24,8 @@ export default function Testimonial({
   mediaPosition = 'top', // 'top' | 'bottom' | 'with-name'
   id = '',
   className = '',
-  infinite = false
+  infinite = false,
+  quoteColor = 'secondary' // giftpro-media quote mark color: 'secondary' | 'primary' | 'tertiary'
 }) {
   const resolvedVariant = variant || 'columns';
   const isMediaFirst = order === 'media-first';
@@ -178,7 +179,7 @@ export default function Testimonial({
     if (testimonials.length === 1) {
       return (
         <div className={`container ${className}`} id={id}>
-          <GiftproTestimonialMolecule {...mapTestimonialProps(testimonials[0])} />
+          <GiftproTestimonialMolecule {...mapTestimonialProps(testimonials[0])} quoteColor={quoteColor} />
         </div>
       );
     }
@@ -189,7 +190,7 @@ export default function Testimonial({
         <Slider {...settings}>
           {testimonials.map((item, index) => (
             <div key={index}>
-              <GiftproTestimonialMolecule {...mapTestimonialProps(item)} />
+              <GiftproTestimonialMolecule {...mapTestimonialProps(item)} quoteColor={quoteColor} />
             </div>
           ))}
         </Slider>

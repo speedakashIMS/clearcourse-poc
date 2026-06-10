@@ -75,7 +75,8 @@ export default async function decorate(block) {
         withPadding: blockData.withpadding === 'true',
         mediaPosition: blockData.mediaposition || 'left',
         carousel: blockData.iscarousel === 'true' || false,
-        infinite: false
+        infinite: false,
+        quoteColor: blockData.quotecolor || 'secondary'
     };
 
     const root = createRoot(block);

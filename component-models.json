@@ -10823,6 +10823,33 @@
       },
       {
         "component": "select",
+        "name": "quotecolor",
+        "label": "Quote Color",
+        "options": [
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "variant"
+            },
+            "giftpro-media"
+          ]
+        }
+      },
+      {
+        "component": "select",
         "name": "alignment",
         "label": "Alignment",
         "options": [
