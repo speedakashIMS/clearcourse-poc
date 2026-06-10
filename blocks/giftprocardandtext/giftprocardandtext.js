@@ -37,6 +37,7 @@ export default async function decorate(block) {
     id: blockData.id,
     align: blockData.align || 'left',
     infinite: blockData.infinite === 'true' || false,
+    arrowVariant: blockData.arrowType || 'light-outlined',
     giftProCardAndTexts: []
       .concat(blockData.items ?? [])
       .map((item) => ({

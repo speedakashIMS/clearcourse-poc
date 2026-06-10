@@ -12,6 +12,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=JD',
       iconUrl: 'https://placehold.co/129x101?text=JD',
+      author: 'John Doe',
+      authorTitle: 'CEO, Example Company'
     },
     {
       cardTitle: 'Card Title 2',
@@ -20,6 +22,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=JS',
       iconUrl: 'https://placehold.co/129x101?text=JS',
+      author: 'Jane Smith',
+      authorTitle: 'Marketing Director, Sample Inc.'
     },
     {
       cardTitle: 'Card Title 3',
@@ -28,6 +32,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=BJ',
       iconUrl: 'https://placehold.co/129x101?text=BJ',
+      author: 'Bob Johnson',
+      authorTitle: 'CTO, Tech Solutions'
     },
     {
       cardTitle: 'Card Title 4',
@@ -36,6 +42,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=AW',
       iconUrl: 'https://placehold.co/129x101?text=AW',
+      author: 'Alice White',
+      authorTitle: 'Product Manager, Example Corp.'
     },
     {
       cardTitle: 'Card Title 5',
@@ -44,6 +52,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=CB',
       iconUrl: 'https://placehold.co/129x101?text=CB',
+      author: 'Charlie Brown',
+      authorTitle: 'Designer, Creative Studio'
     },
     {
       cardTitle: 'Card Title 6',
@@ -52,6 +62,8 @@ export default function GiftProCardAndTextPage() {
       bodySmall: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       imageUrl: 'https://placehold.co/300x340?text=DP',
       iconUrl: 'https://placehold.co/129x101?text=DP',
+      author: 'David Parker',
+      authorTitle: 'Engineer, Tech Innovations'
     },
   ];
 

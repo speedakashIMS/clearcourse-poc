@@ -6,7 +6,7 @@ export default function GiftProCardAndTextMolecule({
   iconUrl,
   author,
   authorTitle,
-  textColor='text-white',
+  textColor='text-primary',
   className = '',
   ...props
 }) {
@@ -19,10 +19,10 @@ export default function GiftProCardAndTextMolecule({
 
         <div className="flex flex-col gap-testimonial-spacing-y">
         {cardTitle && (
-          <p className="text-headings-h1 font-semibold">{cardTitle}</p>
+          <p className="text-body-88 font-semibold">{cardTitle}</p>
         )}
         {(bodyLarge || bodyDefault || bodySmall) && (
-          <div className="flex flex-col gap-testimonial-spacing-y items-start">
+          <div className="flex flex-col items-start">
             {bodyLarge && <p className="text-body-large">{bodyLarge}</p>}
             {bodyDefault && <p className="text-body-default">{bodyDefault}</p>}
             {bodySmall && <p className="text-body-small">{bodySmall}</p>}

@@ -5137,6 +5137,38 @@
         "value": "text-white"
       },
       {
+        "component": "select",
+        "name": "arrowType",
+        "label": "Arrow Button Style",
+        "options": [
+          {
+            "name": "Light Outlined",
+            "value": "light-outlined"
+          },
+          {
+            "name": "Dark Outlined",
+            "value": "dark-outlined"
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Light (No Outline)",
+            "value": "light-no-outline"
+          },
+          {
+            "name": "Dark (No Outline)",
+            "value": "dark-no-outline"
+          }
+        ],
+        "value": "light-outlined"
+      },
+      {
         "component": "boolean",
         "name": "infinite",
         "label": "Loop Carousel",
