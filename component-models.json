@@ -10747,6 +10747,10 @@
           {
             "name": "Stacked Media",
             "value": "stacked-media"
+          },
+          {
+            "name": "Giftpro",
+            "value": "giftpro-media"
           }
         ]
       },
@@ -10765,11 +10769,14 @@
           }
         ],
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       },
@@ -10877,11 +10884,14 @@
           }
         ],
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       },
@@ -10910,11 +10920,14 @@
               ]
             },
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             }
           ]
@@ -10928,11 +10941,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -10962,11 +10978,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -10996,11 +11015,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11023,11 +11045,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11049,11 +11074,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11075,11 +11103,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11099,11 +11130,14 @@
         "label": "Media Alt Text",
         "valueType": "string",
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       }

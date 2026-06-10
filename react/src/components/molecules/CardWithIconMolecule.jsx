@@ -109,6 +109,7 @@ const CardWithIconMolecule = ({
       lottieUrl={lottieUrl}
       lottieData={lottieData}
       iframeUrl={iframeUrl}
+      objectFit="contain"
       title={mediaAltTitle ?? title}
       className=""
     />

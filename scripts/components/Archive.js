@@ -595,6 +595,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       lottieUrl: d,
       lottieData: v,
       iframeUrl: w,
+      objectFit: "contain",
       title: C ?? u,
       className: ""
     }

@@ -110,6 +110,13 @@ export default function TestimonialPage() {
       imageUrl: 'https://placehold.co/120x120?text=LG',
       rating: 3,
     },
+    {
+      testimonial: '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias."',
+      name: 'Laura Garcia',
+      role: 'Backend Developer',
+      imageUrl: 'https://placehold.co/120x120?text=LG',
+      rating: 3,
+    }
   ];
 
   return (
@@ -309,6 +316,28 @@ export default function TestimonialPage() {
                   title: 'Customer Success Stories'
                 }}
                 order="testimonial-first"
+              />
+            <Spacer height={40} />
+          </section>
+
+          {/* 10. Giftpro testimonials */}
+          <section>
+            <IntroductionHeader
+              title="Giftpro testimonials"
+              description="Centered testimonial with large quote marks, brand logo, author avatar, name and role."
+            />
+            <Spacer height={40} />
+              <Testimonial
+                variant="giftpro-media"
+                testimonials={[
+                  {
+                    testimonial: 'We switched to Giftpro 6 months ago and since then we’ve seen a huge 57% increase in sales compared to last year.',
+                    name: 'Stephanie Metson',
+                    role: 'Marketing Manager',
+                    imageUrl: 'https://placehold.co/120x120?text=SM',
+                    logoUrl: 'https://placehold.co/160x80?text=Vale+Resort',
+                  },
+                ]}
               />
             <Spacer height={40} />
           </section>
