@@ -15,12 +15,14 @@ const Logos = ({
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlideCount, setVisibleSlideCount] = useState(1);
   const carouselRef = useRef(null);
+  // autoplay only makes sense as a carousel, so it implies carousel mode
+  const showCarousel = carousel || autoplay;
   const gridClasses = 'w-full flex flex-wrap justify-center gap-logos-spacing-x';
   const itemClasses = 'flex items-center justify-center basis-[160px] md:basis-[210px] xl:basis-[135px]';
   const carouselItemClasses = 'flex items-center justify-center px-[calc(var(--spacing-logos-spacing-x)/2)]';
 
   useEffect(() => {
-    if (!carousel) return undefined;
+    if (!showCarousel) return undefined;
 
     const syncCarouselState = () => {
       const carouselEl = carouselRef.current;
@@ -40,7 +42,7 @@ const Logos = ({
 
     const frameId = window.requestAnimationFrame(syncCarouselState);
     return () => window.cancelAnimationFrame(frameId);
-  }, [carousel, currentSlide, logos.length]);
+  }, [showCarousel, currentSlide, logos.length]);
 
   const carouselSettings = {
     infinite: true,
@@ -84,16 +86,16 @@ const Logos = ({
 
   return (
     <div
-      ref={carousel ? carouselRef : null}
+      ref={showCarousel ? carouselRef : null}
       className={`py-logos-padding-y ${className}`}
-      {...(carousel ? {
+      {...(showCarousel ? {
         role: 'region',
         'aria-roledescription': 'carousel',
         'aria-label': carouselLabel,
       } : {})}
       {...props}
     >
-      {carousel ? (
+      {showCarousel ? (
         <>
           <div aria-live="polite" aria-atomic="true" className="sr-only">
             Showing logos {currentSlide + 1} to {Math.min(currentSlide + visibleSlideCount, logos.length)} of {logos.length}
