@@ -32,6 +32,13 @@ const CardWithIconMolecule = ({
     tertiary: 'bg-tertiary text-grey-950',
     light: 'bg-light text-grey-950',
   };
+  const textColorByVariant = {
+    default: 'text-white',
+    primary: 'text-white',
+    secondary: 'text-grey-950',
+    tertiary: 'text-grey-950',
+    light: 'text-grey-950',
+  };
   const resolvedBackgroundClass =
     backgroundClassesByVariant[backgroundVariant] || backgroundClassesByVariant.default;
   const titleId = useId();
@@ -125,12 +132,12 @@ const CardWithIconMolecule = ({
       <div className={contentContainerClasses}>
         <div className="space-y-textmedia-text--spacing-y flex-grow-1">
           {title && (
-            <h3 id={titleId} className="text-headings-h3 font-semibold text-white">
+            <h3 id={titleId} className={`text-headings-h3 font-semibold ${textColorByVariant[backgroundVariant]}`}>
               {title}
             </h3>
           )}
           {description && (
-            <p className="text-body-default text-white">{description}</p>
+            <p className={`text-body-default ${textColorByVariant[backgroundVariant]}`}>{description}</p>
           )}
         </div>
         {buttonText && (

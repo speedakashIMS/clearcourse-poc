@@ -1,8 +1,8 @@
 import { jsx as e, jsxs as P } from "react/jsx-runtime";
 import * as F from "react";
-import { lazy as D, Suspense as E, useId as z, useState as L, useRef as _, useEffect as O, useCallback as V, forwardRef as H } from "react";
-import Y from "lottie-react";
-const q = ({
+import { lazy as E, Suspense as z, useId as _, useState as L, useRef as H, useEffect as O, useCallback as B, forwardRef as Y } from "react";
+import q from "lottie-react";
+const G = ({
   text: t = "Button",
   href: s = void 0,
   variant: n = "light",
@@ -13,7 +13,7 @@ const q = ({
   disabled: h = !1,
   onClick: p = void 0,
   attributes: b = {},
-  ...d
+  ...c
 }) => {
   const m = (f) => {
     switch (f) {
@@ -48,24 +48,24 @@ const q = ({
       href: s,
       className: l,
       onClick: p,
-      ...d,
+      ...c,
       ...b ?? {},
       children: t
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
-      type: d.type || "button",
+      type: c.type || "button",
       className: l,
       disabled: h,
       onClick: p,
-      ...d,
+      ...c,
       ...b ?? {},
       children: t
     }
   );
 };
-function G({
+function U({
   title: t,
   titleId: s,
   ...n
@@ -88,7 +88,7 @@ function G({
     d: "M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
   }));
 }
-const U = /* @__PURE__ */ F.forwardRef(G), X = ({
+const X = /* @__PURE__ */ F.forwardRef(U), J = ({
   text: t = "Link",
   href: s = "#",
   variant: n = "dark",
@@ -106,7 +106,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
       default:
         return "link-dark";
     }
-  }, d = u || U, i = `${p} ${b(n)} ${a}`.trim();
+  }, c = u || X, i = `${p} ${b(n)} ${a}`.trim();
   return /* @__PURE__ */ P(
     "a",
     {
@@ -115,11 +115,11 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
       ...h,
       children: [
         /* @__PURE__ */ e("span", { children: t }),
-        /* @__PURE__ */ e(d, { className: "text-link-icon" })
+        /* @__PURE__ */ e(c, { className: "text-link-icon" })
       ]
     }
   );
-}, J = D(() => Promise.resolve().then(() => se)), K = ({
+}, K = E(() => Promise.resolve().then(() => ae)), Q = ({
   media: t = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
   aspect: s = "default",
@@ -131,12 +131,12 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
   lottieUrl: h,
   lottieData: p,
   iframeUrl: b,
-  flipbookUrl: d,
+  flipbookUrl: c,
   title: i,
   className: m = ""
 }) => {
-  var c;
-  const r = typeof window < "u" && window.location.origin.indexOf("author") > -1, l = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, y = `relative w-full h-full ${s === "square" ? "aspect-square" : s === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), g = s === "default" ? `w-full h-full ${m}`.trim() : `absolute inset-0 w-full h-full ${m}`.trim(), w = "w-full h-full", v = s === "default" ? `${g}`.trim() : g, k = n === "contain" ? "object-contain" : "object-cover", j = n === "contain" ? "xMidYMid meet" : "xMidYMid slice", o = `relative w-full ${m}`.trim(), x = "w-full min-h-[280px]";
+  var d;
+  const r = typeof window < "u" && window.location.origin.indexOf("author") > -1, l = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, y = `relative w-full h-full ${s === "square" ? "aspect-square" : s === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), g = s === "default" ? `w-full h-full ${m}`.trim() : `absolute inset-0 w-full h-full ${m}`.trim(), w = "w-full h-full", v = s === "default" ? `${g}`.trim() : g, $ = n === "contain" ? "object-contain" : "object-cover", j = n === "contain" ? "xMidYMid meet" : "xMidYMid slice", o = `relative w-full ${m}`.trim(), x = "w-full min-h-[280px]";
   switch (t) {
     case "image":
       if (u)
@@ -145,7 +145,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
           {
             src: u,
             alt: i || "Media image",
-            className: `${k} ${g}`.trim(),
+            className: `${$} ${g}`.trim(),
             loading: "lazy"
           }
         ) });
@@ -153,15 +153,15 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     case "video":
       if (a) {
         const N = a.includes("youtube.com/watch") || a.includes("youtu.be/");
-        let $ = a;
-        N && ($ = `https://www.youtube.com/embed/${a.includes("youtu.be/") ? a.split("youtu.be/")[1].split("?")[0] : (c = a.split("v=")[1]) == null ? void 0 : c.split("&")[0]}`);
+        let k = a;
+        N && (k = `https://www.youtube.com/embed/${a.includes("youtu.be/") ? a.split("youtu.be/")[1].split("?")[0] : (d = a.split("v=")[1]) == null ? void 0 : d.split("&")[0]}`);
         const T = (() => {
-          if (!N) return $;
+          if (!N) return k;
           try {
-            const C = new URL($);
+            const C = new URL(k);
             return C.searchParams.set("autoplay", "0"), C.searchParams.set("mute", "0"), C.searchParams.set("playsinline", "1"), C.searchParams.set("controls", "1"), C.searchParams.set("rel", "0"), C.toString();
           } catch {
-            return $.includes("?") ? $.includes("autoplay=") ? $ : `${$}&autoplay=0` : `${$}?autoplay=0`;
+            return k.includes("?") ? k.includes("autoplay=") ? k : `${k}&autoplay=0` : `${k}?autoplay=0`;
           }
         })();
         return /* @__PURE__ */ e("div", { className: y, children: N ? /* @__PURE__ */ e(
@@ -172,12 +172,12 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
             allowFullScreen: !0,
-            className: `${g} ${k}`.trim()
+            className: `${g} ${$}`.trim()
           }
         ) : /* @__PURE__ */ e(
           "video",
           {
-            className: `${g} ${k}`.trim(),
+            className: `${g} ${$}`.trim(),
             autoPlay: !1,
             controls: !0,
             playsInline: !0,
@@ -203,7 +203,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
             role: "img",
             "aria-label": i || "Animation",
             children: /* @__PURE__ */ e("div", { className: `${g} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
-              Y,
+              q,
               {
                 animationData: p,
                 loop: !l,
@@ -226,23 +226,23 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
             src: b,
             title: i || "Iframe content",
             frameBorder: "0",
-            className: `${v} ${k}`.trim()
+            className: `${v} ${$}`.trim()
           }
         ) });
       break;
     case "flipbook":
-      if (d)
+      if (c)
         return r ? /* @__PURE__ */ e("div", { className: o, role: "img", "aria-label": i || "Flipbook", children: /* @__PURE__ */ e(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${x}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Flipbook preview" })
           }
-        ) }) : /* @__PURE__ */ e("div", { className: o, children: /* @__PURE__ */ e("div", { className: x, children: /* @__PURE__ */ e(E, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(J, { pdfUrl: d, title: i, className: "w-full" }) }) }) });
+        ) }) : /* @__PURE__ */ e("div", { className: o, children: /* @__PURE__ */ e("div", { className: x, children: /* @__PURE__ */ e(z, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(K, { pdfUrl: c, title: i, className: "w-full" }) }) }) });
       break;
   }
   return /* @__PURE__ */ e("div", { className: y, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${s === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
-}, Q = ({
+}, Z = ({
   stacked: t = !0,
   // true = vertical stack, false = horizontal side-by-side
   iconPosition: s = "left",
@@ -259,7 +259,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
   // Lottie animation JSON data object (alternative to lottieUrl)
   iframeUrl: b,
   // URL for iframe
-  mediaAltTitle: d,
+  mediaAltTitle: c,
   // Accessible text for media (image alt, video/lottie/iframe title); falls back to title if not set
   title: i,
   description: m,
@@ -272,7 +272,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
   buttonOnClick: w,
   backgroundVariant: v = "default",
   // default | primary | secondary | tertiary
-  className: k = "",
+  className: $ = "",
   attributes: j = {}
 }) => {
   const o = {
@@ -281,15 +281,21 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     secondary: "bg-secondary text-grey-950",
     tertiary: "bg-tertiary text-grey-950",
     light: "bg-light text-grey-950"
-  }, x = o[v] || o.default, c = z(), N = `
+  }, x = {
+    default: "text-white",
+    primary: "text-white",
+    secondary: "text-grey-950",
+    tertiary: "text-grey-950",
+    light: "text-grey-950"
+  }, d = o[v] || o.default, N = _(), k = `
     flex
     w-full
-    ${x}
+    ${d}
     ${t ? "flex-col" : "flex-row items-start"}
     rounded-[var(--spacing-cards-br)]
     overflow-hidden
-    ${k}
-  `.trim().replace(/\s+/g, " "), $ = `
+    ${$}
+  `.trim().replace(/\s+/g, " "), T = `
     ${t ? "w-full" : "w-auto"}
     flex
     items-center
@@ -297,7 +303,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     overflow-hidden
     py-cards-icon--padding-y
     px-cards-icon--padding-x
-  `.trim().replace(/\s+/g, " "), T = `
+  `.trim().replace(/\s+/g, " "), C = `
     w-[94px]
     h-[100px]
     bg-grey-200
@@ -307,7 +313,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     aspect-square
     rounded-24
     overflow-hidden
-  `.trim().replace(/\s+/g, " "), C = `
+  `.trim().replace(/\s+/g, " "), D = `
     ${t ? "w-full" : "flex-1"}
     py-textmedia-text--padding-y
     px-textmedia-text--padding-x
@@ -316,8 +322,8 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     flex-grow-1
     gap-textmedia-btn-text--spacing-y
     ${t ? "rounded-b-cards-br" : s === "left" ? "rounded-r-cards-br" : "rounded-l-cards-br"}
-  `.trim().replace(/\s+/g, " "), B = /* @__PURE__ */ e(
-    K,
+  `.trim().replace(/\s+/g, " "), V = /* @__PURE__ */ e(
+    Q,
     {
       media: n,
       aspect: "default",
@@ -326,25 +332,25 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
       lottieUrl: h,
       lottieData: p,
       iframeUrl: b,
-      title: d ?? i,
+      title: c ?? i,
       className: ""
     }
-  ), A = t || s === "left", I = () => /* @__PURE__ */ e("div", { className: $, children: /* @__PURE__ */ e("div", { className: T, children: B }) });
+  ), A = t || s === "left", I = () => /* @__PURE__ */ e("div", { className: T, children: /* @__PURE__ */ e("div", { className: C, children: V }) });
   return /* @__PURE__ */ P(
     "article",
     {
-      className: N,
-      ...i ? { "aria-labelledby": c } : { "aria-label": "Card" },
+      className: k,
+      ...i ? { "aria-labelledby": N } : { "aria-label": "Card" },
       ...j ?? {},
       children: [
         A && I(),
-        /* @__PURE__ */ P("div", { className: C, children: [
+        /* @__PURE__ */ P("div", { className: D, children: [
           /* @__PURE__ */ P("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
-            i && /* @__PURE__ */ e("h3", { id: c, className: "text-headings-h3 font-semibold text-white", children: i }),
-            m && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: m })
+            i && /* @__PURE__ */ e("h3", { id: N, className: `text-headings-h3 font-semibold ${x[v]}`, children: i }),
+            m && /* @__PURE__ */ e("p", { className: `text-body-default ${x[v]}`, children: m })
           ] }),
           r && /* @__PURE__ */ e("div", { className: "mt-auto", children: y === "link" ? /* @__PURE__ */ e(
-            X,
+            J,
             {
               text: r,
               href: l,
@@ -352,7 +358,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
               onClick: w
             }
           ) : /* @__PURE__ */ e(
-            q,
+            G,
             {
               text: r,
               href: l,
@@ -365,7 +371,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
       ]
     }
   );
-}, ne = ({
+}, oe = ({
   columns: t = 3,
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
   data: s = [],
@@ -376,7 +382,7 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
   iconPosition: h = "left",
   itemBackgroundVariant: p = "default",
   className: b = "",
-  ...d
+  ...c
 }) => {
   const i = () => {
     const f = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
@@ -395,8 +401,8 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
         4: "lg:grid-cols-4",
         5: "lg:grid-cols-5",
         6: "lg:grid-cols-6"
-      }, k = w[t] ?? w[3], j = v[t] ?? v[3];
-      return `${f} ${k} ${j}`;
+      }, $ = w[t] ?? w[3], j = v[t] ?? v[3];
+      return `${f} ${$} ${j}`;
     }
     const y = {
       1: "lg:grid-cols-1",
@@ -408,8 +414,8 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     const l = "min-w-0 w-full flex items-stretch";
     return a && s.length === 3 && r === 2 && t === 2 ? `${l} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : l;
   };
-  return /* @__PURE__ */ e("div", { className: b, ...d, children: /* @__PURE__ */ e("div", { className: i(), children: s.map((r, l) => /* @__PURE__ */ e("div", { className: m(l), children: /* @__PURE__ */ e(
-    Q,
+  return /* @__PURE__ */ e("div", { className: b, ...c, children: /* @__PURE__ */ e("div", { className: i(), children: s.map((r, l) => /* @__PURE__ */ e("div", { className: m(l), children: /* @__PURE__ */ e(
+    Z,
     {
       stacked: a,
       iconPosition: h,
@@ -435,43 +441,43 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
   ) }, l)) }) });
 };
 let R, W, S, M;
-const Z = async () => {
+const ee = async () => {
   if (!M) {
     const t = await import("react-pdf");
     M = t.pdfjs, W = t.Document, S = t.Page, M.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${M.version}/build/pdf.worker.min.mjs`;
   }
-}, ee = async () => {
+}, te = async () => {
   R || (R = (await import("react-pageflip")).default);
-}, te = H(({ children: t }, s) => /* @__PURE__ */ e("div", { ref: s, className: "w-full h-full overflow-hidden", children: t })), re = ({ pdfUrl: t, title: s, width: n = 280, height: u = 280, className: a = "" }) => {
-  const [h, p] = L(0), [b, d] = L(null), [i, m] = L(!0), [r, l] = L(u / n), [f, y] = L(0), g = _(null);
+}, re = Y(({ children: t }, s) => /* @__PURE__ */ e("div", { ref: s, className: "w-full h-full overflow-hidden", children: t })), se = ({ pdfUrl: t, title: s, width: n = 280, height: u = 280, className: a = "" }) => {
+  const [h, p] = L(0), [b, c] = L(null), [i, m] = L(!0), [r, l] = L(u / n), [f, y] = L(0), g = H(null);
   O(() => {
-    Promise.all([Z(), ee()]).then(() => m(!1)).catch(() => {
-      d("Failed to load flipbook");
+    Promise.all([ee(), te()]).then(() => m(!1)).catch(() => {
+      c("Failed to load flipbook");
     });
   }, []), O(() => {
     const o = g.current;
     if (!o) return;
-    const x = new ResizeObserver(([c]) => {
-      const N = Math.floor(c.contentRect.width);
+    const x = new ResizeObserver(([d]) => {
+      const N = Math.floor(d.contentRect.width);
       N > 0 && y(N);
     });
     return x.observe(o), () => x.disconnect();
   }, [i]);
-  const w = f > 0 ? Math.floor(f / 2) : Math.floor(n / 2), v = Math.round(w * r), k = V(async (o) => {
+  const w = f > 0 ? Math.floor(f / 2) : Math.floor(n / 2), v = Math.round(w * r), $ = B(async (o) => {
     try {
-      const c = (await o.getPage(1)).getViewport({ scale: 1 });
-      c != null && c.width && (c != null && c.height) && l(c.height / c.width);
+      const d = (await o.getPage(1)).getViewport({ scale: 1 });
+      d != null && d.width && (d != null && d.height) && l(d.height / d.width);
     } catch {
     }
     p(o.numPages || 0);
-  }, []), j = V((o) => {
-    d((o == null ? void 0 : o.message) || "Failed to load PDF");
+  }, []), j = B((o) => {
+    c((o == null ? void 0 : o.message) || "Failed to load PDF");
   }, []);
   return b ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : i ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: g, className: `w-full ${a}`.trim(), children: /* @__PURE__ */ P(
     W,
     {
       file: t,
-      onLoadSuccess: k,
+      onLoadSuccess: $,
       onLoadError: j,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
@@ -492,17 +498,17 @@ const Z = async () => {
             showCover: !0,
             mobileScrollSupport: !1,
             "aria-label": s || "Flipbook",
-            children: Array.from({ length: h }, (o, x) => /* @__PURE__ */ e(te, { children: /* @__PURE__ */ e(S, { pageNumber: x + 1, width: w, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, x))
+            children: Array.from({ length: h }, (o, x) => /* @__PURE__ */ e(re, { children: /* @__PURE__ */ e(S, { pageNumber: x + 1, width: w, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, x))
           },
           `${w}-${v}`
         )
       ]
     }
   ) });
-}, se = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, ae = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: re
+  default: se
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  ne as default
+  oe as default
 };
