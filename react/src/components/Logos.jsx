@@ -49,7 +49,7 @@ const Logos = ({
     arrows: false,
     dots: !autoplay,
     slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     centerPadding: '0',
     autoplay,
     autoplaySpeed: Number(autoplaySpeed) || 3000,

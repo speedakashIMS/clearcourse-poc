@@ -384,5 +384,12 @@
       @apply -mt-section-spacing-y;
     }
   }
+
+  .giftpro-cardandtext-slider {
+      /* Override slick's default display:block on .slick-slider */
+      display: flex !important;
+      align-items: center;
+      gap: 60px;
+    }
   
 }

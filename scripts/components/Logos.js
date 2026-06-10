@@ -2386,7 +2386,7 @@ const It = /* @__PURE__ */ ot(Ht), qt = ({
     arrows: !1,
     dots: !h,
     slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     centerPadding: "0",
     autoplay: h,
     autoplaySpeed: Number(S) || 3e3,
