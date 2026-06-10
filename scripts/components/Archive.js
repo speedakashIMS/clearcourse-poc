@@ -536,7 +536,8 @@ const re = /* @__PURE__ */ S.forwardRef(te), _ = ({
     default: "bg-grey-500 text-grey-950",
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-grey-950",
-    tertiary: "bg-tertiary text-grey-950"
+    tertiary: "bg-tertiary text-grey-950",
+    light: "bg-light text-grey-950"
   }, N = f[r] || f.default, v = z(), b = `
     flex
     w-full

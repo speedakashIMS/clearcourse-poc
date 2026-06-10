@@ -279,7 +279,8 @@ const U = /* @__PURE__ */ F.forwardRef(G), X = ({
     default: "bg-grey-500 text-grey-950",
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-grey-950",
-    tertiary: "bg-tertiary text-grey-950"
+    tertiary: "bg-tertiary text-grey-950",
+    light: "bg-light text-grey-950"
   }, x = o[v] || o.default, c = z(), N = `
     flex
     w-full

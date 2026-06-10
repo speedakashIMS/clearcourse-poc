@@ -25,7 +25,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "build:tailwind-config": "node scripts/build-tailwind-config.js",
     "build:components": "node build-components.mjs",
-    "build:css": "vite build --config vite.css.config.js && mv dist-css/assets/style-*.css dist-css/styles.css"
+    "build:css": "vite build --config vite.css.config.js && shx cp dist-css/assets/style-*.css dist-css/styles.css"
   },
   "keywords": [],
   "author": "",
@@ -50,6 +50,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "postcss": "^8.5.6",
+    "shx": "^0.4.0",
     "tailwindcss": "^4.1.18",
     "vite": "^6.4.1"
   }

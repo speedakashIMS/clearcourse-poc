@@ -30,6 +30,7 @@ const CardWithIconMolecule = ({
     primary: 'bg-primary text-white',
     secondary: 'bg-secondary text-grey-950',
     tertiary: 'bg-tertiary text-grey-950',
+    light: 'bg-light text-grey-950',
   };
   const resolvedBackgroundClass =
     backgroundClassesByVariant[backgroundVariant] || backgroundClassesByVariant.default;

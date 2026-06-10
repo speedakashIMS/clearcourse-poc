@@ -2390,6 +2390,10 @@
           {
             "name": "Tertiary",
             "value": "tertiary"
+          },
+          {
+            "name": "Light",
+            "value": "light"
           }
         ],
         "value": "default"
