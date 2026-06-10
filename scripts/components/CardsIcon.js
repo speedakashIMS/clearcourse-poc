@@ -313,12 +313,10 @@ const J = /* @__PURE__ */ F.forwardRef(X), K = ({
   `.trim().replace(/\s+/g, " "), D = `
     w-[94px]
     h-[100px]
-    bg-grey-200
     flex
     items-center
     justify-center
     aspect-square
-    rounded-24
     overflow-hidden
   `.trim().replace(/\s+/g, " "), V = `
     ${t ? "w-full" : "flex-1"}

@@ -77,12 +77,10 @@ const CardWithIconMolecule = ({
   const mediaContainerClasses = `
     w-[94px]
     h-[100px]
-    bg-grey-200
     flex
     items-center
     justify-center
     aspect-square
-    rounded-24
     overflow-hidden
   `
     .trim()
