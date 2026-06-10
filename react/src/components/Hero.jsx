@@ -142,7 +142,7 @@ export default function Hero({
     const TitleTag = slides.length > 1 && slideIndex > 0 ? 'h2' : 'h1';
     const accentColorClass = ACCENT_COLOR_CLASSES[titleAccentColor] || 'text-white';
     const titleAccentClass = ['font-accent font-normal m-0 text-display-xl leading-display-xl', accentColorClass].filter(Boolean).join(' ');
-    const contentBgClass = mobileOverlay ? (CONTENT_BG_WHEN_OVERLAY[overlayColor] || 'bg-secondary') : 'bg-grey-700';
+    const contentBgClass = mobileOverlay ? (CONTENT_BG_WHEN_OVERLAY[overlayColor] || 'bg-secondary') : 'bg-transparent';
     return (
       <div className={`${contentBgClass} flex flex-col justify-center gap-hero-spacing px-hero-padding-x py-hero-padding-y text-left`}>
         <div className="spacing-y-hero-text--spacing-y">
