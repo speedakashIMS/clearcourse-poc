@@ -44,7 +44,9 @@
               "imageassetkey": "imageasset",
               "imagetitlekey": "imagetitle",
               "alignmentkey": "alignment",
-              "alignmentvalue": "left"
+              "alignmentvalue": "left",
+              "author": "author",
+              "authorTitle": "authorTitle"
             }
           }
         }
@@ -335,6 +337,18 @@
               "value": "center"
             }
           ]
+        },
+        {
+          "component": "text",
+          "name": "author",
+          "label": "Author",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "authorTitle",
+          "label": "Author Title",
+          "valueType": "string"
         }
       ]
     }

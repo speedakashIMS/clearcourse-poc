@@ -4,6 +4,8 @@ export default function GiftProCardAndTextMolecule({
   bodyDefault,
   bodySmall,
   iconUrl,
+  author,
+  authorTitle,
   textColor='text-white',
   className = '',
   ...props
@@ -34,6 +36,12 @@ export default function GiftProCardAndTextMolecule({
               alt={bodyDefault || 'Icon'}
               className="h-100 w-[129px]"
             />
+          </div>
+        )}
+        {(author || authorTitle) && (
+          <div className="flex flex-col items-start gap-4 mt-4">
+            {author && <p className="text-body-default font-medium">{author}</p>}
+            {authorTitle && <p className="text-body-small">{authorTitle}</p>}
           </div>
         )}
       </div>

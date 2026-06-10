@@ -1,5 +1,5 @@
-import { jsx as M, jsxs as ge } from "react/jsx-runtime";
-import ue, { lazy as st, Suspense as ut, useState as pe, useRef as ct, useEffect as He, useCallback as Ae, forwardRef as ft } from "react";
+import { jsx as L, jsxs as ce } from "react/jsx-runtime";
+import ue, { lazy as st, Suspense as ut, useState as ve, useRef as ct, useEffect as He, useCallback as Ae, forwardRef as ft } from "react";
 import dt from "lottie-react";
 var Se = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function pt(i) {
@@ -24,7 +24,7 @@ function vt(i) {
     });
   }), p;
 }
-var Ce = {}, Te = {}, ve = {}, je = {}, We;
+var Ce = {}, Te = {}, he = {}, je = {}, We;
 function ht() {
   return We || (We = 1, (function(i) {
     Object.defineProperty(i, "__esModule", {
@@ -68,8 +68,8 @@ var xe, qe;
 function yt() {
   if (qe) return xe;
   qe = 1;
-  var i = "Expected a function", c = NaN, p = "[object Symbol]", b = /^\s+|\s+$/g, h = /^[-+]0x[0-9a-f]+$/i, g = /^0b[01]+$/i, E = /^0o[0-7]+$/i, L = parseInt, N = typeof Se == "object" && Se && Se.Object === Object && Se, R = typeof self == "object" && self && self.Object === Object && self, D = N || R || Function("return this")(), Y = Object.prototype, z = Y.toString, Z = Math.max, G = Math.min, k = function() {
-    return D.Date.now();
+  var i = "Expected a function", c = NaN, p = "[object Symbol]", b = /^\s+|\s+$/g, h = /^[-+]0x[0-9a-f]+$/i, g = /^0b[01]+$/i, E = /^0o[0-7]+$/i, M = parseInt, D = typeof Se == "object" && Se && Se.Object === Object && Se, R = typeof self == "object" && self && self.Object === Object && self, N = D || R || Function("return this")(), Y = Object.prototype, z = Y.toString, Z = Math.max, G = Math.min, k = function() {
+    return N.Date.now();
   };
   function J(a, l, u) {
     var w, s, r, y, m, f, d = 0, O = !1, P = !1, t = !0;
@@ -141,7 +141,7 @@ function yt() {
       return a === 0 ? a : +a;
     a = a.replace(b, "");
     var u = g.test(a);
-    return u || E.test(a) ? L(a.slice(2), u ? 2 : 8) : h.test(a) ? c : +a;
+    return u || E.test(a) ? M(a.slice(2), u ? 2 : 8) : h.test(a) ? c : +a;
   }
   return xe = J, xe;
 }
@@ -158,8 +158,8 @@ function Pe() {
       var c = {}.hasOwnProperty;
       function p() {
         for (var g = "", E = 0; E < arguments.length; E++) {
-          var L = arguments[E];
-          L && (g = h(g, b(L)));
+          var M = arguments[E];
+          M && (g = h(g, b(M)));
         }
         return g;
       }
@@ -173,8 +173,8 @@ function Pe() {
         if (g.toString !== Object.prototype.toString && !g.toString.toString().includes("[native code]"))
           return g.toString();
         var E = "";
-        for (var L in g)
-          c.call(g, L) && g[L] && (E = h(E, L));
+        for (var M in g)
+          c.call(g, M) && g[M] && (E = h(E, M));
         return E;
       }
       function h(g, E) {
@@ -300,13 +300,13 @@ function be() {
     return o;
   }
   function E(o, e, n) {
-    return (e = L(e)) in o ? Object.defineProperty(o, e, { value: n, enumerable: !0, configurable: !0, writable: !0 }) : o[e] = n, o;
+    return (e = M(e)) in o ? Object.defineProperty(o, e, { value: n, enumerable: !0, configurable: !0, writable: !0 }) : o[e] = n, o;
   }
-  function L(o) {
-    var e = N(o, "string");
+  function M(o) {
+    var e = D(o, "string");
     return b(e) == "symbol" ? e : e + "";
   }
-  function N(o, e) {
+  function D(o, e) {
     if (b(o) != "object" || !o) return o;
     var n = o[Symbol.toPrimitive];
     if (n !== void 0) {
@@ -319,7 +319,7 @@ function be() {
   function R(o, e, n) {
     return Math.max(e, Math.min(o, n));
   }
-  var D = x.safePreventDefault = function(e) {
+  var N = x.safePreventDefault = function(e) {
     var n = ["onTouchStart", "onTouchMove", "onWheel"];
     n.includes(e._reactName) || e.preventDefault();
   }, Y = x.getOnDemandLazySlides = function(e) {
@@ -452,7 +452,7 @@ function be() {
   }, x.keyHandler = function(e, n, v) {
     return e.target.tagName.match("TEXTAREA|INPUT|SELECT") || !n ? "" : e.keyCode === 37 ? v ? "next" : "previous" : e.keyCode === 39 ? v ? "previous" : "next" : "";
   }, x.swipeStart = function(e, n, v) {
-    return e.target.tagName === "IMG" && D(e), !n || !v && e.type.indexOf("mouse") !== -1 ? "" : {
+    return e.target.tagName === "IMG" && N(e), !n || !v && e.type.indexOf("mouse") !== -1 ? "" : {
       dragging: !0,
       touchObject: {
         startX: e.touches ? e.touches[0].pageX : e.clientX,
@@ -464,8 +464,8 @@ function be() {
   }, x.swipeMove = function(e, n) {
     var v = n.scrolling, _ = n.animating, S = n.vertical, T = n.swipeToSlide, C = n.verticalSwiping, j = n.rtl, W = n.currentSlide, q = n.edgeFriction, $ = n.edgeDragged, Q = n.onEdge, V = n.swiped, B = n.swiping, H = n.slideCount, X = n.slidesToScroll, re = n.infinite, I = n.touchObject, te = n.swipeEvent, ne = n.listHeight, ie = n.listWidth;
     if (!v) {
-      if (_) return D(e);
-      S && T && C && D(e);
+      if (_) return N(e);
+      S && T && C && N(e);
       var oe, le = {}, me = r(n);
       I.curX = e.touches ? e.touches[0].pageX : e.clientX, I.curY = e.touches ? e.touches[0].pageY : e.clientY, I.swipeLength = Math.round(Math.sqrt(Math.pow(I.curX - I.startX, 2)));
       var Ie = Math.round(Math.sqrt(Math.pow(I.curY - I.startY, 2)));
@@ -474,21 +474,21 @@ function be() {
           scrolling: !0
         };
       C && (I.swipeLength = Ie);
-      var fe = (j ? -1 : 1) * (I.curX > I.startX ? 1 : -1);
-      C && (fe = I.curY > I.startY ? 1 : -1);
-      var lt = Math.ceil(H / X), ae = ee(n.touchObject, C), de = I.swipeLength;
-      return re || (W === 0 && (ae === "right" || ae === "down") || W + 1 >= lt && (ae === "left" || ae === "up") || !K(n) && (ae === "left" || ae === "up")) && (de = I.swipeLength * q, $ === !1 && Q && (Q(ae), le.edgeDragged = !0)), !V && te && (te(ae), le.swiped = !0), S ? oe = me + de * (ne / ie) * fe : j ? oe = me - de * fe : oe = me + de * fe, C && (oe = me + de * fe), le = g(g({}, le), {}, {
+      var de = (j ? -1 : 1) * (I.curX > I.startX ? 1 : -1);
+      C && (de = I.curY > I.startY ? 1 : -1);
+      var lt = Math.ceil(H / X), ae = ee(n.touchObject, C), pe = I.swipeLength;
+      return re || (W === 0 && (ae === "right" || ae === "down") || W + 1 >= lt && (ae === "left" || ae === "up") || !K(n) && (ae === "left" || ae === "up")) && (pe = I.swipeLength * q, $ === !1 && Q && (Q(ae), le.edgeDragged = !0)), !V && te && (te(ae), le.swiped = !0), S ? oe = me + pe * (ne / ie) * de : j ? oe = me - pe * de : oe = me + pe * de, C && (oe = me + pe * de), le = g(g({}, le), {}, {
         touchObject: I,
         swipeLeft: oe,
         trackStyle: w(g(g({}, n), {}, {
           left: oe
         }))
-      }), Math.abs(I.curX - I.startX) < Math.abs(I.curY - I.startY) * 0.8 || I.swipeLength > 10 && (le.swiping = !0, D(e)), le;
+      }), Math.abs(I.curX - I.startX) < Math.abs(I.curY - I.startY) * 0.8 || I.swipeLength > 10 && (le.swiping = !0, N(e)), le;
     }
   }, x.swipeEnd = function(e, n) {
     var v = n.dragging, _ = n.swipe, S = n.touchObject, T = n.listWidth, C = n.touchThreshold, j = n.verticalSwiping, W = n.listHeight, q = n.swipeToSlide, $ = n.scrolling, Q = n.onSwipe, V = n.targetSlide, B = n.currentSlide, H = n.infinite;
     if (!v)
-      return _ && D(e), {};
+      return _ && N(e), {};
     var X = j ? W / C : T / C, re = ee(S, j), I = {
       dragging: !1,
       edgeDragged: !1,
@@ -501,7 +501,7 @@ function be() {
     if ($ || !S.swipeLength)
       return I;
     if (S.swipeLength > X) {
-      D(e), Q && Q(re);
+      N(e), Q && Q(re);
       var te, ne, ie = H ? B : V;
       switch (re) {
         case "left":
@@ -644,12 +644,12 @@ function be() {
   }
   return x;
 }
-var he = {}, Ge;
+var ye = {}, Ge;
 function gt() {
-  if (Ge) return he;
-  Ge = 1, Object.defineProperty(he, "__esModule", {
+  if (Ge) return ye;
+  Ge = 1, Object.defineProperty(ye, "__esModule", {
     value: !0
-  }), he.Track = void 0;
+  }), ye.Track = void 0;
   var i = b(ue), c = b(Pe()), p = be();
   function b(s) {
     return s && s.__esModule ? s : { default: s };
@@ -675,23 +675,23 @@ function gt() {
   function E(s, r) {
     if (!(s instanceof r)) throw new TypeError("Cannot call a class as a function");
   }
-  function L(s, r) {
+  function M(s, r) {
     for (var y = 0; y < r.length; y++) {
       var m = r[y];
       m.enumerable = m.enumerable || !1, m.configurable = !0, "value" in m && (m.writable = !0), Object.defineProperty(s, K(m.key), m);
     }
   }
-  function N(s, r, y) {
-    return r && L(s.prototype, r), Object.defineProperty(s, "prototype", { writable: !1 }), s;
+  function D(s, r, y) {
+    return r && M(s.prototype, r), Object.defineProperty(s, "prototype", { writable: !1 }), s;
   }
   function R(s, r) {
     if (typeof r != "function" && r !== null) throw new TypeError("Super expression must either be null or a function");
-    s.prototype = Object.create(r && r.prototype, { constructor: { value: s, writable: !0, configurable: !0 } }), Object.defineProperty(s, "prototype", { writable: !1 }), r && D(s, r);
+    s.prototype = Object.create(r && r.prototype, { constructor: { value: s, writable: !0, configurable: !0 } }), Object.defineProperty(s, "prototype", { writable: !1 }), r && N(s, r);
   }
-  function D(s, r) {
-    return D = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(y, m) {
+  function N(s, r) {
+    return N = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(y, m) {
       return y.__proto__ = m, y;
-    }, D(s, r);
+    }, N(s, r);
   }
   function Y(s) {
     var r = G();
@@ -842,7 +842,7 @@ function gt() {
       }
     }), r.rtl ? f.concat(m, d).reverse() : f.concat(m, d);
   };
-  return he.Track = /* @__PURE__ */ (function(s) {
+  return ye.Track = /* @__PURE__ */ (function(s) {
     R(y, s);
     var r = Y(y);
     function y() {
@@ -854,7 +854,7 @@ function gt() {
         m.node = P;
       }), m;
     }
-    return N(y, [{
+    return D(y, [{
       key: "render",
       value: function() {
         var f = w(this.props), d = this.props, O = d.onMouseEnter, P = d.onMouseOver, t = d.onMouseLeave, U = {
@@ -869,11 +869,11 @@ function gt() {
         }, U), f);
       }
     }]), y;
-  })(i.default.PureComponent), he;
+  })(i.default.PureComponent), ye;
 }
-var ye = {}, Ue;
+var ge = {}, Ue;
 function bt() {
-  if (Ue) return ye;
+  if (Ue) return ge;
   Ue = 1;
   function i(a) {
     "@babel/helpers - typeof";
@@ -883,9 +883,9 @@ function bt() {
       return l && typeof Symbol == "function" && l.constructor === Symbol && l !== Symbol.prototype ? "symbol" : typeof l;
     }, i(a);
   }
-  Object.defineProperty(ye, "__esModule", {
+  Object.defineProperty(ge, "__esModule", {
     value: !0
-  }), ye.Dots = void 0;
+  }), ge.Dots = void 0;
   var c = h(ue), p = h(Pe()), b = be();
   function h(a) {
     return a && a.__esModule ? a : { default: a };
@@ -904,17 +904,17 @@ function bt() {
     for (var l = 1; l < arguments.length; l++) {
       var u = arguments[l] != null ? arguments[l] : {};
       l % 2 ? g(Object(u), !0).forEach(function(w) {
-        L(a, w, u[w]);
+        M(a, w, u[w]);
       }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(a, Object.getOwnPropertyDescriptors(u)) : g(Object(u)).forEach(function(w) {
         Object.defineProperty(a, w, Object.getOwnPropertyDescriptor(u, w));
       });
     }
     return a;
   }
-  function L(a, l, u) {
+  function M(a, l, u) {
     return (l = Y(l)) in a ? Object.defineProperty(a, l, { value: u, enumerable: !0, configurable: !0, writable: !0 }) : a[l] = u, a;
   }
-  function N(a, l) {
+  function D(a, l) {
     if (!(a instanceof l)) throw new TypeError("Cannot call a class as a function");
   }
   function R(a, l) {
@@ -923,7 +923,7 @@ function bt() {
       w.enumerable = w.enumerable || !1, w.configurable = !0, "value" in w && (w.writable = !0), Object.defineProperty(a, Y(w.key), w);
     }
   }
-  function D(a, l, u) {
+  function N(a, l, u) {
     return l && R(a.prototype, l), Object.defineProperty(a, "prototype", { writable: !1 }), a;
   }
   function Y(a) {
@@ -988,13 +988,13 @@ function bt() {
     var u;
     return l.infinite ? u = Math.ceil(l.slideCount / l.slidesToScroll) : u = Math.ceil((l.slideCount - l.slidesToShow) / l.slidesToScroll) + 1, u;
   };
-  return ye.Dots = /* @__PURE__ */ (function(a) {
+  return ge.Dots = /* @__PURE__ */ (function(a) {
     Z(u, a);
     var l = k(u);
     function u() {
-      return N(this, u), l.apply(this, arguments);
+      return D(this, u), l.apply(this, arguments);
     }
-    return D(u, [{
+    return N(u, [{
       key: "clickHandler",
       value: function(s, r) {
         r.preventDefault(), this.props.clickHandler(s);
@@ -1032,7 +1032,7 @@ function bt() {
         }, o));
       }
     }]), u;
-  })(c.default.PureComponent), ye;
+  })(c.default.PureComponent), ge;
 }
 var se = {}, Ye;
 function mt() {
@@ -1073,31 +1073,31 @@ function mt() {
     }
     return u;
   }
-  function L(a) {
+  function M(a) {
     for (var l = 1; l < arguments.length; l++) {
       var u = arguments[l] != null ? arguments[l] : {};
       l % 2 ? E(Object(u), !0).forEach(function(w) {
-        N(a, w, u[w]);
+        D(a, w, u[w]);
       }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(a, Object.getOwnPropertyDescriptors(u)) : E(Object(u)).forEach(function(w) {
         Object.defineProperty(a, w, Object.getOwnPropertyDescriptor(u, w));
       });
     }
     return a;
   }
-  function N(a, l, u) {
+  function D(a, l, u) {
     return (l = z(l)) in a ? Object.defineProperty(a, l, { value: u, enumerable: !0, configurable: !0, writable: !0 }) : a[l] = u, a;
   }
   function R(a, l) {
     if (!(a instanceof l)) throw new TypeError("Cannot call a class as a function");
   }
-  function D(a, l) {
+  function N(a, l) {
     for (var u = 0; u < l.length; u++) {
       var w = l[u];
       w.enumerable = w.enumerable || !1, w.configurable = !0, "value" in w && (w.writable = !0), Object.defineProperty(a, z(w.key), w);
     }
   }
   function Y(a, l, u) {
-    return l && D(a.prototype, l), Object.defineProperty(a, "prototype", { writable: !1 }), a;
+    return l && N(a.prototype, l), Object.defineProperty(a, "prototype", { writable: !1 }), a;
   }
   function z(a) {
     var l = Z(a, "string");
@@ -1190,7 +1190,7 @@ function mt() {
           currentSlide: this.props.currentSlide,
           slideCount: this.props.slideCount
         }, f;
-        return this.props.prevArrow ? f = /* @__PURE__ */ c.default.cloneElement(this.props.prevArrow, L(L({}, y), m)) : f = /* @__PURE__ */ c.default.createElement("button", g({
+        return this.props.prevArrow ? f = /* @__PURE__ */ c.default.cloneElement(this.props.prevArrow, M(M({}, y), m)) : f = /* @__PURE__ */ c.default.createElement("button", g({
           key: "0",
           type: "button"
         }, y), " ", "Previous"), f;
@@ -1229,7 +1229,7 @@ function mt() {
           currentSlide: this.props.currentSlide,
           slideCount: this.props.slideCount
         }, f;
-        return this.props.nextArrow ? f = /* @__PURE__ */ c.default.cloneElement(this.props.nextArrow, L(L({}, y), m)) : f = /* @__PURE__ */ c.default.createElement("button", g({
+        return this.props.nextArrow ? f = /* @__PURE__ */ c.default.cloneElement(this.props.nextArrow, M(M({}, y), m)) : f = /* @__PURE__ */ c.default.createElement("button", g({
           key: "1",
           type: "button"
         }, y), " ", "Next"), f;
@@ -1295,22 +1295,22 @@ var tt = (function() {
 function Ot(i, c) {
   var p = !1, b = !1, h = 0;
   function g() {
-    p && (p = !1, i()), b && L();
+    p && (p = !1, i()), b && M();
   }
   function E() {
     St(g);
   }
-  function L() {
-    var N = Date.now();
+  function M() {
+    var D = Date.now();
     if (p) {
-      if (N - h < wt)
+      if (D - h < wt)
         return;
       b = !0;
     } else
       p = !0, b = !1, setTimeout(E, c);
-    h = N;
+    h = D;
   }
-  return L;
+  return M;
 }
 var _t = 20, Pt = ["top", "right", "bottom", "left", "width", "height", "size", "weight"], kt = typeof MutationObserver < "u", Ct = (
   /** @class */
@@ -1362,7 +1362,7 @@ var _t = 20, Pt = ["top", "right", "bottom", "left", "width", "height", "size", 
     });
   }
   return i;
-}), ce = (function(i) {
+}), fe = (function(i) {
   var c = i && i.ownerDocument && i.ownerDocument.defaultView;
   return c || Oe;
 }), nt = ke(0, 0, 0, 0);
@@ -1392,22 +1392,22 @@ function xt(i) {
   var c = i.clientWidth, p = i.clientHeight;
   if (!c && !p)
     return nt;
-  var b = ce(i).getComputedStyle(i), h = Tt(b), g = h.left + h.right, E = h.top + h.bottom, L = _e(b.width), N = _e(b.height);
-  if (b.boxSizing === "border-box" && (Math.round(L + g) !== c && (L -= Xe(b, "left", "right") + g), Math.round(N + E) !== p && (N -= Xe(b, "top", "bottom") + E)), !Lt(i)) {
-    var R = Math.round(L + g) - c, D = Math.round(N + E) - p;
-    Math.abs(R) !== 1 && (L -= R), Math.abs(D) !== 1 && (N -= D);
+  var b = fe(i).getComputedStyle(i), h = Tt(b), g = h.left + h.right, E = h.top + h.bottom, M = _e(b.width), D = _e(b.height);
+  if (b.boxSizing === "border-box" && (Math.round(M + g) !== c && (M -= Xe(b, "left", "right") + g), Math.round(D + E) !== p && (D -= Xe(b, "top", "bottom") + E)), !Lt(i)) {
+    var R = Math.round(M + g) - c, N = Math.round(D + E) - p;
+    Math.abs(R) !== 1 && (M -= R), Math.abs(N) !== 1 && (D -= N);
   }
-  return ke(h.left, h.top, L, N);
+  return ke(h.left, h.top, M, D);
 }
 var Et = /* @__PURE__ */ (function() {
   return typeof SVGGraphicsElement < "u" ? function(i) {
-    return i instanceof ce(i).SVGGraphicsElement;
+    return i instanceof fe(i).SVGGraphicsElement;
   } : function(i) {
-    return i instanceof ce(i).SVGElement && typeof i.getBBox == "function";
+    return i instanceof fe(i).SVGElement && typeof i.getBBox == "function";
   };
 })();
 function Lt(i) {
-  return i === ce(i).document.documentElement;
+  return i === fe(i).document.documentElement;
 }
 function Mt(i) {
   return ze ? Et(i) ? jt(i) : xt(i) : nt;
@@ -1463,7 +1463,7 @@ var zt = (
       if (!arguments.length)
         throw new TypeError("1 argument required, but only 0 present.");
       if (!(typeof Element > "u" || !(Element instanceof Object))) {
-        if (!(c instanceof ce(c).Element))
+        if (!(c instanceof fe(c).Element))
           throw new TypeError('parameter 1 is not of type "Element".');
         var p = this.observations_;
         p.has(c) || (p.set(c, new zt(c)), this.controller_.addObserver(this), this.controller_.refresh());
@@ -1472,7 +1472,7 @@ var zt = (
       if (!arguments.length)
         throw new TypeError("1 argument required, but only 0 present.");
       if (!(typeof Element > "u" || !(Element instanceof Object))) {
-        if (!(c instanceof ce(c).Element))
+        if (!(c instanceof fe(c).Element))
           throw new TypeError('parameter 1 is not of type "Element".');
         var p = this.observations_;
         p.has(c) && (p.delete(c), p.size || this.controller_.removeObserver(this));
@@ -1530,21 +1530,21 @@ const Ht = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }, Symbol.toStringTag, { value: "Module" })), At = /* @__PURE__ */ vt(Ht);
 var Ke;
 function Wt() {
-  if (Ke) return ve;
-  Ke = 1, Object.defineProperty(ve, "__esModule", {
+  if (Ke) return he;
+  Ke = 1, Object.defineProperty(he, "__esModule", {
     value: !0
-  }), ve.InnerSlider = void 0;
-  var i = R(ue), c = R(ht()), p = R(yt()), b = R(Pe()), h = be(), g = gt(), E = bt(), L = mt(), N = R(At);
+  }), he.InnerSlider = void 0;
+  var i = R(ue), c = R(ht()), p = R(yt()), b = R(Pe()), h = be(), g = gt(), E = bt(), M = mt(), D = R(At);
   function R(f) {
     return f && f.__esModule ? f : { default: f };
   }
-  function D(f) {
+  function N(f) {
     "@babel/helpers - typeof";
-    return D = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(d) {
+    return N = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(d) {
       return typeof d;
     } : function(d) {
       return d && typeof Symbol == "function" && d.constructor === Symbol && d !== Symbol.prototype ? "symbol" : typeof d;
-    }, D(f);
+    }, N(f);
   }
   function Y() {
     return Y = Object.assign ? Object.assign.bind() : function(f) {
@@ -1630,7 +1630,7 @@ function Wt() {
     };
   }
   function l(f, d) {
-    if (d && (D(d) == "object" || typeof d == "function")) return d;
+    if (d && (N(d) == "object" || typeof d == "function")) return d;
     if (d !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
     return u(f);
   }
@@ -1658,19 +1658,19 @@ function Wt() {
   }
   function y(f) {
     var d = m(f, "string");
-    return D(d) == "symbol" ? d : d + "";
+    return N(d) == "symbol" ? d : d + "";
   }
   function m(f, d) {
-    if (D(f) != "object" || !f) return f;
+    if (N(f) != "object" || !f) return f;
     var O = f[Symbol.toPrimitive];
     if (O !== void 0) {
       var P = O.call(f, d);
-      if (D(P) != "object") return P;
+      if (N(P) != "object") return P;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
     return (d === "string" ? String : Number)(f);
   }
-  return ve.InnerSlider = /* @__PURE__ */ (function(f) {
+  return he.InnerSlider = /* @__PURE__ */ (function(f) {
     K(O, f);
     var d = a(O);
     function O(P) {
@@ -1699,7 +1699,7 @@ function Wt() {
         }, t.props);
         t.updateState(e, !0, function() {
           t.adaptHeight(), t.props.autoplay && t.autoPlay("update");
-        }), t.props.lazyLoad === "progressive" && (t.lazyLoadTimer = setInterval(t.progressiveLazyLoad, 1e3)), t.ro = new N.default(function() {
+        }), t.props.lazyLoad === "progressive" && (t.lazyLoadTimer = setInterval(t.progressiveLazyLoad, 1e3)), t.ro = new D.default(function() {
           t.state.animating ? (t.onWindowResized(!1), t.callbackTimers.push(setTimeout(function() {
             return t.onWindowResized();
           }, t.props.speed))) : t.onWindowResized();
@@ -1996,7 +1996,7 @@ function Wt() {
           }), _ = /* @__PURE__ */ i.default.createElement(E.Dots, S);
         }
         var C, j, W = (0, h.extractObject)(e, ["infinite", "centerMode", "currentSlide", "slideCount", "slidesToShow", "prevArrow", "nextArrow"]);
-        W.clickHandler = t.changeSlide, t.props.arrows && (C = /* @__PURE__ */ i.default.createElement(L.PrevArrow, W), j = /* @__PURE__ */ i.default.createElement(L.NextArrow, W));
+        W.clickHandler = t.changeSlide, t.props.arrows && (C = /* @__PURE__ */ i.default.createElement(M.PrevArrow, W), j = /* @__PURE__ */ i.default.createElement(M.NextArrow, W));
         var q = null;
         t.props.vertical && (q = {
           height: t.state.listHeight
@@ -2052,7 +2052,7 @@ function Wt() {
             U = !0;
             break;
           }
-          if (!(D(t[n]) === "object" || typeof t[n] == "function" || isNaN(t[n])) && t[n] !== this.props[n]) {
+          if (!(N(t[n]) === "object" || typeof t[n] == "function" || isNaN(t[n])) && t[n] !== this.props[n]) {
             U = !0;
             break;
           }
@@ -2060,7 +2060,7 @@ function Wt() {
         return U || i.default.Children.count(this.props.children) !== i.default.Children.count(t.children);
       }
     }]), O;
-  })(i.default.Component), ve;
+  })(i.default.Component), he;
 }
 var Me, Ve;
 function qt() {
@@ -2082,14 +2082,14 @@ function Ft() {
     return g.test(h);
   }, p = function(h) {
     var g = "", E = Object.keys(h);
-    return E.forEach(function(L, N) {
-      var R = h[L];
-      L = i(L), c(L) && typeof R == "number" && (R = R + "px"), R === !0 ? g += L : R === !1 ? g += "not " + L : g += "(" + L + ": " + R + ")", N < E.length - 1 && (g += " and ");
+    return E.forEach(function(M, D) {
+      var R = h[M];
+      M = i(M), c(M) && typeof R == "number" && (R = R + "px"), R === !0 ? g += M : R === !1 ? g += "not " + M : g += "(" + M + ": " + R + ")", D < E.length - 1 && (g += " and ");
     }), g;
   }, b = function(h) {
     var g = "";
-    return typeof h == "string" ? h : h instanceof Array ? (h.forEach(function(E, L) {
-      g += p(E), L < h.length - 1 && (g += ", ");
+    return typeof h == "string" ? h : h instanceof Array ? (h.forEach(function(E, M) {
+      g += p(E), M < h.length - 1 && (g += ", ");
     }), g) : p(h);
   };
   return Re = b, Re;
@@ -2101,17 +2101,17 @@ function $t() {
     Object.defineProperty(i, "__esModule", {
       value: !0
     }), i.default = void 0;
-    var p = L(ue), b = Wt(), h = L(Ft()), g = L(et()), E = be();
-    function L(s) {
+    var p = M(ue), b = Wt(), h = M(Ft()), g = M(et()), E = be();
+    function M(s) {
       return s && s.__esModule ? s : { default: s };
     }
-    function N(s) {
+    function D(s) {
       "@babel/helpers - typeof";
-      return N = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(r) {
+      return D = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(r) {
         return typeof r;
       } : function(r) {
         return r && typeof Symbol == "function" && r.constructor === Symbol && r !== Symbol.prototype ? "symbol" : typeof r;
-      }, N(s);
+      }, D(s);
     }
     function R() {
       return R = Object.assign ? Object.assign.bind() : function(s) {
@@ -2123,7 +2123,7 @@ function $t() {
         return s;
       }, R.apply(null, arguments);
     }
-    function D(s, r) {
+    function N(s, r) {
       var y = Object.keys(s);
       if (Object.getOwnPropertySymbols) {
         var m = Object.getOwnPropertySymbols(s);
@@ -2136,9 +2136,9 @@ function $t() {
     function Y(s) {
       for (var r = 1; r < arguments.length; r++) {
         var y = arguments[r] != null ? arguments[r] : {};
-        r % 2 ? D(Object(y), !0).forEach(function(m) {
+        r % 2 ? N(Object(y), !0).forEach(function(m) {
           l(s, m, y[m]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(s, Object.getOwnPropertyDescriptors(y)) : D(Object(y)).forEach(function(m) {
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(s, Object.getOwnPropertyDescriptors(y)) : N(Object(y)).forEach(function(m) {
           Object.defineProperty(s, m, Object.getOwnPropertyDescriptor(y, m));
         });
       }
@@ -2177,7 +2177,7 @@ function $t() {
       };
     }
     function ee(s, r) {
-      if (r && (N(r) == "object" || typeof r == "function")) return r;
+      if (r && (D(r) == "object" || typeof r == "function")) return r;
       if (r !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
       return K(s);
     }
@@ -2205,14 +2205,14 @@ function $t() {
     }
     function u(s) {
       var r = w(s, "string");
-      return N(r) == "symbol" ? r : r + "";
+      return D(r) == "symbol" ? r : r + "";
     }
     function w(s, r) {
-      if (N(s) != "object" || !s) return s;
+      if (D(s) != "object" || !s) return s;
       var y = s[Symbol.toPrimitive];
       if (y !== void 0) {
         var m = y.call(s, r);
-        if (N(m) != "object") return m;
+        if (D(m) != "object") return m;
         throw new TypeError("@@toPrimitive must return a primitive value.");
       }
       return (r === "string" ? String : Number)(s);
@@ -2365,28 +2365,34 @@ function Yt({
   bodyDefault: p,
   bodySmall: b,
   iconUrl: h,
-  textColor: g = "text-white",
-  className: E = "",
-  ...L
+  author: g,
+  authorTitle: E,
+  textColor: M = "text-white",
+  className: D = "",
+  ...R
 }) {
-  const N = `w-full  ${E}`.trim();
-  return /* @__PURE__ */ M("div", { className: N, ...L, ...L.attributes || {}, children: /* @__PURE__ */ ge("div", { className: `flex flex-col gap-textmedia-btn-text--spacing-y text-left items-start ${g}`, children: [
-    /* @__PURE__ */ ge("div", { className: "flex flex-col gap-testimonial-spacing-y", children: [
-      i && /* @__PURE__ */ M("p", { className: "text-headings-h1 font-semibold", children: i }),
-      (c || p || b) && /* @__PURE__ */ ge("div", { className: "flex flex-col gap-testimonial-spacing-y items-start", children: [
-        c && /* @__PURE__ */ M("p", { className: "text-body-large", children: c }),
-        p && /* @__PURE__ */ M("p", { className: "text-body-default", children: p }),
-        b && /* @__PURE__ */ M("p", { className: "text-body-small", children: b })
+  const N = `w-full  ${D}`.trim();
+  return /* @__PURE__ */ L("div", { className: N, ...R, ...R.attributes || {}, children: /* @__PURE__ */ ce("div", { className: `flex flex-col gap-textmedia-btn-text--spacing-y text-left items-start ${M}`, children: [
+    /* @__PURE__ */ ce("div", { className: "flex flex-col gap-testimonial-spacing-y", children: [
+      i && /* @__PURE__ */ L("p", { className: "text-headings-h1 font-semibold", children: i }),
+      (c || p || b) && /* @__PURE__ */ ce("div", { className: "flex flex-col gap-testimonial-spacing-y items-start", children: [
+        c && /* @__PURE__ */ L("p", { className: "text-body-large", children: c }),
+        p && /* @__PURE__ */ L("p", { className: "text-body-default", children: p }),
+        b && /* @__PURE__ */ L("p", { className: "text-body-small", children: b })
       ] })
     ] }),
-    h && /* @__PURE__ */ M("div", { className: "flex items-center justify-start", children: /* @__PURE__ */ M(
+    h && /* @__PURE__ */ L("div", { className: "flex items-center justify-start", children: /* @__PURE__ */ L(
       "img",
       {
         src: h,
         alt: p || "Icon",
         className: "h-100 w-[129px]"
       }
-    ) })
+    ) }),
+    (g || E) && /* @__PURE__ */ ce("div", { className: "flex flex-col items-start gap-4 mt-4", children: [
+      g && /* @__PURE__ */ L("p", { className: "text-body-default font-medium", children: g }),
+      E && /* @__PURE__ */ L("p", { className: "text-body-small", children: E })
+    ] })
   ] }) });
 }
 const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
@@ -2400,17 +2406,17 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
   videoUrl: h,
   lottieUrl: g,
   lottieData: E,
-  iframeUrl: L,
-  flipbookUrl: N,
+  iframeUrl: M,
+  flipbookUrl: D,
   title: R,
-  className: D = ""
+  className: N = ""
 }) => {
   var l;
-  const Y = typeof window < "u" && window.location.origin.indexOf("author") > -1, z = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, G = `relative w-full h-full ${c === "square" ? "aspect-square" : c === "rectangle" ? "aspect-[4/3]" : i === "video" ? "aspect-video" : ""}`.trim(), k = c === "default" ? `w-full h-full ${D}`.trim() : `absolute inset-0 w-full h-full ${D}`.trim(), J = "w-full h-full", A = c === "default" ? `${k}`.trim() : k, ee = p === "contain" ? "object-contain" : "object-cover", K = p === "contain" ? "xMidYMid meet" : "xMidYMid slice", F = `relative w-full ${D}`.trim(), a = "w-full min-h-[280px]";
+  const Y = typeof window < "u" && window.location.origin.indexOf("author") > -1, z = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, G = `relative w-full h-full ${c === "square" ? "aspect-square" : c === "rectangle" ? "aspect-[4/3]" : i === "video" ? "aspect-video" : ""}`.trim(), k = c === "default" ? `w-full h-full ${N}`.trim() : `absolute inset-0 w-full h-full ${N}`.trim(), J = "w-full h-full", A = c === "default" ? `${k}`.trim() : k, ee = p === "contain" ? "object-contain" : "object-cover", K = p === "contain" ? "xMidYMid meet" : "xMidYMid slice", F = `relative w-full ${N}`.trim(), a = "w-full min-h-[280px]";
   switch (i) {
     case "image":
       if (b)
-        return /* @__PURE__ */ M("div", { className: G, children: /* @__PURE__ */ M(
+        return /* @__PURE__ */ L("div", { className: G, children: /* @__PURE__ */ L(
           "img",
           {
             src: b,
@@ -2434,7 +2440,7 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
             return w.includes("?") ? w.includes("autoplay=") ? w : `${w}&autoplay=0` : `${w}?autoplay=0`;
           }
         })();
-        return /* @__PURE__ */ M("div", { className: G, children: u ? /* @__PURE__ */ M(
+        return /* @__PURE__ */ L("div", { className: G, children: u ? /* @__PURE__ */ L(
           "iframe",
           {
             src: s,
@@ -2444,7 +2450,7 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
             allowFullScreen: !0,
             className: `${k} ${ee}`.trim()
           }
-        ) : /* @__PURE__ */ M(
+        ) : /* @__PURE__ */ L(
           "video",
           {
             className: `${k} ${ee}`.trim(),
@@ -2453,26 +2459,26 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
             playsInline: !0,
             preload: "metadata",
             title: R || "Video player",
-            children: /* @__PURE__ */ M("source", { src: h })
+            children: /* @__PURE__ */ L("source", { src: h })
           }
         ) });
       }
       break;
     case "lottie":
       if (E)
-        return Y ? /* @__PURE__ */ M("div", { className: G, role: "img", "aria-label": R || "Animation", children: /* @__PURE__ */ M(
+        return Y ? /* @__PURE__ */ L("div", { className: G, role: "img", "aria-label": R || "Animation", children: /* @__PURE__ */ L(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${k}`.trim(),
-            children: /* @__PURE__ */ M("div", { className: "text-center", children: "Lottie preview" })
+            children: /* @__PURE__ */ L("div", { className: "text-center", children: "Lottie preview" })
           }
-        ) }) : /* @__PURE__ */ M(
+        ) }) : /* @__PURE__ */ L(
           "div",
           {
             className: G,
             role: "img",
             "aria-label": R || "Animation",
-            children: /* @__PURE__ */ M("div", { className: `${k} overflow-hidden`.trim(), children: /* @__PURE__ */ M(
+            children: /* @__PURE__ */ L("div", { className: `${k} overflow-hidden`.trim(), children: /* @__PURE__ */ L(
               dt,
               {
                 animationData: E,
@@ -2486,14 +2492,14 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
           }
         );
       if (g)
-        return /* @__PURE__ */ M("div", { className: G, children: /* @__PURE__ */ M("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
+        return /* @__PURE__ */ L("div", { className: G, children: /* @__PURE__ */ L("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
-      if (L)
-        return /* @__PURE__ */ M("div", { className: G, children: /* @__PURE__ */ M(
+      if (M)
+        return /* @__PURE__ */ L("div", { className: G, children: /* @__PURE__ */ L(
           "iframe",
           {
-            src: L,
+            src: M,
             title: R || "Iframe content",
             frameBorder: "0",
             className: `${A} ${ee}`.trim()
@@ -2501,17 +2507,17 @@ const Xt = st(() => Promise.resolve().then(() => er)), Kt = ({
         ) });
       break;
     case "flipbook":
-      if (N)
-        return Y ? /* @__PURE__ */ M("div", { className: F, role: "img", "aria-label": R || "Flipbook", children: /* @__PURE__ */ M(
+      if (D)
+        return Y ? /* @__PURE__ */ L("div", { className: F, role: "img", "aria-label": R || "Flipbook", children: /* @__PURE__ */ L(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${a}`.trim(),
-            children: /* @__PURE__ */ M("div", { className: "text-center", children: "Flipbook preview" })
+            children: /* @__PURE__ */ L("div", { className: "text-center", children: "Flipbook preview" })
           }
-        ) }) : /* @__PURE__ */ M("div", { className: F, children: /* @__PURE__ */ M("div", { className: a, children: /* @__PURE__ */ M(ut, { fallback: /* @__PURE__ */ M("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ M(Xt, { pdfUrl: N, title: R, className: "w-full" }) }) }) });
+        ) }) : /* @__PURE__ */ L("div", { className: F, children: /* @__PURE__ */ L("div", { className: a, children: /* @__PURE__ */ L(ut, { fallback: /* @__PURE__ */ L("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ L(Xt, { pdfUrl: D, title: R, className: "w-full" }) }) }) });
       break;
   }
-  return /* @__PURE__ */ M("div", { className: G, children: /* @__PURE__ */ M("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${c === "default" ? "" : "absolute inset-0"}`.trim(), children: i ? `${i.charAt(0).toUpperCase() + i.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
+  return /* @__PURE__ */ L("div", { className: G, children: /* @__PURE__ */ L("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${c === "default" ? "" : "absolute inset-0"}`.trim(), children: i ? `${i.charAt(0).toUpperCase() + i.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
 };
 function ir({
   giftProCardAndTexts: i = [],
@@ -2522,7 +2528,7 @@ function ir({
   infinite: g = !1,
   textColor: E = "text-white"
 }) {
-  const L = (z) => ({
+  const M = (z) => ({
     cardTitle: z.cardTitle,
     bodyLarge: z.bodyLarge,
     bodyDefault: z.bodyDefault,
@@ -2531,8 +2537,10 @@ function ir({
     iconUrl: z.iconUrl,
     align: z.align ?? p,
     textColor: z.textColor ?? E,
+    author: z.author,
+    authorTitle: z.authorTitle,
     attributes: z.attributes || {}
-  }), N = (z, Z = "") => z ? /* @__PURE__ */ M("div", { className: "relative w-full h-full min-h-0 size-full overflow-hidden", children: /* @__PURE__ */ M("div", { className: "absolute inset-0 w-full h-full", children: /* @__PURE__ */ M(
+  }), D = (z, Z = "") => z ? /* @__PURE__ */ L("div", { className: "relative w-full h-full min-h-0 size-full overflow-hidden", children: /* @__PURE__ */ L("div", { className: "absolute inset-0 w-full h-full", children: /* @__PURE__ */ L(
     Kt,
     {
       media: z.type || "image",
@@ -2547,11 +2555,11 @@ function ir({
     }
   ) }) }) : null, R = (z, Z) => {
     const G = z.media || c, k = !!G, J = k ? "flex-1 min-w-0" : "w-full";
-    return /* @__PURE__ */ ge("div", { className: "flex flex-col md:flex-row items-stretch text-gray-950", children: [
-      k && /* @__PURE__ */ M("div", { className: "sm:p-48 md:px-0", children: /* @__PURE__ */ M("div", { className: "w-full md:w-[300px] h-[340px] shrink-0 overflow-hidden rounded-[var(--spacing-cards-image--br)]", children: N(G, z.bodyDefault || "") }) }),
-      /* @__PURE__ */ M("div", { className: `flex items-center justify-center pt-40 sm:p-48 ${J}`, children: /* @__PURE__ */ M(Yt, { ...L(z) }) })
+    return /* @__PURE__ */ ce("div", { className: "flex flex-col md:flex-row items-stretch text-gray-950", children: [
+      k && /* @__PURE__ */ L("div", { className: "sm:p-48 md:px-0", children: /* @__PURE__ */ L("div", { className: "w-full md:w-[300px] h-[340px] shrink-0 overflow-hidden rounded-[var(--spacing-cards-image--br)]", children: D(G, z.bodyDefault || "") }) }),
+      /* @__PURE__ */ L("div", { className: `flex items-center justify-center pt-40 sm:p-48 ${J}`, children: /* @__PURE__ */ L(Yt, { ...M(z) }) })
     ] }, Z);
-  }, D = {
+  }, N = {
     className: "w-full testimonial-slider",
     dots: !0,
     infinite: g,
@@ -2563,7 +2571,7 @@ function ir({
   };
   if (!i || i.length === 0) return null;
   const Y = i.length > 1;
-  return /* @__PURE__ */ M("div", { className: `container ${h}`, id: b, children: Y ? /* @__PURE__ */ M(Ut, { ...D, children: i.map((z, Z) => /* @__PURE__ */ M("div", { children: R(z, Z) }, Z)) }) : R(i[0], 0) });
+  return /* @__PURE__ */ L("div", { className: `container ${h}`, id: b, children: Y ? /* @__PURE__ */ L(Ut, { ...N, children: i.map((z, Z) => /* @__PURE__ */ L("div", { children: R(z, Z) }, Z)) }) : R(i[0], 0) });
 }
 let Ne, at, De, we;
 const Vt = async () => {
@@ -2573,11 +2581,11 @@ const Vt = async () => {
   }
 }, Jt = async () => {
   Ne || (Ne = (await import("react-pageflip")).default);
-}, Qt = ft(({ children: i }, c) => /* @__PURE__ */ M("div", { ref: c, className: "w-full h-full overflow-hidden", children: i })), Zt = ({ pdfUrl: i, title: c, width: p = 280, height: b = 280, className: h = "" }) => {
-  const [g, E] = pe(0), [L, N] = pe(null), [R, D] = pe(!0), [Y, z] = pe(b / p), [Z, G] = pe(0), k = ct(null);
+}, Qt = ft(({ children: i }, c) => /* @__PURE__ */ L("div", { ref: c, className: "w-full h-full overflow-hidden", children: i })), Zt = ({ pdfUrl: i, title: c, width: p = 280, height: b = 280, className: h = "" }) => {
+  const [g, E] = ve(0), [M, D] = ve(null), [R, N] = ve(!0), [Y, z] = ve(b / p), [Z, G] = ve(0), k = ct(null);
   He(() => {
-    Promise.all([Vt(), Jt()]).then(() => D(!1)).catch(() => {
-      N("Failed to load flipbook");
+    Promise.all([Vt(), Jt()]).then(() => N(!1)).catch(() => {
+      D("Failed to load flipbook");
     });
   }, []), He(() => {
     const F = k.current;
@@ -2596,25 +2604,25 @@ const Vt = async () => {
     }
     E(F.numPages || 0);
   }, []), K = Ae((F) => {
-    N((F == null ? void 0 : F.message) || "Failed to load PDF");
+    D((F == null ? void 0 : F.message) || "Failed to load PDF");
   }, []);
-  return L ? /* @__PURE__ */ M("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : R ? /* @__PURE__ */ M("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ M("div", { ref: k, className: `w-full ${h}`.trim(), children: /* @__PURE__ */ ge(
+  return M ? /* @__PURE__ */ L("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : R ? /* @__PURE__ */ L("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ L("div", { ref: k, className: `w-full ${h}`.trim(), children: /* @__PURE__ */ ce(
     at,
     {
       file: i,
       onLoadSuccess: ee,
       onLoadError: K,
-      loading: /* @__PURE__ */ M("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
+      loading: /* @__PURE__ */ L("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
-        g === 1 && /* @__PURE__ */ M(
+        g === 1 && /* @__PURE__ */ L(
           "div",
           {
             className: `w-full flex justify-center items-center ${h}`.trim(),
             style: { minHeight: `${A}px` },
-            children: /* @__PURE__ */ M(De, { pageNumber: 1, width: p, renderTextLayer: !1, renderAnnotationLayer: !1 })
+            children: /* @__PURE__ */ L(De, { pageNumber: 1, width: p, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
-        g > 1 && /* @__PURE__ */ M(
+        g > 1 && /* @__PURE__ */ L(
           Ne,
           {
             width: J,
@@ -2623,7 +2631,7 @@ const Vt = async () => {
             showCover: !0,
             mobileScrollSupport: !1,
             "aria-label": c || "Flipbook",
-            children: Array.from({ length: g }, (F, a) => /* @__PURE__ */ M(Qt, { children: /* @__PURE__ */ M(De, { pageNumber: a + 1, width: J, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, a))
+            children: Array.from({ length: g }, (F, a) => /* @__PURE__ */ L(Qt, { children: /* @__PURE__ */ L(De, { pageNumber: a + 1, width: J, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, a))
           },
           `${J}-${A}`
         )

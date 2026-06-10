@@ -5361,6 +5361,18 @@
             "value": "center"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "author",
+        "label": "Author",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authorTitle",
+        "label": "Author Title",
+        "valueType": "string"
       }
     ]
   },

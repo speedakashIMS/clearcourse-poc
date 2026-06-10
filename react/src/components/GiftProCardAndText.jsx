@@ -22,6 +22,8 @@ export default function GiftProCardAndText({
     iconUrl: item.iconUrl,
     align: item.align ?? align,
     textColor: item.textColor ?? textColor,
+    author: item.author,
+    authorTitle: item.authorTitle,
     attributes: item.attributes || {},
   });
 
