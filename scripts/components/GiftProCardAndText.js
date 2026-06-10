@@ -2592,7 +2592,7 @@ function lr({
       /* @__PURE__ */ E("div", { className: `flex items-center justify-center pt-40 sm:p-48 ${G}`, children: /* @__PURE__ */ E(Kt, { ...N(b) }) })
     ] }, $);
   }, ee = {
-    className: `w-full giftpro-cardandtext-slider items-center gap-60 ${z ? "flex" : ""}`,
+    className: "giftpro-cardandtext-slider",
     onInit: () => R(!0),
     dots: !1,
     infinite: g,
