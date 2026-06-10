@@ -2490,7 +2490,7 @@ function nt({
   ...L
 }) {
   const M = (o || "").replace(/^["“”]+|["“”]+$/g, "");
-  return /* @__PURE__ */ ae("figure", { className: `flex flex-col items-center text-center ${m}`.trim(), ...L, children: [
+  return /* @__PURE__ */ ae("figure", { className: `flex flex-col items-center text-center ${m}`.trim(), ...L, ...L.attributes || {}, children: [
     /* @__PURE__ */ ae("blockquote", { className: "relative m-0 max-w-[720px] px-30", children: [
       /* @__PURE__ */ x(
         "span",

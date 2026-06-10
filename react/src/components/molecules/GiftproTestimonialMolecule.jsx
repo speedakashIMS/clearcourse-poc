@@ -11,7 +11,7 @@ export default function GiftproTestimonialMolecule({
   const cleanTestimonial = (testimonial || '').replace(/^["“”]+|["“”]+$/g, '');
 
   return (
-    <figure className={`flex flex-col items-center text-center ${className}`.trim()} {...props}>
+    <figure className={`flex flex-col items-center text-center ${className}`.trim()} {...props} {...props.attributes || {}}>
       <blockquote className="relative m-0 max-w-[720px] px-30">
         <span
           aria-hidden="true"
