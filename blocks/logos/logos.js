@@ -15,6 +15,16 @@ export default function decorate(block) {
       defaultValue: false,
       expectedType: 'boolean',
     },
+    autoplay: {
+      key: 'autoplay',
+      defaultValue: false,
+      expectedType: 'boolean',
+    },
+    autoplaySpeed: {
+      key: 'autoplaySpeed',
+      defaultValue: 3000,
+      expectedType: 'number',
+    },
   };
 
   const existingBlockPropCnt = getBlockExistingPropsCnt(
@@ -62,7 +72,7 @@ export default function decorate(block) {
     ...getBlockData(block, blockSchema),
     logos,
   };
-  
+
   const root = createRoot(block);
   root.render(React.createElement(Logos, data));
 }

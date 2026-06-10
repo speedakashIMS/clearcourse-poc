@@ -6523,6 +6523,20 @@
         "label": "Carousel Mode On?",
         "valueType": "boolean",
         "value": false
+      },
+      {
+        "component": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay?",
+        "valueType": "boolean",
+        "value": false
+      },
+      {
+        "component": "number",
+        "name": "autoplaySpeed",
+        "label": "Autoplay Speed (ms)?",
+        "valueType": "number",
+        "value": 3000
       }
     ]
   },

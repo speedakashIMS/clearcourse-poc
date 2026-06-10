@@ -96,7 +96,22 @@ export default function LogosPage() {
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
             <Spacer height={40} />
-            <div className="container"> <Logos logos={logos} carousel={true} /></div> 
+            <div className="container"> <Logos logos={logos} carousel={true} /></div>
+            <Spacer height={40} />
+            <Buttons
+              buttons={[
+                { text: "Button", variant: "dark", href: "#" },
+              ]}
+            />
+          </section>
+
+          <section>
+            <IntroductionHeader
+              title="Auto-playing Carousel"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Spacer height={40} />
+            <div className="container"> <Logos logos={logos} carousel={true} autoplay={true} /></div>
             <Spacer height={40} />
             <Buttons
               buttons={[

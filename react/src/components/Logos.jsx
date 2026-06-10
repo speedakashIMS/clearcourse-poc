@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 const Logos = ({
   logos = [], // Array of { src, alt, href }
   carousel = false,
+  autoplay = false,
+  autoplaySpeed = 3000,
   carouselLabel = 'Logo carousel',
   className = '',
   ...props
@@ -43,10 +45,14 @@ const Logos = ({
   const carouselSettings = {
     infinite: true,
     arrows: false,
-    dots: true,
+    dots: !autoplay,
     slidesToShow: 6,
     slidesToScroll: 3,
     centerPadding: '0',
+    autoplay,
+    autoplaySpeed,
+    pauseOnHover: true,
+    pauseOnFocus: true,
     afterChange: setCurrentSlide,
     customPaging: (i) => (
       <button
