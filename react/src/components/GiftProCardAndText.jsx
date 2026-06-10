@@ -10,7 +10,8 @@ export default function GiftProCardAndText({
   align = 'left',
   id = '',
   className = '',
-  infinite = false
+  infinite = false,
+  textColor = 'text-white'
 }) {
   const mapGiftProCardAndTextProps = (item) => ({
     cardTitle: item.cardTitle,
@@ -20,6 +21,7 @@ export default function GiftProCardAndText({
     imageUrl: item.imageUrl,
     iconUrl: item.iconUrl,
     align: item.align ?? align,
+    textColor: item.textColor ?? textColor,
     attributes: item.attributes || {},
   });
 

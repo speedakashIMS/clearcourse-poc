@@ -53,6 +53,7 @@ export default async function decorate(block) {
         media: buildItemMedia(item),
         align: item.alignment || blockData.align || 'left',
         attributes: item._meta || {},
+        textColor: item.textcolor || blockData.textColor || 'text-white',
       })),
   };
 

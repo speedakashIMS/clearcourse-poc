@@ -4,6 +4,7 @@ export default function GiftProCardAndTextMolecule({
   bodyDefault,
   bodySmall,
   iconUrl,
+  textColor='text-white',
   className = '',
   ...props
 }) {
@@ -11,20 +12,12 @@ export default function GiftProCardAndTextMolecule({
 
   return (
     <div className={containerClasses} {...props} {...props.attributes || {}}>
-      <div className="flex flex-col gap-textmedia-btn-text--spacing-y text-left items-start">
-        {iconUrl && (
-          <div className="flex items-center justify-start">
-            <img
-              src={iconUrl}
-              alt={bodyDefault || 'Icon'}
-              className="h-100 w-[129px]"
-            />
-          </div>
-        )}
+      <div className={`flex flex-col gap-textmedia-btn-text--spacing-y text-left items-start ${textColor}`}>
+        
 
         <div className="flex flex-col gap-testimonial-spacing-y">
         {cardTitle && (
-          <p className="text-headings-h3 font-semibold">{cardTitle}</p>
+          <p className="text-headings-h1 font-semibold">{cardTitle}</p>
         )}
         {(bodyLarge || bodyDefault || bodySmall) && (
           <div className="flex flex-col gap-testimonial-spacing-y items-start">
@@ -34,6 +27,15 @@ export default function GiftProCardAndTextMolecule({
           </div>
         )}
         </div>
+        {iconUrl && (
+          <div className="flex items-center justify-start">
+            <img
+              src={iconUrl}
+              alt={bodyDefault || 'Icon'}
+              className="h-100 w-[129px]"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -5109,6 +5109,34 @@
         "value": "left"
       },
       {
+        "component": "select",
+        "name": "textColor",
+        "label": "Text Color",
+        "options": [
+          {
+            "name": "White",
+            "value": "text-white"
+          },
+          {
+            "name": "Black",
+            "value": "text-black"
+          },
+          {
+            "name": "Primary",
+            "value": "text-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "text-secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "text-tertiary"
+          }
+        ],
+        "value": "text-white"
+      },
+      {
         "component": "boolean",
         "name": "infinite",
         "label": "Loop Carousel",
