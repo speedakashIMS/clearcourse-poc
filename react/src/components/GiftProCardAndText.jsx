@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Slider from 'react-slick';
 import GiftProCardAndTextMolecule from './molecules/GiftProCardAndTextMolecule';
 import Media from './molecules/Media';
@@ -56,6 +57,8 @@ export default function GiftProCardAndText({
   textColor = 'text-primary',
   arrowVariant = 'dark-outlined'
 }) {
+  const [ready, setReady] = useState(false);
+
   const mapGiftProCardAndTextProps = (item) => ({
     cardTitle: item.cardTitle,
     bodyLarge: item.bodyLarge,
@@ -115,7 +118,8 @@ export default function GiftProCardAndText({
   };
 
   const carouselSettings = {
-    className: "w-full giftpro-cardandtext-slider !flex items-center gap-60",
+    className: `w-full giftpro-cardandtext-slider items-center gap-60 ${ready ? 'flex' : ''}`,
+    onInit: () => setReady(true),
     dots: false,
     infinite,
     speed: 400,

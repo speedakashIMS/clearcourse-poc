@@ -34,7 +34,7 @@ export default function GiftProCardAndTextMolecule({
             <img
               src={iconUrl}
               alt={bodyDefault || 'Icon'}
-              className="h-100 w-[129px]"
+              className="w-[129px]"
             />
           </div>
         )}

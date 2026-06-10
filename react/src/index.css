@@ -1389,5 +1389,8 @@
 /* Section horizontal padding (desktop only, authorable via Section model) */
 @media (min-width:900px){.section.section-pd-50{padding-inline:50px}.section.section-pd-100{padding-inline:100px}.section.section-pd-200{padding-inline:200px}.section.section-pd-300{padding-inline:300px}.section.section-pd-500{padding-inline:500px}}
 
+/* GiftPro Card and Text carousel — flex layout applied once slick is initialised (higher specificity than slick's .slick-slider{display:block}) */
+.giftpro-cardandtext-slider.flex{display:flex}
+
 
 
