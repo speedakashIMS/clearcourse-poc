@@ -2527,7 +2527,8 @@ function ir({
     bodySmall: R.bodySmall,
     imageUrl: R.imageUrl,
     iconUrl: R.iconUrl,
-    align: R.align ?? p
+    align: R.align ?? p,
+    attributes: R.attributes || {}
   }), L = (R, J = "") => R ? /* @__PURE__ */ M("div", { className: "relative w-full h-full min-h-0 size-full overflow-hidden", children: /* @__PURE__ */ M("div", { className: "absolute inset-0 w-full h-full", children: /* @__PURE__ */ M(
     Kt,
     {

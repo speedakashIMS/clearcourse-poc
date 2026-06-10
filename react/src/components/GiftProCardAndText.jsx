@@ -20,6 +20,7 @@ export default function GiftProCardAndText({
     imageUrl: item.imageUrl,
     iconUrl: item.iconUrl,
     align: item.align ?? align,
+    attributes: item.attributes || {},
   });
 
   const renderMedia = (mediaData, titleFallback = '') => {
