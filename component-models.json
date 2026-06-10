@@ -5396,13 +5396,13 @@
       },
       {
         "component": "text",
-        "name": "author",
+        "name": "authorKey",
         "label": "Author",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "authorTitle",
+        "name": "authorTitleKey",
         "label": "Author Title",
         "valueType": "string"
       }

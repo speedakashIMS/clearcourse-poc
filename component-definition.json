@@ -580,8 +580,8 @@
                   "imagetitlekey": "imagetitle",
                   "alignmentkey": "alignment",
                   "alignmentvalue": "left",
-                  "author": "author",
-                  "authorTitle": "authorTitle"
+                  "authorKey": "author",
+                  "authorTitleKey": "authorTitle"
                 }
               }
             }
