@@ -339,7 +339,7 @@ function ie({
       withPadding: c,
       logoUrl: y
     } = l, N = l.name ?? l.author, v = l.role ?? l.authorTitle, $ = l.imageUrl ?? l.authorImage, d = !!n, h = `min-h-auto! ${d ? "xl:w-1/2" : "w-full"}`, u = i === "testimonial-first";
-    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ M("div", { className: "flex flex-col items-stretch xl:flex-row shadow-testimonial-with-stats gap-0 xl:gap-4", children: [
+    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ M("div", { className: "flex flex-col items-stretch xl:flex-row rounded shadow-testimonial-with-stats gap-0 xl:gap-4", children: [
       !u && m(l, h),
       d && /* @__PURE__ */ e("div", { className: `flex items-center bg-transparent p-stats-padding-lg text-grey-950 justify-center ${h}`, children: /* @__PURE__ */ e(
         Q,
