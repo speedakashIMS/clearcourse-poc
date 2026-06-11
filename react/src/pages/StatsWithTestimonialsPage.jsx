@@ -22,6 +22,7 @@ export default function StatsWithTestimonialsPage() {
       mediaPosition: 'with-name',
       withPadding: true,
       statBackgroundColor: 'secondary',
+      textAlign: 'left'
     }
   ];
   const statsWithLogoAndImage = [
