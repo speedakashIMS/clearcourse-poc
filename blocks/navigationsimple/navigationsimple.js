@@ -35,7 +35,7 @@ export default async function decorate(block) {
   let navItems = [];
   Array.from(block.children).forEach((row) => {
     const cells = Array.from(row.children);
-    if (cells[0]?.textContent.trim().toLowerCase() === 'submenuitems') {
+    if (cells[0]?.textContent.trim().toLowerCase() === 'navigationitems') {
       const ul = cells[1]?.querySelector('ul');
       if (ul) navItems = parseNavLinks(ul);
     }
