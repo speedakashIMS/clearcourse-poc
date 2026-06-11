@@ -111,13 +111,65 @@
           "valueType": "string",
           "value": "dark"
         },
-        {
-          "component": "richtext",
-          "name": "links",
-          "label": "Links",
-          "valueType": "string"
-        },
-        {
+       {
+        "component": "container",
+        "name": "navigationitems",
+        "label": "Navigation Items",
+        "multi": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "label",
+            "label": "Menu Label",
+            "valueType": "string"
+          },
+          {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Menu Link",
+            "valueType": "string"
+          },
+          {
+            "component": "container",
+            "name": "submenuitems",
+            "label": "Sub Menu Items",
+            "multi": true,
+            "fields": [
+              {
+                "component": "reference",
+                "name": "icon",
+                "label": "Icon",
+                "valueType": "string"
+              },
+              {
+                "component": "text",
+                "name": "title",
+                "label": "Title",
+                "valueType": "string"
+              },
+              {
+                "component": "text",
+                "name": "subtitle",
+                "label": "Subtitle",
+                "valueType": "string"
+              },
+              {
+                "component": "textarea",
+                "name": "description",
+                "label": "Description",
+                "valueType": "string"
+              },
+              {
+                "component": "aem-content",
+                "name": "link",
+                "label": "Link",
+                "valueType": "string"
+              }
+            ]
+          }
+        ]
+      },
+              {
           "component": "container",
           "name": "buttons",
           "label": "Buttons",

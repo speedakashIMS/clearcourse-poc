@@ -113,12 +113,12 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
       default:
         return "btn-md";
     }
-  }, o = `btn ${w(s)} ${f(i)} ${a}`.trim();
+  }, l = `btn ${w(s)} ${f(i)} ${a}`.trim();
   return t ? /* @__PURE__ */ e(
     "a",
     {
       href: t,
-      className: o,
+      className: l,
       onClick: u,
       ...d,
       ...g ?? {},
@@ -128,7 +128,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     "button",
     {
       type: d.type || "button",
-      className: o,
+      className: l,
       disabled: c,
       onClick: u,
       ...d,
@@ -171,7 +171,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     hamburger: "border-secondary text-secondary hover:text-secondary-600 hover:border-secondary-400 focus-visible:text-secondary-600 focus-visible:border-secondary-400"
   },
   gradient: {
-    bar: "bg-gradient-hero",
+    bar: "bg-gradient-header",
     link: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80",
     dropdown: "bg-secondary-800 lg:bg-white lg:shadow-lg",
     dropdownLink: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600",
@@ -193,7 +193,7 @@ function A({
   className: g = "",
   ...d
 }) {
-  const [b, w] = j(!1), f = M(), o = y[c] ?? y.dark, h = `w-full ${o.bar} relative`.trim(), k = [
+  const [b, w] = j(!1), f = M(), l = y[c] ?? y.dark, h = `w-full ${l.bar} relative`.trim(), k = [
     "flex items-center gap-nav-spacing-x pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r",
     r ? "w-full max-w-[1600px] mx-auto" : "container"
   ].filter(Boolean).join(" "), N = a ? "ml-auto" : "flex-1 justify-center";
@@ -208,29 +208,29 @@ function A({
     ),
     /* @__PURE__ */ m("div", { className: k, children: [
       /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e("a", { href: "/", className: "inline-flex shrink-0 items-center", "aria-label": "Home", children: typeof t == "string" ? /* @__PURE__ */ e("img", { src: t, alt: "", className: "h-auto min-h-32 max-h-32" }) : t }) }),
-      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${b ? `!block absolute top-[100%] left-0 w-full ${o.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((l, $) => {
+      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${b ? `!block absolute top-[100%] left-0 w-full ${l.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((o, $) => {
         var x, v;
         return /* @__PURE__ */ m("div", { className: "relative group", children: [
           /* @__PURE__ */ m(
             "a",
             {
-              href: l.href || "#",
-              className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
+              href: o.href || "#",
+              className: `inline-flex items-center gap-10 text-body-default transition-colors ${l.link}`.trim(),
               children: [
-                l.label,
-                ((x = l.submenu) == null ? void 0 : x.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
+                o.label,
+                ((x = o.submenu) == null ? void 0 : x.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
               ]
             }
           ),
-          ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${o.dropdown}`, children: l.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
+          ((v = o.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${l.dropdown}`, children: o.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
             "a",
             {
               href: p.href || "#",
-              className: `block p-10 text-body-default transition-colors ${o.dropdownLink}`,
+              className: `block p-10 text-body-default transition-colors ${l.dropdownLink}`,
               children: p.label
             }
-          ) }, `${l.label}-submenu-${C}`)) }) })
-        ] }, `${l.label}-${$}`);
+          ) }, `${o.label}-submenu-${C}`)) }) })
+        ] }, `${o.label}-${$}`);
       }) }),
       /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
         F,
@@ -243,10 +243,10 @@ function A({
         "button",
         {
           type: "button",
-          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${o.hamburger}`,
+          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${l.hamburger}`,
           "aria-label": "Open menu",
           "aria-expanded": b,
-          onClick: () => w((l) => !l),
+          onClick: () => w((o) => !o),
           children: b ? /* @__PURE__ */ e(O, { className: "w-20 h-20" }) : /* @__PURE__ */ e(L, { className: "w-20 h-20" })
         }
       )

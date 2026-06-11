@@ -1459,6 +1459,11 @@
 .bg-gradient-hero{background-image:radial-gradient(at 20% 50%,hsl(189deg 100% 56% / 14%) 0,transparent 50%),radial-gradient(at 20% 0,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 100% 50%,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 100% 0,hsl(189deg 100% 56% / 14%) 0,transparent 50%)}
 .bg-gradient-2{background-image:radial-gradient(at 80% 50%,hsl(189deg 100% 56% / 14%) 0,transparent 50%),radial-gradient(at 80% 0,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 0 50%,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 0 0,hsl(189deg 100% 56% / 14%) 0,transparent 50%)}
 
-
+.bg-gradient-header{background: linear-gradient(
+  90deg,
+  #3a366b 0%,
+  #2d2c59 50%,
+  #10142a 100%
+);}
 .shadow-testimonial-with-stats{box-shadow:0 4px 6px hsl(0deg 0% 0% / 0.1),0 1px 3px hsl(0deg 0% 0% / 0.06)}
 
