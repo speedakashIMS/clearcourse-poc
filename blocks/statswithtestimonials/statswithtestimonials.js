@@ -63,7 +63,7 @@ export default async function decorate(block) {
         .map(
             item => ({
                 testimonial: item.testimonial,
-                statBackgroundColor: item.backgroundcolor || 'transparent',
+                statBackgroundColor: blockData.backgroundcolor || 'transparent',
                 fontSize: item.fontsize || "sm",
                 name: item.name,
                 role: item.role,
