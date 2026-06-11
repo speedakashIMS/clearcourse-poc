@@ -718,6 +718,10 @@ async function loadSection(section, loadCallback) {
     if (section.dataset.paddingdesktop && section.dataset.paddingdesktop !== 'none') {
       section.classList.add(`section-pd-${section.dataset.paddingdesktop}`);
     }
+
+    if (section.dataset.paddingdesktopvertical && section.dataset.paddingdesktopvertical !== 'none') {
+      section.classList.add(`section-pd-${section.dataset.paddingdesktopvertical}`);
+    }
   }
 }
 

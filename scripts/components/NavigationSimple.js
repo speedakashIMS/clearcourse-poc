@@ -184,10 +184,7 @@ function A({
   logo: t,
   navItems: s = [],
   // [{ label, href, submenu: [{ label, href }] }]
-  buttons: i = [{
-    text: "Get Started",
-    variant: "secondary"
-  }],
+  buttons: i = [],
   // [{ text, variant, size, href, onClick }]
   alignNavRight: a = !0,
   variant: c = "gradient",

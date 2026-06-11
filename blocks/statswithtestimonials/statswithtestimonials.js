@@ -61,7 +61,9 @@ export default async function decorate(block) {
         stats: []
         .concat(blockData.items ?? [])
         .map(
-            item => ({
+            item => (
+                console.log('Processing item:', item),
+                {
                 testimonial: item.testimonial,
                 fontSize: item.fontsize || "sm",
                 name: item.name,

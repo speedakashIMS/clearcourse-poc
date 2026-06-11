@@ -1389,10 +1389,12 @@
 
 /* Section horizontal padding (desktop only, authorable via Section model) */
 @media (min-width:900px){.section.section-pd-50{padding-inline:50px}.section.section-pd-100{padding-inline:100px}.section.section-pd-200{padding-inline:200px}.section.section-pd-300{padding-inline:300px}.section.section-pd-500{padding-inline:500px}}
+/* Section vertical padding (desktop only, authorable via Section model) */
+@media (min-width:900px){.section.section-pd-50{padding-block:50px}.section.section-pd-100{padding-block:100px}.section.section-pd-200{padding-block:200px}.section.section-pd-300{padding-block:300px}.section.section-pd-500{padding-block:500px}}
 
 .bg-gradient-hero{background-image:radial-gradient(at 20% 50%,hsl(189deg 100% 56% / 14%) 0,transparent 50%),radial-gradient(at 20% 0,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 100% 50%,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 100% 0,hsl(189deg 100% 56% / 14%) 0,transparent 50%)}
 .bg-gradient-2{background-image:radial-gradient(at 80% 50%,hsl(189deg 100% 56% / 14%) 0,transparent 50%),radial-gradient(at 80% 0,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 0 50%,hsl(251deg 95% 75% / 48%) 0,transparent 50%),radial-gradient(at 0 0,hsl(189deg 100% 56% / 14%) 0,transparent 50%)}
 
 
-
+.shadow-testimonial-with-stats{box-shadow:0 4px 6px hsl(0deg 0% 0% / 0.1),0 1px 3px hsl(0deg 0% 0% / 0.06)}
 
