@@ -53,10 +53,9 @@ function te({
 }
 const H = ({
   text: t = "Button",
-  href: l = void 0,
-  variant: i = "light",
+  href: a = void 0,
+  variant: l = "light",
   // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
-
   size: c = "btn-md",
   // btn-sm , btn-md
   className: n = "",

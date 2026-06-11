@@ -5,9 +5,9 @@ import G from "lottie-react";
 const U = ({
   text: t = "Button",
   href: s = void 0,
-  variant: n = "light",
+  variant: o = "light",
   // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
-  size: u = "btn-md",
+  size: m = "btn-md",
   // btn-sm , btn-md
   className: a = "",
   disabled: h = !1,

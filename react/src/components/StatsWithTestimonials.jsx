@@ -9,6 +9,14 @@ export default function StatsWithTestimonials({
   id = '',
   className = '',
 }) {
+  //constants
+  const backGroundColorMap = {
+    secondary: 'bg-secondary text-white',
+    primary: 'bg-primary text-white',
+    tertiary: 'bg-tertiary text-white',
+    dark: 'bg-grey-950 text-white',
+    white: 'bg-white text-black',
+  };
   const getMoleculeProps = (statData) => {
     const { media, statMedia, ...restData } = statData;
 
@@ -20,17 +28,17 @@ export default function StatsWithTestimonials({
     };
   };
 
-  const renederStartBackgroundColor = (statData) => {
+  const renderStatMolecule = (statData, widthClass) => {
+    console.log('Rendering StatMolecule with data:', statData);
     let statBackgroundColor = statData.statBackgroundColor;
-    statBackgroundColor = statBackgroundColor === 'secondary' ? 'bg-secondary text-white' : statBackgroundColor === 'primary' ? 'bg-primary text-white' : statBackgroundColor === 'tertiary' ? 'bg-tertiary text-white' : statBackgroundColor === 'dark' ? 'bg-grey-950 text-white' : statBackgroundColor === 'white' ? 'bg-white text-black' : 'bg-transparent text-black';
-    return statBackgroundColor;
+    statBackgroundColor = backGroundColorMap[statBackgroundColor] || 'bg-transparent text-black';
+    
+    return (
+      <div className={`flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${widthClass} ${statBackgroundColor}`}>
+        <StatsMolecule {...getMoleculeProps(statData)} />
+      </div>
+    );
   };
-
-  const renderStatMolecule = (statData, widthClass) => (
-    <div className={`flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${widthClass} ${renederStartBackgroundColor(statData)}`}>
-      <StatsMolecule {...getMoleculeProps(statData)} />
-    </div>
-  );
 
   if (!stats || stats.length === 0) {
     return null;
