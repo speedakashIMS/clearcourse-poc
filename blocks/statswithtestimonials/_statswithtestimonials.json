@@ -230,6 +230,7 @@
               "value": "white"
             }
           ],
+          "valueType": "string",
           "value": "transparent"
         },
         {
