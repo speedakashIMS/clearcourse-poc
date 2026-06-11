@@ -8400,22 +8400,54 @@
             "valueType": "string"
           },
           {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Menu Link",
-            "valueType": "string"
-          },
-          {
             "component": "container",
             "name": "submenuitems",
             "label": "Sub Menu Items",
             "multi": true,
             "fields": [
               {
+                "component": "select",
+                "name": "iconsource",
+                "label": "Icon Source",
+                "valueType": "string",
+                "options": [
+                  {
+                    "name": "URL",
+                    "value": "url"
+                  },
+                  {
+                    "name": "Assets",
+                    "value": "assets"
+                  }
+                ]
+              },
+              {
+                "component": "text",
+                "name": "iconurl",
+                "label": "Icon URL",
+                "valueType": "string",
+                "condition": {
+                  "===": [
+                    {
+                      "var": "iconsource"
+                    },
+                    "url"
+                  ]
+                }
+              },
+              {
                 "component": "reference",
-                "name": "icon",
-                "label": "Icon",
-                "valueType": "string"
+                "name": "iconasset",
+                "label": "Icon Asset",
+                "valueType": "string",
+                "condition": {
+                  "===": [
+                    {
+                      "var": "iconsource"
+                    },
+                    "assets"
+                  ]
+                }
               },
               {
                 "component": "text",
@@ -8427,18 +8459,6 @@
                 "component": "text",
                 "name": "subtitle",
                 "label": "Subtitle",
-                "valueType": "string"
-              },
-              {
-                "component": "textarea",
-                "name": "description",
-                "label": "Description",
-                "valueType": "string"
-              },
-              {
-                "component": "aem-content",
-                "name": "link",
-                "label": "Link",
                 "valueType": "string"
               }
             ]
