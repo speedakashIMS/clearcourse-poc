@@ -70,7 +70,7 @@ export default function StatsMolecule({
         </div>
       )}
       {stat && <div className={`${fontSizeClass} font-normal`}>{stat}</div>}
-      {description && <p>{description}</p>}
+      {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
     </div>
   );
 }

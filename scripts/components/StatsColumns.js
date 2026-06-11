@@ -1,7 +1,7 @@
 import { jsx as e, jsxs as R } from "react/jsx-runtime";
-import { lazy as I, Suspense as T, useState as k, useRef as W, useEffect as F, useCallback as A, forwardRef as _ } from "react";
+import { lazy as I, Suspense as T, useState as k, useRef as D, useEffect as F, useCallback as A, forwardRef as W } from "react";
 import O from "lottie-react";
-const E = I(() => Promise.resolve().then(() => G)), V = ({
+const E = I(() => Promise.resolve().then(() => G)), H = ({
   media: t = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
   aspect: a = "default",
@@ -37,7 +37,7 @@ const E = I(() => Promise.resolve().then(() => G)), V = ({
         const P = l.includes("youtube.com/watch") || l.includes("youtu.be/");
         let x = l;
         P && (x = `https://www.youtube.com/embed/${l.includes("youtu.be/") ? l.split("youtu.be/")[1].split("?")[0] : (r = l.split("v=")[1]) == null ? void 0 : r.split("&")[0]}`);
-        const D = (() => {
+        const _ = (() => {
           if (!P) return x;
           try {
             const w = new URL(x);
@@ -49,7 +49,7 @@ const E = I(() => Promise.resolve().then(() => G)), V = ({
         return /* @__PURE__ */ e("div", { className: g, children: P ? /* @__PURE__ */ e(
           "iframe",
           {
-            src: D,
+            src: _,
             title: s || "Video player",
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
@@ -125,7 +125,7 @@ const E = I(() => Promise.resolve().then(() => G)), V = ({
   }
   return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${a === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
 };
-function q({
+function V({
   media: t,
   // Media props object: { media, imageUrl, videoUrl, lottieUrl, lottieData, iframeUrl, aspect, title }
   stat: a,
@@ -172,9 +172,9 @@ function q({
       className: `flex flex-col items-${d} justify-center gap-stats-spacing-y`,
       style: { textAlign: c },
       children: [
-        t && v && /* @__PURE__ */ e("div", { className: `flex flex-col items-${d} justify-${d}`, children: /* @__PURE__ */ e("div", { className: `w-48 h-48 max-w-full max-h-full rounded-full overflow-hidden ${b}`, children: /* @__PURE__ */ e(V, { ...v }) }) }),
+        t && v && /* @__PURE__ */ e("div", { className: `flex flex-col items-${d} justify-${d}`, children: /* @__PURE__ */ e("div", { className: `w-48 h-48 max-w-full max-h-full rounded-full overflow-hidden ${b}`, children: /* @__PURE__ */ e(H, { ...v }) }) }),
         a && /* @__PURE__ */ e("div", { className: `${o} font-normal`, children: a }),
-        n && /* @__PURE__ */ e("p", { children: n })
+        n && /* @__PURE__ */ e("div", { dangerouslySetInnerHTML: { __html: n } })
       ]
     }
   );
@@ -214,7 +214,7 @@ function X({
         {
           className: `p-stats-padding ${c}`,
           ...s.attributes ?? {},
-          children: /* @__PURE__ */ e(q, { ...p(s) })
+          children: /* @__PURE__ */ e(V, { ...p(s) })
         },
         o
       ))
@@ -222,17 +222,17 @@ function X({
   ) });
 }
 let S, z, C, M;
-const B = async () => {
+const q = async () => {
   if (!M) {
     const t = await import("react-pdf");
     M = t.pdfjs, z = t.Document, C = t.Page, M.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${M.version}/build/pdf.worker.min.mjs`;
   }
-}, H = async () => {
+}, B = async () => {
   S || (S = (await import("react-pageflip")).default);
-}, Y = _(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), U = ({ pdfUrl: t, title: a, width: n = 280, height: m = 280, className: l = "" }) => {
-  const [p, h] = k(0), [y, c] = k(null), [s, o] = k(!0), [d, b] = k(m / n), [v, g] = k(0), u = W(null);
+}, Y = W(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), U = ({ pdfUrl: t, title: a, width: n = 280, height: m = 280, className: l = "" }) => {
+  const [p, h] = k(0), [y, c] = k(null), [s, o] = k(!0), [d, b] = k(m / n), [v, g] = k(0), u = D(null);
   F(() => {
-    Promise.all([B(), H()]).then(() => o(!1)).catch(() => {
+    Promise.all([q(), B()]).then(() => o(!1)).catch(() => {
       c("Failed to load flipbook");
     });
   }, []), F(() => {

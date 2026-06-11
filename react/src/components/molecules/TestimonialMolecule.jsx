@@ -56,7 +56,7 @@ export default function TestimonialMolecule({
         {validRating && <Stars rating={validRating} textAlign={isCenter ? 'center' : 'left'} />}
         {testimonial && (
           <blockquote className="m-0">
-            <p className="text-body-default">{testimonial}</p>
+            <p className="text-body-default" dangerouslySetInnerHTML={{ __html: testimonial }} />
           </blockquote>
         )}
         {(name || role || showMediaWithName) && (

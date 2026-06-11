@@ -2457,7 +2457,7 @@ function De({
   return /* @__PURE__ */ O("figure", { className: J, ...N, ...N.attributes || {}, children: /* @__PURE__ */ ae("div", { className: `flex flex-col gap-testimonial-spacing-y ${W}`, children: [
     z && /* @__PURE__ */ O("div", { className: `flex items-center gap-10 ${K ? "justify-center" : "justify-start"}`, children: _ }),
     G && /* @__PURE__ */ O(rr, { rating: G, textAlign: K ? "center" : "left" }),
-    i && /* @__PURE__ */ O("blockquote", { className: "m-0", children: /* @__PURE__ */ O("p", { className: "text-body-default", children: i }) }),
+    i && /* @__PURE__ */ O("blockquote", { className: "m-0", children: /* @__PURE__ */ O("p", { className: "text-body-default", dangerouslySetInnerHTML: { __html: i } }) }),
     (l || f || q) && /* @__PURE__ */ ae(
       "figcaption",
       {
