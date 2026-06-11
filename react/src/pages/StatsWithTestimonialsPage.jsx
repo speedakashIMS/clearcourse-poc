@@ -88,7 +88,7 @@ export default function StatsWithTestimonialsPage() {
               description="Testimonial uses both a logo and profile image."
             />
             <Spacer height={40} />
-            <StatsWithTestimonials stats={statsWithLogoAndImage} statTextAlign="center" />
+            <StatsWithTestimonials stats={statsWithLogoAndImage} statTextAlign="center" statBackgroundColor="secondary" />
           </section>
         </div>
       </div>

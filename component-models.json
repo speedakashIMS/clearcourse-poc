@@ -10259,6 +10259,35 @@
         ],
         "valueType": "string",
         "value": "stat-first"
+      },
+      {
+        "component": "select",
+        "name": "backgroundcolor",
+        "label": "Background Color",
+        "options": [
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          }
+        ],
+        "valueType": "string",
+        "value": "transparent"
       }
     ]
   },
