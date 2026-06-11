@@ -2362,7 +2362,7 @@ const Xt = /* @__PURE__ */ ht(Ut), Kt = ({
   text: i = "Button",
   href: f = void 0,
   variant: h = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: S = "btn-md",
   // btn-sm , btn-md
   className: y = "",
@@ -2385,6 +2385,8 @@ const Xt = /* @__PURE__ */ ht(Ut), Kt = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

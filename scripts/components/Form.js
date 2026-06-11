@@ -6,7 +6,7 @@ const te = ({
   text: r = "Button",
   href: a = void 0,
   variant: n = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: i = "btn-md",
   // btn-sm , btn-md
   className: l = "",
@@ -29,6 +29,8 @@ const te = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

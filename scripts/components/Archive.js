@@ -53,9 +53,10 @@ function te({
 }
 const H = ({
   text: t = "Button",
-  href: a = void 0,
-  variant: l = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  href: l = void 0,
+  variant: i = "light",
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
+
   size: c = "btn-md",
   // btn-sm , btn-md
   className: n = "",
@@ -78,6 +79,8 @@ const H = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

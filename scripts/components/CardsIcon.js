@@ -5,9 +5,9 @@ import G from "lottie-react";
 const U = ({
   text: t = "Button",
   href: s = void 0,
-  variant: o = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
-  size: m = "btn-md",
+  variant: n = "light",
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
+  size: u = "btn-md",
   // btn-sm , btn-md
   className: a = "",
   disabled: h = !1,
@@ -29,6 +29,8 @@ const U = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

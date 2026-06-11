@@ -8322,7 +8322,7 @@
         "name": "alignnavigationright",
         "label": "Align Navigation Right",
         "valueType": "boolean",
-        "value": true
+        "value": false
       },
       {
         "component": "select",
@@ -8336,10 +8336,6 @@
           {
             "name": "Light",
             "value": "light"
-          },
-          {
-            "name": "Gradient",
-            "value": "gradient"
           }
         ],
         "valueType": "string",

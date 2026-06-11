@@ -1,9 +1,9 @@
-import { jsx as s } from "react/jsx-runtime";
+import { jsx as r } from "react/jsx-runtime";
 const b = ({
   text: e = "Button",
   href: n = void 0,
-  variant: r = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  variant: s = "light",
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: a = "btn-md",
   // btn-sm , btn-md
   className: t = "",
@@ -26,6 +26,8 @@ const b = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -38,8 +40,8 @@ const b = ({
       default:
         return "btn-md";
     }
-  }, o = `btn ${m(r)} ${h(a)} ${t}`.trim();
-  return n ? /* @__PURE__ */ s(
+  }, o = `btn ${m(s)} ${h(a)} ${t}`.trim();
+  return n ? /* @__PURE__ */ r(
     "a",
     {
       href: n,
@@ -49,7 +51,7 @@ const b = ({
       ...d ?? {},
       children: e
     }
-  ) : /* @__PURE__ */ s(
+  ) : /* @__PURE__ */ r(
     "button",
     {
       type: l.type || "button",
@@ -65,9 +67,9 @@ const b = ({
   buttons: e = [],
   // Array of button objects: [{ text, variant, size, href, onClick }]
   size: n = "btn-md",
-  className: r = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
+  className: s = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
   ...a
-}) => !e || e.length === 0 ? null : /* @__PURE__ */ s("div", { className: `container ${r}`, ...a, children: e.map((t, i) => /* @__PURE__ */ s(
+}) => !e || e.length === 0 ? null : /* @__PURE__ */ r("div", { className: `container ${s}`, ...a, children: e.map((t, i) => /* @__PURE__ */ r(
   b,
   {
     text: t.text,
