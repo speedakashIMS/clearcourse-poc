@@ -10338,8 +10338,15 @@
         "value": "fontsize"
       },
       {
+        "component": "text",
+        "name": "backgroundcolorkey",
+        "valueType": "string",
+        "hidden": true,
+        "value": "backgroundcolor"
+      },
+      {
         "component": "select",
-        "name": "backgroundcolor",
+        "name": "backgroundcolorValue",
         "label": "Background Color",
         "options": [
           {
@@ -10357,6 +10364,10 @@
           {
             "name": "Tertiary",
             "value": "tertiary"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
           },
           {
             "name": "White",
@@ -10404,7 +10415,7 @@
         "value": "testimonial"
       },
       {
-        "component": "text",
+        "component": "richtext",
         "label": "Testimonial",
         "name": "testimonialvalue",
         "valueType": "string"

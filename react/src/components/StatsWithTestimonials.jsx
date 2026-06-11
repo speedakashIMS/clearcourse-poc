@@ -22,7 +22,7 @@ export default function StatsWithTestimonials({
 
   const renederStartBackgroundColor = (statData) => {
     let statBackgroundColor = statData.statBackgroundColor;
-    statBackgroundColor = statBackgroundColor === 'secondary' ? 'bg-secondary text-white' : statBackgroundColor === 'primary' ? 'bg-primary text-white' : statBackgroundColor === 'tertiary' ? 'bg-tertiary text-white' : statBackgroundColor === 'white' ? 'bg-white text-black' : 'bg-transparent text-black';
+    statBackgroundColor = statBackgroundColor === 'secondary' ? 'bg-secondary text-white' : statBackgroundColor === 'primary' ? 'bg-primary text-white' : statBackgroundColor === 'tertiary' ? 'bg-tertiary text-white' : statBackgroundColor === 'dark' ? 'bg-grey-950 text-white' : statBackgroundColor === 'white' ? 'bg-white text-black' : 'bg-transparent text-black';
     return statBackgroundColor;
   };
 

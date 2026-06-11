@@ -321,7 +321,7 @@ function ae({
     };
   }, b = (l) => {
     let n = l.statBackgroundColor;
-    return n = n === "secondary" ? "bg-secondary text-white" : n === "primary" ? "bg-primary text-white" : n === "tertiary" ? "bg-tertiary text-white" : n === "white" ? "bg-white text-black" : "bg-transparent text-black", n;
+    return n = n === "secondary" ? "bg-secondary text-white" : n === "primary" ? "bg-primary text-white" : n === "tertiary" ? "bg-tertiary text-white" : n === "dark" ? "bg-grey-950 text-white" : n === "white" ? "bg-white text-black" : "bg-transparent text-black", n;
   }, m = (l, n) => /* @__PURE__ */ e("div", { className: `flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${n} ${b(l)}`, children: /* @__PURE__ */ e(U, { ...x(l) }) });
   return !t || t.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${g}`, id: s, children: t.map((l, n) => {
     const {
