@@ -45,6 +45,14 @@
             {
               "name": "Tertiary",
               "value": "bg-tertiary"
+            },
+            {
+              "name": "Quarternary",
+              "value": "bg-quarternary"
+            },
+            {
+              "name": "White",
+              "value": "bg-white"
             }
           ],
           "valueType": "string",
