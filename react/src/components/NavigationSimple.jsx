@@ -12,7 +12,6 @@ const variantStyles = {
     mobileMenu: 'bg-secondary',
     hamburger: 'border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80',
   },
-
   light: {
     bar: 'bg-white',
     link: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600',
@@ -29,7 +28,7 @@ const variantStyles = {
     mobileMenu: 'bg-secondary lg:bg-gradient-to-b lg:from-secondary lg:to-transparent',
     hamburger: 'border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80',
   }
-  
+
 };
 
 export default function NavigationSimple({
