@@ -111,69 +111,68 @@
           "valueType": "string",
           "value": "dark"
         },
-       {
-        "component": "container",
-        "name": "navigationitems",
-        "label": "Navigation Items",
-        "multi": true,
-        "fields": [
-          {
-            "component": "text",
-            "name": "label",
-            "label": "Menu Label",
-            "valueType": "string"
-          },
-          {
-            "component": "container",
-            "name": "submenuitems",
-            "label": "Sub Menu Items",
-            "multi": true,
-        "fields": [
-          {
-            "component": "select",
-            "name": "iconsource",
-            "label": "Icon Source",
-            "valueType": "string",
-            "options": [
-              { "name": "URL", "value": "url" },
-              { "name": "Assets", "value": "assets" }
-            ]
-          },
-          {
-            "component": "text",
-            "name": "iconurl",
-            "label": "Icon URL",
-            "valueType": "string",
-            "condition": {
-              "===": [{ "var": "iconsource" }, "url"]
-            }
-          },
-          {
-            "component": "reference",
-            "name": "iconasset",
-            "label": "Icon Asset",
-            "valueType": "string",
-            "condition": {
-              "===": [{ "var": "iconsource" }, "assets"]
-            }
-          },
-          {
-            "component": "text",
-            "name": "title",
-            "label": "Title",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "subtitle",
-            "label": "Subtitle",
-            "valueType": "string"
+     {
+  "component": "container",
+  "name": "navigationitems",
+  "label": "Navigation Items",
+  "multi": true,
+  "fields": [
+    {
+      "component": "text",
+      "name": "label",
+      "label": "Menu Label",
+      "valueType": "string"
+    },
+    {
+      "component": "container",
+      "name": "submenuitems",
+      "label": "Sub Menu Items",
+      "multi": true,
+      "fields": [
+        {
+          "component": "select",
+          "name": "iconsource",
+          "label": "Icon Source",
+          "valueType": "string",
+          "options": [
+            { "name": "URL", "value": "url" },
+            { "name": "Assets", "value": "assets" }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "iconurl",
+          "label": "Icon URL",
+          "valueType": "string",
+          "condition": {
+            "===": [{ "var": "iconsource" }, "url"]
           }
-        ]
-      }
-        
-        ]
-      },
+        },
+        {
+          "component": "reference",
+          "name": "iconasset",
+          "label": "Icon Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [{ "var": "iconsource" }, "assets"]
+          }
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "valueType": "string"
+        }
+      ]
+    }
+  ]
+},
               {
           "component": "container",
           "name": "buttons",
