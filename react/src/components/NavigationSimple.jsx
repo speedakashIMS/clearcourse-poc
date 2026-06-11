@@ -21,7 +21,7 @@ const variantStyles = {
     hamburger: 'border-secondary text-secondary hover:text-secondary-600 hover:border-secondary-400 focus-visible:text-secondary-600 focus-visible:border-secondary-400',
   },
   gradient: {
-    bar: 'bg-gradient-to-r from-[var(--color-brand-tertiary)] to-[var(--color-primary)]',
+    bar: 'bg-gradient-hero',
     link: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80',
     dropdown: 'bg-secondary-800 lg:bg-white lg:shadow-lg',
     dropdownLink: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600',
