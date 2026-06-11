@@ -76,8 +76,7 @@ export default async function decorate(block) {
                 stat: item.stat,
                 description: item.description,
                 statMedia: createStatMedia(item),
-                attributes: item._meta || {},
-                backgroundcolor: item.backgroundcolor || 'transparent',
+                attributes: item._meta || {}
             })),
         statFontSize: blockData.fontsize || 'sm',
         order: blockData.order || 'stat-first',

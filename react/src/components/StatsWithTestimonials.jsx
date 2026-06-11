@@ -24,11 +24,10 @@ export default function StatsWithTestimonials({
     let statBackgroundColor = statData.statBackgroundColor;
     statBackgroundColor = statBackgroundColor === 'secondary' ? 'bg-secondary text-white' : statBackgroundColor === 'primary' ? 'bg-primary text-white' : statBackgroundColor === 'tertiary' ? 'bg-tertiary text-white' : statBackgroundColor === 'white' ? 'bg-white text-black' : 'bg-transparent text-black';
     return statBackgroundColor;
-  }
-  const statBackgroundClass = renederStartBackgroundColor();
+  };
 
   const renderStatMolecule = (statData, widthClass) => (
-    <div className={`flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${widthClass} ${statBackgroundClass}`}>
+    <div className={`flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${widthClass} ${renederStartBackgroundColor(statData)}`}>
       <StatsMolecule {...getMoleculeProps(statData)} />
     </div>
   );
