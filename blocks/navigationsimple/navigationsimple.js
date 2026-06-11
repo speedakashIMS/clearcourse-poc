@@ -13,7 +13,6 @@ function parseNavLinks(ul) {
       const item = {
         label: a?.textContent.trim() || li.firstChild?.textContent.trim() || '',
         href: a?.getAttribute('href') || '#',
-        imageUrl: item.imagesource === 'url' ? item.imageurl : item.imageasset?.src,
       };
       if (childUl) {
         item.submenu = parseNavLinks(childUl);

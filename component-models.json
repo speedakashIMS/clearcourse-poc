@@ -8378,6 +8378,10 @@
           {
             "name": "Light",
             "value": "light"
+          },
+          {
+            "name": "Gradient",
+            "value": "gradient"
           }
         ],
         "valueType": "string",
@@ -8467,6 +8471,10 @@
               {
                 "name": "Dark No Outline",
                 "value": "dark-no-outline"
+              },
+              {
+                "name": "Secondary",
+                "value": "secondary"
               }
             ],
             "value": "light"
