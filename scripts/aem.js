@@ -720,7 +720,7 @@ async function loadSection(section, loadCallback) {
     }
 
     if (section.dataset.paddingdesktopvertical && section.dataset.paddingdesktopvertical !== 'none') {
-      section.classList.add(`section-pd-${section.dataset.paddingdesktopvertical}`);
+      section.classList.add(`section-pd-vertical-${section.dataset.paddingdesktopvertical}`);
     }
   }
 }
