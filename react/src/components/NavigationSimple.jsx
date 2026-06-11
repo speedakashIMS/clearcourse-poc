@@ -28,7 +28,7 @@ const variantStyles = {
     dropdownLink: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600',
     mobileMenu: 'bg-secondary lg:bg-gradient-to-b lg:from-secondary lg:to-transparent',
     hamburger: 'border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80',
-  },
+  }
   
 };
 
@@ -36,11 +36,7 @@ export default function NavigationSimple({
   fullWidth = false,
   logo,
   navItems = [], // [{ label, href, submenu: [{ label, href }] }]
-  buttons = [{
-
-    text: 'Get Started',
-    variant: 'secondary'
-  }], // [{ text, variant, size, href, onClick }]
+  buttons = [], // [{ text, variant, size, href, onClick }]
   alignNavRight = true,
   variant = 'gradient', // 'dark' | 'light' | 'gradient' |
   skipLinkText = 'Skip navigation',
