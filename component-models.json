@@ -10338,6 +10338,31 @@
         "value": "fontsize"
       },
       {
+        "component": "select",
+        "name": "fontsizevalue",
+        "label": "Stat Font Size",
+        "options": [
+          {
+            "name": "Small",
+            "value": "sm"
+          },
+          {
+            "name": "Medium",
+            "value": "md"
+          },
+          {
+            "name": "Large",
+            "value": "lg"
+          },
+          {
+            "name": "Extra Large",
+            "value": "xl"
+          }
+        ],
+        "valueType": "string",
+        "value": "sm"
+      },
+      {
         "component": "text",
         "name": "backgroundcolorkey",
         "valueType": "string",
@@ -10346,7 +10371,7 @@
       },
       {
         "component": "select",
-        "name": "backgroundcolorValue",
+        "name": "backgroundcolorvalue",
         "label": "Background Color",
         "options": [
           {
@@ -10374,33 +10399,7 @@
             "value": "white"
           }
         ],
-        "valueType": "string",
         "value": "transparent"
-      },
-      {
-        "component": "select",
-        "name": "fontsizevalue",
-        "label": "Stat Font Size",
-        "options": [
-          {
-            "name": "Small",
-            "value": "sm"
-          },
-          {
-            "name": "Medium",
-            "value": "md"
-          },
-          {
-            "name": "Large",
-            "value": "lg"
-          },
-          {
-            "name": "Extra Large",
-            "value": "xl"
-          }
-        ],
-        "valueType": "string",
-        "value": "sm"
       },
       {
         "component": "tab",
