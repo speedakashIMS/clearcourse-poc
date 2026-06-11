@@ -8,6 +8,7 @@ const CardsIcon = ({
   stacked = true,
   iconPosition = 'left',
   itemBackgroundVariant = 'default',
+  textAlign = 'left', // 'left' | 'center' (only applies when stacked = true)
   className = '',
   ...props
 }) => {
@@ -85,6 +86,7 @@ const CardsIcon = ({
               buttonOnClick={card.buttonOnClick}
               backgroundVariant={itemBackgroundVariant}
               attributes={card.attributes}
+              textAlign={textAlign}
               className="h-full w-full"
             />
           </div>

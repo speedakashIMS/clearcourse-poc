@@ -113,10 +113,10 @@
   .btn-dark-outlined {
     @apply bg-transparent border border-grey-950 text-grey-950;
     &:hover {
-      @apply bg-black/10;
+      @apply bg-secondary text-white border-secondary;
     }
     &:active {
-      @apply bg-black/20;
+      @apply bg-secondary text-white border-secondary;
     }
     &:focus {
       box-shadow: 0 0 0 3px #4F66C9;
@@ -397,5 +397,12 @@
       @apply -mt-section-spacing-y;
     }
   }
+
+  .giftpro-cardandtext-slider {
+      /* Override slick's default display:block on .slick-slider */
+      display: flex !important;
+      align-items: center;
+      gap: 60px;
+    }
   
 }

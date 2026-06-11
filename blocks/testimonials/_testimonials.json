@@ -15,6 +15,7 @@
               "variant": "columns",
               "order": "testimonial-first",
               "columns": "1",
+              "quotecolor": "secondary",
               "alignment": "left",
               "mediaposition": "top",
               "withpadding": false
@@ -88,6 +89,10 @@
             {
               "name": "Stacked Media",
               "value": "stacked-media"
+            },
+            {
+              "name": "Giftpro",
+              "value": "giftpro-media"
             }
           ]
         },
@@ -106,11 +111,11 @@
             }
           ],
           "condition": {
-            "!==": [
+            "in": [
               {
                 "var": "variant"
               },
-              "columns"
+              ["media", "stacked-media"]
             ]
           }
         },
@@ -152,6 +157,33 @@
                 "var": "variant"
               },
               "columns"
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "quotecolor",
+          "label": "Quote Color",
+          "options": [
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            },
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Tertiary",
+              "value": "tertiary"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "variant"
+              },
+              "giftpro-media"
             ]
           }
         },
@@ -218,11 +250,11 @@
             }
           ],
           "condition": {
-            "!==": [
+            "in": [
               {
                 "var": "variant"
               },
-              "columns"
+              ["media", "stacked-media"]
             ]
           }
         },
@@ -251,11 +283,11 @@
                 ]
               },
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               }
             ]
@@ -269,11 +301,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -303,11 +335,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -337,11 +369,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -364,11 +396,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -390,11 +422,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -416,11 +448,11 @@
           "condition": {
             "and": [
               {
-                "!==": [
+                "in": [
                   {
                     "var": "variant"
                   },
-                  "columns"
+                  ["media", "stacked-media"]
                 ]
               },
               {
@@ -440,11 +472,11 @@
           "label": "Media Alt Text",
           "valueType": "string",
           "condition": {
-            "!==": [
+            "in": [
               {
                 "var": "variant"
               },
-              "columns"
+              ["media", "stacked-media"]
             ]
           }
         }

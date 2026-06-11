@@ -28,9 +28,9 @@
    * TYPOGRAPHY TOKENS
    * =========================== */
 
-  --font-heading:   'Azo Sans', sans-serif;
-  --font-body:      'Inter', sans-serif;
-  --font-cta:       'Poppins', sans-serif;
+  --font-heading:   brown-pro, sans-serif;
+  --font-body:      brown-pro, sans-serif;
+  --font-cta:       brown-pro, sans-serif;
 
   /* Sizes */
   --font-size-display-xl: 4rem;       /* 64px */

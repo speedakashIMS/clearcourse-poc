@@ -1,8 +1,51 @@
+import { useState } from 'react';
 import Slider from 'react-slick';
 import GiftProCardAndTextMolecule from './molecules/GiftProCardAndTextMolecule';
 import Media from './molecules/Media';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+function ArrowIcon({ className = '' }) {
+  return (
+    <svg viewBox="0 0 1000 1000" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M696 533C708 521 713 504 713 487 713 471 708 454 696 446L400 146C388 133 375 125 354 125 338 125 325 129 313 142 300 154 292 171 292 187 292 204 296 221 308 233L563 492 304 771C292 783 288 800 288 817 288 833 296 850 308 863 321 871 338 875 354 875 371 875 388 867 400 854L696 533Z" />
+    </svg>
+  );
+}
+
+const ARROW_VARIANTS = {
+  light: 'btn-light',
+  dark: 'btn-dark',
+  'light-outlined': 'btn-light-outlined',
+  'dark-outlined': 'btn-dark-outlined',
+  'light-no-outline': 'btn-light-no-outline',
+  'dark-no-outline': 'btn-dark-no-outline',
+};
+
+function SlideArrow({ className, onClick, direction, variant = 'dark-outlined' }) {
+  const isNext = direction === 'next';
+  const variantClass = ARROW_VARIANTS[variant] || ARROW_VARIANTS['dark-outlined'];
+  const cleanedClassName = (className || '')
+    .split(' ')
+    .filter((c) => !['slick-arrow', 'slick-next', 'slick-prev'].includes(c))
+    .join(' ');
+  return (
+    <button
+      type="button"
+      aria-label={isNext ? 'Next slide' : 'Previous slide'}
+      onClick={onClick}
+      className={[
+        cleanedClassName,
+        'giftpro-slide-arrow btn', variantClass,
+        '!flex items-center justify-center',
+        '!h-48 !w-48 min-w-[48px] !p-0 !rounded-full z-10 hover:opacity-80',
+        isNext ? '!right-10' : '!left-10',
+      ].join(' ')}
+    >
+      <ArrowIcon className={`h-16 w-16 ${isNext ? '' : 'rotate-180'}`} />
+    </button>
+  );
+}
 
 export default function GiftProCardAndText({
   giftProCardAndTexts = [],
@@ -10,8 +53,12 @@ export default function GiftProCardAndText({
   align = 'left',
   id = '',
   className = '',
-  infinite = false
+  infinite = false,
+  textColor = 'text-primary',
+  arrowVariant = 'dark-outlined'
 }) {
+  const [ready, setReady] = useState(false);
+
   const mapGiftProCardAndTextProps = (item) => ({
     cardTitle: item.cardTitle,
     bodyLarge: item.bodyLarge,
@@ -20,6 +67,10 @@ export default function GiftProCardAndText({
     imageUrl: item.imageUrl,
     iconUrl: item.iconUrl,
     align: item.align ?? align,
+    textColor: item.textColor ?? textColor,
+    author: item.author,
+    authorTitle: item.authorTitle,
+    attributes: item.attributes || {},
   });
 
   const renderMedia = (mediaData, titleFallback = '') => {
@@ -67,14 +118,22 @@ export default function GiftProCardAndText({
   };
 
   const carouselSettings = {
-    className: "w-full testimonial-slider",
-    dots: true,
+    className: `giftpro-cardandtext-slider`,
+    onInit: () => setReady(true),
+    dots: false,
     infinite,
     speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
-    arrows: false,
+    arrows: true,
+    hideOnSinglePage: true,
+    hideArrowsIfSinglePage: true,
+    hideDotsIfSinglePage: true,
+    hideArrowsOnMobile: true,
+    hideDotsOnMobile: true,
+    prevArrow: <SlideArrow direction="prev" variant={arrowVariant} />,
+    nextArrow: <SlideArrow direction="next" variant={arrowVariant} />,
   };
 
   if (!giftProCardAndTexts || giftProCardAndTexts.length === 0) return null;

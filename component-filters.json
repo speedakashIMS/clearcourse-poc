@@ -19,6 +19,7 @@
       "downloads",
       "eventandwebinar",
       "footer",
+      "giftprocardandtext",
       "form",
       "hero",
       "heroarticle",
@@ -118,6 +119,12 @@
     "id": "eventandwebinar",
     "components": [
       "eventandwebinaritem"
+    ]
+  },
+  {
+    "id": "giftprocardandtext",
+    "components": [
+      "giftprocardandtextitem"
     ]
   },
   {

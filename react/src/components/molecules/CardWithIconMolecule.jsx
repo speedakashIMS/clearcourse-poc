@@ -24,7 +24,13 @@ const CardWithIconMolecule = ({
   backgroundVariant = 'default', // default | primary | secondary | tertiary
   className = '',
   attributes = {},
+  textAlign = 'left', // 'left' | 'center' (only applies when stacked = true)
 }) => {
+  console.log('CardWithIconMolecule props:', {
+    stacked,
+    iconPosition,
+    textAlign,
+  });
   const backgroundClassesByVariant = {
     default: 'bg-grey-500 text-grey-950',
     primary: 'bg-primary text-white',
@@ -71,12 +77,10 @@ const CardWithIconMolecule = ({
   const mediaContainerClasses = `
     w-[94px]
     h-[100px]
-    bg-grey-200
     flex
     items-center
     justify-center
     aspect-square
-    rounded-24
     overflow-hidden
   `
     .trim()
@@ -90,6 +94,7 @@ const CardWithIconMolecule = ({
     flex-col
     flex-grow-1
     gap-textmedia-btn-text--spacing-y
+    ${textAlign === 'center' ? 'items-center text-center' : 'items-start text-left'}
     ${stacked ? 'rounded-b-cards-br' : iconPosition === 'left' ? 'rounded-r-cards-br' : 'rounded-l-cards-br'}
   `
     .trim()
@@ -104,6 +109,7 @@ const CardWithIconMolecule = ({
       lottieUrl={lottieUrl}
       lottieData={lottieData}
       iframeUrl={iframeUrl}
+      objectFit="contain"
       title={mediaAltTitle ?? title}
       className=""
     />

@@ -115,6 +115,23 @@
             }
           ],
           "value": "default"
+        },
+        {
+          "component": "select",
+          "name": "textalign",
+          "label": "Text Alignment",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Center",
+              "value": "center"
+            }
+          ],
+          "value": "left"
         }
       ]
     },

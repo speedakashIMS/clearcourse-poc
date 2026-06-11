@@ -2620,7 +2620,7 @@ function ur({
     )
   };
   function A({ slide: m, slideIndex: o }) {
-    const { titleAccent: r, titleAccentColor: p, title: b, description: c, buttons: d, logos: O, widget: _ } = m, t = i.length > 1 && o > 0 ? "h2" : "h1", l = ["font-accent font-normal m-0 text-display-xl leading-display-xl", Qt[p] || "text-white"].filter(Boolean).join(" "), e = S ? er[y] || "bg-secondary" : "bg-grey-700";
+    const { titleAccent: r, titleAccentColor: p, title: b, description: c, buttons: d, logos: O, widget: _ } = m, t = i.length > 1 && o > 0 ? "h2" : "h1", l = ["font-accent font-normal m-0 text-display-xl leading-display-xl", Qt[p] || "text-white"].filter(Boolean).join(" "), e = S ? er[y] || "bg-secondary" : "bg-transparent";
     return /* @__PURE__ */ le("div", { className: `${e} flex flex-col justify-center gap-hero-spacing px-hero-padding-x py-hero-padding-y text-left`, children: [
       /* @__PURE__ */ le("div", { className: "spacing-y-hero-text--spacing-y", children: [
         r && /* @__PURE__ */ E("p", { className: l, children: r }),

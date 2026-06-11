@@ -1,15 +1,17 @@
 import Slider from 'react-slick';
 import TestimonialMolecule from './molecules/TestimonialMolecule';
+import GiftproTestimonialMolecule from './molecules/GiftproTestimonialMolecule';
 import Media from './molecules/Media';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Testimonial({
   /**
-   * Variants: 'media' | 'columns' | 'stacked-media'
+   * Variants: 'media' | 'columns' | 'stacked-media' | 'giftpro-media'
    * - 'media': 1 testimonial + 1 media per slide (carousel, 1 per page)
    * - 'columns': testimonial grid (1-3 columns). If columns > 3, use carousel with 3 per page
    * - 'stacked-media': 2-column layout with media + stacked testimonials (order can change)
+   * - 'giftpro-media': centered quote with large quote marks, brand logo + author avatar (carousel if >1)
    */
   variant,
   testimonials = [],
@@ -22,7 +24,8 @@ export default function Testimonial({
   mediaPosition = 'top', // 'top' | 'bottom' | 'with-name'
   id = '',
   className = '',
-  infinite = false
+  infinite = false,
+  quoteColor = 'secondary' // giftpro-media quote mark color: 'secondary' | 'primary' | 'tertiary'
 }) {
   const resolvedVariant = variant || 'columns';
   const isMediaFirst = order === 'media-first';
@@ -166,6 +169,31 @@ export default function Testimonial({
             </div>
           )}
         </div>
+      </div>
+    );
+  }
+
+  if (resolvedVariant === 'giftpro-media') {
+    if (!testimonials || testimonials.length === 0) return null;
+
+    if (testimonials.length === 1) {
+      return (
+        <div className={`container ${className}`} id={id}>
+          <GiftproTestimonialMolecule {...mapTestimonialProps(testimonials[0])} quoteColor={quoteColor} />
+        </div>
+      );
+    }
+
+    const settings = carouselSettings(testimonials.length);
+    return (
+      <div className={`container ${className}`} id={id}>
+        <Slider {...settings}>
+          {testimonials.map((item, index) => (
+            <div key={index}>
+              <GiftproTestimonialMolecule {...mapTestimonialProps(item)} quoteColor={quoteColor} />
+            </div>
+          ))}
+        </Slider>
       </div>
     );
   }

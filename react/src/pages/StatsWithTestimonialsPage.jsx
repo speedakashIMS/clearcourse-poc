@@ -21,6 +21,8 @@ export default function StatsWithTestimonialsPage() {
       statAlign: 'right',
       mediaPosition: 'with-name',
       withPadding: true,
+      statBackgroundColor: 'secondary',
+      textAlign: 'left'
     }
   ];
   const statsWithLogoAndImage = [
@@ -88,7 +90,7 @@ export default function StatsWithTestimonialsPage() {
               description="Testimonial uses both a logo and profile image."
             />
             <Spacer height={40} />
-            <StatsWithTestimonials stats={statsWithLogoAndImage} statTextAlign="center" />
+            <StatsWithTestimonials stats={statsWithLogoAndImage} statTextAlign="center"/>
           </section>
         </div>
       </div>

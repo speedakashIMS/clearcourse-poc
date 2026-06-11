@@ -106,6 +106,115 @@
         "name": "negativeMargin",
         "label": "Negative Margin",
         "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "name": "backgroundGradient",
+        "label": "Background Gradient",
+        "valueType": "boolean"
+      },
+      {
+        "component": "select",
+        "name": "gradientType",
+        "label": "Gradient",
+        "options": [
+          {
+            "name": "HERO",
+            "value": "bg-gradient-hero"
+          },
+          {
+            "name": "Other",
+            "value": "bg-gradient-2"
+          }
+        ],
+        "valueType": "string",
+        "value": "bg-gradient-hero",
+        "condition": {
+          "===": [
+            {
+              "var": "backgroundGradient"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "name": "containerDesktop",
+        "label": "Container Width (Desktop)",
+        "description": "Restrict the section width on desktop. 1100/700 centre the section on the page.",
+        "options": [
+          {
+            "name": "Full",
+            "value": "full"
+          },
+          {
+            "name": "1100",
+            "value": "1100"
+          },
+          {
+            "name": "700",
+            "value": "700"
+          }
+        ],
+        "valueType": "string",
+        "value": "full"
+      },
+      {
+        "component": "select",
+        "name": "containerMobile",
+        "label": "Container Width (Mobile)",
+        "description": "Restrict the section width on mobile. 1100/700 centre the section on the page.",
+        "options": [
+          {
+            "name": "Full",
+            "value": "full"
+          },
+          {
+            "name": "1100",
+            "value": "1100"
+          },
+          {
+            "name": "700",
+            "value": "700"
+          }
+        ],
+        "valueType": "string",
+        "value": "full"
+      },
+      {
+        "component": "select",
+        "name": "paddingDesktop",
+        "label": "Horizontal Padding (Desktop)",
+        "description": "Adds left/right padding to the section on desktop.",
+        "options": [
+          {
+            "name": "None",
+            "value": "none"
+          },
+          {
+            "name": "p-50",
+            "value": "50"
+          },
+          {
+            "name": "p-100",
+            "value": "100"
+          },
+          {
+            "name": "p-200",
+            "value": "200"
+          },
+          {
+            "name": "p-300",
+            "value": "300"
+          },
+          {
+            "name": "p-500",
+            "value": "500"
+          }
+        ],
+        "valueType": "string",
+        "value": "none"
       }
     ]
   },
@@ -2397,6 +2506,23 @@
           }
         ],
         "value": "default"
+      },
+      {
+        "component": "select",
+        "name": "textalign",
+        "label": "Text Alignment",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          }
+        ],
+        "value": "left"
       }
     ]
   },
@@ -4980,6 +5106,348 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "giftprocardandtext",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "generaltab",
+        "label": "General"
+      },
+      {
+        "component": "text",
+        "name": "id",
+        "label": "Id",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "align",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          }
+        ],
+        "value": "left"
+      },
+      {
+        "component": "select",
+        "name": "textColor",
+        "label": "Text Color",
+        "options": [
+          {
+            "name": "White",
+            "value": "text-white"
+          },
+          {
+            "name": "Black",
+            "value": "text-black"
+          },
+          {
+            "name": "Primary",
+            "value": "text-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "text-secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "text-tertiary"
+          }
+        ],
+        "value": "text-white"
+      },
+      {
+        "component": "select",
+        "name": "arrowType",
+        "label": "Arrow Button Style",
+        "options": [
+          {
+            "name": "Light Outlined",
+            "value": "light-outlined"
+          },
+          {
+            "name": "Dark Outlined",
+            "value": "dark-outlined"
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Light (No Outline)",
+            "value": "light-no-outline"
+          },
+          {
+            "name": "Dark (No Outline)",
+            "value": "dark-no-outline"
+          }
+        ],
+        "value": "light-outlined"
+      },
+      {
+        "component": "boolean",
+        "name": "infinite",
+        "label": "Loop Carousel",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "giftprocardandtextitem",
+    "fields": [
+      {
+        "component": "text",
+        "name": "typekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "typevalue",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "cardtitlekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "cardtitlevalue",
+        "label": "Card Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodylargekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodylargevalue",
+        "label": "Body Large",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodydefaultkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodydefaultvalue",
+        "label": "Body Default",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bodysmallkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "bodysmallvalue",
+        "label": "Body Small",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "iconsourcekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "iconsourcevalue",
+        "label": "Icon Source",
+        "options": [
+          {
+            "name": "URL",
+            "value": "url"
+          },
+          {
+            "name": "Assets",
+            "value": "assets"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "iconurlkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "iconurl",
+        "label": "Icon URL",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "iconsourcevalue"
+            },
+            "url"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "iconassetkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "name": "iconasset",
+        "label": "Icon Asset",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "iconsourcevalue"
+            },
+            "assets"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imagesourcekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "imagesourcevalue",
+        "label": "Image Source",
+        "options": [
+          {
+            "name": "URL",
+            "value": "url"
+          },
+          {
+            "name": "Assets",
+            "value": "assets"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "imageurlkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "imageurl",
+        "label": "Image URL",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "imagesourcevalue"
+            },
+            "url"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imageassetkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "name": "imageasset",
+        "label": "Image Asset",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "imagesourcevalue"
+            },
+            "assets"
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imagetitlekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "imagetitlevalue",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "alignmentkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "alignmentvalue",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "authorkey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "authorvalue",
+        "label": "Author",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authortitlekey",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "authortitlevalue",
+        "label": "Author Title",
+        "valueType": "string"
       }
     ]
   },
@@ -9829,7 +10297,7 @@
         "value": "description"
       },
       {
-        "component": "text",
+        "component": "richtext",
         "name": "descriptionvalue",
         "label": "Description",
         "valueType": "string"
@@ -9868,6 +10336,35 @@
         "valueType": "string",
         "hidden": true,
         "value": "fontsize"
+      },
+      {
+        "component": "select",
+        "name": "backgroundcolor",
+        "label": "Background Color",
+        "options": [
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          }
+        ],
+        "valueType": "string",
+        "value": "transparent"
       },
       {
         "component": "select",
@@ -10726,6 +11223,10 @@
           {
             "name": "Stacked Media",
             "value": "stacked-media"
+          },
+          {
+            "name": "Giftpro",
+            "value": "giftpro-media"
           }
         ]
       },
@@ -10744,11 +11245,14 @@
           }
         ],
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       },
@@ -10790,6 +11294,33 @@
               "var": "variant"
             },
             "columns"
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "name": "quotecolor",
+        "label": "Quote Color",
+        "options": [
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "variant"
+            },
+            "giftpro-media"
           ]
         }
       },
@@ -10856,11 +11387,14 @@
           }
         ],
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       },
@@ -10889,11 +11423,14 @@
               ]
             },
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             }
           ]
@@ -10907,11 +11444,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -10941,11 +11481,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -10975,11 +11518,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11002,11 +11548,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11028,11 +11577,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11054,11 +11606,14 @@
         "condition": {
           "and": [
             {
-              "!==": [
+              "in": [
                 {
                   "var": "variant"
                 },
-                "columns"
+                [
+                  "media",
+                  "stacked-media"
+                ]
               ]
             },
             {
@@ -11078,11 +11633,14 @@
         "label": "Media Alt Text",
         "valueType": "string",
         "condition": {
-          "!==": [
+          "in": [
             {
               "var": "variant"
             },
-            "columns"
+            [
+              "media",
+              "stacked-media"
+            ]
           ]
         }
       }
