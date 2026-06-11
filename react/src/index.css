@@ -354,6 +354,8 @@
   --spacing-section-spacing-y: 36px;
   --spacing-stats-padding: 24px;
   --spacing-stats-spacing-y: 10px;
+  --spacing-stats-padding-lg: 80px;
+  --spacing-stats-spacing-y-lg: 40px;
   --spacing-sticky-padding: 24px;
   --spacing-tabbed-aside--br: 0px;
   --spacing-tabbed-aside--spacing-y: 0px;
@@ -896,6 +898,8 @@
   --spacing-section-spacing-y: 36px;
   --spacing-stats-padding: 24px;
   --spacing-stats-spacing-y: 10px;
+  --spacing-stats-padding-lg: 80px;
+  --spacing-stats-spacing-y-lg: 40px;
   --spacing-sticky-padding: 24px;
   --spacing-tabbed-aside--br: 0px;
   --spacing-tabbed-aside--spacing-y: 0px;
@@ -1306,6 +1310,8 @@
   --spacing-section-spacing-y: 36px;
   --spacing-stats-padding: 24px;
   --spacing-stats-spacing-y: 10px;
+  --spacing-stats-padding-lg: 40px;
+  --spacing-stats-spacing-y-lg: 40px;
   --spacing-sticky-padding: 24px;
   --spacing-tabbed-aside--br: 0px;
   --spacing-tabbed-aside--spacing-y: 0px;

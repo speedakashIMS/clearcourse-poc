@@ -34,7 +34,7 @@ export default function StatsWithTestimonials({
     statBackgroundColor = backGroundColorMap[statBackgroundColor] || 'bg-transparent text-black';
     
     return (
-      <div className={`flex h-full flex-col justify-center p-stats-padding min-h-[220px] ${widthClass} ${statBackgroundColor}`}>
+      <div className={`flex flex-col justify-center p-stats-padding-lg min-h-[220px] ${widthClass} ${statBackgroundColor}`}>
         <StatsMolecule {...getMoleculeProps(statData)} />
       </div>
     );
@@ -67,7 +67,7 @@ export default function StatsWithTestimonials({
             <div className="flex flex-col items-stretch xl:flex-row shadow-testimonial-with-stats gap-0 xl:gap-4">
               {!isTestimonialFirst && renderStatMolecule(statData, widthClass)}
               {hasTestimonial && (
-                <div className={`flex items-center bg-transparent  text-grey-950 justify-center ${widthClass}`}>
+                <div className={`flex items-center bg-transparent p-stats-padding-lg text-grey-950 justify-center ${widthClass}`}>
                   <TestimonialMolecule
                     testimonial={testimonial}
                     name={name}
