@@ -20,7 +20,20 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-white;
+   @apply inline-flex items-center justify-center text-white;
+
+  height: 40px;
+  padding: 0 18px;
+
+  font-size: 15px;
+  line-height: 1;
+
+  background-color: #26b3c3;
+  border-radius: 20px;
+  border: 2px solid transparent;
+
+  cursor: pointer;
+  transition: border 0.3s ease, opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
     &:hover {
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), var(--color-white);
     }

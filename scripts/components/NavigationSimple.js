@@ -76,13 +76,13 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
   text: r = "Button",
   href: t = void 0,
   variant: s = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: i = "btn-md",
   // btn-sm , btn-md
-  className: o = "",
+  className: a = "",
   disabled: c = !1,
   onClick: u = void 0,
-  attributes: g = {},
+  attributes: b = {},
   ...d
 }) => {
   const w = (h) => {
@@ -99,6 +99,8 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -111,26 +113,26 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
       default:
         return "btn-md";
     }
-  }, a = `btn ${w(s)} ${f(i)} ${o}`.trim();
+  }, o = `btn ${w(s)} ${f(i)} ${a}`.trim();
   return t ? /* @__PURE__ */ e(
     "a",
     {
       href: t,
-      className: a,
+      className: o,
       onClick: u,
       ...d,
-      ...g ?? {},
+      ...b ?? {},
       children: r
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
       type: d.type || "button",
-      className: a,
+      className: o,
       disabled: c,
       onClick: u,
       ...d,
-      ...g ?? {},
+      ...b ?? {},
       children: r
     }
   );
@@ -140,15 +142,15 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
   size: t = "btn-md",
   className: s = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
   ...i
-}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((o, c) => /* @__PURE__ */ e(
+}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, c) => /* @__PURE__ */ e(
   S,
   {
-    text: o.text,
-    variant: o.variant,
-    size: o.size || t,
-    href: o.href,
-    onClick: o.onClick,
-    attributes: o.attributes
+    text: a.text,
+    variant: a.variant,
+    size: a.size || t,
+    href: a.href,
+    onClick: a.onClick,
+    attributes: a.attributes
   },
   c
 )) }), y = {
@@ -169,7 +171,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     hamburger: "border-secondary text-secondary hover:text-secondary-600 hover:border-secondary-400 focus-visible:text-secondary-600 focus-visible:border-secondary-400"
   },
   gradient: {
-    bar: "bg-gradient-to-b from-secondary to-transparent",
+    bar: "bg-gradient-to-r from-[var(--color-brand-tertiary)] to-[var(--color-primary)]",
     link: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80",
     dropdown: "bg-secondary-800 lg:bg-white lg:shadow-lg",
     dropdownLink: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600",
@@ -182,20 +184,23 @@ function A({
   logo: t,
   navItems: s = [],
   // [{ label, href, submenu: [{ label, href }] }]
-  buttons: i = [],
+  buttons: i = [{
+    text: "Get Started",
+    variant: "secondary"
+  }],
   // [{ text, variant, size, href, onClick }]
-  alignNavRight: o = !0,
-  variant: c = "dark",
-  // 'dark' | 'light' | 'gradient'
+  alignNavRight: a = !0,
+  variant: c = "gradient",
+  // 'dark' | 'light' | 'gradient' |
   skipLinkText: u = "Skip navigation",
-  className: g = "",
+  className: b = "",
   ...d
 }) {
-  const [b, w] = j(!1), f = M(), a = y[c] ?? y.dark, h = `w-full ${a.bar} relative`.trim(), k = [
+  const [g, w] = j(!1), f = M(), o = y[c] ?? y.dark, h = `w-full ${o.bar} relative`.trim(), k = [
     "flex items-center gap-nav-spacing-x pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r",
     r ? "w-full max-w-[1600px] mx-auto" : "container"
-  ].filter(Boolean).join(" "), N = o ? "ml-auto" : "flex-1 justify-center";
-  return /* @__PURE__ */ m("nav", { className: `${h} ${g}`.trim(), ...d, children: [
+  ].filter(Boolean).join(" "), N = a ? "ml-auto" : "flex-1 justify-center";
+  return /* @__PURE__ */ m("nav", { className: `${h} ${b}`.trim(), ...d, children: [
     /* @__PURE__ */ e(
       "a",
       {
@@ -206,31 +211,31 @@ function A({
     ),
     /* @__PURE__ */ m("div", { className: k, children: [
       /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e("a", { href: "/", className: "inline-flex shrink-0 items-center", "aria-label": "Home", children: typeof t == "string" ? /* @__PURE__ */ e("img", { src: t, alt: "", className: "h-auto min-h-32 max-h-32" }) : t }) }),
-      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${b ? `!block absolute top-[100%] left-0 w-full ${a.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((l, $) => {
+      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${g ? `!block absolute top-[100%] left-0 w-full ${o.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((l, $) => {
         var x, v;
         return /* @__PURE__ */ m("div", { className: "relative group", children: [
           /* @__PURE__ */ m(
             "a",
             {
               href: l.href || "#",
-              className: `inline-flex items-center gap-10 text-body-default transition-colors ${a.link}`.trim(),
+              className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
               children: [
                 l.label,
                 ((x = l.submenu) == null ? void 0 : x.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
               ]
             }
           ),
-          ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${a.dropdown}`, children: l.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
+          ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${o.dropdown}`, children: l.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
             "a",
             {
               href: p.href || "#",
-              className: `block p-10 text-body-default transition-colors ${a.dropdownLink}`,
+              className: `block p-10 text-body-default transition-colors ${o.dropdownLink}`,
               children: p.label
             }
           ) }, `${l.label}-submenu-${C}`)) }) })
         ] }, `${l.label}-${$}`);
       }) }),
-      /* @__PURE__ */ e("div", { className: "hidden lg:flex", children: /* @__PURE__ */ e(
+      /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
         F,
         {
           buttons: i,
@@ -241,11 +246,11 @@ function A({
         "button",
         {
           type: "button",
-          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${a.hamburger}`,
+          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${o.hamburger}`,
           "aria-label": "Open menu",
-          "aria-expanded": b,
+          "aria-expanded": g,
           onClick: () => w((l) => !l),
-          children: b ? /* @__PURE__ */ e(O, { className: "w-20 h-20" }) : /* @__PURE__ */ e(L, { className: "w-20 h-20" })
+          children: g ? /* @__PURE__ */ e(O, { className: "w-20 h-20" }) : /* @__PURE__ */ e(L, { className: "w-20 h-20" })
         }
       )
     ] }),

@@ -2,9 +2,9 @@ import { jsxs as f, jsx as t } from "react/jsx-runtime";
 import * as b from "react";
 function M({
   title: s,
-  titleId: r,
+  titleId: n,
   ...l
-}, n) {
+}, r) {
   return /* @__PURE__ */ b.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
@@ -13,10 +13,10 @@ function M({
     stroke: "currentColor",
     "aria-hidden": "true",
     "data-slot": "icon",
-    ref: n,
-    "aria-labelledby": r
+    ref: r,
+    "aria-labelledby": n
   }, l), s ? /* @__PURE__ */ b.createElement("title", {
-    id: r
+    id: n
   }, s) : null, /* @__PURE__ */ b.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
@@ -25,10 +25,10 @@ function M({
 }
 const R = /* @__PURE__ */ b.forwardRef(M), j = ({
   text: s = "Link",
-  href: r = "#",
+  href: n = "#",
   variant: l = "dark",
   // dark, light
-  icon: n,
+  icon: r,
   className: d = "",
   ...o
 }) => {
@@ -41,11 +41,11 @@ const R = /* @__PURE__ */ b.forwardRef(M), j = ({
       default:
         return "link-dark";
     }
-  }, e = n || R, i = `${g} ${c(l)} ${d}`.trim();
+  }, e = r || R, i = `${g} ${c(l)} ${d}`.trim();
   return /* @__PURE__ */ f(
     "a",
     {
-      href: r,
+      href: n,
       className: i,
       ...o,
       children: [
@@ -56,10 +56,10 @@ const R = /* @__PURE__ */ b.forwardRef(M), j = ({
   );
 }, E = ({
   text: s = "Button",
-  href: r = void 0,
+  href: n = void 0,
   variant: l = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
-  size: n = "btn-md",
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
+  size: r = "btn-md",
   // btn-sm , btn-md
   className: d = "",
   disabled: o = !1,
@@ -81,6 +81,8 @@ const R = /* @__PURE__ */ b.forwardRef(M), j = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -93,11 +95,11 @@ const R = /* @__PURE__ */ b.forwardRef(M), j = ({
       default:
         return "btn-md";
     }
-  }, p = `btn ${a(l)} ${h(n)} ${d}`.trim();
-  return r ? /* @__PURE__ */ t(
+  }, p = `btn ${a(l)} ${h(r)} ${d}`.trim();
+  return n ? /* @__PURE__ */ t(
     "a",
     {
-      href: r,
+      href: n,
       className: p,
       onClick: g,
       ...e,
@@ -119,19 +121,19 @@ const R = /* @__PURE__ */ b.forwardRef(M), j = ({
 };
 function L({
   title: s,
-  titleId: r,
+  titleId: n,
   ...l
-}, n) {
+}, r) {
   return /* @__PURE__ */ b.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     "aria-hidden": "true",
     "data-slot": "icon",
-    ref: n,
-    "aria-labelledby": r
+    ref: r,
+    "aria-labelledby": n
   }, l), s ? /* @__PURE__ */ b.createElement("title", {
-    id: r
+    id: n
   }, s) : null, /* @__PURE__ */ b.createElement("path", {
     fillRule: "evenodd",
     d: "M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z",
@@ -140,15 +142,15 @@ function L({
 }
 const G = /* @__PURE__ */ b.forwardRef(L), S = ({
   text: s,
-  useIcon: r = !0,
+  useIcon: n = !0,
   number: l,
-  stacked: n = !1,
+  stacked: r = !1,
   size: d = "medium",
   // 'small' | 'medium' | 'large'
   className: o = "",
   attributes: g = {}
 }) => {
-  const c = !!n, i = { small: 16, medium: 24, large: 32 }[d] || 24, a = { width: `${i}px`, height: `${i}px` }, h = c ? "flex-col items-start" : "flex-row items-start", p = c ? "gap-8" : "gap-12", u = c ? "" : "mt-4", w = r ? /* @__PURE__ */ t(G, { className: `flex-shrink-0 ${u}`.trim(), style: a }) : /* @__PURE__ */ t(
+  const c = !!r, i = { small: 16, medium: 24, large: 32 }[d] || 24, a = { width: `${i}px`, height: `${i}px` }, h = c ? "flex-col items-start" : "flex-row items-start", p = c ? "gap-8" : "gap-12", u = c ? "" : "mt-4", w = n ? /* @__PURE__ */ t(G, { className: `flex-shrink-0 ${u}`.trim(), style: a }) : /* @__PURE__ */ t(
     "span",
     {
       className: `font-semibold flex-shrink-0 leading-none ${u}`.trim(),
@@ -159,12 +161,12 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
     w,
     /* @__PURE__ */ t("span", { className: "text-body-large", children: s })
   ] });
-  return r ? /* @__PURE__ */ t("li", { ...g || {}, children: y }) : /* @__PURE__ */ t("div", { ...g || {}, children: y });
+  return n ? /* @__PURE__ */ t("li", { ...g || {}, children: y }) : /* @__PURE__ */ t("div", { ...g || {}, children: y });
 }, I = ({
   title: s,
-  description: r,
+  description: n,
   richText: l,
-  valueList: n = null,
+  valueList: r = null,
   // { items: [{ text, number?, attributes? }], stacked, size, useIcon }
   buttonText: d,
   buttonHref: o,
@@ -194,7 +196,7 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat"
-  } : void 0, C = typeof o == "string" ? o.trim().length > 0 : !!o, k = (m) => typeof m == "string" && m.trim().length > 0, $ = n && Array.isArray(n.items) && n.items.length > 0, B = k(s) || k(r) || k(l) || $, v = c === "link" && k(d) && C, N = c === "button" && k(d) && C;
+  } : void 0, C = typeof o == "string" ? o.trim().length > 0 : !!o, k = (m) => typeof m == "string" && m.trim().length > 0, $ = r && Array.isArray(r.items) && r.items.length > 0, B = k(s) || k(n) || k(l) || $, v = c === "link" && k(d) && C, N = c === "button" && k(d) && C;
   return /* @__PURE__ */ f(
     "div",
     {
@@ -215,7 +217,7 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
         /* @__PURE__ */ f("div", { className: "relative z-10 max-w-[520px] min-h-[280px] flex flex-col items-start justify-end", children: [
           /* @__PURE__ */ f("div", { className: "space-y-textmedia-text--spacing-y", children: [
             s && /* @__PURE__ */ t("h3", { className: "text-headings-h3 font-semibold", children: s }),
-            r && /* @__PURE__ */ t("p", { className: "text-body-default", children: r }),
+            n && /* @__PURE__ */ t("p", { className: "text-body-default", children: n }),
             l && /* @__PURE__ */ t(
               "div",
               {
@@ -223,25 +225,25 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
                 className: "wysiwyg"
               }
             ),
-            $ && (n.useIcon !== !1 ? /* @__PURE__ */ t("ul", { className: "mt-24 space-y-12", children: n.items.map((m, x) => /* @__PURE__ */ t(
+            $ && (r.useIcon !== !1 ? /* @__PURE__ */ t("ul", { className: "mt-24 space-y-12", children: r.items.map((m, x) => /* @__PURE__ */ t(
               S,
               {
                 text: m.text,
                 useIcon: !0,
                 number: m.number,
-                stacked: n.stacked,
-                size: n.size,
+                stacked: r.stacked,
+                size: r.size,
                 attributes: m.attributes
               },
               x
-            )) }) : /* @__PURE__ */ t("div", { className: "mt-24 space-y-12", children: n.items.map((m, x) => /* @__PURE__ */ t(
+            )) }) : /* @__PURE__ */ t("div", { className: "mt-24 space-y-12", children: r.items.map((m, x) => /* @__PURE__ */ t(
               S,
               {
                 text: m.text,
                 useIcon: !1,
                 number: m.number,
-                stacked: n.stacked,
-                size: n.size,
+                stacked: r.stacked,
+                size: r.size,
                 attributes: m.attributes
               },
               x
@@ -272,15 +274,15 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
 }, A = ({
   columns: s = 3,
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
-  gridVariant: r = "contained",
+  gridVariant: n = "contained",
   // 'contained' | 'full'
   data: l = [],
   // Array of tile data objects
-  className: n = "",
+  className: r = "",
   ...d
 }) => {
   const o = () => {
-    const e = r === "full" ? "gap-0" : "gap-24", a = [3, 5, 6].includes(s) ? "lg:grid-cols-6" : `lg:grid-cols-${s}`;
+    const e = n === "full" ? "gap-0" : "gap-24", a = [3, 5, 6].includes(s) ? "lg:grid-cols-6" : `lg:grid-cols-${s}`;
     switch (s) {
       case 1:
         return `grid grid-cols-1 ${e}`;
@@ -305,7 +307,7 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
     }
     return s >= 5 && a.push("xl:col-span-1"), a.join(" ");
   };
-  return /* @__PURE__ */ t("div", { className: n, ...d, children: /* @__PURE__ */ t("div", { className: r === "contained" ? "container" : "", children: /* @__PURE__ */ t("div", { className: o(), children: l.map((e, i) => /* @__PURE__ */ t(
+  return /* @__PURE__ */ t("div", { className: r, ...d, children: /* @__PURE__ */ t("div", { className: n === "contained" ? "container" : "", children: /* @__PURE__ */ t("div", { className: o(), children: l.map((e, i) => /* @__PURE__ */ t(
     I,
     {
       title: e.title,
@@ -318,7 +320,7 @@ const G = /* @__PURE__ */ b.forwardRef(L), S = ({
       backgroundColor: e.backgroundColor || "primary",
       richText: e.richText,
       valueList: e.valueList,
-      className: `${r === "contained" ? "rounded-[var(--spacing-tiles-br)]" : "rounded-none"} ${g(i, l.length)} ${e.className || ""}`.trim(),
+      className: `${n === "contained" ? "rounded-[var(--spacing-tiles-br)]" : "rounded-none"} ${g(i, l.length)} ${e.className || ""}`.trim(),
       attributes: e.attributes
     },
     i

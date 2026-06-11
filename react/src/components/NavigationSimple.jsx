@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outli
 import Buttons from './Buttons';
 
 const variantStyles = {
+
   dark: {
     bar: 'bg-secondary',
     link: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80',
@@ -11,6 +12,7 @@ const variantStyles = {
     mobileMenu: 'bg-secondary',
     hamburger: 'border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80',
   },
+
   light: {
     bar: 'bg-white',
     link: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600',
@@ -20,22 +22,27 @@ const variantStyles = {
     hamburger: 'border-secondary text-secondary hover:text-secondary-600 hover:border-secondary-400 focus-visible:text-secondary-600 focus-visible:border-secondary-400',
   },
   gradient: {
-    bar: 'bg-gradient-to-b from-secondary to-transparent',
+    bar: 'bg-gradient-to-r from-[var(--color-brand-tertiary)] to-[var(--color-primary)]',
     link: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80',
     dropdown: 'bg-secondary-800 lg:bg-white lg:shadow-lg',
     dropdownLink: 'text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600',
     mobileMenu: 'bg-secondary lg:bg-gradient-to-b lg:from-secondary lg:to-transparent',
     hamburger: 'border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80',
   },
+  
 };
 
 export default function NavigationSimple({
   fullWidth = false,
   logo,
   navItems = [], // [{ label, href, submenu: [{ label, href }] }]
-  buttons = [], // [{ text, variant, size, href, onClick }]
+  buttons = [{
+
+    text: 'Get Started',
+    variant: 'secondary'
+  }], // [{ text, variant, size, href, onClick }]
   alignNavRight = true,
-  variant = 'dark', // 'dark' | 'light' | 'gradient'
+  variant = 'gradient', // 'dark' | 'light' | 'gradient' |
   skipLinkText = 'Skip navigation',
   className = '',
   ...props
@@ -107,7 +114,7 @@ export default function NavigationSimple({
           ))}
         </div>
 
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex nav-buttons">
           <Buttons
             buttons={buttons}
             className="flex items-center gap-10"

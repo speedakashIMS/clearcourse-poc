@@ -6,13 +6,13 @@ const J = ({
   text: t = "Button",
   href: a = void 0,
   variant: s = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: f = "btn-md",
   // btn-sm , btn-md
   className: i = "",
-  disabled: h = !1,
+  disabled: p = !1,
   onClick: g = void 0,
-  attributes: p = {},
+  attributes: h = {},
   ...u
 }) => {
   const o = (r) => {
@@ -29,6 +29,8 @@ const J = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -49,7 +51,7 @@ const J = ({
       className: b,
       onClick: g,
       ...u,
-      ...p ?? {},
+      ...h ?? {},
       children: t
     }
   ) : /* @__PURE__ */ e(
@@ -57,10 +59,10 @@ const J = ({
     {
       type: u.type || "button",
       className: b,
-      disabled: h,
+      disabled: p,
       onClick: g,
       ...u,
-      ...p ?? {},
+      ...h ?? {},
       children: t
     }
   );
@@ -95,9 +97,9 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
   // dark, light
   icon: f,
   className: i = "",
-  ...h
+  ...p
 }) => {
-  const g = "text-link", p = (o) => {
+  const g = "text-link", h = (o) => {
     switch (o) {
       case "light":
         return "link-light";
@@ -106,13 +108,13 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
       default:
         return "link-dark";
     }
-  }, u = f || Q, n = `${g} ${p(s)} ${i}`.trim();
+  }, u = f || Q, n = `${g} ${h(s)} ${i}`.trim();
   return /* @__PURE__ */ M(
     "a",
     {
       href: a,
       className: n,
-      ...h,
+      ...p,
       children: [
         /* @__PURE__ */ e("span", { children: t }),
         /* @__PURE__ */ e(u, { className: "text-link-icon" })
@@ -128,9 +130,9 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
   // 'cover' | 'contain' — how media fills its box (e.g. framed text+media)
   imageUrl: f,
   videoUrl: i,
-  lottieUrl: h,
+  lottieUrl: p,
   lottieData: g,
-  iframeUrl: p,
+  iframeUrl: h,
   flipbookUrl: u,
   title: n,
   className: o = ""
@@ -215,15 +217,15 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
             ) })
           }
         );
-      if (h)
+      if (p)
         return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
-      if (p)
+      if (h)
         return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e(
           "iframe",
           {
-            src: p,
+            src: h,
             title: n || "Iframe content",
             frameBorder: "0",
             className: `${N} ${y}`.trim()
@@ -253,11 +255,11 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
   // 'image' | 'video' | 'lottie' | 'iframe' - selector for media type
   imageUrl: i,
   // URL for image
-  videoUrl: h,
+  videoUrl: p,
   // URL for video (YouTube embed URL or direct video URL)
   lottieUrl: g,
   // URL to Lottie animation JSON file
-  lottieData: p,
+  lottieData: h,
   // Lottie animation JSON data object (alternative to lottieUrl)
   iframeUrl: u,
   // URL for iframe
@@ -337,9 +339,9 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
       media: f,
       aspect: "default",
       imageUrl: i,
-      videoUrl: h,
+      videoUrl: p,
       lottieUrl: g,
-      lottieData: p,
+      lottieData: h,
       iframeUrl: u,
       title: n ?? o,
       className: ""
@@ -394,9 +396,9 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
   buttonType: s = "button",
   linkVariant: f,
   stacked: i = !0,
-  imagePosition: h = "left",
+  imagePosition: p = "left",
   variant: g = "flushed",
-  itemBackgroundVariant: p = "default",
+  itemBackgroundVariant: h = "default",
   className: u = "",
   ...n
 }) => {
@@ -427,7 +429,7 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
     re,
     {
       stacked: i,
-      imagePosition: h,
+      imagePosition: p,
       variant: g,
       media: r.media || "image",
       imageUrl: r.imageUrl,
@@ -445,7 +447,7 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
       buttonType: r.buttonType || s,
       linkVariant: r.linkVariant || f,
       buttonOnClick: r.buttonOnClick,
-      backgroundVariant: p,
+      backgroundVariant: h,
       attributes: r.attributes,
       className: "h-full w-full"
     }
@@ -460,7 +462,7 @@ const se = async () => {
 }, ae = async () => {
   S || (S = (await import("react-pageflip")).default);
 }, ie = U(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), le = ({ pdfUrl: t, title: a, width: s = 280, height: f = 280, className: i = "" }) => {
-  const [h, g] = L(0), [p, u] = L(null), [n, o] = L(!0), [x, b] = L(f / s), [r, l] = L(0), c = G(null);
+  const [p, g] = L(0), [h, u] = L(null), [n, o] = L(!0), [x, b] = L(f / s), [r, l] = L(0), c = G(null);
   O(() => {
     Promise.all([se(), ae()]).then(() => o(!1)).catch(() => {
       u("Failed to load flipbook");
@@ -484,7 +486,7 @@ const se = async () => {
   }, []), j = V((d) => {
     u((d == null ? void 0 : d.message) || "Failed to load PDF");
   }, []);
-  return p ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : n ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${i}`.trim(), children: /* @__PURE__ */ M(
+  return h ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : n ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${i}`.trim(), children: /* @__PURE__ */ M(
     W,
     {
       file: t,
@@ -492,7 +494,7 @@ const se = async () => {
       onLoadError: j,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
-        h === 1 && /* @__PURE__ */ e(
+        p === 1 && /* @__PURE__ */ e(
           "div",
           {
             className: `w-full flex justify-center items-center ${i}`.trim(),
@@ -500,7 +502,7 @@ const se = async () => {
             children: /* @__PURE__ */ e(T, { pageNumber: 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
-        h > 1 && /* @__PURE__ */ e(
+        p > 1 && /* @__PURE__ */ e(
           S,
           {
             width: v,
@@ -509,7 +511,7 @@ const se = async () => {
             showCover: !0,
             mobileScrollSupport: !1,
             "aria-label": a || "Flipbook",
-            children: Array.from({ length: h }, (d, w) => /* @__PURE__ */ e(ie, { children: /* @__PURE__ */ e(T, { pageNumber: w + 1, width: v, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, w))
+            children: Array.from({ length: p }, (d, w) => /* @__PURE__ */ e(ie, { children: /* @__PURE__ */ e(T, { pageNumber: w + 1, width: v, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, w))
           },
           `${v}-${N}`
         )

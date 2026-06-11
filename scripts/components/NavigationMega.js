@@ -76,13 +76,13 @@ const _ = /* @__PURE__ */ i.forwardRef(X), q = ({
   text: r = "Button",
   href: l = void 0,
   variant: n = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: o = "btn-md",
   // btn-sm , btn-md
   className: c = "",
   disabled: b = !1,
-  onClick: w = void 0,
-  attributes: y = {},
+  onClick: y = void 0,
+  attributes: w = {},
   ...p
 }) => {
   const $ = (d) => {
@@ -99,6 +99,8 @@ const _ = /* @__PURE__ */ i.forwardRef(X), q = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -117,9 +119,9 @@ const _ = /* @__PURE__ */ i.forwardRef(X), q = ({
     {
       href: l,
       className: v,
-      onClick: w,
+      onClick: y,
       ...p,
-      ...y ?? {},
+      ...w ?? {},
       children: r
     }
   ) : /* @__PURE__ */ e(
@@ -128,9 +130,9 @@ const _ = /* @__PURE__ */ i.forwardRef(X), q = ({
       type: p.type || "button",
       className: v,
       disabled: b,
-      onClick: w,
+      onClick: y,
       ...p,
-      ...y ?? {},
+      ...w ?? {},
       children: r
     }
   );
@@ -162,8 +164,8 @@ function K({
   alignNavRight: c = !1,
   variant: b = "dark",
   // 'dark' | 'light'
-  skipLinkText: w = "Skip navigation",
-  className: y = "",
+  skipLinkText: y = "Skip navigation",
+  className: w = "",
   ...p
 }) {
   const [N, $] = M(!1), [k, v] = M({}), [d, j] = M(null), B = F(), z = r ? "w-full max-w-[1600px] mx-auto bg-grey-700" : "container", O = c ? "ml-auto" : "flex-1 justify-center", E = b === "light" ? "text-white hover:text-white/80 focus-visible:text-white/80" : "text-grey-600 hover:text-grey-950 focus-visible:text-grey-950", T = (t) => {
@@ -230,13 +232,13 @@ function K({
     }
     return R(m.columns || [], { stacked: s });
   };
-  return /* @__PURE__ */ h("nav", { className: `${z} relative ${y}`.trim(), ...p, children: [
+  return /* @__PURE__ */ h("nav", { className: `${z} relative ${w}`.trim(), ...p, children: [
     /* @__PURE__ */ e(
       "a",
       {
         href: `#${B}`,
         className: "sr-only focus:not-sr-only focus:absolute focus:left-20 focus:top-20 focus:z-20 focus:inline-flex focus:rounded-8 focus:bg-white focus:px-16 focus:py-10 focus:text-body-default focus:text-grey-950",
-        children: w
+        children: y
       }
     ),
     /* @__PURE__ */ h("div", { className: "flex items-center gap-nav-spacing-x bg-grey-700 pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r relative", children: [

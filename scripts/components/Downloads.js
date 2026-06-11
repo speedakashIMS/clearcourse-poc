@@ -7,7 +7,7 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
   aspect: t = "default",
   // 'default' | 'rectangle' | 'square'
-  objectFit: s = "cover",
+  objectFit: o = "cover",
   // 'cover' | 'contain' — how media fills its box (e.g. framed text+media)
   imageUrl: a,
   videoUrl: i,
@@ -19,7 +19,7 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
   className: g = ""
 }) => {
   var v;
-  const c = typeof window < "u" && window.location.origin.indexOf("author") > -1, m = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, f = `relative w-full h-full ${t === "square" ? "aspect-square" : t === "rectangle" ? "aspect-[4/3]" : l === "video" ? "aspect-video" : ""}`.trim(), h = t === "default" ? `w-full h-full ${g}`.trim() : `absolute inset-0 w-full h-full ${g}`.trim(), o = "w-full h-full", w = t === "default" ? `${h}`.trim() : h, N = s === "contain" ? "object-contain" : "object-cover", P = s === "contain" ? "xMidYMid meet" : "xMidYMid slice", x = `relative w-full ${g}`.trim(), y = "w-full min-h-[280px]";
+  const c = typeof window < "u" && window.location.origin.indexOf("author") > -1, m = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, f = `relative w-full h-full ${t === "square" ? "aspect-square" : t === "rectangle" ? "aspect-[4/3]" : l === "video" ? "aspect-video" : ""}`.trim(), h = t === "default" ? `w-full h-full ${g}`.trim() : `absolute inset-0 w-full h-full ${g}`.trim(), s = "w-full h-full", w = t === "default" ? `${h}`.trim() : h, N = o === "contain" ? "object-contain" : "object-cover", P = o === "contain" ? "xMidYMid meet" : "xMidYMid slice", x = `relative w-full ${g}`.trim(), y = "w-full min-h-[280px]";
   switch (l) {
     case "image":
       if (a)
@@ -91,7 +91,7 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
                 animationData: n,
                 loop: !m,
                 autoplay: !m,
-                className: o,
+                className: s,
                 style: { width: "100%", height: "100%" },
                 rendererSettings: { preserveAspectRatio: P }
               }
@@ -128,8 +128,8 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
 }, q = ({
   text: l = "Button",
   href: t = void 0,
-  variant: s = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  variant: o = "light",
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: a = "btn-md",
   // btn-sm , btn-md
   className: i = "",
@@ -152,6 +152,8 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -164,7 +166,7 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
       default:
         return "btn-md";
     }
-  }, m = `btn ${g(s)} ${c(a)} ${i}`.trim();
+  }, m = `btn ${g(o)} ${c(a)} ${i}`.trim();
   return t ? /* @__PURE__ */ e(
     "a",
     {
@@ -191,7 +193,7 @@ const W = V(() => Promise.resolve().then(() => ee)), Y = ({
 function G({
   title: l,
   titleId: t,
-  ...s
+  ...o
 }, a) {
   return /* @__PURE__ */ R.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
@@ -201,7 +203,7 @@ function G({
     "data-slot": "icon",
     ref: a,
     "aria-labelledby": t
-  }, s), l ? /* @__PURE__ */ R.createElement("title", {
+  }, o), l ? /* @__PURE__ */ R.createElement("title", {
     id: t
   }, l) : null, /* @__PURE__ */ R.createElement("path", {
     fillRule: "evenodd",
@@ -220,7 +222,7 @@ function J({
    * The main component handles these to make sure items uniform.
    * But if you use this molecule as standalone, you can use the props below.
    */
-  colorVariant: s = "dark",
+  colorVariant: o = "dark",
   // 'dark' | 'light'
   className: a = "",
   iconPosition: i = "left",
@@ -231,9 +233,9 @@ function J({
   // Ignore anything in the props, it should not be part of the integration
   ...u
 }) {
-  const [r, g] = C(!1), [c, m] = C(0), b = F(null), f = F(null), h = u.rotateIcon ?? !0, o = u.icon ?? null, w = {
-    text: s === "dark" ? "grey-950" : "white",
-    border: s === "dark" ? "grey-300" : "grey-200"
+  const [r, g] = C(!1), [c, m] = C(0), b = F(null), f = F(null), h = u.rotateIcon ?? !0, s = u.icon ?? null, w = {
+    text: o === "dark" ? "grey-950" : "white",
+    border: o === "dark" ? "grey-300" : "grey-200"
   }, N = () => {
     g(!r);
   };
@@ -259,14 +261,14 @@ function J({
             "aria-expanded": r,
             "aria-controls": `accordion-content-${n}`,
             children: [
-              i === "left" && d && /* @__PURE__ */ e("div", { className: "mr-10 shrink-0", children: o || /* @__PURE__ */ e(
+              i === "left" && d && /* @__PURE__ */ e("div", { className: "mr-10 shrink-0", children: s || /* @__PURE__ */ e(
                 D,
                 {
                   className: `w-5 h-5 transition-transform duration-200 ${r && h ? "rotate-180" : ""}`
                 }
               ) }),
               /* @__PURE__ */ e("div", { className: "flex items-center gap-10 flex-1 min-w-0", children: /* @__PURE__ */ e("span", { className: "flex-1", children: l }) }),
-              i === "right" && d && /* @__PURE__ */ e("div", { className: "ml-10 shrink-0", children: o || /* @__PURE__ */ e(
+              i === "right" && d && /* @__PURE__ */ e("div", { className: "ml-10 shrink-0", children: s || /* @__PURE__ */ e(
                 D,
                 {
                   className: `w-5 h-5 transition-transform duration-200 ${r && h ? "rotate-180" : ""}`
@@ -306,7 +308,7 @@ function U({
   // 'vertical' | 'horizontal'
   media: t = null,
   // Media props: { media, imageUrl, videoUrl, aspect, title, ... }
-  logoUrl: s = null,
+  logoUrl: o = null,
   // Logo URL
   title: a = "",
   description: i = "",
@@ -332,22 +334,22 @@ function U({
       a && /* @__PURE__ */ e("h3", { className: "text-headings-h3 font-semibold m-0", children: a }),
       i && /* @__PURE__ */ e("p", { className: "text-body-default m-0 mt-10", children: i })
     ] }),
-    d && d.length > 0 && /* @__PURE__ */ e("div", { className: "flex flex-wrap gap-8", children: d.map((o, w) => /* @__PURE__ */ e(
+    d && d.length > 0 && /* @__PURE__ */ e("div", { className: "flex flex-wrap gap-8", children: d.map((s, w) => /* @__PURE__ */ e(
       q,
       {
-        text: o.text,
-        href: o.href,
-        variant: o.variant || "light",
-        size: o.size || "btn-md",
-        onClick: o.onClick
+        text: s.text,
+        href: s.href,
+        variant: s.variant || "light",
+        size: s.size || "btn-md",
+        onClick: s.onClick
       },
       w
     )) }),
-    n && n.length > 0 && /* @__PURE__ */ e("div", { className: "flex flex-col gap-0", children: n.map((o, w) => /* @__PURE__ */ e(
+    n && n.length > 0 && /* @__PURE__ */ e("div", { className: "flex flex-col gap-0", children: n.map((s, w) => /* @__PURE__ */ e(
       J,
       {
-        title: o.title,
-        content: o.content,
+        title: s.title,
+        content: s.content,
         iconPosition: "left",
         index: w,
         colorVariant: "light"
@@ -369,10 +371,10 @@ function U({
         className: "w-full h-full object-cover"
       }
     ),
-    s && /* @__PURE__ */ e("div", { className: "absolute bottom-0 left-1/2 -translate-x-1/2  p-downloads-logo--padding ", children: /* @__PURE__ */ e(
+    o && /* @__PURE__ */ e("div", { className: "absolute bottom-0 left-1/2 -translate-x-1/2  p-downloads-logo--padding ", children: /* @__PURE__ */ e(
       "img",
       {
-        src: s,
+        src: o,
         alt: `${a} logo`,
         className: "object-contain h-[48px] border-2 border-grey-600 rounded-10"
       }
@@ -386,14 +388,14 @@ function U({
 function ae({
   id: l,
   variant: t = "vertical",
-  columns: s = 1,
+  columns: o = 1,
   items: a = [],
   className: i = ""
 }) {
   const d = ["vertical", "horizontal"].includes(t) ? t : "vertical", n = d === "vertical";
   if (!a || a.length === 0)
     return null;
-  const p = n ? Math.max(1, Math.min(4, Number(s) || 1)) : 1, u = n ? {
+  const p = n ? Math.max(1, Math.min(4, Number(o) || 1)) : 1, u = n ? {
     1: "xl:grid-cols-1",
     2: "xl:grid-cols-2",
     3: "xl:grid-cols-3",
@@ -429,8 +431,8 @@ const Z = async () => {
   }
 }, K = async () => {
   B || (B = (await import("react-pageflip")).default);
-}, Q = E(({ children: l }, t) => /* @__PURE__ */ e("div", { ref: t, className: "w-full h-full overflow-hidden", children: l })), X = ({ pdfUrl: l, title: t, width: s = 280, height: a = 280, className: i = "" }) => {
-  const [d, n] = C(0), [p, u] = C(null), [r, g] = C(!0), [c, m] = C(a / s), [b, f] = C(0), h = F(null);
+}, Q = E(({ children: l }, t) => /* @__PURE__ */ e("div", { ref: t, className: "w-full h-full overflow-hidden", children: l })), X = ({ pdfUrl: l, title: t, width: o = 280, height: a = 280, className: i = "" }) => {
+  const [d, n] = C(0), [p, u] = C(null), [r, g] = C(!0), [c, m] = C(a / o), [b, f] = C(0), h = F(null);
   S(() => {
     Promise.all([Z(), K()]).then(() => g(!1)).catch(() => {
       u("Failed to load flipbook");
@@ -444,7 +446,7 @@ const Z = async () => {
     });
     return y.observe(x), () => y.disconnect();
   }, [r]);
-  const o = b > 0 ? Math.floor(b / 2) : Math.floor(s / 2), w = Math.round(o * c), N = z(async (x) => {
+  const s = b > 0 ? Math.floor(b / 2) : Math.floor(o / 2), w = Math.round(s * c), N = z(async (x) => {
     try {
       const v = (await x.getPage(1)).getViewport({ scale: 1 });
       v != null && v.width && (v != null && v.height) && m(v.height / v.width);
@@ -467,21 +469,21 @@ const Z = async () => {
           {
             className: `w-full flex justify-center items-center ${i}`.trim(),
             style: { minHeight: `${w}px` },
-            children: /* @__PURE__ */ e(A, { pageNumber: 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 })
+            children: /* @__PURE__ */ e(A, { pageNumber: 1, width: o, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
         d > 1 && /* @__PURE__ */ e(
           B,
           {
-            width: o,
+            width: s,
             height: w,
             size: "stretch",
             showCover: !0,
             mobileScrollSupport: !1,
             "aria-label": t || "Flipbook",
-            children: Array.from({ length: d }, (x, y) => /* @__PURE__ */ e(Q, { children: /* @__PURE__ */ e(A, { pageNumber: y + 1, width: o, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, y))
+            children: Array.from({ length: d }, (x, y) => /* @__PURE__ */ e(Q, { children: /* @__PURE__ */ e(A, { pageNumber: y + 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, y))
           },
-          `${o}-${w}`
+          `${s}-${w}`
         )
       ]
     }

@@ -4,7 +4,7 @@ const X = ({
   text: n = "Button",
   href: c = void 0,
   variant: N = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: b = "btn-md",
   // btn-sm , btn-md
   className: p = "",
@@ -27,6 +27,8 @@ const X = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

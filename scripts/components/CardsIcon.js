@@ -6,7 +6,7 @@ const G = ({
   text: t = "Button",
   href: s = void 0,
   variant: n = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: u = "btn-md",
   // btn-sm , btn-md
   className: a = "",
@@ -29,6 +29,8 @@ const G = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

@@ -55,7 +55,7 @@ const _ = ({
   text: t = "Button",
   href: l = void 0,
   variant: i = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: c = "btn-md",
   // btn-sm , btn-md
   className: o = "",
@@ -78,6 +78,8 @@ const _ = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }

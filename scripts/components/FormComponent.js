@@ -15,10 +15,10 @@ const Z = ({
      max-xl:container 
      ${t !== "form-media" ? "max-xl:px-0!" : ""}
       ${s === "left" ? "order-1" : "order-2"}
-    `, d = () => a === "form-only" ? "" : s === "left" ? "order-2" : "order-1", u = i(), y = `${o()} ${m()}`, p = `${o()} ${d()}`;
+    `, d = () => a === "form-only" ? "" : s === "left" ? "order-2" : "order-1", u = i(), y = `${o()} ${m()}`, g = `${o()} ${d()}`;
   return /* @__PURE__ */ M("div", { className: u, children: [
     /* @__PURE__ */ e("div", { className: y, children: r }),
-    a !== "form-only" && l && /* @__PURE__ */ e("div", { className: p, children: l })
+    a !== "form-only" && l && /* @__PURE__ */ e("div", { className: g, children: l })
   ] });
 }, Y = U(() => Promise.resolve().then(() => ue)), D = ({
   media: t = "image",
@@ -36,8 +36,8 @@ const Z = ({
   title: d,
   className: u = ""
 }) => {
-  var g;
-  const y = typeof window < "u" && window.location.origin.indexOf("author") > -1, p = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, b = `relative w-full h-full ${r === "square" ? "aspect-square" : r === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), f = r === "default" ? `w-full h-full ${u}`.trim() : `absolute inset-0 w-full h-full ${u}`.trim(), x = "w-full h-full", N = r === "default" ? `${f}`.trim() : f, k = l === "contain" ? "object-contain" : "object-cover", F = l === "contain" ? "xMidYMid meet" : "xMidYMid slice", h = `relative w-full ${u}`.trim(), w = "w-full min-h-[280px]";
+  var p;
+  const y = typeof window < "u" && window.location.origin.indexOf("author") > -1, g = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, b = `relative w-full h-full ${r === "square" ? "aspect-square" : r === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), f = r === "default" ? `w-full h-full ${u}`.trim() : `absolute inset-0 w-full h-full ${u}`.trim(), x = "w-full h-full", N = r === "default" ? `${f}`.trim() : f, k = l === "contain" ? "object-contain" : "object-cover", F = l === "contain" ? "xMidYMid meet" : "xMidYMid slice", h = `relative w-full ${u}`.trim(), w = "w-full min-h-[280px]";
   switch (t) {
     case "image":
       if (n)
@@ -55,7 +55,7 @@ const Z = ({
       if (a) {
         const R = a.includes("youtube.com/watch") || a.includes("youtu.be/");
         let $ = a;
-        R && ($ = `https://www.youtube.com/embed/${a.includes("youtu.be/") ? a.split("youtu.be/")[1].split("?")[0] : (g = a.split("v=")[1]) == null ? void 0 : g.split("&")[0]}`);
+        R && ($ = `https://www.youtube.com/embed/${a.includes("youtu.be/") ? a.split("youtu.be/")[1].split("?")[0] : (p = a.split("v=")[1]) == null ? void 0 : p.split("&")[0]}`);
         const B = (() => {
           if (!R) return $;
           try {
@@ -107,8 +107,8 @@ const Z = ({
               W,
               {
                 animationData: o,
-                loop: !p,
-                autoplay: !p,
+                loop: !g,
+                autoplay: !g,
                 className: x,
                 style: { width: "100%", height: "100%" },
                 rendererSettings: { preserveAspectRatio: F }
@@ -286,7 +286,7 @@ function le({
   attributes: m = {},
   ...d
 }) {
-  const [u, y] = j(!1), [p, v] = j(0), b = C(null), f = C(null), x = d.rotateIcon ?? !0, N = {
+  const [u, y] = j(!1), [g, v] = j(0), b = C(null), f = C(null), x = d.rotateIcon ?? !0, N = {
     text: n === "dark" ? "grey-950" : "white",
     border: n === "dark" ? "grey-300" : "grey-200"
   }, k = () => {
@@ -356,7 +356,7 @@ function le({
             "aria-hidden": !u,
             className: `text-body-default overflow-hidden transition-[height] duration-300 ease-in-out border-b border-${N.border}`,
             style: {
-              height: `${p}px`
+              height: `${g}px`
             },
             children: /* @__PURE__ */ e(
               "div",
@@ -376,7 +376,7 @@ const ae = ({
   text: t = "Button",
   href: r = void 0,
   variant: l = "light",
-  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: n = "btn-md",
   // btn-sm , btn-md
   className: a = "",
@@ -399,6 +399,8 @@ const ae = ({
         return "btn-light-no-outline";
       case "dark-no-outline":
         return "btn-dark-no-outline";
+      case "secondary":
+        return "btn-primary";
       default:
         return "btn-light";
     }
@@ -411,12 +413,12 @@ const ae = ({
       default:
         return "btn-md";
     }
-  }, p = `btn ${u(l)} ${y(n)} ${a}`.trim();
+  }, g = `btn ${u(l)} ${y(n)} ${a}`.trim();
   return r ? /* @__PURE__ */ e(
     "a",
     {
       href: r,
-      className: p,
+      className: g,
       onClick: o,
       ...m,
       ...i ?? {},
@@ -426,7 +428,7 @@ const ae = ({
     "button",
     {
       type: m.type || "button",
-      className: p,
+      className: g,
       disabled: s,
       onClick: o,
       ...m,
@@ -508,7 +510,7 @@ const ae = ({
       }
     ) })
   ] });
-}, ge = ({
+}, pe = ({
   variant: t = "form-only",
   formAlignment: r = "left",
   media: l,
@@ -570,7 +572,7 @@ const ie = async () => {
 }, oe = async () => {
   E || (E = (await import("react-pageflip")).default);
 }, ce = V(({ children: t }, r) => /* @__PURE__ */ e("div", { ref: r, className: "w-full h-full overflow-hidden", children: t })), de = ({ pdfUrl: t, title: r, width: l = 280, height: n = 280, className: a = "" }) => {
-  const [s, o] = j(0), [i, m] = j(null), [d, u] = j(!0), [y, p] = j(n / l), [v, b] = j(0), f = C(null);
+  const [s, o] = j(0), [i, m] = j(null), [d, u] = j(!0), [y, g] = j(n / l), [v, b] = j(0), f = C(null);
   S(() => {
     Promise.all([ie(), oe()]).then(() => u(!1)).catch(() => {
       m("Failed to load flipbook");
@@ -578,16 +580,16 @@ const ie = async () => {
   }, []), S(() => {
     const h = f.current;
     if (!h) return;
-    const w = new ResizeObserver(([g]) => {
-      const R = Math.floor(g.contentRect.width);
+    const w = new ResizeObserver(([p]) => {
+      const R = Math.floor(p.contentRect.width);
       R > 0 && b(R);
     });
     return w.observe(h), () => w.disconnect();
   }, [d]);
   const x = v > 0 ? Math.floor(v / 2) : Math.floor(l / 2), N = Math.round(x * y), k = _(async (h) => {
     try {
-      const g = (await h.getPage(1)).getViewport({ scale: 1 });
-      g != null && g.width && (g != null && g.height) && p(g.height / g.width);
+      const p = (await h.getPage(1)).getViewport({ scale: 1 });
+      p != null && p.width && (p != null && p.height) && g(p.height / p.width);
     } catch {
     }
     o(h.numPages || 0);
@@ -631,5 +633,5 @@ const ie = async () => {
   default: de
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  ge as default
+  pe as default
 };

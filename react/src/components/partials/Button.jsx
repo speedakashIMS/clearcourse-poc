@@ -1,7 +1,7 @@
 const Button = ({
   text = 'Button',
   href = undefined,
-  variant = 'light', // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline
+  variant = 'light', // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size = 'btn-md', // btn-sm , btn-md
   className = '',
   disabled = false,
@@ -26,6 +26,8 @@ const Button = ({
         return 'btn-light-no-outline';
       case 'dark-no-outline':
         return 'btn-dark-no-outline';
+      case 'secondary':
+        return 'btn-primary';
       default:
         return 'btn-light';
     }
