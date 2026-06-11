@@ -1,53 +1,53 @@
-import { jsx as e, jsxs as M, Fragment as _ } from "react/jsx-runtime";
+import { jsx as e, jsxs as j, Fragment as _ } from "react/jsx-runtime";
 import * as L from "react";
 import { lazy as z, Suspense as I, useState as P, useRef as W, useEffect as A, useCallback as T, forwardRef as O } from "react";
 import H from "lottie-react";
 const q = z(() => Promise.resolve().then(() => le)), V = ({
   media: t = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
-  aspect: s = "default",
+  aspect: a = "default",
   // 'default' | 'rectangle' | 'square'
-  objectFit: a = "cover",
+  objectFit: i = "cover",
   // 'cover' | 'contain' — how media fills its box (e.g. framed text+media)
-  imageUrl: i,
-  videoUrl: r,
-  lottieUrl: g,
-  lottieData: x,
+  imageUrl: r,
+  videoUrl: s,
+  lottieUrl: p,
+  lottieData: g,
   iframeUrl: b,
-  flipbookUrl: m,
+  flipbookUrl: x,
   title: l,
-  className: f = ""
+  className: m = ""
 }) => {
-  var u;
-  const n = typeof window < "u" && window.location.origin.indexOf("author") > -1, o = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, p = `relative w-full h-full ${s === "square" ? "aspect-square" : s === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), c = s === "default" ? `w-full h-full ${f}`.trim() : `absolute inset-0 w-full h-full ${f}`.trim(), y = "w-full h-full", N = s === "default" ? `${c}`.trim() : c, v = a === "contain" ? "object-contain" : "object-cover", $ = a === "contain" ? "xMidYMid meet" : "xMidYMid slice", d = `relative w-full ${f}`.trim(), h = "w-full min-h-[280px]";
+  var f;
+  const o = typeof window < "u" && window.location.origin.indexOf("author") > -1, n = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, d = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), c = a === "default" ? `w-full h-full ${m}`.trim() : `absolute inset-0 w-full h-full ${m}`.trim(), y = "w-full h-full", N = a === "default" ? `${c}`.trim() : c, w = i === "contain" ? "object-contain" : "object-cover", $ = i === "contain" ? "xMidYMid meet" : "xMidYMid slice", u = `relative w-full ${m}`.trim(), h = "w-full min-h-[280px]";
   switch (t) {
     case "image":
-      if (i)
-        return /* @__PURE__ */ e("div", { className: p, children: /* @__PURE__ */ e(
+      if (r)
+        return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e(
           "img",
           {
-            src: i,
+            src: r,
             alt: l || "Media image",
-            className: `${v} ${c}`.trim(),
+            className: `${w} ${c}`.trim(),
             loading: "lazy"
           }
         ) });
       break;
     case "video":
-      if (r) {
-        const C = r.includes("youtube.com/watch") || r.includes("youtu.be/");
-        let j = r;
-        C && (j = `https://www.youtube.com/embed/${r.includes("youtu.be/") ? r.split("youtu.be/")[1].split("?")[0] : (u = r.split("v=")[1]) == null ? void 0 : u.split("&")[0]}`);
+      if (s) {
+        const C = s.includes("youtube.com/watch") || s.includes("youtu.be/");
+        let k = s;
+        C && (k = `https://www.youtube.com/embed/${s.includes("youtu.be/") ? s.split("youtu.be/")[1].split("?")[0] : (f = s.split("v=")[1]) == null ? void 0 : f.split("&")[0]}`);
         const E = (() => {
-          if (!C) return j;
+          if (!C) return k;
           try {
-            const k = new URL(j);
-            return k.searchParams.set("autoplay", "0"), k.searchParams.set("mute", "0"), k.searchParams.set("playsinline", "1"), k.searchParams.set("controls", "1"), k.searchParams.set("rel", "0"), k.toString();
+            const M = new URL(k);
+            return M.searchParams.set("autoplay", "0"), M.searchParams.set("mute", "0"), M.searchParams.set("playsinline", "1"), M.searchParams.set("controls", "1"), M.searchParams.set("rel", "0"), M.toString();
           } catch {
-            return j.includes("?") ? j.includes("autoplay=") ? j : `${j}&autoplay=0` : `${j}?autoplay=0`;
+            return k.includes("?") ? k.includes("autoplay=") ? k : `${k}&autoplay=0` : `${k}?autoplay=0`;
           }
         })();
-        return /* @__PURE__ */ e("div", { className: p, children: C ? /* @__PURE__ */ e(
+        return /* @__PURE__ */ e("div", { className: d, children: C ? /* @__PURE__ */ e(
           "iframe",
           {
             src: E,
@@ -55,25 +55,25 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
             allowFullScreen: !0,
-            className: `${c} ${v}`.trim()
+            className: `${c} ${w}`.trim()
           }
         ) : /* @__PURE__ */ e(
           "video",
           {
-            className: `${c} ${v}`.trim(),
+            className: `${c} ${w}`.trim(),
             autoPlay: !1,
             controls: !0,
             playsInline: !0,
             preload: "metadata",
             title: l || "Video player",
-            children: /* @__PURE__ */ e("source", { src: r })
+            children: /* @__PURE__ */ e("source", { src: s })
           }
         ) });
       }
       break;
     case "lottie":
-      if (x)
-        return n ? /* @__PURE__ */ e("div", { className: p, role: "img", "aria-label": l || "Animation", children: /* @__PURE__ */ e(
+      if (g)
+        return o ? /* @__PURE__ */ e("div", { className: d, role: "img", "aria-label": l || "Animation", children: /* @__PURE__ */ e(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${c}`.trim(),
@@ -82,15 +82,15 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
         ) }) : /* @__PURE__ */ e(
           "div",
           {
-            className: p,
+            className: d,
             role: "img",
             "aria-label": l || "Animation",
             children: /* @__PURE__ */ e("div", { className: `${c} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
               H,
               {
-                animationData: x,
-                loop: !o,
-                autoplay: !o,
+                animationData: g,
+                loop: !n,
+                autoplay: !n,
                 className: y,
                 style: { width: "100%", height: "100%" },
                 rendererSettings: { preserveAspectRatio: $ }
@@ -98,39 +98,41 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
             ) })
           }
         );
-      if (g)
-        return /* @__PURE__ */ e("div", { className: p, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
+      if (p)
+        return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
       if (b)
-        return /* @__PURE__ */ e("div", { className: p, children: /* @__PURE__ */ e(
+        return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e(
           "iframe",
           {
             src: b,
             title: l || "Iframe content",
             frameBorder: "0",
-            className: `${N} ${v}`.trim()
+            className: `${N} ${w}`.trim()
           }
         ) });
       break;
     case "flipbook":
-      if (m)
-        return n ? /* @__PURE__ */ e("div", { className: d, role: "img", "aria-label": l || "Flipbook", children: /* @__PURE__ */ e(
+      if (x)
+        return o ? /* @__PURE__ */ e("div", { className: u, role: "img", "aria-label": l || "Flipbook", children: /* @__PURE__ */ e(
           "div",
           {
             className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${h}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Flipbook preview" })
           }
-        ) }) : /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e("div", { className: h, children: /* @__PURE__ */ e(I, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(q, { pdfUrl: m, title: l, className: "w-full" }) }) }) });
+        ) }) : /* @__PURE__ */ e("div", { className: u, children: /* @__PURE__ */ e("div", { className: h, children: /* @__PURE__ */ e(I, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(q, { pdfUrl: x, title: l, className: "w-full" }) }) }) });
       break;
   }
-  return /* @__PURE__ */ e("div", { className: p, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${s === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
+  return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${a === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
 };
 function U({
   media: t,
   // Media props object: { media, imageUrl, videoUrl, lottieUrl, lottieData, iframeUrl, aspect, title }
-  stat: s,
-  description: a,
+  stat: a,
+  description: i,
+  source: r,
+  // optional small caption/source line shown under the description (e.g. "Giftpro Client Survey")
   /**
    * !!! IGNORE IN COMPONENT. REMOVE THESE FROM REPEATER ITEM SETTINGS.
    * Below are (optional) props when used in a `Stats` component. 
@@ -138,9 +140,9 @@ function U({
    * The main component handles these to make sure items uniform.
    * But if you use this molecule as standalone, you can use the props below.
    */
-  textAlign: i = "center",
+  textAlign: s = "center",
   // 'center' | 'left' | 'right'
-  fontSize: r = "sm"
+  fontSize: p = "sm"
   // 'sm' | 'md' | 'lg' | 'xl'
 }) {
   const g = {
@@ -148,15 +150,15 @@ function U({
     md: "text-display-m",
     lg: "text-display-l",
     xl: "text-display-xl"
-  }, x = {
+  }, b = {
     left: "start",
     right: "end",
     center: "center"
-  }, b = {
+  }, x = {
     left: "mr-auto",
     right: "ml-auto",
     center: "mx-auto"
-  }, m = ["center", "left", "right"].includes(i) ? i : "center", l = ["sm", "md", "lg", "xl"].includes(r) ? r : "sm", f = g[l], n = x[m], o = b[m], w = t ? {
+  }, l = ["center", "left", "right"].includes(s) ? s : "center", m = ["sm", "md", "lg", "xl"].includes(p) ? p : "sm", o = g[m], n = b[l], v = x[l], d = t ? {
     media: t.media || "image",
     aspect: t.aspect || "square",
     imageUrl: t.imageUrl,
@@ -164,37 +166,40 @@ function U({
     lottieUrl: t.lottieUrl,
     lottieData: t.lottieData,
     iframeUrl: t.iframeUrl,
-    title: t.title || a || "",
+    title: t.title || i || "",
     className: "w-full h-full object-cover"
   } : null;
-  return /* @__PURE__ */ M(
+  return /* @__PURE__ */ j(
     "div",
     {
       className: `flex flex-col items-${n} justify-center gap-stats-spacing-y`,
-      style: { textAlign: m },
+      style: { textAlign: l },
       children: [
-        t && w && /* @__PURE__ */ e("div", { className: `flex flex-col items-${n} justify-${n}`, children: /* @__PURE__ */ e("div", { className: `w-48 h-48 max-w-full max-h-full rounded-full overflow-hidden ${o}`, children: /* @__PURE__ */ e(V, { ...w }) }) }),
-        s && /* @__PURE__ */ e("div", { className: `${f} font-normal`, children: s }),
-        a && /* @__PURE__ */ e("div", { dangerouslySetInnerHTML: { __html: a } })
+        t && d && /* @__PURE__ */ e("div", { className: `flex flex-col items-${n} justify-${n}`, children: /* @__PURE__ */ e("div", { className: `w-48 h-48 max-w-full max-h-full rounded-full overflow-hidden ${v}`, children: /* @__PURE__ */ e(V, { ...d }) }) }),
+        a && /* @__PURE__ */ e("div", { className: `${o} font-normal`, children: a }),
+        (i || r) && /* @__PURE__ */ j("div", { className: "flex flex-col gap-[var(--spacing-16)] w-full", children: [
+          i && /* @__PURE__ */ e("div", { dangerouslySetInnerHTML: { __html: i } }),
+          r && /* @__PURE__ */ e("p", { className: "text-ui-label-small font-normal m-0", children: r })
+        ] })
       ]
     }
   );
 }
 function Y({
   title: t,
-  titleId: s,
-  ...a
-}, i) {
+  titleId: a,
+  ...i
+}, r) {
   return /* @__PURE__ */ L.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "currentColor",
     "aria-hidden": "true",
     "data-slot": "icon",
-    ref: i,
-    "aria-labelledby": s
-  }, a), t ? /* @__PURE__ */ L.createElement("title", {
-    id: s
+    ref: r,
+    "aria-labelledby": a
+  }, i), t ? /* @__PURE__ */ L.createElement("title", {
+    id: a
   }, t) : null, /* @__PURE__ */ L.createElement("path", {
     fillRule: "evenodd",
     d: "M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z",
@@ -204,9 +209,9 @@ function Y({
 const G = /* @__PURE__ */ L.forwardRef(Y);
 function Z({
   title: t,
-  titleId: s,
-  ...a
-}, i) {
+  titleId: a,
+  ...i
+}, r) {
   return /* @__PURE__ */ L.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
@@ -215,10 +220,10 @@ function Z({
     stroke: "currentColor",
     "aria-hidden": "true",
     "data-slot": "icon",
-    ref: i,
-    "aria-labelledby": s
-  }, a), t ? /* @__PURE__ */ L.createElement("title", {
-    id: s
+    ref: r,
+    "aria-labelledby": a
+  }, i), t ? /* @__PURE__ */ L.createElement("title", {
+    id: a
   }, t) : null, /* @__PURE__ */ L.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
@@ -226,137 +231,137 @@ function Z({
   }));
 }
 const J = /* @__PURE__ */ L.forwardRef(Z);
-function K({ rating: t, textAlign: s = "left" }) {
+function K({ rating: t, textAlign: a = "left" }) {
   if (!t || t < 1 || t > 5) return null;
-  const a = s === "center" ? "flex justify-center" : s === "right" ? "flex justify-end" : "flex justify-start", i = [];
-  for (let r = 1; r <= 5; r++)
-    r <= t ? i.push(
-      /* @__PURE__ */ e(G, { className: "w-24 h-24 text-grey-800", "aria-hidden": "true" }, r)
-    ) : i.push(
-      /* @__PURE__ */ e(J, { className: "w-24 h-24 text-grey-800", "aria-hidden": "true" }, r)
+  const i = a === "center" ? "flex justify-center" : a === "right" ? "flex justify-end" : "flex justify-start", r = [];
+  for (let s = 1; s <= 5; s++)
+    s <= t ? r.push(
+      /* @__PURE__ */ e(G, { className: "w-24 h-24 text-grey-800", "aria-hidden": "true" }, s)
+    ) : r.push(
+      /* @__PURE__ */ e(J, { className: "w-24 h-24 text-grey-800", "aria-hidden": "true" }, s)
     );
-  return /* @__PURE__ */ e("div", { className: `${a} gap-4`, role: "img", "aria-label": `Rating: ${t} out of 5 stars`, children: i });
+  return /* @__PURE__ */ e("div", { className: `${i} gap-4`, role: "img", "aria-label": `Rating: ${t} out of 5 stars`, children: r });
 }
 function Q({
   testimonial: t,
-  name: s,
-  role: a,
-  rating: i = null,
+  name: a,
+  role: i,
+  rating: r = null,
   // number | null (1-5)
-  imageUrl: r,
-  logoUrl: g,
-  mediaPosition: x = "top",
+  imageUrl: s,
+  logoUrl: p,
+  mediaPosition: g = "top",
   // 'top' | 'bottom' | 'with-name'
   align: b = "left",
   // 'left' | 'center'
-  withPadding: m = !1,
+  withPadding: x = !1,
   // boolean
   className: l = "",
-  ...f
+  ...m
 }) {
-  const n = i !== null && i >= 1 && i <= 5 ? Math.floor(i) : null, o = b === "center", w = `w-full ${m ? "p-testimonial-padding" : ""} ${l}`.trim(), p = o ? "text-center items-center" : "text-left items-start", c = [
-    g ? /* @__PURE__ */ e(
+  const o = r !== null && r >= 1 && r <= 5 ? Math.floor(r) : null, n = b === "center", v = `w-full ${x ? "p-testimonial-padding" : ""} ${l}`.trim(), d = n ? "text-center items-center" : "text-left items-start", c = [
+    p ? /* @__PURE__ */ e(
       "img",
       {
-        src: g,
-        alt: s || "Logo",
+        src: p,
+        alt: a || "Logo",
         className: "h-40 w-auto"
       },
       "logo"
     ) : null,
-    r ? /* @__PURE__ */ e(
+    s ? /* @__PURE__ */ e(
       "img",
       {
-        src: r,
-        alt: s || "Profile",
+        src: s,
+        alt: a || "Profile",
         className: "h-48 w-48 rounded-full object-cover"
       },
       "image"
     ) : null
-  ].filter(Boolean), y = c.length > 0, N = y && x === "top", v = y && x === "bottom", $ = y && x === "with-name";
-  return /* @__PURE__ */ e("figure", { className: w, ...f, ...f.attributes || {}, children: /* @__PURE__ */ M("div", { className: `flex flex-col gap-testimonial-spacing-y ${p}`, children: [
-    N && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${o ? "justify-center" : "justify-start"}`, children: c }),
-    n && /* @__PURE__ */ e(K, { rating: n, textAlign: o ? "center" : "left" }),
+  ].filter(Boolean), y = c.length > 0, N = y && g === "top", w = y && g === "bottom", $ = y && g === "with-name";
+  return /* @__PURE__ */ e("figure", { className: v, ...m, ...m.attributes || {}, children: /* @__PURE__ */ j("div", { className: `flex flex-col gap-testimonial-spacing-y ${d}`, children: [
+    N && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: c }),
+    o && /* @__PURE__ */ e(K, { rating: o, textAlign: n ? "center" : "left" }),
     t && /* @__PURE__ */ e("blockquote", { className: "m-0", children: /* @__PURE__ */ e("p", { className: "text-body-default", dangerouslySetInnerHTML: { __html: t } }) }),
-    (s || a || $) && /* @__PURE__ */ M(
+    (a || i || $) && /* @__PURE__ */ j(
       "figcaption",
       {
-        className: `flex flex-col gap-6 ${o ? "items-center" : "items-start"}`,
+        className: `flex flex-col gap-6 ${n ? "items-center" : "items-start"}`,
         children: [
-          $ && /* @__PURE__ */ M("div", { className: `flex items-center gap-10 ${o ? "justify-center" : "justify-start"}`, children: [
+          $ && /* @__PURE__ */ j("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: [
             c,
-            /* @__PURE__ */ M("div", { className: `flex flex-col ${o ? "items-center" : "items-start"}`, children: [
-              s && /* @__PURE__ */ e("cite", { className: "text-ui-label-small not-italic", children: s }),
-              a && /* @__PURE__ */ e("p", { className: "text-ui-label-small", children: a })
+            /* @__PURE__ */ j("div", { className: `flex flex-col ${n ? "items-center" : "items-start"}`, children: [
+              a && /* @__PURE__ */ e("cite", { className: "text-ui-label-small not-italic", children: a }),
+              i && /* @__PURE__ */ e("p", { className: "text-ui-label-small", children: i })
             ] })
           ] }),
-          !$ && /* @__PURE__ */ M(_, { children: [
-            s && /* @__PURE__ */ e("cite", { className: "text-ui-label-small not-italic", children: s }),
-            a && /* @__PURE__ */ e("p", { className: "text-ui-label-small", children: a })
+          !$ && /* @__PURE__ */ j(_, { children: [
+            a && /* @__PURE__ */ e("cite", { className: "text-ui-label-small not-italic", children: a }),
+            i && /* @__PURE__ */ e("p", { className: "text-ui-label-small", children: i })
           ] })
         ]
       }
     ),
-    v && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${o ? "justify-center" : "justify-start"}`, children: c })
+    w && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: c })
   ] }) });
 }
-function ie({
+function re({
   stats: t = [],
-  statTextAlign: s = "center",
+  statTextAlign: a = "center",
   // 'left' | 'center' | 'right'
-  statFontSize: a = "sm",
+  statFontSize: i = "sm",
   // 'sm' | 'md' | 'lg' | 'xl'
-  order: i = "stat-first",
+  order: r = "stat-first",
   // 'testimonial-first' | 'stat-first'
-  id: r = "",
-  className: g = ""
+  id: s = "",
+  className: p = ""
 }) {
-  const x = {
+  const g = {
     secondary: "bg-secondary text-white",
     primary: "bg-primary text-white",
     tertiary: "bg-tertiary text-white",
     dark: "bg-grey-950 text-white",
     white: "bg-white text-black"
   }, b = (l) => {
-    const { media: f, statMedia: n, ...o } = l;
+    const { media: m, statMedia: o, ...n } = l;
     return {
-      ...o,
-      media: n,
-      textAlign: l.textAlign || s,
-      fontSize: l.fontSize || a
+      ...n,
+      media: o,
+      textAlign: l.textAlign || a,
+      fontSize: l.fontSize || i
     };
-  }, m = (l, f) => {
+  }, x = (l, m) => {
     console.log("Rendering StatMolecule with data:", l);
-    let n = l.statBackgroundColor;
-    return n = x[n] || "bg-transparent text-black", /* @__PURE__ */ e("div", { className: `flex flex-col justify-center p-stats-padding-lg min-h-[220px] ${f} ${n}`, children: /* @__PURE__ */ e(U, { ...b(l) }) });
+    let o = l.statBackgroundColor;
+    return o = g[o] || "bg-transparent text-black", /* @__PURE__ */ e("div", { className: `flex flex-col justify-center p-testimonial-padding-wide gap-[var(--spacing-stats-spacing-y)] min-h-[220px] ${m} ${o}`, children: /* @__PURE__ */ e(U, { ...b(l) }) });
   };
-  return !t || t.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${g}`, id: r, children: t.map((l, f) => {
+  return !t || t.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${p}`, id: s, children: t.map((l, m) => {
     const {
-      testimonial: n,
-      rating: o,
-      mediaPosition: w,
-      align: p,
+      testimonial: o,
+      rating: n,
+      mediaPosition: v,
+      align: d,
       withPadding: c,
       logoUrl: y
-    } = l, N = l.name ?? l.author, v = l.role ?? l.authorTitle, $ = l.imageUrl ?? l.authorImage, d = !!n, h = `min-h-auto! ${d ? "xl:w-1/2" : "w-full"}`, u = i === "testimonial-first";
-    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ M("div", { className: "flex flex-col items-stretch xl:flex-row rounded shadow-testimonial-with-stats gap-0 xl:gap-4", children: [
-      !u && m(l, h),
-      d && /* @__PURE__ */ e("div", { className: `flex items-center bg-transparent p-stats-padding-lg text-grey-950 justify-center ${h}`, children: /* @__PURE__ */ e(
+    } = l, N = l.name ?? l.author, w = l.role ?? l.authorTitle, $ = l.imageUrl ?? l.authorImage, u = !!o, h = `min-h-auto! ${u ? "xl:w-1/2" : "w-full"}`, f = r === "testimonial-first";
+    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ j("div", { className: "flex flex-col items-stretch xl:flex-row rounded-[var(--radius-8)] border shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8", children: [
+      !f && x(l, h),
+      u && /* @__PURE__ */ e("div", { className: `flex items-center bg-transparent p-testimonial-padding-wide gap-[var(--spacing-testimonial-spacing-y)] text-grey-950 justify-center ${h}`, children: /* @__PURE__ */ e(
         Q,
         {
-          testimonial: n,
+          testimonial: o,
           name: N,
-          role: v,
+          role: w,
           imageUrl: $,
           logoUrl: y,
-          rating: o,
-          mediaPosition: w,
-          align: p,
+          rating: n,
+          mediaPosition: v,
+          align: d,
           withPadding: c
         }
       ) }),
-      u && m(l, h)
-    ] }) }, f);
+      f && x(l, h)
+    ] }) }, m);
   }) });
 }
 let R, B, F, S;
@@ -367,48 +372,48 @@ const X = async () => {
   }
 }, D = async () => {
   R || (R = (await import("react-pageflip")).default);
-}, ee = O(({ children: t }, s) => /* @__PURE__ */ e("div", { ref: s, className: "w-full h-full overflow-hidden", children: t })), te = ({ pdfUrl: t, title: s, width: a = 280, height: i = 280, className: r = "" }) => {
-  const [g, x] = P(0), [b, m] = P(null), [l, f] = P(!0), [n, o] = P(i / a), [w, p] = P(0), c = W(null);
+}, ee = O(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), te = ({ pdfUrl: t, title: a, width: i = 280, height: r = 280, className: s = "" }) => {
+  const [p, g] = P(0), [b, x] = P(null), [l, m] = P(!0), [o, n] = P(r / i), [v, d] = P(0), c = W(null);
   A(() => {
-    Promise.all([X(), D()]).then(() => f(!1)).catch(() => {
-      m("Failed to load flipbook");
+    Promise.all([X(), D()]).then(() => m(!1)).catch(() => {
+      x("Failed to load flipbook");
     });
   }, []), A(() => {
-    const d = c.current;
-    if (!d) return;
-    const h = new ResizeObserver(([u]) => {
-      const C = Math.floor(u.contentRect.width);
-      C > 0 && p(C);
+    const u = c.current;
+    if (!u) return;
+    const h = new ResizeObserver(([f]) => {
+      const C = Math.floor(f.contentRect.width);
+      C > 0 && d(C);
     });
-    return h.observe(d), () => h.disconnect();
+    return h.observe(u), () => h.disconnect();
   }, [l]);
-  const y = w > 0 ? Math.floor(w / 2) : Math.floor(a / 2), N = Math.round(y * n), v = T(async (d) => {
+  const y = v > 0 ? Math.floor(v / 2) : Math.floor(i / 2), N = Math.round(y * o), w = T(async (u) => {
     try {
-      const u = (await d.getPage(1)).getViewport({ scale: 1 });
-      u != null && u.width && (u != null && u.height) && o(u.height / u.width);
+      const f = (await u.getPage(1)).getViewport({ scale: 1 });
+      f != null && f.width && (f != null && f.height) && n(f.height / f.width);
     } catch {
     }
-    x(d.numPages || 0);
-  }, []), $ = T((d) => {
-    m((d == null ? void 0 : d.message) || "Failed to load PDF");
+    g(u.numPages || 0);
+  }, []), $ = T((u) => {
+    x((u == null ? void 0 : u.message) || "Failed to load PDF");
   }, []);
-  return b ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : l ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${r}`.trim(), children: /* @__PURE__ */ M(
+  return b ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : l ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${s}`.trim(), children: /* @__PURE__ */ j(
     B,
     {
       file: t,
-      onLoadSuccess: v,
+      onLoadSuccess: w,
       onLoadError: $,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
-        g === 1 && /* @__PURE__ */ e(
+        p === 1 && /* @__PURE__ */ e(
           "div",
           {
-            className: `w-full flex justify-center items-center ${r}`.trim(),
+            className: `w-full flex justify-center items-center ${s}`.trim(),
             style: { minHeight: `${N}px` },
-            children: /* @__PURE__ */ e(F, { pageNumber: 1, width: a, renderTextLayer: !1, renderAnnotationLayer: !1 })
+            children: /* @__PURE__ */ e(F, { pageNumber: 1, width: i, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
-        g > 1 && /* @__PURE__ */ e(
+        p > 1 && /* @__PURE__ */ e(
           R,
           {
             width: y,
@@ -416,8 +421,8 @@ const X = async () => {
             size: "stretch",
             showCover: !0,
             mobileScrollSupport: !1,
-            "aria-label": s || "Flipbook",
-            children: Array.from({ length: g }, (d, h) => /* @__PURE__ */ e(ee, { children: /* @__PURE__ */ e(F, { pageNumber: h + 1, width: y, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, h))
+            "aria-label": a || "Flipbook",
+            children: Array.from({ length: p }, (u, h) => /* @__PURE__ */ e(ee, { children: /* @__PURE__ */ e(F, { pageNumber: h + 1, width: y, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, h))
           },
           `${y}-${N}`
         )
@@ -429,5 +434,5 @@ const X = async () => {
   default: te
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  ie as default
+  re as default
 };

@@ -34,7 +34,7 @@ export default function StatsWithTestimonials({
     statBackgroundColor = backGroundColorMap[statBackgroundColor] || 'bg-transparent text-black';
     
     return (
-      <div className={`flex flex-col justify-center p-stats-padding-lg min-h-[220px] ${widthClass} ${statBackgroundColor}`}>
+      <div className={`flex flex-col justify-center p-testimonial-padding-wide gap-[var(--spacing-stats-spacing-y)] min-h-[220px] ${widthClass} ${statBackgroundColor}`}>
         <StatsMolecule {...getMoleculeProps(statData)} />
       </div>
     );
@@ -64,10 +64,10 @@ export default function StatsWithTestimonials({
 
         return (
           <div key={index} {...(statData.attributes ?? {})}>
-            <div className="flex flex-col items-stretch xl:flex-row rounded shadow-testimonial-with-stats gap-0 xl:gap-4">
+            <div className="flex flex-col items-stretch xl:flex-row rounded-[var(--radius-8)] border shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8">
               {!isTestimonialFirst && renderStatMolecule(statData, widthClass)}
               {hasTestimonial && (
-                <div className={`flex items-center bg-transparent p-stats-padding-lg text-grey-950 justify-center ${widthClass}`}>
+                <div className={`flex items-center bg-transparent p-testimonial-padding-wide gap-[var(--spacing-testimonial-spacing-y)] text-grey-950 justify-center ${widthClass}`}>
                   <TestimonialMolecule
                     testimonial={testimonial}
                     name={name}

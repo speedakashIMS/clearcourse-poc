@@ -10346,6 +10346,19 @@
       },
       {
         "component": "text",
+        "name": "sourcekey",
+        "valueType": "string",
+        "hidden": true,
+        "value": "source"
+      },
+      {
+        "component": "text",
+        "name": "sourcevalue",
+        "label": "Source",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "name": "textalignmentkey",
         "valueType": "string",
         "hidden": true,

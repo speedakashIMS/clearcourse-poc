@@ -76,6 +76,7 @@ export default async function decorate(block) {
                 withPadding: item.withpadding === 'true',
                 stat: item.stat,
                 description: item.description,
+                source: item.source,
                 statMedia: createStatMedia(item),
                 attributes: item._meta || {},
                 statBackgroundColor: item.backgroundcolor || 'transparent',

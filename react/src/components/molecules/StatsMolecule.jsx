@@ -4,6 +4,7 @@ export default function StatsMolecule({
   media, // Media props object: { media, imageUrl, videoUrl, lottieUrl, lottieData, iframeUrl, aspect, title }
   stat,
   description,
+  source, // optional small caption/source line shown under the description (e.g. "Giftpro Client Survey")
   /**
    * !!! IGNORE IN COMPONENT. REMOVE THESE FROM REPEATER ITEM SETTINGS.
    * Below are (optional) props when used in a `Stats` component. 
@@ -70,7 +71,12 @@ export default function StatsMolecule({
         </div>
       )}
       {stat && <div className={`${fontSizeClass} font-normal`}>{stat}</div>}
-      {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
+      {(description || source) && (
+        <div className="flex flex-col gap-[var(--spacing-16)] w-full">
+          {description && <div dangerouslySetInnerHTML={{ __html: description }} />}
+          {source && <p className="text-ui-label-small font-normal m-0">{source}</p>}
+        </div>
+      )}
     </div>
   );
 }

@@ -46,6 +46,24 @@ export default function StatsWithTestimonialsPage() {
     }
   ];
 
+  // Faithful reproduction of Figma node 5068-29328 (Stats Number Counters Section)
+  const figmaStats = [
+    {
+      testimonial: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      name: 'Name',
+      role: 'Role',
+      imageUrl: 'https://placehold.co/48x48',
+      mediaPosition: 'with-name',
+      align: 'left',
+      stat: '85%',
+      description: 'of our clients have seen a significant increase in sales',
+      source: 'Giftpro Client Survey',
+      statBackgroundColor: 'tertiary',
+      textAlign: 'left',
+      fontSize: 'lg',
+    },
+  ];
+
   return (
     <div>
       <div className="bg-grey-200 py-32">
@@ -66,6 +84,15 @@ export default function StatsWithTestimonialsPage() {
 
       <div className="bg-grey-50 py-40">
         <div className="space-y-60">
+          <section className="section py-120 bg-white">
+            <IntroductionHeader
+              title="Make the world your oyster"
+              description="Hospitality never sleeps, so whether you’re a single venue that sells locally or a global chain that sells worldwide, Giftpro has a solution that will help you sell 24/7 to almost any location, in almost any currency."
+            />
+            <Spacer height={36} />
+            <StatsWithTestimonials stats={figmaStats} order="testimonial-first" />
+          </section>
+
           <section className="section py-40 bg-tertiary">
             <IntroductionHeader
               title="Stats with Testimonial"
