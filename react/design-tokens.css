@@ -222,6 +222,32 @@
   --Hero-image--br: var(--Units-Unit-20);
   --Trust-padding-2: var(--Units-Unit-24);
   --Hero-text--spacing-y: var(--Units-Unit-10);
+
+  /* --- New tokens from Figma export --- */
+  --Colours-Primary-900: #10142AE5;
+  --Colours-Primary-800: #10142ACC;
+  --Colours-Primary-700: #10142AB2;
+  --Colours-Primary-600: #10142A99;
+  --Colours-Primary-500: #10142A80;
+  --Colours-Primary-400: #10142A66;
+  --Colours-Primary-300: #10142A4D;
+  --Colours-Primary-200: #10142A33;
+  --Colours-Primary-100: #10142A1A;
+  --Colours-Primary-50: #10142A0D;
+  --Colours-White-900: #FFFFFFE5;
+  --Colours-White-800: #FFFFFFCC;
+  --Colours-White-700: #FFFFFFB2;
+  --Colours-White-600: #FFFFFF99;
+  --Colours-White-500: #FFFFFF80;
+  --Colours-White-400: #FFFFFF66;
+  --Colours-White-300: #FFFFFF4D;
+  --Colours-White-200: #FFFFFF33;
+  --Colours-White-100: #FFFFFF1A;
+  --Colours-White-50: #FFFFFF0D;
+  --Testimonial-padding-wide: var(--Units-Unit-80);
+  --Stats-padding-wide: var(--Units-Unit-80);
+  --Form-padding: var(--Units-Unit-48);
+  --Form-br: var(--Units-Unit-8);
 }
 
 /* CC Foundation - Tablet */
@@ -448,6 +474,32 @@
   --Hero-image--br: var(--Units-Unit-20);
   --Trust-padding-2: var(--Units-Unit-24);
   --Hero-text--spacing-y: var(--Units-Unit-10);
+
+  /* --- New tokens from Figma export --- */
+  --Colours-Primary-900: #10142AE5;
+  --Colours-Primary-800: #10142ACC;
+  --Colours-Primary-700: #10142AB2;
+  --Colours-Primary-600: #10142A99;
+  --Colours-Primary-500: #10142A80;
+  --Colours-Primary-400: #10142A66;
+  --Colours-Primary-300: #10142A4D;
+  --Colours-Primary-200: #10142A33;
+  --Colours-Primary-100: #10142A1A;
+  --Colours-Primary-50: #10142A0D;
+  --Colours-White-900: #FFFFFFE5;
+  --Colours-White-800: #FFFFFFCC;
+  --Colours-White-700: #FFFFFFB2;
+  --Colours-White-600: #FFFFFF99;
+  --Colours-White-500: #FFFFFF80;
+  --Colours-White-400: #FFFFFF66;
+  --Colours-White-300: #FFFFFF4D;
+  --Colours-White-200: #FFFFFF33;
+  --Colours-White-100: #FFFFFF1A;
+  --Colours-White-50: #FFFFFF0D;
+  --Testimonial-padding-wide: var(--Units-Unit-80);
+  --Stats-padding-wide: var(--Units-Unit-80);
+  --Form-padding: var(--Units-Unit-48);
+  --Form-br: var(--Units-Unit-8);
 }
 
 /* CC Foundation - Mobile */
@@ -674,4 +726,30 @@
   --Hero-image--br: var(--Units-Unit-20);
   --Trust-padding-2: var(--Units-Unit-24);
   --Hero-text--spacing-y: var(--Units-Unit-10);
+
+  /* --- New tokens from Figma export --- */
+  --Colours-Primary-900: #10142AE5;
+  --Colours-Primary-800: #10142ACC;
+  --Colours-Primary-700: #10142AB2;
+  --Colours-Primary-600: #10142A99;
+  --Colours-Primary-500: #10142A80;
+  --Colours-Primary-400: #10142A66;
+  --Colours-Primary-300: #10142A4D;
+  --Colours-Primary-200: #10142A33;
+  --Colours-Primary-100: #10142A1A;
+  --Colours-Primary-50: #10142A0D;
+  --Colours-White-900: #FFFFFFE5;
+  --Colours-White-800: #FFFFFFCC;
+  --Colours-White-700: #FFFFFFB2;
+  --Colours-White-600: #FFFFFF99;
+  --Colours-White-500: #FFFFFF80;
+  --Colours-White-400: #FFFFFF66;
+  --Colours-White-300: #FFFFFF4D;
+  --Colours-White-200: #FFFFFF33;
+  --Colours-White-100: #FFFFFF1A;
+  --Colours-White-50: #FFFFFF0D;
+  --Testimonial-padding-wide: var(--Units-Unit-40);
+  --Stats-padding-wide: var(--Units-Unit-40);
+  --Form-padding: var(--Units-Unit-32);
+  --Form-br: var(--Units-Unit-8);
 }
