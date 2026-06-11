@@ -197,6 +197,10 @@
               "value": "tertiary"
             },
             {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
               "name": "White",
               "value": "white"
             }
