@@ -1,8 +1,45 @@
 import React from 'react';
+// eslint-disable-next-line import/extensions
 import { createRoot } from 'react-dom/client';
 import NavigationSimple from '../../scripts/components/NavigationSimple.js';
 import { blockToMap, updateQueryParams } from '../../scripts/utils/block.js';
 
+/**
+ * Normalize any EDS output into an array
+ */
+function toArray(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'object') return Object.values(value);
+  return [];
+}
+
+/**
+ * UL fallback parser (legacy support)
+ */
+function parseNavLinks(ul) {
+  return Array.from(ul.children)
+    .filter((li) => li.tagName === 'LI')
+    .map((li) => {
+      const a = li.querySelector(':scope > a, :scope > p > a');
+      const childUl = li.querySelector(':scope > ul');
+
+      const item = {
+        label: a?.textContent.trim() || '',
+        href: a?.getAttribute('href') || '#',
+      };
+
+      if (childUl) {
+        item.submenu = parseNavLinks(childUl);
+      }
+
+      return item;
+    });
+}
+
+/**
+ * boolean normalization
+ */
 function parseAlignNavRight(value) {
   if (value === true || value === 'true') return true;
   if (value === false || value === 'false') return false;
@@ -10,47 +47,13 @@ function parseAlignNavRight(value) {
 }
 
 /**
- * ONLY parse navigationitems (NOT whole block)
+ * icon resolver
  */
-function parseNavigationItems(block) {
-  const items = [];
-
-  const navRow = Array.from(block.children).find((row) => row.children?.[0]?.textContent?.trim()?.toLowerCase() === 'navigationitems');
-
-  if (!navRow) return [];
-
-  const valueCell = navRow.children?.[1];
-  if (!valueCell) return [];
-
-  const topItems = valueCell.querySelectorAll(':scope > ul > li');
-
-  topItems.forEach((li) => {
-    const label = li.childNodes?.[0]?.textContent?.trim() || li.querySelector('p')?.textContent?.trim() || '';
-
-    const submenu = [];
-
-    li.querySelectorAll(':scope > ul > li').forEach((subLi) => {
-      const title = subLi.childNodes?.[0]?.textContent?.trim() || '';
-      const subtitle = subLi.childNodes?.[1]?.textContent?.trim() || '';
-
-      submenu.push({
-        title,
-        subtitle,
-        href: '#',
-      });
-    });
-
-    items.push({ label, submenu });
-  });
-
-  return items;
-}
-
 function getIcon(subItem) {
   if (!subItem) return undefined;
 
   if (subItem.iconsource === 'url') {
-    return subItem.iconurl;
+    return subItem.iconurl || undefined;
   }
 
   if (subItem.iconsource === 'assets' && subItem.iconasset?.src) {
@@ -64,10 +67,22 @@ function getIcon(subItem) {
   return undefined;
 }
 
+/**
+ * normalize navigation model safely
+ */
+function normalizeNavigationItems(blockData) {
+  return toArray(blockData?.navigationitems).map((item) => ({
+    label: item?.label || '',
+    submenu: toArray(item?.submenuitems).map((subItem) => ({
+      title: subItem?.title || '',
+      subtitle: subItem?.subtitle || '',
+      href: subItem?.link?.url || subItem?.link || '#',
+      icon: getIcon(subItem),
+    })),
+  }));
+}
+
 export default async function decorate(block) {
-  /**
-   * SAFE: use blockToMap ONLY for simple fields
-   */
   const blockData = blockToMap(block, {
     schemas: {
       buttons: [
@@ -79,32 +94,34 @@ export default async function decorate(block) {
     },
   });
 
-  console.log('blockData:', blockData);
+  console.log('RAW blockData:', blockData);
+
+  let navItems = normalizeNavigationItems(blockData);
 
   /**
-   * ONLY navigation is parsed manually
+   * fallback ONLY if model is missing completely
    */
-  const navigationitems = parseNavigationItems(block);
+  if (!navItems.length) {
+    Array.from(block.children).forEach((row) => {
+      const cells = Array.from(row.children);
 
-  const navItems = (navigationitems || []).map((item) => ({
-    label: item.label || '',
-    submenu: (item.submenu || []).map((subItem) => ({
-      title: subItem.title || '',
-      subtitle: subItem.subtitle || '',
-      href: subItem.href || '#',
-      icon: getIcon(subItem),
-    })),
-  }));
+      if (
+        cells[0]?.textContent.trim().toLowerCase() === 'navigationitems'
+      ) {
+        const ul = cells[1]?.querySelector('ul');
 
-  const logo = blockData.logosource === 'url'
-    ? blockData.logourl
-    : blockData.logoasset?.src
-      ? updateQueryParams(blockData.logoasset.src, {
-        width: 64,
-        format: 'webp',
-        optimize: 'high',
-      })
-      : undefined;
+        if (ul) {
+          navItems = parseNavLinks(ul);
+        }
+      }
+    });
+  }
+
+  const logo = blockData.logosource === 'url' ? blockData.logourl : blockData.logoasset?.src ? updateQueryParams(blockData.logoasset.src, {
+    width: 64,
+    format: 'webp',
+    optimize: 'high',
+  }) : undefined;
 
   const data = {
     fullWidth: blockData.fullwidth === 'true',
