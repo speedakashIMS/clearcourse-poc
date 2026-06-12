@@ -750,6 +750,7 @@ function parseBlockDeep(block) {
 
   return result;
 }
+
 function updateQueryParams(encodedUrl, paramMap) {
   if (!encodedUrl || typeof paramMap !== 'object') return encodedUrl;
 
