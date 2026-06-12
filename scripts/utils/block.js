@@ -702,6 +702,5 @@ export {
   getBlockItemDataV2,
   getBlockExistingPropsCnt,
   blockToMap,
-  parseBlockDeep,
   updateQueryParams,
 };
