@@ -680,28 +680,39 @@ function blockToMap(block, config = {}) {
 function parseBlockDeep(block) {
   const result = {};
 
+  function getText(el) {
+    return el?.textContent?.trim() || '';
+  }
+
   function parseCell(cell) {
-    // TEXT ONLY FIELD
-    if (!cell.querySelector('ul') && !cell.querySelector('li')) {
-      return cell.textContent.trim();
+    if (!cell) return null;
+
+    const list = cell.querySelector(':scope > ul');
+
+    // SIMPLE FIELD
+    if (!list) {
+      const text = getText(cell);
+      return text || null;
     }
 
-    // CONTAINER FIELD (multi)
-    const list = cell.querySelector(':scope > ul');
-    if (!list) return null;
-
+    // CONTAINER FIELD
     return Array.from(list.children)
       .filter((li) => li.tagName === 'LI')
-      .map((li) => parseListItem(li));
+      .map(parseListItem);
   }
 
   function parseListItem(li) {
-    const obj = {};
+    const obj = {
+      submenuitems: [],
+    };
 
-    const directChildren = Array.from(li.children);
+    const children = Array.from(li.childNodes).filter(
+      (n) => n.nodeType === 1,
+    );
 
-    directChildren.forEach((child, index) => {
-      // nested submenu (UL inside LI)
+    let textIndex = 0;
+
+    children.forEach((child) => {
       if (child.tagName === 'UL') {
         obj.submenuitems = Array.from(child.children)
           .filter((c) => c.tagName === 'LI')
@@ -709,14 +720,13 @@ function parseBlockDeep(block) {
         return;
       }
 
-      // text nodes inside LI
-      const text = child.textContent?.trim();
-
+      const text = getText(child);
       if (!text) return;
 
-      // heuristic mapping for navigation
-      if (index === 0) obj.label = text;
-      if (index === 1) obj.subtitle = text;
+      if (textIndex === 0) obj.label = text;
+      if (textIndex === 1) obj.subtitle = text;
+
+      textIndex++;
     });
 
     return obj;
@@ -724,21 +734,22 @@ function parseBlockDeep(block) {
 
   Array.from(block.children).forEach((row) => {
     const cells = Array.from(row.children);
-    const key = cells[0]?.textContent?.trim()?.toLowerCase();
+
+    const key = getText(cells[0]).toLowerCase();
     const valueCell = cells[1];
 
     if (!key || !valueCell) return;
 
     const parsed = parseCell(valueCell);
 
-    if (parsed !== null) {
+    // IMPORTANT FIX: allow arrays AND objects
+    if (parsed !== null && parsed !== undefined) {
       result[key] = parsed;
     }
   });
 
   return result;
 }
-
 function updateQueryParams(encodedUrl, paramMap) {
   if (!encodedUrl || typeof paramMap !== 'object') return encodedUrl;
 
