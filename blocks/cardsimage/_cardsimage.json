@@ -142,7 +142,7 @@
     },
     {
       "component": "boolean",
-      "name": "shadowCards",
+      "name": "shadowcards",
       "label": "Shadow Cards",
       "valueType": "boolean"
     },

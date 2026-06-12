@@ -286,7 +286,7 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
     secondary: "bg-secondary text-white",
     tertiary: "bg-tertiary text-white",
     quaternary: "bg-quaternary text-grey-900",
-    default: "bg-white text-black"
+    default: "bg-white text-grey-900"
   }, $ = k[j] || k.default, P = Y(), C = `
     flex
     w-full
@@ -358,14 +358,14 @@ const Q = /* @__PURE__ */ R.forwardRef(K), Z = ({
         I && D(),
         /* @__PURE__ */ M("div", { className: z, children: [
           /* @__PURE__ */ M("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
-            c && /* @__PURE__ */ e("h3", { id: P, className: "text-headings-h3 font-semibold text-white", children: c }),
+            c && /* @__PURE__ */ e("h3", { id: P, className: "text-headings-h3 font-semibold", children: c }),
             u ? /* @__PURE__ */ e(
               "div",
               {
-                className: "wysiwyg text-body-default text-white",
+                className: "wysiwyg text-body-default",
                 dangerouslySetInnerHTML: { __html: b }
               }
-            ) : w && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: w })
+            ) : w && /* @__PURE__ */ e("p", { className: "text-body-default", children: w })
           ] }),
           y && /* @__PURE__ */ e("div", { className: "mt-auto", children: x === "link" ? /* @__PURE__ */ e(
             Z,

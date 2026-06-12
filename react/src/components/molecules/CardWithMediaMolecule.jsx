@@ -35,7 +35,7 @@ const CardWithMediaMolecule = ({
     secondary: 'bg-secondary text-white',
     tertiary: 'bg-tertiary text-white',
     quaternary: 'bg-quaternary text-grey-900',
-    default: 'bg-white text-black',
+    default: 'bg-white text-grey-900',
   };
   const resolvedBackgroundClass =
     backgroundClassesByVariant[backgroundVariant] || backgroundClassesByVariant.default;
@@ -153,17 +153,17 @@ const CardWithMediaMolecule = ({
       <div className={contentContainerClasses}>
         <div className="space-y-textmedia-text--spacing-y flex-grow-1">
           {title && (
-            <h3 id={titleId} className="text-headings-h3 font-semibold text-white">
+            <h3 id={titleId} className="text-headings-h3 font-semibold">
               {title}
             </h3>
           )}
           {hasDescriptionRichText ? (
             <div
-              className="wysiwyg text-body-default text-white"
+              className="wysiwyg text-body-default"
               dangerouslySetInnerHTML={{ __html: descriptionRichText }}
             />
           ) : description && (
-            <p className="text-body-default text-white">{description}</p>
+            <p className="text-body-default">{description}</p>
           )}
         </div>
         {buttonText && (
