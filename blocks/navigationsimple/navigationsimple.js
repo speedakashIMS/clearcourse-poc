@@ -1,12 +1,8 @@
 import React from 'react';
-// eslint-disable-next-line import/extensions
 import { createRoot } from 'react-dom/client';
 import NavigationSimple from '../../scripts/components/NavigationSimple.js';
-import { updateQueryParams } from '../../scripts/utils/block.js';
+import { blockToMap, updateQueryParams } from '../../scripts/utils/block.js';
 
-/**
- * Normalize boolean values
- */
 function parseAlignNavRight(value) {
   if (value === true || value === 'true') return true;
   if (value === false || value === 'false') return false;
@@ -14,13 +10,47 @@ function parseAlignNavRight(value) {
 }
 
 /**
- * Resolve icon from EDS fields
+ * ONLY parse navigationitems (NOT whole block)
  */
+function parseNavigationItems(block) {
+  const items = [];
+
+  const navRow = Array.from(block.children).find((row) => row.children?.[0]?.textContent?.trim()?.toLowerCase() === 'navigationitems');
+
+  if (!navRow) return [];
+
+  const valueCell = navRow.children?.[1];
+  if (!valueCell) return [];
+
+  const topItems = valueCell.querySelectorAll(':scope > ul > li');
+
+  topItems.forEach((li) => {
+    const label = li.childNodes?.[0]?.textContent?.trim() || li.querySelector('p')?.textContent?.trim() || '';
+
+    const submenu = [];
+
+    li.querySelectorAll(':scope > ul > li').forEach((subLi) => {
+      const title = subLi.childNodes?.[0]?.textContent?.trim() || '';
+      const subtitle = subLi.childNodes?.[1]?.textContent?.trim() || '';
+
+      submenu.push({
+        title,
+        subtitle,
+        href: '#',
+      });
+    });
+
+    items.push({ label, submenu });
+  });
+
+  return items;
+}
+
 function getIcon(subItem) {
   if (!subItem) return undefined;
 
   if (subItem.iconsource === 'url') {
-    return subItem.iconurl || undefined;
+    return subItem.iconurl;
   }
 
   if (subItem.iconsource === 'assets' && subItem.iconasset?.src) {
@@ -34,103 +64,29 @@ function getIcon(subItem) {
   return undefined;
 }
 
-/**
- * SAFE EDS PARSER (replaces blockToMap for nested containers)
- * This is the key fix for your issue.
- */
-function parseBlock(block) {
-  const data = {
-    navigationitems: [],
-    buttons: [],
-  };
-
-  Array.from(block.children).forEach((row) => {
-    const cells = Array.from(row.children);
-    const key = cells[0]?.textContent?.trim()?.toLowerCase();
-    const valueCell = cells[1];
-
-    if (!key || !valueCell) return;
-
-    /**
-     * SIMPLE FIELDS (text, boolean, select, etc.)
-     */
-    if (!valueCell.querySelector('ul') && !valueCell.querySelector(':scope > div')) {
-      data[key] = valueCell.textContent.trim();
-      return;
-    }
-
-    /**
-     * NAVIGATION ITEMS (MOST IMPORTANT PART)
-     */
-    if (key === 'navigationitems') {
-      const items = [];
-
-      const itemNodes = valueCell.querySelectorAll(':scope > ul > li');
-
-      itemNodes.forEach((li) => {
-        const label = li.childNodes?.[0]?.textContent?.trim() || li.querySelector('p')?.textContent?.trim() || '';
-
-        const submenu = [];
-
-        const subNodes = li.querySelectorAll(':scope > ul > li');
-
-        subNodes.forEach((subLi) => {
-          const title = subLi.childNodes?.[0]?.textContent?.trim() || '';
-          const subtitle = subLi.childNodes?.[1]?.textContent?.trim() || '';
-
-          submenu.push({
-            title,
-            subtitle,
-            href: '#',
-          });
-        });
-
-        items.push({
-          label,
-          submenu,
-        });
-      });
-
-      data.navigationitems = items;
-    }
-
-    /**
-     * BUTTONS (basic fallback parsing)
-     */
-    if (key === 'buttons') {
-      const btnItems = [];
-
-      const btnNodes = valueCell.querySelectorAll(':scope > ul > li');
-
-      btnNodes.forEach((li) => {
-        const text = li.querySelector('[data-text], p')?.textContent?.trim() || '';
-        const href = li.querySelector('a')?.getAttribute('href') || '#';
-
-        btnItems.push({
-          buttontext: text,
-          buttonlink: href,
-        });
-      });
-
-      data.buttons = btnItems;
-    }
+export default async function decorate(block) {
+  /**
+   * SAFE: use blockToMap ONLY for simple fields
+   */
+  const blockData = blockToMap(block, {
+    schemas: {
+      buttons: [
+        'buttontext',
+        'buttonsize',
+        'buttonvariant',
+        'buttonlink',
+      ],
+    },
   });
 
-  return data;
-}
-
-/**
- * MAIN DECORATE FUNCTION
- */
-export default async function decorate(block) {
-  const blockData = parseBlock(block);
-
-  console.log('PARSED BLOCK DATA:', blockData);
+  console.log('blockData:', blockData);
 
   /**
-   * Normalize navigation items
+   * ONLY navigation is parsed manually
    */
-  const navItems = (blockData.navigationitems || []).map((item) => ({
+  const navigationitems = parseNavigationItems(block);
+
+  const navItems = (navigationitems || []).map((item) => ({
     label: item.label || '',
     submenu: (item.submenu || []).map((subItem) => ({
       title: subItem.title || '',
@@ -140,9 +96,6 @@ export default async function decorate(block) {
     })),
   }));
 
-  /**
-   * Logo handling
-   */
   const logo = blockData.logosource === 'url'
     ? blockData.logourl
     : blockData.logoasset?.src
@@ -153,9 +106,6 @@ export default async function decorate(block) {
       })
       : undefined;
 
-  /**
-   * Final props for React
-   */
   const data = {
     fullWidth: blockData.fullwidth === 'true',
     logo,
@@ -170,7 +120,7 @@ export default async function decorate(block) {
     variant: blockData.colorvariant || 'dark',
   };
 
-  console.log('FINAL NAV ITEMS:', navItems);
+  console.log('FINAL navItems:', navItems);
 
   const root = createRoot(block);
   root.render(React.createElement(NavigationSimple, data));
