@@ -84,51 +84,28 @@ function normalizeNavigationItems(blockData) {
 }
 
 export default async function decorate(block) {
-  console.log(block);
-  const flatData = blockToMap(block, {
-    schemas: {
-      buttons: [
-        'buttontext',
-        'buttonsize',
-        'buttonvariant',
-        'buttonlink',
-      ],
-    },
-  });
+  const blockData = parseBlockDeep(block);
 
-  const deepData = parseBlockDeep(block);
-  const blockData = {
-    ...flatData,
-    navigationitems: deepData.navigationitems,
-  };
- 
-  console.log('RAW blockData:', blockData);
-  let navItems = normalizeNavigationItems(blockData);
+  console.log('PARSED BLOCK DATA:', blockData);
 
-  /**
-   * fallback ONLY if model is missing completely
-   */
-  if (!navItems.length) {
-    Array.from(block.children).forEach((row) => {
-      const cells = Array.from(row.children);
+  const navItems = (blockData.navigationitems || []).map((item) => ({
+    label: item.label,
+    submenu: (item.submenu || []).map((sub) => ({
+      title: sub.title,
+      subtitle: sub.subtitle,
+      href: sub.href,
+    })),
+  }));
 
-      if (
-        cells[0]?.textContent.trim().toLowerCase() === 'navigationitems'
-      ) {
-        const ul = cells[1]?.querySelector('ul');
-
-        if (ul) {
-          navItems = parseNavLinks(ul);
-        }
-      }
-    });
-  }
-
-  const logo = blockData.logosource === 'url' ? blockData.logourl : blockData.logoasset?.src ? updateQueryParams(blockData.logoasset.src, {
-    width: 64,
-    format: 'webp',
-    optimize: 'high',
-  }) : undefined;
+  const logo = blockData.logosource === 'url'
+    ? blockData.logourl
+    : blockData.logoasset?.src
+      ? updateQueryParams(blockData.logoasset.src, {
+        width: 64,
+        format: 'webp',
+        optimize: 'high',
+      })
+      : undefined;
 
   const data = {
     fullWidth: blockData.fullwidth === 'true',
@@ -143,8 +120,6 @@ export default async function decorate(block) {
     alignNavRight: parseAlignNavRight(blockData.alignnavigationright),
     variant: blockData.colorvariant || 'dark',
   };
-
-  console.log('FINAL navItems:', navItems);
 
   const root = createRoot(block);
   root.render(React.createElement(NavigationSimple, data));

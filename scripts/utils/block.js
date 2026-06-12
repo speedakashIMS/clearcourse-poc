@@ -677,59 +677,49 @@ function blockToMap(block, config = {}) {
   return result;
 }
 
-function parseBlockDeep(block) {
+export function parseBlockDeep(block) {
   const result = {
     navigationitems: [],
     buttons: [],
   };
 
+  const getText = (el) => el?.textContent?.trim() || '';
+
   Array.from(block.children).forEach((row) => {
     const cells = Array.from(row.children);
-
-    const key = cells[0]?.textContent?.trim()?.toLowerCase();
+    const key = getText(cells[0]).toLowerCase();
     const valueCell = cells[1];
 
     if (!key || !valueCell) return;
 
-    /* -----------------------------------------------------
-       NAVIGATION ITEMS (FIXED FOR AEM/XWALK STRUCTURE)
-    ----------------------------------------------------- */
+    /* =========================
+       NAVIGATION ITEMS
+    ========================= */
     if (key === 'navigationitems') {
       const items = [];
 
-      const itemNodes = Array.from(valueCell.children || []);
+      const topItems = valueCell.querySelectorAll(':scope > ul > li');
 
-      itemNodes.forEach((itemNode) => {
+      topItems.forEach((li) => {
         const label =
-          itemNode.querySelector('[name="label"], .label')?.textContent?.trim() ||
-          itemNode.children?.[0]?.textContent?.trim() ||
+          getText(li.childNodes[0]) ||
+          getText(li.querySelector(':scope > p')) ||
           '';
 
         const submenu = [];
 
-        const submenuContainer =
-          itemNode.querySelector('[name="submenuitems"]') ||
-          itemNode.children?.[1];
+        const subUl = li.querySelector(':scope > ul');
 
-        if (submenuContainer) {
-          Array.from(submenuContainer.children || []).forEach((subNode) => {
-            const title =
-              subNode.querySelector('[name="title"]')?.textContent?.trim() ||
-              subNode.children?.[0]?.textContent?.trim() ||
-              '';
-
-            const subtitle =
-              subNode.querySelector('[name="subtitle"]')?.textContent?.trim() ||
-              subNode.children?.[1]?.textContent?.trim() ||
-              '';
-
-            const link =
-              subNode.querySelector('a')?.getAttribute('href') || '#';
+        if (subUl) {
+          subUl.querySelectorAll(':scope > li').forEach((subLi) => {
+            const subChildren = Array.from(subLi.childNodes).filter(
+              (n) => n.nodeType === 1 || n.nodeType === 3,
+            );
 
             submenu.push({
-              title,
-              subtitle,
-              href: link,
+              title: getText(subChildren[0]),
+              subtitle: getText(subChildren[1]),
+              href: subLi.querySelector('a')?.getAttribute('href') || '#',
             });
           });
         }
@@ -744,35 +734,37 @@ function parseBlockDeep(block) {
       return;
     }
 
-    /* -----------------------------------------------------
-       BUTTONS (simple safe fallback)
-    ----------------------------------------------------- */
+    /* =========================
+       BUTTONS
+    ========================= */
     if (key === 'buttons') {
-      const btnItems = [];
+      const btns = [];
 
-      Array.from(valueCell.children || []).forEach((btnNode) => {
-        const text =
-          btnNode.querySelector('[name="buttontextvalue"], .text')?.textContent?.trim() ||
-          btnNode.textContent?.trim() ||
-          '';
+      const lis = valueCell.querySelectorAll(':scope > ul > li');
 
-        const link =
-          btnNode.querySelector('a')?.getAttribute('href') || '#';
-
-        btnItems.push({
-          buttontext: text,
-          buttonlink: link,
+      lis.forEach((li) => {
+        btns.push({
+          buttontext:
+            li.querySelector('[data-buttontext]')?.textContent?.trim() || '',
+          buttonsize:
+            li.querySelector('[data-buttonsize]')?.textContent?.trim() ||
+            'btn-md',
+          buttonvariant:
+            li.querySelector('[data-buttonvariant]')?.textContent?.trim() ||
+            'light',
+          buttonlink:
+            li.querySelector('a')?.getAttribute('href') || '#',
         });
       });
 
-      result.buttons = btnItems;
+      result.buttons = btns;
       return;
     }
 
-    /* -----------------------------------------------------
-       SIMPLE FIELDS
-    ----------------------------------------------------- */
-    result[key] = valueCell.textContent.trim();
+    /* =========================
+       SIMPLE TEXT FIELDS
+    ========================= */
+    result[key] = getText(valueCell);
   });
 
   return result;
