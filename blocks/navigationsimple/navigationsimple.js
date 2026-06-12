@@ -25,24 +25,16 @@ function parseNavLinks(ul) {
 }
 
 function parseAlignNavRight(value) {
-  if (value === false || value === 'false') {
-    return false;
-  }
-
-  if (value === true || value === 'true') {
-    return true;
-  }
-
+  if (value === true || value === 'true') return true;
+  if (value === false || value === 'false') return false;
   return undefined;
 }
 
 function getIcon(subItem) {
-  if (!subItem) {
-    return undefined;
-  }
+  if (!subItem) return undefined;
 
   if (subItem.iconsource === 'url') {
-    return subItem.iconurl;
+    return subItem.iconurl || undefined;
   }
 
   if (subItem.iconsource === 'assets' && subItem.iconasset?.src) {
@@ -54,6 +46,22 @@ function getIcon(subItem) {
   }
 
   return undefined;
+}
+
+function normalizeNavigationItems(blockData) {
+  if (!Array.isArray(blockData?.navigationitems)) return [];
+
+  return blockData.navigationitems.map((item) => ({
+    label: item.label,
+    submenu: Array.isArray(item.submenuitems)
+      ? item.submenuitems.map((subItem) => ({
+        title: subItem.title,
+        subtitle: subItem.subtitle,
+        href: subItem.link?.url || subItem.link || '#',
+        icon: getIcon(subItem),
+      }))
+      : [],
+  }));
 }
 
 export default async function decorate(block) {
@@ -68,23 +76,9 @@ export default async function decorate(block) {
     },
   });
 
-  let navItems = [];
+  let navItems = normalizeNavigationItems(blockData);
 
-  // Preferred: use structured navigationitems from the model
-  if (Array.isArray(blockData.navigationitems)) {
-    navItems = blockData.navigationitems.map((item) => ({
-      label: item.label,
-      submenu: (item.submenuitems || []).map((subItem) => ({
-        title: subItem.title,
-        subtitle: subItem.subtitle,
-        description: subItem.description,
-        href: subItem.link,
-        icon: getIcon(subItem),
-      })),
-    }));
-  }
-
-  // Fallback: existing UL parsing
+  // Fallback only if model data is missing or invalid
   if (!navItems.length) {
     Array.from(block.children).forEach((row) => {
       const cells = Array.from(row.children);
@@ -115,14 +109,12 @@ export default async function decorate(block) {
     fullWidth: blockData.fullwidth === 'true',
     logo,
     navItems,
-    buttons: []
-      .concat(blockData.buttons ?? [])
-      .map((item) => ({
-        text: item.buttontext,
-        href: item.buttonlink,
-        variant: item.buttonvariant || 'light',
-        size: item.buttonsize || 'btn-md',
-      })),
+    buttons: (blockData.buttons || []).map((item) => ({
+      text: item.buttontext,
+      href: item.buttonlink,
+      variant: item.buttonvariant || 'light',
+      size: item.buttonsize || 'btn-md',
+    })),
     alignNavRight: parseAlignNavRight(blockData.alignnavigationright),
     variant: blockData.colorvariant || 'dark',
   };
@@ -131,7 +123,5 @@ export default async function decorate(block) {
   console.log('NavigationSimple navItems:', navItems);
 
   const root = createRoot(block);
-  root.render(
-    React.createElement(NavigationSimple, data),
-  );
+  root.render(React.createElement(NavigationSimple, data));
 }
