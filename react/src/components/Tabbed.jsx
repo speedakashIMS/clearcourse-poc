@@ -72,6 +72,7 @@ export default function Tabbed({
               isActive={activeIndex === index}
               onClick={() => handleTabClick(index)}
               index={index}
+              attributes={tab.attributes || {}}
             />
           ))}
         </div>
@@ -131,6 +132,7 @@ export default function Tabbed({
                   }}
                   index={x}
                   hasBorder={false}
+                  attributes={tab.attributes || {}}
                 />
               </div>
             ))}
@@ -157,6 +159,7 @@ export default function Tabbed({
                 isActive={activeIndex === index}
                 onClick={() => handleTabClick(index)}
                 index={index}
+                attributes={tab.attributes || {}}
               />
             ))}
           </div>

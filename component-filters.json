@@ -38,6 +38,7 @@
       "statswithmedia",
       "statswithtestimonials",
       "table",
+      "tabbed",
       "testimonials",
       "trust",
       "textandmedia",
@@ -180,6 +181,12 @@
     "id": "statswithtestimonials",
     "components": [
       "statswithtestimonialsitem"
+    ]
+  },
+  {
+    "id": "tabbed",
+    "components": [
+      "tabbeditem"
     ]
   },
   {

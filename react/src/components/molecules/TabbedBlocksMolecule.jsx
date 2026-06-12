@@ -20,6 +20,7 @@ export default function TabBlocksMolecule({
   index = 0,
   className = '',
   hasBorder = true,
+  attributes = {}, // aue instrumentation, applied to root so item is editable in Universal Editor
 }) {
   if (!tab) {
     return null;
@@ -29,6 +30,7 @@ export default function TabBlocksMolecule({
     <button
       key={index}
       onClick={onClick}
+      {...attributes}
       className={`relative flex flex-col items-center justify-center gap-10 p-20 min-h-[219px] min-w-[110px] xl:min-w-[120px] w-full transition-all duration-300 rounded-0 bg-white hover:bg-grey-50 focus-visible:bg-grey-50 cursor-pointer ${className} border-t border-grey-400 
       ${hasBorder ? 'border' : ''}
       ${isActive ? 'border-t-[11px] border-b-0' : ''}

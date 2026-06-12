@@ -4,6 +4,7 @@ export default function TabbedRowMolecule({
   onClick = () => {},
   index = 0,
   className = '',
+  attributes = {}, // aue instrumentation, applied to root so item is editable in Universal Editor
 }) {
   if (!tab) {
     return null;
@@ -12,6 +13,7 @@ export default function TabbedRowMolecule({
   return (
     <button
       onClick={onClick}
+      {...attributes}
       className={`h-44px flex flex-row justify-start items-center gap-10 self-stretch border-b border-x transition-all duration-300  p-tabbed-row--padding cursor-pointer hover:bg-grey-300 focus-visible:bg-grey-300 ${
         isActive
           ? 'border-grey-400 bg-grey-300'

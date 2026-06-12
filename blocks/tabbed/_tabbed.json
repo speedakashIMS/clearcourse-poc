@@ -1,0 +1,185 @@
+{
+  "definitions": [
+    {
+      "title": "Tabbed",
+      "id": "tabbed",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Tabbed",
+              "model": "tabbed",
+              "filter": "tabbed",
+              "key-value": true,
+              "type": "lozenges",
+              "defaultactiveindex": "0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "TabbedItem",
+      "id": "tabbeditem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "TabbedItem",
+              "model": "tabbeditem",
+              "typekey": "type",
+              "typevalue": "tabbeditem",
+              "textkey": "text",
+              "imagesourcekey": "imagesource",
+              "imagesourcevalue": "assets",
+              "imageurlkey": "imageurl",
+              "imageassetkey": "imageasset",
+              "imagealtkey": "imagealt",
+              "contentkey": "content"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "tabbed",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "Id",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "type",
+          "label": "Type",
+          "options": [
+            { "name": "Lozenges", "value": "lozenges" },
+            { "name": "Blocks", "value": "blocks" },
+            { "name": "Aside", "value": "aside" }
+          ],
+          "valueType": "string",
+          "value": "lozenges"
+        },
+        {
+          "component": "number",
+          "name": "defaultactiveindex",
+          "label": "Default Active Tab (index)",
+          "valueType": "number",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "tabbeditem",
+      "fields": [
+        {
+          "component": "text",
+          "name": "typekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "typevalue",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "textkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "textvalue",
+          "label": "Tab Label",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "imagesourcekey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "select",
+          "name": "imagesourcevalue",
+          "label": "Image Source",
+          "options": [
+            { "name": "Assets", "value": "assets" },
+            { "name": "URL", "value": "url" }
+          ],
+          "valueType": "string",
+          "value": "assets"
+        },
+        {
+          "component": "text",
+          "name": "imageurlkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "imageurl",
+          "label": "Image URL",
+          "valueType": "string",
+          "condition": {
+            "===": [{ "var": "imagesourcevalue" }, "url"]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imageassetkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "reference",
+          "name": "imageasset",
+          "label": "Image Asset",
+          "valueType": "string",
+          "condition": {
+            "===": [{ "var": "imagesourcevalue" }, "assets"]
+          }
+        },
+        {
+          "component": "text",
+          "name": "imagealtkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "imagealtvalue",
+          "label": "Image Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "contentkey",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "richtext",
+          "name": "contentvalue",
+          "label": "Tab Content",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "tabbed",
+      "components": ["tabbeditem"]
+    }
+  ]
+}

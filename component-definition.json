@@ -1073,6 +1073,49 @@
           }
         },
         {
+          "title": "Tabbed",
+          "id": "tabbed",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tabbed",
+                  "model": "tabbed",
+                  "filter": "tabbed",
+                  "key-value": true,
+                  "type": "lozenges",
+                  "defaultactiveindex": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TabbedItem",
+          "id": "tabbeditem",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "TabbedItem",
+                  "model": "tabbeditem",
+                  "typekey": "type",
+                  "typevalue": "tabbeditem",
+                  "textkey": "text",
+                  "imagesourcekey": "imagesource",
+                  "imagesourcevalue": "assets",
+                  "imageurlkey": "imageurl",
+                  "imageassetkey": "imageasset",
+                  "imagealtkey": "imagealt",
+                  "contentkey": "content"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Table",
           "id": "table",
           "plugins": {

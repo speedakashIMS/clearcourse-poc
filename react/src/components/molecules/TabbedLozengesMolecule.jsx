@@ -5,13 +5,14 @@ export default function TabbedLozengesMolecule({
   index = 0,
   className = '',
   largeImage = false, // if true, set image size to 48x48 even to mobile
+  attributes = {}, // aue instrumentation, applied to root so item is editable in Universal Editor
 }) {
   if (!tab) {
     return null;
   }
 
   return (
-    <div className={className} key={index}>
+    <div className={className} key={index} {...attributes}>
       <button
         onClick={onClick}
         className={`inline-flex justify-center items-center gap-4 xl:gap-10 rounded-full border transition-all duration-300 p-tabbed-loz--padding cursor-pointer hover:bg-grey-600 hover:text-white focus-visible:bg-grey-600 focus-visible:text-white min-w-[110px] ${
