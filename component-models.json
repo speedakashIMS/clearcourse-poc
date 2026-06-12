@@ -8402,24 +8402,10 @@
         "value": "dark"
       },
       {
-        "component": "container",
-        "name": "navigationitems",
-        "label": "Navigation Items",
-        "multi": true,
-        "fields": [
-          {
-            "component": "text",
-            "name": "label",
-            "label": "Menu Label",
-            "valueType": "string"
-          },
-          {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Menu Link",
-            "valueType": "string"
-          }
-        ]
+        "component": "richtext",
+        "name": "links",
+        "label": "Links",
+        "valueType": "string"
       },
       {
         "component": "container",
