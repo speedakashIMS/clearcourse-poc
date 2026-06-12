@@ -71,6 +71,7 @@ function getIcon(subItem) {
  * normalize navigation model safely
  */
 function normalizeNavigationItems(blockData) {
+  console.log(blockData,'submenuitems-blockdata');
   return toArray(blockData?.navigationitems).map((item) => ({
     label: item?.label || '',
     submenu: toArray(item?.submenuitems).map((subItem) => ({
@@ -83,7 +84,6 @@ function normalizeNavigationItems(blockData) {
 }
 
 export default async function decorate(block) {
-  console.log(block, 'block');
   const blockData = blockToMap(block, {
     schemas: {
       buttons: [
