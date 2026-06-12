@@ -64,7 +64,7 @@ export default function StatsWithTestimonials({
 
         return (
           <div key={index} {...(statData.attributes ?? {})}>
-            <div className="flex flex-col items-stretch xl:flex-row rounded-[var(--radius-8)] border shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8">
+            <div className="flex flex-col items-stretch xl:flex-row overflow-hidden rounded-[var(--radius-8)] shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8">
               {!isTestimonialFirst && renderStatMolecule(statData, widthClass)}
               {hasTestimonial && (
                 <div className={`flex items-center bg-transparent p-testimonial-padding-wide gap-[var(--spacing-testimonial-spacing-y)] text-grey-950 justify-center ${widthClass}`}>

@@ -47,6 +47,7 @@ export default async function decorate(block) {
     stacked: blockData.stacked === 'true',
     imagePosition: blockData.imageposition || 'left',
     variant: blockData.variant || 'flushed',
+    shadowCards: blockData.shadowcards === 'true',
     itemBackgroundVariant: blockData.itembackgroundvariant || 'default',
   };
   const root = createRoot(block);

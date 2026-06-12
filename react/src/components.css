@@ -261,7 +261,7 @@
 
   /* Slick Dots - Global */
   .slick-dots {
-    @apply absolute! bottom-40! left-1/2! -translate-x-1/2! flex! justify-center! items-center! w-auto! m-0! p-0! list-none!;
+    @apply absolute! bottom-40! left-1/2! -translate-x-1/2! flex! justify-center! items-center! w-auto! m-0!  p-0! list-none!;
     
     li {
       @apply w-12! h-12! m-0! p-0!;
@@ -400,9 +400,13 @@
 
   .giftpro-cardandtext-slider {
       /* Override slick's default display:block on .slick-slider */
-      display: flex !important;
+      display: flex;
       align-items: center;
       gap: 60px;
-    }
-  
+  }
+
+  .box-shadow {
+    box-shadow:0 20px 40px 0 var(--Colours-Brand-Primary-100, rgba(16, 20, 42, 0.10))
+  }
+
 }

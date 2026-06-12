@@ -13,13 +13,13 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
   videoUrl: s,
   lottieUrl: p,
   lottieData: g,
-  iframeUrl: b,
+  iframeUrl: w,
   flipbookUrl: x,
   title: l,
   className: m = ""
 }) => {
   var f;
-  const o = typeof window < "u" && window.location.origin.indexOf("author") > -1, n = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, d = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), c = a === "default" ? `w-full h-full ${m}`.trim() : `absolute inset-0 w-full h-full ${m}`.trim(), y = "w-full h-full", N = a === "default" ? `${c}`.trim() : c, w = i === "contain" ? "object-contain" : "object-cover", $ = i === "contain" ? "xMidYMid meet" : "xMidYMid slice", u = `relative w-full ${m}`.trim(), h = "w-full min-h-[280px]";
+  const o = typeof window < "u" && window.location.origin.indexOf("author") > -1, n = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, d = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), c = a === "default" ? `w-full h-full ${m}`.trim() : `absolute inset-0 w-full h-full ${m}`.trim(), y = "w-full h-full", N = a === "default" ? `${c}`.trim() : c, b = i === "contain" ? "object-contain" : "object-cover", $ = i === "contain" ? "xMidYMid meet" : "xMidYMid slice", u = `relative w-full ${m}`.trim(), h = "w-full min-h-[280px]";
   switch (t) {
     case "image":
       if (r)
@@ -28,7 +28,7 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
           {
             src: r,
             alt: l || "Media image",
-            className: `${w} ${c}`.trim(),
+            className: `${b} ${c}`.trim(),
             loading: "lazy"
           }
         ) });
@@ -55,12 +55,12 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
             allowFullScreen: !0,
-            className: `${c} ${w}`.trim()
+            className: `${c} ${b}`.trim()
           }
         ) : /* @__PURE__ */ e(
           "video",
           {
-            className: `${c} ${w}`.trim(),
+            className: `${c} ${b}`.trim(),
             autoPlay: !1,
             controls: !0,
             playsInline: !0,
@@ -102,14 +102,14 @@ const q = z(() => Promise.resolve().then(() => le)), V = ({
         return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
-      if (b)
+      if (w)
         return /* @__PURE__ */ e("div", { className: d, children: /* @__PURE__ */ e(
           "iframe",
           {
-            src: b,
+            src: w,
             title: l || "Iframe content",
             frameBorder: "0",
-            className: `${N} ${w}`.trim()
+            className: `${N} ${b}`.trim()
           }
         ) });
       break;
@@ -150,7 +150,7 @@ function U({
     md: "text-display-m",
     lg: "text-display-l",
     xl: "text-display-xl"
-  }, b = {
+  }, w = {
     left: "start",
     right: "end",
     center: "center"
@@ -158,7 +158,7 @@ function U({
     left: "mr-auto",
     right: "ml-auto",
     center: "mx-auto"
-  }, l = ["center", "left", "right"].includes(s) ? s : "center", m = ["sm", "md", "lg", "xl"].includes(p) ? p : "sm", o = g[m], n = b[l], v = x[l], d = t ? {
+  }, l = ["center", "left", "right"].includes(s) ? s : "center", m = ["sm", "md", "lg", "xl"].includes(p) ? p : "sm", o = g[m], n = w[l], v = x[l], d = t ? {
     media: t.media || "image",
     aspect: t.aspect || "square",
     imageUrl: t.imageUrl,
@@ -252,14 +252,14 @@ function Q({
   logoUrl: p,
   mediaPosition: g = "top",
   // 'top' | 'bottom' | 'with-name'
-  align: b = "left",
+  align: w = "left",
   // 'left' | 'center'
   withPadding: x = !1,
   // boolean
   className: l = "",
   ...m
 }) {
-  const o = r !== null && r >= 1 && r <= 5 ? Math.floor(r) : null, n = b === "center", v = `w-full ${x ? "p-testimonial-padding" : ""} ${l}`.trim(), d = n ? "text-center items-center" : "text-left items-start", c = [
+  const o = r !== null && r >= 1 && r <= 5 ? Math.floor(r) : null, n = w === "center", v = `w-full ${x ? "p-testimonial-padding" : ""} ${l}`.trim(), d = n ? "text-center items-center" : "text-left items-start", c = [
     p ? /* @__PURE__ */ e(
       "img",
       {
@@ -278,7 +278,7 @@ function Q({
       },
       "image"
     ) : null
-  ].filter(Boolean), y = c.length > 0, N = y && g === "top", w = y && g === "bottom", $ = y && g === "with-name";
+  ].filter(Boolean), y = c.length > 0, N = y && g === "top", b = y && g === "bottom", $ = y && g === "with-name";
   return /* @__PURE__ */ e("figure", { className: v, ...m, ...m.attributes || {}, children: /* @__PURE__ */ j("div", { className: `flex flex-col gap-testimonial-spacing-y ${d}`, children: [
     N && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: c }),
     o && /* @__PURE__ */ e(K, { rating: o, textAlign: n ? "center" : "left" }),
@@ -302,7 +302,7 @@ function Q({
         ]
       }
     ),
-    w && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: c })
+    b && /* @__PURE__ */ e("div", { className: `flex items-center gap-10 ${n ? "justify-center" : "justify-start"}`, children: c })
   ] }) });
 }
 function re({
@@ -322,7 +322,7 @@ function re({
     tertiary: "bg-tertiary text-white",
     dark: "bg-grey-950 text-white",
     white: "bg-white text-black"
-  }, b = (l) => {
+  }, w = (l) => {
     const { media: m, statMedia: o, ...n } = l;
     return {
       ...n,
@@ -333,7 +333,7 @@ function re({
   }, x = (l, m) => {
     console.log("Rendering StatMolecule with data:", l);
     let o = l.statBackgroundColor;
-    return o = g[o] || "bg-transparent text-black", /* @__PURE__ */ e("div", { className: `flex flex-col justify-center p-testimonial-padding-wide gap-[var(--spacing-stats-spacing-y)] min-h-[220px] ${m} ${o}`, children: /* @__PURE__ */ e(U, { ...b(l) }) });
+    return o = g[o] || "bg-transparent text-black", /* @__PURE__ */ e("div", { className: `flex flex-col justify-center p-testimonial-padding-wide gap-[var(--spacing-stats-spacing-y)] min-h-[220px] ${m} ${o}`, children: /* @__PURE__ */ e(U, { ...w(l) }) });
   };
   return !t || t.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${p}`, id: s, children: t.map((l, m) => {
     const {
@@ -343,15 +343,15 @@ function re({
       align: d,
       withPadding: c,
       logoUrl: y
-    } = l, N = l.name ?? l.author, w = l.role ?? l.authorTitle, $ = l.imageUrl ?? l.authorImage, u = !!o, h = `min-h-auto! ${u ? "xl:w-1/2" : "w-full"}`, f = r === "testimonial-first";
-    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ j("div", { className: "flex flex-col items-stretch xl:flex-row rounded-[var(--radius-8)] border shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8", children: [
+    } = l, N = l.name ?? l.author, b = l.role ?? l.authorTitle, $ = l.imageUrl ?? l.authorImage, u = !!o, h = `min-h-auto! ${u ? "xl:w-1/2" : "w-full"}`, f = r === "testimonial-first";
+    return /* @__PURE__ */ e("div", { ...l.attributes ?? {}, children: /* @__PURE__ */ j("div", { className: "flex flex-col items-stretch xl:flex-row overflow-hidden rounded-[var(--radius-8)] shadow-testimonial-with-stats gap-0 xl:gap-4 b-radius-8", children: [
       !f && x(l, h),
       u && /* @__PURE__ */ e("div", { className: `flex items-center bg-transparent p-testimonial-padding-wide gap-[var(--spacing-testimonial-spacing-y)] text-grey-950 justify-center ${h}`, children: /* @__PURE__ */ e(
         Q,
         {
           testimonial: o,
           name: N,
-          role: w,
+          role: b,
           imageUrl: $,
           logoUrl: y,
           rating: n,
@@ -373,7 +373,7 @@ const X = async () => {
 }, D = async () => {
   R || (R = (await import("react-pageflip")).default);
 }, ee = O(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), te = ({ pdfUrl: t, title: a, width: i = 280, height: r = 280, className: s = "" }) => {
-  const [p, g] = P(0), [b, x] = P(null), [l, m] = P(!0), [o, n] = P(r / i), [v, d] = P(0), c = W(null);
+  const [p, g] = P(0), [w, x] = P(null), [l, m] = P(!0), [o, n] = P(r / i), [v, d] = P(0), c = W(null);
   A(() => {
     Promise.all([X(), D()]).then(() => m(!1)).catch(() => {
       x("Failed to load flipbook");
@@ -387,7 +387,7 @@ const X = async () => {
     });
     return h.observe(u), () => h.disconnect();
   }, [l]);
-  const y = v > 0 ? Math.floor(v / 2) : Math.floor(i / 2), N = Math.round(y * o), w = T(async (u) => {
+  const y = v > 0 ? Math.floor(v / 2) : Math.floor(i / 2), N = Math.round(y * o), b = T(async (u) => {
     try {
       const f = (await u.getPage(1)).getViewport({ scale: 1 });
       f != null && f.width && (f != null && f.height) && n(f.height / f.width);
@@ -397,11 +397,11 @@ const X = async () => {
   }, []), $ = T((u) => {
     x((u == null ? void 0 : u.message) || "Failed to load PDF");
   }, []);
-  return b ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : l ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${s}`.trim(), children: /* @__PURE__ */ j(
+  return w ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : l ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: c, className: `w-full ${s}`.trim(), children: /* @__PURE__ */ j(
     B,
     {
       file: t,
-      onLoadSuccess: w,
+      onLoadSuccess: b,
       onLoadError: $,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [

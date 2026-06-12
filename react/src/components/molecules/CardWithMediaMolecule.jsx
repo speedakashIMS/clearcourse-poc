@@ -23,7 +23,7 @@ const CardWithMediaMolecule = ({
   buttonType = 'button', // button | link
   linkVariant,
   buttonOnClick,
-  backgroundVariant = 'default', // default | primary | secondary | tertiary
+  backgroundVariant = 'default', // default | primary | secondary | tertiary | quaternary
   className = '',
   attributes = {},
 }) => {
@@ -31,10 +31,11 @@ const CardWithMediaMolecule = ({
     typeof descriptionRichText === 'string' && descriptionRichText.trim().length > 0;
 
   const backgroundClassesByVariant = {
-    default: 'bg-grey-500 text-grey-950',
     primary: 'bg-primary text-white',
-    secondary: 'bg-secondary text-grey-950',
-    tertiary: 'bg-tertiary text-grey-950',
+    secondary: 'bg-secondary text-white',
+    tertiary: 'bg-tertiary text-white',
+    quaternary: 'bg-quaternary text-grey-900',
+    default: 'bg-white text-black',
   };
   const resolvedBackgroundClass =
     backgroundClassesByVariant[backgroundVariant] || backgroundClassesByVariant.default;

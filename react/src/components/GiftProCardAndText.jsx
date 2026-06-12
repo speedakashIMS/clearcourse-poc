@@ -118,22 +118,22 @@ export default function GiftProCardAndText({
   };
 
   const carouselSettings = {
-    className: `giftpro-cardandtext-slider`,
+    className: ``,
     onInit: () => setReady(true),
-    dots: false,
+    dots: true,
     infinite,
     speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
-    arrows: true,
+    arrows: false,
     hideOnSinglePage: true,
     hideArrowsIfSinglePage: true,
     hideDotsIfSinglePage: true,
     hideArrowsOnMobile: true,
     hideDotsOnMobile: true,
-    prevArrow: <SlideArrow direction="prev" variant={arrowVariant} />,
-    nextArrow: <SlideArrow direction="next" variant={arrowVariant} />,
+    // prevArrow: <SlideArrow direction="prev" variant={arrowVariant} />,
+    // nextArrow: <SlideArrow direction="next" variant={arrowVariant} />,
   };
 
   if (!giftProCardAndTexts || giftProCardAndTexts.length === 0) return null;

@@ -10,6 +10,7 @@ const CardsImage = ({
   variant = 'flushed',
   itemBackgroundVariant = 'default',
   className = '',
+  shadowCards = false,
   ...props
 }) => {
   const getEffectiveColumns = () => {
@@ -51,7 +52,7 @@ const CardsImage = ({
   };
 
   const getCardWrapperClass = (index) => {
-    const base = 'min-w-0 w-full flex items-stretch';
+    const base = `min-w-0 w-full flex items-stretch${shadowCards ? ' box-shadow' : ''}`;
     const isThirdOfThree = stacked && data.length === 3 && index === 2;
     if (isThirdOfThree) {
       return `${base} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none`;

@@ -6,7 +6,7 @@ function ee({
   tab: t = {},
   // { text: string, image: string, imageAlt: string }
   isActive: a = !1,
-  onClick: l = () => {
+  onClick: i = () => {
   },
   index: c = 0,
   className: n = "",
@@ -16,7 +16,7 @@ function ee({
   return t ? /* @__PURE__ */ e("div", { className: n, children: /* @__PURE__ */ M(
     "button",
     {
-      onClick: l,
+      onClick: i,
       className: `inline-flex justify-center items-center gap-4 xl:gap-10 rounded-full border transition-all duration-300 p-tabbed-loz--padding cursor-pointer hover:bg-grey-600 hover:text-white focus-visible:bg-grey-600 focus-visible:text-white min-w-[110px] ${a ? "border-grey-600 bg-grey-600 text-white" : "border-grey-600 bg-grey-100 text-grey-950"}`,
       children: [
         t.image && /* @__PURE__ */ e(
@@ -35,7 +35,7 @@ function ee({
 function te({
   tab: t = {},
   isActive: a = !1,
-  onClick: l = () => {
+  onClick: i = () => {
   },
   index: c = 0,
   className: n = ""
@@ -43,7 +43,7 @@ function te({
   return t ? /* @__PURE__ */ e(
     "button",
     {
-      onClick: l,
+      onClick: i,
       className: `h-44px flex flex-row justify-start items-center gap-10 self-stretch border-b border-x transition-all duration-300  p-tabbed-row--padding cursor-pointer hover:bg-grey-300 focus-visible:bg-grey-300 ${a ? "border-grey-400 bg-grey-300" : "border-grey-400 bg-white"}
       ${c === 0 ? "border-t" : ""}
       ${n}`,
@@ -54,18 +54,18 @@ function te({
 const H = ({
   text: t = "Button",
   href: a = void 0,
-  variant: l = "light",
+  variant: i = "light",
   // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
   size: c = "btn-md",
   // btn-sm , btn-md
   className: n = "",
   disabled: d = !1,
   onClick: v = void 0,
-  attributes: w = {},
-  ...C
+  attributes: C = {},
+  ...$
 }) => {
-  const p = (i) => {
-    switch (i) {
+  const y = (h) => {
+    switch (h) {
       case "light":
         return "btn-light";
       case "dark":
@@ -83,8 +83,8 @@ const H = ({
       default:
         return "btn-light";
     }
-  }, $ = (i) => {
-    switch (i) {
+  }, N = (h) => {
+    switch (h) {
       case "btn-sm":
         return "btn-sm";
       case "btn-md":
@@ -92,26 +92,26 @@ const H = ({
       default:
         return "btn-md";
     }
-  }, o = `btn ${p(l)} ${$(c)} ${n}`.trim();
+  }, o = `btn ${y(i)} ${N(c)} ${n}`.trim();
   return a ? /* @__PURE__ */ e(
     "a",
     {
       href: a,
       className: o,
       onClick: v,
-      ...C,
-      ...w ?? {},
+      ...$,
+      ...C ?? {},
       children: t
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
-      type: C.type || "button",
+      type: $.type || "button",
       className: o,
       disabled: d,
       onClick: v,
-      ...C,
-      ...w ?? {},
+      ...$,
+      ...C ?? {},
       children: t
     }
   );
@@ -119,7 +119,7 @@ const H = ({
 function re({
   title: t,
   titleId: a,
-  ...l
+  ...i
 }, c) {
   return /* @__PURE__ */ F.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
@@ -131,7 +131,7 @@ function re({
     "data-slot": "icon",
     ref: c,
     "aria-labelledby": a
-  }, l), t ? /* @__PURE__ */ F.createElement("title", {
+  }, i), t ? /* @__PURE__ */ F.createElement("title", {
     id: a
   }, t) : null, /* @__PURE__ */ F.createElement("path", {
     strokeLinecap: "round",
@@ -142,14 +142,14 @@ function re({
 const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   text: t = "Link",
   href: a = "#",
-  variant: l = "dark",
+  variant: i = "dark",
   // dark, light
   icon: c,
   className: n = "",
   ...d
 }) => {
-  const v = "text-link", w = (p) => {
-    switch (p) {
+  const v = "text-link", C = (y) => {
+    switch (y) {
       case "light":
         return "link-light";
       case "dark":
@@ -157,7 +157,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       default:
         return "link-dark";
     }
-  }, C = c || se, u = `${v} ${w(l)} ${n}`.trim();
+  }, $ = c || se, u = `${v} ${C(i)} ${n}`.trim();
   return /* @__PURE__ */ M(
     "a",
     {
@@ -166,7 +166,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       ...d,
       children: [
         /* @__PURE__ */ e("span", { children: t }),
-        /* @__PURE__ */ e(C, { className: "text-link-icon" })
+        /* @__PURE__ */ e($, { className: "text-link-icon" })
       ]
     }
   );
@@ -175,39 +175,39 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // 'image' | 'video' | 'lottie' | 'iframe' | 'flipbook'
   aspect: a = "default",
   // 'default' | 'rectangle' | 'square'
-  objectFit: l = "cover",
+  objectFit: i = "cover",
   // 'cover' | 'contain' — how media fills its box (e.g. framed text+media)
   imageUrl: c,
   videoUrl: n,
   lottieUrl: d,
   lottieData: v,
-  iframeUrl: w,
-  flipbookUrl: C,
+  iframeUrl: C,
+  flipbookUrl: $,
   title: u,
-  className: p = ""
+  className: y = ""
 }) => {
   var x;
-  const $ = typeof window < "u" && window.location.origin.indexOf("author") > -1, o = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, g = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), b = a === "default" ? `w-full h-full ${p}`.trim() : `absolute inset-0 w-full h-full ${p}`.trim(), s = "w-full h-full", r = a === "default" ? `${b}`.trim() : b, f = l === "contain" ? "object-contain" : "object-cover", y = l === "contain" ? "xMidYMid meet" : "xMidYMid slice", m = `relative w-full ${p}`.trim(), N = "w-full min-h-[280px]";
+  const N = typeof window < "u" && window.location.origin.indexOf("author") > -1, o = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, l = `relative w-full h-full ${a === "square" ? "aspect-square" : a === "rectangle" ? "aspect-[4/3]" : t === "video" ? "aspect-video" : ""}`.trim(), g = a === "default" ? `w-full h-full ${y}`.trim() : `absolute inset-0 w-full h-full ${y}`.trim(), s = "w-full h-full", r = a === "default" ? `${g}`.trim() : g, f = i === "contain" ? "object-contain" : "object-cover", p = i === "contain" ? "xMidYMid meet" : "xMidYMid slice", m = `relative w-full ${y}`.trim(), w = "w-full min-h-[280px]";
   switch (t) {
     case "image":
       if (c)
-        return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e(
+        return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e(
           "img",
           {
             src: c,
             alt: u || "Media image",
-            className: `${f} ${b}`.trim(),
+            className: `${f} ${g}`.trim(),
             loading: "lazy"
           }
         ) });
       break;
     case "video":
       if (n) {
-        const h = n.includes("youtube.com/watch") || n.includes("youtu.be/");
+        const b = n.includes("youtube.com/watch") || n.includes("youtu.be/");
         let k = n;
-        h && (k = `https://www.youtube.com/embed/${n.includes("youtu.be/") ? n.split("youtu.be/")[1].split("?")[0] : (x = n.split("v=")[1]) == null ? void 0 : x.split("&")[0]}`);
+        b && (k = `https://www.youtube.com/embed/${n.includes("youtu.be/") ? n.split("youtu.be/")[1].split("?")[0] : (x = n.split("v=")[1]) == null ? void 0 : x.split("&")[0]}`);
         const T = (() => {
-          if (!h) return k;
+          if (!b) return k;
           try {
             const j = new URL(k);
             return j.searchParams.set("autoplay", "0"), j.searchParams.set("mute", "0"), j.searchParams.set("playsinline", "1"), j.searchParams.set("controls", "1"), j.searchParams.set("rel", "0"), j.toString();
@@ -215,7 +215,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
             return k.includes("?") ? k.includes("autoplay=") ? k : `${k}&autoplay=0` : `${k}?autoplay=0`;
           }
         })();
-        return /* @__PURE__ */ e("div", { className: g, children: h ? /* @__PURE__ */ e(
+        return /* @__PURE__ */ e("div", { className: l, children: b ? /* @__PURE__ */ e(
           "iframe",
           {
             src: T,
@@ -223,12 +223,12 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
             frameBorder: "0",
             allow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
             allowFullScreen: !0,
-            className: `${b} ${f}`.trim()
+            className: `${g} ${f}`.trim()
           }
         ) : /* @__PURE__ */ e(
           "video",
           {
-            className: `${b} ${f}`.trim(),
+            className: `${g} ${f}`.trim(),
             autoPlay: !1,
             controls: !0,
             playsInline: !0,
@@ -241,19 +241,19 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       break;
     case "lottie":
       if (v)
-        return $ ? /* @__PURE__ */ e("div", { className: g, role: "img", "aria-label": u || "Animation", children: /* @__PURE__ */ e(
+        return N ? /* @__PURE__ */ e("div", { className: l, role: "img", "aria-label": u || "Animation", children: /* @__PURE__ */ e(
           "div",
           {
-            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${b}`.trim(),
+            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${g}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Lottie preview" })
           }
         ) }) : /* @__PURE__ */ e(
           "div",
           {
-            className: g,
+            className: l,
             role: "img",
             "aria-label": u || "Animation",
-            children: /* @__PURE__ */ e("div", { className: `${b} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
+            children: /* @__PURE__ */ e("div", { className: `${g} overflow-hidden`.trim(), children: /* @__PURE__ */ e(
               Z,
               {
                 animationData: v,
@@ -261,20 +261,20 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
                 autoplay: !o,
                 className: s,
                 style: { width: "100%", height: "100%" },
-                rendererSettings: { preserveAspectRatio: y }
+                rendererSettings: { preserveAspectRatio: p }
               }
             ) })
           }
         );
       if (d)
-        return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
+        return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e("div", { className: "absolute inset-0 flex items-center justify-center text-body-default text-center p-40", children: "Loading Lottie animation..." }) });
       break;
     case "iframe":
-      if (w)
-        return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e(
+      if (C)
+        return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e(
           "iframe",
           {
-            src: w,
+            src: C,
             title: u || "Iframe content",
             frameBorder: "0",
             className: `${r} ${f}`.trim()
@@ -282,23 +282,23 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         ) });
       break;
     case "flipbook":
-      if (C)
-        return $ ? /* @__PURE__ */ e("div", { className: m, role: "img", "aria-label": u || "Flipbook", children: /* @__PURE__ */ e(
+      if ($)
+        return N ? /* @__PURE__ */ e("div", { className: m, role: "img", "aria-label": u || "Flipbook", children: /* @__PURE__ */ e(
           "div",
           {
-            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${N}`.trim(),
+            className: `flex items-center justify-center text-body-default text-grey-600 bg-grey-100 ${w}`.trim(),
             children: /* @__PURE__ */ e("div", { className: "text-center", children: "Flipbook preview" })
           }
-        ) }) : /* @__PURE__ */ e("div", { className: m, children: /* @__PURE__ */ e("div", { className: N, children: /* @__PURE__ */ e(J, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(ie, { pdfUrl: C, title: u, className: "w-full" }) }) }) });
+        ) }) : /* @__PURE__ */ e("div", { className: m, children: /* @__PURE__ */ e("div", { className: w, children: /* @__PURE__ */ e(J, { fallback: /* @__PURE__ */ e("div", { children: "Loading PDF..." }), children: /* @__PURE__ */ e(ie, { pdfUrl: $, title: u, className: "w-full" }) }) }) });
       break;
   }
-  return /* @__PURE__ */ e("div", { className: g, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${a === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
+  return /* @__PURE__ */ e("div", { className: l, children: /* @__PURE__ */ e("div", { className: `flex items-center justify-center text-body-default text-center p-40 ${a === "default" ? "" : "absolute inset-0"}`.trim(), children: t ? `${t.charAt(0).toUpperCase() + t.slice(1)} placeholder` : "Image/Video/Lottie/iframe" }) });
 }, le = ({
   stacked: t = !0,
   // true = vertical stack, false = horizontal side-by-side
   imagePosition: a = "left",
   // 'left' or 'right' (only applies when stacked = false)
-  variant: l = "flushed",
+  variant: i = "flushed",
   // 'flushed' | 'framed' | 'circle' - flushed = full width, framed = square aspect ratio, circle = 100px x 100px circular
   media: c = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' - selector for media type
@@ -308,34 +308,35 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // URL for video (YouTube embed URL or direct video URL)
   lottieUrl: v,
   // URL to Lottie animation JSON file
-  lottieData: w,
+  lottieData: C,
   // Lottie animation JSON data object (alternative to lottieUrl)
-  iframeUrl: C,
+  iframeUrl: $,
   // URL for iframe
   mediaAltTitle: u,
   // Accessible text for media (image alt, video/lottie/iframe title); falls back to title if not set
-  title: p,
-  description: $,
+  title: y,
+  description: N,
   descriptionRichText: o,
   // optional HTML from CMS; when set, rendered with .wysiwyg instead of plain `description`
-  buttonText: i,
-  buttonHref: g,
-  buttonVariant: b = "light",
+  buttonText: h,
+  buttonHref: l,
+  buttonVariant: g = "light",
   buttonType: s = "button",
   // button | link
   linkVariant: r,
   buttonOnClick: f,
-  backgroundVariant: y = "default",
-  // default | primary | secondary | tertiary
+  backgroundVariant: p = "default",
+  // default | primary | secondary | tertiary | quaternary
   className: m = "",
-  attributes: N = {}
+  attributes: w = {}
 }) => {
-  const x = typeof o == "string" && o.trim().length > 0, h = {
-    default: "bg-grey-500 text-grey-950",
+  const x = typeof o == "string" && o.trim().length > 0, b = {
     primary: "bg-primary text-white",
-    secondary: "bg-secondary text-grey-950",
-    tertiary: "bg-tertiary text-grey-950"
-  }, k = h[y] || h.default, T = _(), j = `
+    secondary: "bg-secondary text-white",
+    tertiary: "bg-tertiary text-white",
+    quaternary: "bg-quaternary text-grey-900",
+    default: "bg-white text-black"
+  }, k = b[p] || b.default, T = _(), j = `
     flex
     w-full
     ${k}
@@ -346,23 +347,23 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
     ${m}
   `.trim().replace(/\s+/g, " "), I = `
     w-full
-    ${t ? "" : l === "framed" ? "md:w-1/2 lg:min-w-[calc(200px+var(--spacing-cards-image--padding-y))]" : l === "circle" ? "md:w-auto" : "md:w-1/2"}
-    ${l === "circle" ? "" : "p-cards-image--padding-y"}
+    ${t ? "" : i === "framed" ? "md:w-1/2 lg:min-w-[calc(200px+var(--spacing-cards-image--padding-y))]" : i === "circle" ? "md:w-auto" : "md:w-1/2"}
+    ${i === "circle" ? "" : "p-cards-image--padding-y"}
     flex
     items-center
     justify-center
     overflow-hidden
-    ${l === "framed" && t ? "rounded-t-[var(--spacing-cards-br)]" : ""}
-    ${l === "framed" && !t && a === "left" ? "md:rounded-l-[var(--spacing-cards-br)]" : ""}
-    ${l === "framed" && !t && a === "right" ? "md:rounded-r-[var(--spacing-cards-br)]" : ""}
+    ${i === "framed" && t ? "rounded-t-[var(--spacing-cards-br)]" : ""}
+    ${i === "framed" && !t && a === "left" ? "md:rounded-l-[var(--spacing-cards-br)]" : ""}
+    ${i === "framed" && !t && a === "right" ? "md:rounded-r-[var(--spacing-cards-br)]" : ""}
   `.trim().replace(/\s+/g, " "), S = `
-    ${l === "circle" ? "w-[100px] h-[100px]" : l === "framed" ? "w-full aspect-square" : "w-full"}
+    ${i === "circle" ? "w-[100px] h-[100px]" : i === "framed" ? "w-full aspect-square" : "w-full"}
     bg-grey-200
     flex
     items-center
     justify-center
     overflow-hidden
-    ${l === "circle" ? "rounded-full" : l === "framed" ? "rounded-[var(--spacing-cards-image--br)]" : t ? "rounded-t-[var(--spacing-cards-image--br)]" : a === "left" ? "rounded-l-[var(--spacing-cards-image--br)]" : "rounded-r-[var(--spacing-cards-image--br)]"}
+    ${i === "circle" ? "rounded-full" : i === "framed" ? "rounded-[var(--spacing-cards-image--br)]" : t ? "rounded-t-[var(--spacing-cards-image--br)]" : a === "left" ? "rounded-l-[var(--spacing-cards-image--br)]" : "rounded-r-[var(--spacing-cards-image--br)]"}
   `.trim().replace(/\s+/g, " "), R = `
     w-full
     ${t ? "aspect-[441/269]" : "md:w-1/2"}
@@ -374,7 +375,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
     ${t ? "rounded-t-[var(--spacing-cards-image--br)]" : a === "left" ? "md:rounded-l-[var(--spacing-cards-image--br)]" : "md:rounded-r-[var(--spacing-cards-image--br)]"}
   `.trim().replace(/\s+/g, " "), L = `
     w-full
-    ${t ? "" : l === "framed" ? "md:w-3/4" : l === "circle" ? "md:flex-1" : "md:w-1/2"}
+    ${t ? "" : i === "framed" ? "md:w-3/4" : i === "circle" ? "md:flex-1" : "md:w-1/2"}
     py-textmedia-text--padding-y
     px-textmedia-text--padding-x
     flex-grow-1
@@ -390,45 +391,45 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       imageUrl: n,
       videoUrl: d,
       lottieUrl: v,
-      lottieData: w,
-      iframeUrl: C,
-      title: u ?? p,
+      lottieData: C,
+      iframeUrl: $,
+      title: u ?? y,
       className: ""
     }
-  ), E = t || a === "left", z = () => l === "framed" || l === "circle" ? /* @__PURE__ */ e("div", { className: I, children: /* @__PURE__ */ e("div", { className: S, children: D }) }) : /* @__PURE__ */ e("div", { className: R, children: D });
+  ), E = t || a === "left", z = () => i === "framed" || i === "circle" ? /* @__PURE__ */ e("div", { className: I, children: /* @__PURE__ */ e("div", { className: S, children: D }) }) : /* @__PURE__ */ e("div", { className: R, children: D });
   return /* @__PURE__ */ M(
     "article",
     {
       className: j,
-      ...p ? { "aria-labelledby": T } : { "aria-label": "Card" },
-      ...N ?? {},
+      ...y ? { "aria-labelledby": T } : { "aria-label": "Card" },
+      ...w ?? {},
       children: [
         E && z(),
         /* @__PURE__ */ M("div", { className: L, children: [
           /* @__PURE__ */ M("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
-            p && /* @__PURE__ */ e("h3", { id: T, className: "text-headings-h3 font-semibold text-white", children: p }),
+            y && /* @__PURE__ */ e("h3", { id: T, className: "text-headings-h3 font-semibold text-white", children: y }),
             x ? /* @__PURE__ */ e(
               "div",
               {
                 className: "wysiwyg text-body-default text-white",
                 dangerouslySetInnerHTML: { __html: o }
               }
-            ) : $ && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: $ })
+            ) : N && /* @__PURE__ */ e("p", { className: "text-body-default text-white", children: N })
           ] }),
-          i && /* @__PURE__ */ e("div", { className: "mt-auto", children: s === "link" ? /* @__PURE__ */ e(
+          h && /* @__PURE__ */ e("div", { className: "mt-auto", children: s === "link" ? /* @__PURE__ */ e(
             Y,
             {
-              text: i,
-              href: g,
-              variant: r || (b.includes("light") ? "light" : "dark"),
+              text: h,
+              href: l,
+              variant: r || (g.includes("light") ? "light" : "dark"),
               onClick: f
             }
           ) : /* @__PURE__ */ e(
             H,
             {
-              text: i,
-              href: g,
-              variant: b,
+              text: h,
+              href: l,
+              variant: g,
               onClick: f
             }
           ) })
@@ -442,62 +443,63 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
   data: a = [],
   // Array of card data objects
-  buttonType: l = "button",
+  buttonType: i = "button",
   linkVariant: c,
   stacked: n = !0,
   imagePosition: d = "left",
   variant: v = "flushed",
-  itemBackgroundVariant: w = "default",
-  className: C = "",
-  ...u
+  itemBackgroundVariant: C = "default",
+  className: $ = "",
+  shadowCards: u = !1,
+  ...y
 }) => {
-  const p = () => !n && v === "framed" ? Math.min(t, 2) : t, $ = () => {
-    const b = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
+  const N = () => !n && v === "framed" ? Math.min(t, 2) : t, o = () => {
+    const s = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
     if (n) {
-      const f = {
+      const p = {
         1: "lg:grid-cols-1",
         2: "lg:grid-cols-2",
         3: "lg:grid-cols-3",
         4: "lg:grid-cols-4",
         5: "lg:grid-cols-5",
         6: "lg:grid-cols-6"
-      }, y = p(), m = f[y] ?? f[3];
-      return `${b} md:grid-cols-2 ${m}`;
+      }, m = N(), w = p[m] ?? p[3];
+      return `${s} md:grid-cols-2 ${w}`;
     }
-    const s = {
+    const r = {
       1: "lg:grid-cols-1",
       2: "lg:grid-cols-2",
       3: "lg:grid-cols-3"
-    }, r = Math.min(p(), 3);
-    return `${b} ${s[r]}`;
-  }, o = (i) => {
-    const g = "min-w-0 w-full flex items-stretch";
-    return n && a.length === 3 && i === 2 ? `${g} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : g;
+    }, f = Math.min(N(), 3);
+    return `${s} ${r[f]}`;
+  }, h = (l) => {
+    const g = `min-w-0 w-full flex items-stretch${u ? " box-shadow" : ""}`;
+    return n && a.length === 3 && l === 2 ? `${g} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : g;
   };
-  return /* @__PURE__ */ e("div", { className: C, ...u, children: /* @__PURE__ */ e("div", { className: $(), children: a.map((i, g) => /* @__PURE__ */ e("div", { className: o(g), children: /* @__PURE__ */ e(
+  return /* @__PURE__ */ e("div", { className: $, ...y, children: /* @__PURE__ */ e("div", { className: o(), children: a.map((l, g) => /* @__PURE__ */ e("div", { className: h(g), children: /* @__PURE__ */ e(
     le,
     {
       stacked: n,
       imagePosition: d,
       variant: v,
-      media: i.media || "image",
-      imageUrl: i.imageUrl,
-      videoUrl: i.videoUrl,
-      lottieUrl: i.lottieUrl,
-      lottieData: i.lottieData,
-      iframeUrl: i.iframeUrl,
-      mediaAltTitle: i.mediaAltTitle,
-      title: i.title,
-      description: i.description,
-      descriptionRichText: i.descriptionRichText,
-      buttonText: i.buttonText,
-      buttonHref: i.buttonHref,
-      buttonVariant: i.buttonVariant || "light",
-      buttonType: i.buttonType || l,
-      linkVariant: i.linkVariant || c,
-      buttonOnClick: i.buttonOnClick,
-      backgroundVariant: w,
-      attributes: i.attributes,
+      media: l.media || "image",
+      imageUrl: l.imageUrl,
+      videoUrl: l.videoUrl,
+      lottieUrl: l.lottieUrl,
+      lottieData: l.lottieData,
+      iframeUrl: l.iframeUrl,
+      mediaAltTitle: l.mediaAltTitle,
+      title: l.title,
+      description: l.description,
+      descriptionRichText: l.descriptionRichText,
+      buttonText: l.buttonText,
+      buttonHref: l.buttonHref,
+      buttonVariant: l.buttonVariant || "light",
+      buttonType: l.buttonType || i,
+      linkVariant: l.linkVariant || c,
+      buttonOnClick: l.buttonOnClick,
+      backgroundVariant: C,
+      attributes: l.attributes,
       className: "h-full w-full"
     }
   ) }, g)) }) });
@@ -506,7 +508,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // true = vertical stack, false = horizontal side-by-side
   iconPosition: a = "left",
   // 'left' or 'right' (only applies when stacked = false)
-  media: l = "image",
+  media: i = "image",
   // 'image' | 'video' | 'lottie' | 'iframe' - selector for media type
   imageUrl: c,
   // URL for image
@@ -516,23 +518,23 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // URL to Lottie animation JSON file
   lottieData: v,
   // Lottie animation JSON data object (alternative to lottieUrl)
-  iframeUrl: w,
+  iframeUrl: C,
   // URL for iframe
-  mediaAltTitle: C,
+  mediaAltTitle: $,
   // Accessible text for media (image alt, video/lottie/iframe title); falls back to title if not set
   title: u,
-  description: p,
-  buttonText: $,
+  description: y,
+  buttonText: N,
   buttonHref: o,
-  buttonVariant: i = "light",
-  buttonType: g = "button",
+  buttonVariant: h = "light",
+  buttonType: l = "button",
   // button | link
-  linkVariant: b,
+  linkVariant: g,
   buttonOnClick: s,
   backgroundVariant: r = "default",
   // default | primary | secondary | tertiary
   className: f = "",
-  attributes: y = {},
+  attributes: p = {},
   textAlign: m = "left"
   // 'left' | 'center' (only applies when stacked = true)
 }) => {
@@ -541,7 +543,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
     iconPosition: a,
     textAlign: m
   });
-  const N = {
+  const w = {
     default: "bg-grey-500 text-grey-950",
     primary: "bg-primary text-white",
     secondary: "bg-secondary text-grey-950",
@@ -553,10 +555,10 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
     secondary: "text-grey-950",
     tertiary: "text-grey-950",
     light: "text-grey-950"
-  }, h = N[r] || N.default, k = _(), T = `
+  }, b = w[r] || w.default, k = _(), T = `
     flex
     w-full
-    ${h}
+    ${b}
     ${t ? "flex-col" : "flex-row items-start"}
     rounded-[var(--spacing-cards-br)]
     overflow-hidden
@@ -590,15 +592,15 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   `.trim().replace(/\s+/g, " "), R = /* @__PURE__ */ e(
     q,
     {
-      media: l,
+      media: i,
       aspect: "default",
       imageUrl: c,
       videoUrl: n,
       lottieUrl: d,
       lottieData: v,
-      iframeUrl: w,
+      iframeUrl: C,
       objectFit: "contain",
-      title: C ?? u,
+      title: $ ?? u,
       className: ""
     }
   ), L = t || a === "left", O = () => /* @__PURE__ */ e("div", { className: j, children: /* @__PURE__ */ e("div", { className: I, children: R }) });
@@ -607,28 +609,28 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
     {
       className: T,
       ...u ? { "aria-labelledby": k } : { "aria-label": "Card" },
-      ...y ?? {},
+      ...p ?? {},
       children: [
         L && O(),
         /* @__PURE__ */ M("div", { className: S, children: [
           /* @__PURE__ */ M("div", { className: "space-y-textmedia-text--spacing-y flex-grow-1", children: [
             u && /* @__PURE__ */ e("h3", { id: k, className: `text-headings-h3 font-semibold ${x[r]}`, children: u }),
-            p && /* @__PURE__ */ e("p", { className: `text-body-default ${x[r]}`, children: p })
+            y && /* @__PURE__ */ e("p", { className: `text-body-default ${x[r]}`, children: y })
           ] }),
-          $ && /* @__PURE__ */ e("div", { className: "mt-auto", children: g === "link" ? /* @__PURE__ */ e(
+          N && /* @__PURE__ */ e("div", { className: "mt-auto", children: l === "link" ? /* @__PURE__ */ e(
             Y,
             {
-              text: $,
+              text: N,
               href: o,
-              variant: b || (i.includes("light") ? "light" : "dark"),
+              variant: g || (h.includes("light") ? "light" : "dark"),
               onClick: s
             }
           ) : /* @__PURE__ */ e(
             H,
             {
-              text: $,
+              text: N,
               href: o,
-              variant: i,
+              variant: h,
               onClick: s
             }
           ) })
@@ -642,18 +644,18 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // 1 | 2 | 3 | 4 | 5 | 6 - number of columns in the grid
   data: a = [],
   // Array of card data objects
-  buttonType: l = "button",
+  buttonType: i = "button",
   linkVariant: c,
   stacked: n = !0,
   iconPosition: d = "left",
   itemBackgroundVariant: v = "default",
-  textAlign: w = "left",
+  textAlign: C = "left",
   // 'left' | 'center' (only applies when stacked = true)
-  className: C = "",
+  className: $ = "",
   ...u
 }) => {
-  const p = () => {
-    const g = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
+  const y = () => {
+    const l = "container grid grid-cols-1 gap-x-section-spacing-x gap-y-section-spacing-y justify-items-center";
     if (n) {
       const r = {
         1: "md:grid-cols-1",
@@ -669,20 +671,20 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         4: "lg:grid-cols-4",
         5: "lg:grid-cols-5",
         6: "lg:grid-cols-6"
-      }, y = r[t] ?? r[3], m = f[t] ?? f[3];
-      return `${g} ${y} ${m}`;
+      }, p = r[t] ?? r[3], m = f[t] ?? f[3];
+      return `${l} ${p} ${m}`;
     }
-    const b = {
+    const g = {
       1: "lg:grid-cols-1",
       2: "lg:grid-cols-2",
       3: "lg:grid-cols-3"
     }, s = Math.min(t, 3);
-    return `${g} ${b[s]}`;
-  }, $ = (o) => {
-    const i = "min-w-0 w-full flex items-stretch";
-    return n && a.length === 3 && o === 2 && t === 2 ? `${i} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : i;
+    return `${l} ${g[s]}`;
+  }, N = (o) => {
+    const h = "min-w-0 w-full flex items-stretch";
+    return n && a.length === 3 && o === 2 && t === 2 ? `${h} md:col-span-full md:justify-self-center md:max-w-[calc((100%-var(--spacing-section-spacing-x))/2)] lg:col-span-1 lg:max-w-none` : h;
   };
-  return /* @__PURE__ */ e("div", { className: C, ...u, children: /* @__PURE__ */ e("div", { className: p(), children: a.map((o, i) => /* @__PURE__ */ e("div", { className: $(i), children: /* @__PURE__ */ e(
+  return /* @__PURE__ */ e("div", { className: $, ...u, children: /* @__PURE__ */ e("div", { className: y(), children: a.map((o, h) => /* @__PURE__ */ e("div", { className: N(h), children: /* @__PURE__ */ e(
     ne,
     {
       stacked: n,
@@ -699,30 +701,30 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       buttonText: o.buttonText,
       buttonHref: o.buttonHref,
       buttonVariant: o.buttonVariant || "light",
-      buttonType: o.buttonType || l,
+      buttonType: o.buttonType || i,
       linkVariant: o.linkVariant || c,
       buttonOnClick: o.buttonOnClick,
       backgroundVariant: v,
       attributes: o.attributes,
-      textAlign: w,
+      textAlign: C,
       className: "h-full w-full"
     }
-  ) }, i)) }) });
+  ) }, h)) }) });
 }, ce = ({
   items: t = [],
   // [{ label, href, onClick, isActive, isEllipsis }]
   className: a = "",
-  ...l
-}) => /* @__PURE__ */ e("nav", { className: a, "aria-label": "Pagination", ...l, children: /* @__PURE__ */ e("ul", { className: "flex items-center justify-center gap-archive-spacing-x", children: t.map((c, n) => {
+  ...i
+}) => /* @__PURE__ */ e("nav", { className: a, "aria-label": "Pagination", ...i, children: /* @__PURE__ */ e("ul", { className: "flex items-center justify-center gap-archive-spacing-x", children: t.map((c, n) => {
   if (c.isEllipsis)
     return /* @__PURE__ */ e("li", { className: "p-tabbed-loz--padding", children: c.label || "..." }, `ellipsis-${n}`);
-  const d = "inline-flex items-center justify-center p-10 rounded-full border transition-colors", v = c.isActive ? "bg-grey-600 text-white border-grey-600" : "bg-grey-100 border-grey-400 hover:border-grey-600 hover:bg-grey-600 hover:text-white focus-visible:border-grey-600 focus-visible:bg-grey-600 focus-visible:text-white", w = /* @__PURE__ */ e("span", { className: `${d} ${v}`, children: c.label });
+  const d = "inline-flex items-center justify-center p-10 rounded-full border transition-colors", v = c.isActive ? "bg-grey-600 text-white border-grey-600" : "bg-grey-100 border-grey-400 hover:border-grey-600 hover:bg-grey-600 hover:text-white focus-visible:border-grey-600 focus-visible:bg-grey-600 focus-visible:text-white", C = /* @__PURE__ */ e("span", { className: `${d} ${v}`, children: c.label });
   return /* @__PURE__ */ e("li", { children: c.href ? /* @__PURE__ */ e(
     "a",
     {
       href: c.href,
       "aria-current": c.isActive ? "page" : void 0,
-      children: w
+      children: C
     }
   ) : /* @__PURE__ */ e(
     "button",
@@ -730,7 +732,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       type: "button",
       onClick: c.onClick,
       "aria-current": c.isActive ? "page" : void 0,
-      children: w
+      children: C
     }
   ) }, `${c.label}-${n}`);
 }) }) }), ye = ({
@@ -738,41 +740,41 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
   // [{ text, key, cardType, columns, itemsPerPage, cards }]
   tabType: a = "tab-top",
   // 'tab-top' | 'tab-aside' 
-  defaultActiveIndex: l = 0,
+  defaultActiveIndex: i = 0,
   className: c = "",
   ...n
 }) => {
-  var b;
-  const [d, v] = A(l), [w, C] = A(() => t.map(() => 1)), [u, p] = A(!1);
+  var g;
+  const [d, v] = A(i), [C, $] = A(() => t.map(() => 1)), [u, y] = A(!1);
   if (B(() => {
-    C(t.map(() => 1)), v(l);
-  }, [t, l]), !t || t.length === 0) return null;
-  const $ = (s) => {
+    $(t.map(() => 1)), v(i);
+  }, [t, i]), !t || t.length === 0) return null;
+  const N = (s) => {
     v(s);
   }, o = (s, r) => {
-    C((f) => {
-      const y = [...f];
-      return y[s] = r, y;
+    $((f) => {
+      const p = [...f];
+      return p[s] = r, p;
     });
-  }, i = (s, r, f) => {
+  }, h = (s, r, f) => {
     if (r <= 1) return [];
-    const y = [], m = (h) => {
-      y.push({
-        label: String(h),
-        isActive: h === s,
-        onClick: () => f(h)
+    const p = [], m = (b) => {
+      p.push({
+        label: String(b),
+        isActive: b === s,
+        onClick: () => f(b)
       });
     };
     if (m(1), r <= 7) {
-      for (let h = 2; h <= r; h += 1) m(h);
-      return y;
+      for (let b = 2; b <= r; b += 1) m(b);
+      return p;
     }
-    const N = Math.max(2, s - 1), x = Math.min(r - 1, s + 1);
-    N > 2 && y.push({ isEllipsis: !0, label: "..." });
-    for (let h = N; h <= x; h += 1) m(h);
-    return x < r - 1 && y.push({ isEllipsis: !0, label: "..." }), m(r), y;
-  }, g = (s, r) => {
-    const f = s.cards || [], y = s.itemsPerPage || 6, m = Math.ceil(f.length / y) || 1, N = w[r] || 1, x = (N - 1) * y, h = f.slice(x, x + y), k = i(N, m, (T) => o(r, T));
+    const w = Math.max(2, s - 1), x = Math.min(r - 1, s + 1);
+    w > 2 && p.push({ isEllipsis: !0, label: "..." });
+    for (let b = w; b <= x; b += 1) m(b);
+    return x < r - 1 && p.push({ isEllipsis: !0, label: "..." }), m(r), p;
+  }, l = (s, r) => {
+    const f = s.cards || [], p = s.itemsPerPage || 6, m = Math.ceil(f.length / p) || 1, w = C[r] || 1, x = (w - 1) * p, b = f.slice(x, x + p), k = h(w, m, (T) => o(r, T));
     return /* @__PURE__ */ M("div", { className: "space-y-24", children: [
       (() => {
         const T = s.cardType === "icon" ? oe : ae;
@@ -780,7 +782,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
           T,
           {
             columns: s.columns || 3,
-            data: h,
+            data: b,
             linkVariant: "light",
             buttonType: "link"
           }
@@ -796,7 +798,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         {
           tab: s,
           isActive: d === r,
-          onClick: () => $(r),
+          onClick: () => N(r),
           index: r
         },
         s.key || r
@@ -805,7 +807,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         "div",
         {
           className: `transition-opacity duration-300 ${d === r ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"}`,
-          children: g(s, r)
+          children: l(s, r)
         },
         s.key || r
       )) })
@@ -814,10 +816,10 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       /* @__PURE__ */ M(
         "button",
         {
-          onClick: () => p(!u),
+          onClick: () => y(!u),
           className: "w-full h-11 flex items-center justify-between px-3 rounded-lg border border-grey-900 bg-white",
           children: [
-            /* @__PURE__ */ e("span", { className: "text-body-default", children: ((b = t[d]) == null ? void 0 : b.text) || "Select tab" }),
+            /* @__PURE__ */ e("span", { className: "text-body-default", children: ((g = t[d]) == null ? void 0 : g.text) || "Select tab" }),
             /* @__PURE__ */ e(
               "svg",
               {
@@ -835,7 +837,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         "button",
         {
           onClick: () => {
-            $(r), p(!1);
+            N(r), y(!1);
           },
           className: `w-full text-left px-12 py-10 border-b border-grey-200 last:border-b-0 transition-colors ${d === r ? "bg-grey-100" : "hover:bg-grey-50 focus-visible:bg-grey-50"}`,
           children: /* @__PURE__ */ e("span", { className: "text-body-default", children: s.text })
@@ -846,7 +848,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
         "div",
         {
           className: `transition-opacity duration-300 ${d === r ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"}`,
-          children: g(s, r)
+          children: l(s, r)
         },
         s.key || r
       )) })
@@ -857,7 +859,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       {
         tab: s,
         isActive: d === r,
-        onClick: () => $(r),
+        onClick: () => N(r),
         index: r
       },
       s.key || r
@@ -866,7 +868,7 @@ const se = /* @__PURE__ */ F.forwardRef(re), Y = ({
       "div",
       {
         className: `transition-opacity duration-300 ${d === r ? "opacity-100" : "opacity-0 absolute inset-0 pointer-events-none"}`,
-        children: g(s, r)
+        children: l(s, r)
       },
       s.key || r
     )) })
@@ -880,37 +882,37 @@ const de = async () => {
   }
 }, ue = async () => {
   V || (V = (await import("react-pageflip")).default);
-}, ge = Q(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), me = ({ pdfUrl: t, title: a, width: l = 280, height: c = 280, className: n = "" }) => {
-  const [d, v] = A(0), [w, C] = A(null), [u, p] = A(!0), [$, o] = A(c / l), [i, g] = A(0), b = K(null);
+}, me = Q(({ children: t }, a) => /* @__PURE__ */ e("div", { ref: a, className: "w-full h-full overflow-hidden", children: t })), ge = ({ pdfUrl: t, title: a, width: i = 280, height: c = 280, className: n = "" }) => {
+  const [d, v] = A(0), [C, $] = A(null), [u, y] = A(!0), [N, o] = A(c / i), [h, l] = A(0), g = K(null);
   B(() => {
-    Promise.all([de(), ue()]).then(() => p(!1)).catch(() => {
-      C("Failed to load flipbook");
+    Promise.all([de(), ue()]).then(() => y(!1)).catch(() => {
+      $("Failed to load flipbook");
     });
   }, []), B(() => {
-    const m = b.current;
+    const m = g.current;
     if (!m) return;
-    const N = new ResizeObserver(([x]) => {
-      const h = Math.floor(x.contentRect.width);
-      h > 0 && g(h);
+    const w = new ResizeObserver(([x]) => {
+      const b = Math.floor(x.contentRect.width);
+      b > 0 && l(b);
     });
-    return N.observe(m), () => N.disconnect();
+    return w.observe(m), () => w.disconnect();
   }, [u]);
-  const s = i > 0 ? Math.floor(i / 2) : Math.floor(l / 2), r = Math.round(s * $), f = U(async (m) => {
+  const s = h > 0 ? Math.floor(h / 2) : Math.floor(i / 2), r = Math.round(s * N), f = U(async (m) => {
     try {
       const x = (await m.getPage(1)).getViewport({ scale: 1 });
       x != null && x.width && (x != null && x.height) && o(x.height / x.width);
     } catch {
     }
     v(m.numPages || 0);
-  }, []), y = U((m) => {
-    C((m == null ? void 0 : m.message) || "Failed to load PDF");
+  }, []), p = U((m) => {
+    $((m == null ? void 0 : m.message) || "Failed to load PDF");
   }, []);
-  return w ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : u ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: b, className: `w-full ${n}`.trim(), children: /* @__PURE__ */ M(
+  return C ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Failed to load flipbook" }) : u ? /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }) : /* @__PURE__ */ e("div", { ref: g, className: `w-full ${n}`.trim(), children: /* @__PURE__ */ M(
     X,
     {
       file: t,
       onLoadSuccess: f,
-      onLoadError: y,
+      onLoadError: p,
       loading: /* @__PURE__ */ e("div", { className: "flex items-center justify-center text-body-default text-center p-40", children: "Loading flipbook..." }),
       children: [
         d === 1 && /* @__PURE__ */ e(
@@ -918,7 +920,7 @@ const de = async () => {
           {
             className: `w-full flex justify-center items-center ${n}`.trim(),
             style: { minHeight: `${r}px` },
-            children: /* @__PURE__ */ e(W, { pageNumber: 1, width: l, renderTextLayer: !1, renderAnnotationLayer: !1 })
+            children: /* @__PURE__ */ e(W, { pageNumber: 1, width: i, renderTextLayer: !1, renderAnnotationLayer: !1 })
           }
         ),
         d > 1 && /* @__PURE__ */ e(
@@ -930,7 +932,7 @@ const de = async () => {
             showCover: !0,
             mobileScrollSupport: !1,
             "aria-label": a || "Flipbook",
-            children: Array.from({ length: d }, (m, N) => /* @__PURE__ */ e(ge, { children: /* @__PURE__ */ e(W, { pageNumber: N + 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, N))
+            children: Array.from({ length: d }, (m, w) => /* @__PURE__ */ e(me, { children: /* @__PURE__ */ e(W, { pageNumber: w + 1, width: s, renderTextLayer: !1, renderAnnotationLayer: !1 }) }, w))
           },
           `${s}-${r}`
         )
@@ -939,7 +941,7 @@ const de = async () => {
   ) });
 }, fe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: me
+  default: ge
 }, Symbol.toStringTag, { value: "Module" }));
 export {
   ye as default

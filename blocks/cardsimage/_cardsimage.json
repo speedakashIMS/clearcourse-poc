@@ -130,11 +130,21 @@
             {
               "name": "Tertiary",
               "value": "tertiary"
+            },
+            {
+              "name": "Quaternary",
+              "value": "quaternary"
             }
           ],
           "value": "default"
         }
       ]
+    },
+    {
+      "component": "boolean",
+      "name": "shadowCards",
+      "label": "Shadow Cards",
+      "valueType": "boolean"
     },
     {
       "id": "cardsimageitem",
