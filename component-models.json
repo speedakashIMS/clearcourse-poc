@@ -3062,6 +3062,12 @@
         "valueType": "boolean"
       },
       {
+        "component": "boolean",
+        "name": "shadowcards",
+        "label": "Shadow Cards",
+        "valueType": "boolean"
+      },
+      {
         "component": "select",
         "name": "imageposition",
         "label": "Image Position",
@@ -3137,12 +3143,6 @@
         "value": "default"
       }
     ]
-  },
-  {
-    "component": "boolean",
-    "name": "shadowcards",
-    "label": "Shadow Cards",
-    "valueType": "boolean"
   },
   {
     "id": "cardsimageitem",
