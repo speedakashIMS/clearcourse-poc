@@ -9,27 +9,8 @@ import { blockToMap, updateQueryParams } from '../../scripts/utils/block.js';
  */
 function toArray(value) {
   if (!value) return [];
-
-  if (Array.isArray(value)) {
-    return value;
-  }
-
-  // IMPORTANT: only treat indexed objects as arrays
-  if (typeof value === 'object') {
-    const keys = Object.keys(value);
-
-    const isIndexedArray = keys.every((k) => !Number.isNaN(Number(k)));
-
-    if (isIndexedArray) {
-      return keys
-        .sort((a, b) => Number(a) - Number(b))
-        .map((k) => value[k]);
-    }
-
-    // fallback: return single object (NOT Object.values)
-    return [value];
-  }
-
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'object') return Object.values(value);
   return [];
 }
 
