@@ -678,93 +678,62 @@ function blockToMap(block, config = {}) {
 }
 
 function parseBlockDeep(block) {
-  const result = {
-    navigationitems: [],
-    buttons: [],
-  };
+  const result = {};
 
-  const getText = (el) => el?.textContent?.trim() || '';
+  function parseCell(cell) {
+    // TEXT ONLY FIELD
+    if (!cell.querySelector('ul') && !cell.querySelector('li')) {
+      return cell.textContent.trim();
+    }
+
+    // CONTAINER FIELD (multi)
+    const list = cell.querySelector(':scope > ul');
+    if (!list) return null;
+
+    return Array.from(list.children)
+      .filter((li) => li.tagName === 'LI')
+      .map((li) => parseListItem(li));
+  }
+
+  function parseListItem(li) {
+    const obj = {};
+
+    const directChildren = Array.from(li.children);
+
+    directChildren.forEach((child, index) => {
+      // nested submenu (UL inside LI)
+      if (child.tagName === 'UL') {
+        obj.submenuitems = Array.from(child.children)
+          .filter((c) => c.tagName === 'LI')
+          .map(parseListItem);
+        return;
+      }
+
+      // text nodes inside LI
+      const text = child.textContent?.trim();
+
+      if (!text) return;
+
+      // heuristic mapping for navigation
+      if (index === 0) obj.label = text;
+      if (index === 1) obj.subtitle = text;
+    });
+
+    return obj;
+  }
 
   Array.from(block.children).forEach((row) => {
     const cells = Array.from(row.children);
-    const key = getText(cells[0]).toLowerCase();
+    const key = cells[0]?.textContent?.trim()?.toLowerCase();
     const valueCell = cells[1];
 
     if (!key || !valueCell) return;
 
-    /* =========================
-       NAVIGATION ITEMS
-    ========================= */
-    if (key === 'navigationitems') {
-      const items = [];
+    const parsed = parseCell(valueCell);
 
-      const topItems = valueCell.querySelectorAll(':scope > ul > li');
-
-      topItems.forEach((li) => {
-        const label =
-          getText(li.childNodes[0]) ||
-          getText(li.querySelector(':scope > p')) ||
-          '';
-
-        const submenu = [];
-
-        const subUl = li.querySelector(':scope > ul');
-
-        if (subUl) {
-          subUl.querySelectorAll(':scope > li').forEach((subLi) => {
-            const subChildren = Array.from(subLi.childNodes).filter(
-              (n) => n.nodeType === 1 || n.nodeType === 3,
-            );
-
-            submenu.push({
-              title: getText(subChildren[0]),
-              subtitle: getText(subChildren[1]),
-              href: subLi.querySelector('a')?.getAttribute('href') || '#',
-            });
-          });
-        }
-
-        items.push({
-          label,
-          submenu,
-        });
-      });
-
-      result.navigationitems = items;
-      return;
+    if (parsed !== null) {
+      result[key] = parsed;
     }
-
-    /* =========================
-       BUTTONS
-    ========================= */
-    if (key === 'buttons') {
-      const btns = [];
-
-      const lis = valueCell.querySelectorAll(':scope > ul > li');
-
-      lis.forEach((li) => {
-        btns.push({
-          buttontext:
-            li.querySelector('[data-buttontext]')?.textContent?.trim() || '',
-          buttonsize:
-            li.querySelector('[data-buttonsize]')?.textContent?.trim() ||
-            'btn-md',
-          buttonvariant:
-            li.querySelector('[data-buttonvariant]')?.textContent?.trim() ||
-            'light',
-          buttonlink:
-            li.querySelector('a')?.getAttribute('href') || '#',
-        });
-      });
-
-      result.buttons = btns;
-      return;
-    }
-
-    /* =========================
-       SIMPLE TEXT FIELDS
-    ========================= */
-    result[key] = getText(valueCell);
   });
 
   return result;
