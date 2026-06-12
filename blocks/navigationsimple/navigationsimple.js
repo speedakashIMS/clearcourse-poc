@@ -95,13 +95,13 @@ export default async function decorate(block) {
     },
   });
 
-  console.log('RAW blockData:', blockData);
   const deepData = parseBlockDeep(block);
   const blockData = {
     ...flatData,
     navigationitems: deepData.navigationitems,
   };
-
+ 
+  console.log('RAW blockData:', blockData);
   let navItems = normalizeNavigationItems(blockData);
 
   /**
