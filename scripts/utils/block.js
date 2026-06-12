@@ -678,62 +678,101 @@ function blockToMap(block, config = {}) {
 }
 
 function parseBlockDeep(block) {
-  const result = {};
-
-  function parseCell(cell) {
-    // TEXT ONLY FIELD
-    if (!cell.querySelector('ul') && !cell.querySelector('li')) {
-      return cell.textContent.trim();
-    }
-
-    // CONTAINER FIELD (multi)
-    const list = cell.querySelector(':scope > ul');
-    if (!list) return null;
-
-    return Array.from(list.children)
-      .filter((li) => li.tagName === 'LI')
-      .map((li) => parseListItem(li));
-  }
-
-  function parseListItem(li) {
-    const obj = {};
-
-    const directChildren = Array.from(li.children);
-
-    directChildren.forEach((child, index) => {
-      // nested submenu (UL inside LI)
-      if (child.tagName === 'UL') {
-        obj.submenuitems = Array.from(child.children)
-          .filter((c) => c.tagName === 'LI')
-          .map(parseListItem);
-        return;
-      }
-
-      // text nodes inside LI
-      const text = child.textContent?.trim();
-
-      if (!text) return;
-
-      // heuristic mapping for navigation
-      if (index === 0) obj.label = text;
-      if (index === 1) obj.subtitle = text;
-    });
-
-    return obj;
-  }
+  const result = {
+    navigationitems: [],
+    buttons: [],
+  };
 
   Array.from(block.children).forEach((row) => {
     const cells = Array.from(row.children);
+
     const key = cells[0]?.textContent?.trim()?.toLowerCase();
     const valueCell = cells[1];
 
     if (!key || !valueCell) return;
 
-    const parsed = parseCell(valueCell);
+    /* -----------------------------------------------------
+       NAVIGATION ITEMS (FIXED FOR AEM/XWALK STRUCTURE)
+    ----------------------------------------------------- */
+    if (key === 'navigationitems') {
+      const items = [];
 
-    if (parsed !== null) {
-      result[key] = parsed;
+      const itemNodes = Array.from(valueCell.children || []);
+
+      itemNodes.forEach((itemNode) => {
+        const label =
+          itemNode.querySelector('[name="label"], .label')?.textContent?.trim() ||
+          itemNode.children?.[0]?.textContent?.trim() ||
+          '';
+
+        const submenu = [];
+
+        const submenuContainer =
+          itemNode.querySelector('[name="submenuitems"]') ||
+          itemNode.children?.[1];
+
+        if (submenuContainer) {
+          Array.from(submenuContainer.children || []).forEach((subNode) => {
+            const title =
+              subNode.querySelector('[name="title"]')?.textContent?.trim() ||
+              subNode.children?.[0]?.textContent?.trim() ||
+              '';
+
+            const subtitle =
+              subNode.querySelector('[name="subtitle"]')?.textContent?.trim() ||
+              subNode.children?.[1]?.textContent?.trim() ||
+              '';
+
+            const link =
+              subNode.querySelector('a')?.getAttribute('href') || '#';
+
+            submenu.push({
+              title,
+              subtitle,
+              href: link,
+            });
+          });
+        }
+
+        items.push({
+          label,
+          submenu,
+        });
+      });
+
+      result.navigationitems = items;
+      return;
     }
+
+    /* -----------------------------------------------------
+       BUTTONS (simple safe fallback)
+    ----------------------------------------------------- */
+    if (key === 'buttons') {
+      const btnItems = [];
+
+      Array.from(valueCell.children || []).forEach((btnNode) => {
+        const text =
+          btnNode.querySelector('[name="buttontextvalue"], .text')?.textContent?.trim() ||
+          btnNode.textContent?.trim() ||
+          '';
+
+        const link =
+          btnNode.querySelector('a')?.getAttribute('href') || '#';
+
+        btnItems.push({
+          buttontext: text,
+          buttonlink: link,
+        });
+      });
+
+      result.buttons = btnItems;
+      return;
+    }
+
+    /* -----------------------------------------------------
+       SIMPLE FIELDS
+    ----------------------------------------------------- */
+    result[key] = valueCell.textContent.trim();
   });
 
   return result;

@@ -2367,10 +2367,12 @@ function Wt({
   },
   index: m = 0,
   className: y = "",
-  largeImage: g = !1
+  largeImage: g = !1,
   // if true, set image size to 48x48 even to mobile
+  attributes: L = {}
+  // aue instrumentation, applied to root so item is editable in Universal Editor
 }) {
-  return o ? /* @__PURE__ */ M("div", { className: y, children: /* @__PURE__ */ ae(
+  return o ? /* @__PURE__ */ M("div", { className: y, ...L, children: /* @__PURE__ */ ae(
     "button",
     {
       onClick: v,
