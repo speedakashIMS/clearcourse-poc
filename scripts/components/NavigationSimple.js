@@ -1,7 +1,7 @@
-import { jsx as e, jsxs as d } from "react/jsx-runtime";
+import { jsx as e, jsxs as m } from "react/jsx-runtime";
 import * as n from "react";
-import { useState as j, useId as E } from "react";
-function L({
+import { useState as j, useId as M } from "react";
+function E({
   title: r,
   titleId: t,
   ...s
@@ -24,7 +24,7 @@ function L({
     d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }));
 }
-const M = /* @__PURE__ */ n.forwardRef(L);
+const L = /* @__PURE__ */ n.forwardRef(E);
 function B({
   title: r,
   titleId: t,
@@ -49,7 +49,7 @@ function B({
   }));
 }
 const R = /* @__PURE__ */ n.forwardRef(B);
-function O({
+function z({
   title: r,
   titleId: t,
   ...s
@@ -72,7 +72,7 @@ function O({
     d: "M6 18 18 6M6 6l12 12"
   }));
 }
-const z = /* @__PURE__ */ n.forwardRef(O), S = ({
+const O = /* @__PURE__ */ n.forwardRef(z), S = ({
   text: r = "Button",
   href: t = void 0,
   variant: s = "light",
@@ -80,13 +80,13 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
   size: i = "btn-md",
   // btn-sm , btn-md
   className: a = "",
-  disabled: h = !1,
-  onClick: f = void 0,
-  attributes: b = {},
-  ...u
+  disabled: c = !1,
+  onClick: u = void 0,
+  attributes: g = {},
+  ...d
 }) => {
-  const x = (g) => {
-    switch (g) {
+  const w = (h) => {
+    switch (h) {
       case "light":
         return "btn-light";
       case "dark":
@@ -104,8 +104,8 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
       default:
         return "btn-light";
     }
-  }, m = (g) => {
-    switch (g) {
+  }, f = (h) => {
+    switch (h) {
       case "btn-sm":
         return "btn-sm";
       case "btn-md":
@@ -113,26 +113,26 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
       default:
         return "btn-md";
     }
-  }, o = `btn ${x(s)} ${m(i)} ${a}`.trim();
+  }, l = `btn ${w(s)} ${f(i)} ${a}`.trim();
   return t ? /* @__PURE__ */ e(
     "a",
     {
       href: t,
-      className: o,
-      onClick: f,
-      ...u,
-      ...b ?? {},
+      className: l,
+      onClick: u,
+      ...d,
+      ...g ?? {},
       children: r
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
-      type: u.type || "button",
-      className: o,
-      disabled: h,
-      onClick: f,
-      ...u,
-      ...b ?? {},
+      type: d.type || "button",
+      className: l,
+      disabled: c,
+      onClick: u,
+      ...d,
+      ...g ?? {},
       children: r
     }
   );
@@ -142,7 +142,7 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
   size: t = "btn-md",
   className: s = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
   ...i
-}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, h) => /* @__PURE__ */ e(
+}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, c) => /* @__PURE__ */ e(
   S,
   {
     text: a.text,
@@ -152,7 +152,7 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
     onClick: a.onClick,
     attributes: a.attributes
   },
-  h
+  c
 )) }), y = {
   dark: {
     bar: "bg-secondary",
@@ -179,147 +179,81 @@ const z = /* @__PURE__ */ n.forwardRef(O), S = ({
     hamburger: "border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80"
   }
 };
-function D({
+function A({
   fullWidth: r = !1,
   logo: t,
   navItems: s = [],
-  // [{ label, submenu: [{ title, subtitle, icon, href }] }]
+  // [{ label, href, submenu: [{ label, href }] }]
   buttons: i = [],
+  // [{ text, variant, size, href, onClick }]
   alignNavRight: a = !0,
-  variant: h = "gradient",
-  skipLinkText: f = "Skip navigation",
-  className: b = "",
-  ...u
+  variant: c = "gradient",
+  // 'dark' | 'light' | 'gradient' |
+  skipLinkText: u = "Skip navigation",
+  className: g = "",
+  ...d
 }) {
-  const [w, x] = j(!1), m = E(), o = y[h] ?? y.dark, g = `w-full ${o.bar} relative`, k = [
+  const [b, w] = j(!1), f = M(), l = y[c] ?? y.dark, h = `w-full ${l.bar} relative`.trim(), k = [
     "flex items-center gap-nav-spacing-x pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r",
     r ? "w-full max-w-[1600px] mx-auto" : "container"
   ].filter(Boolean).join(" "), N = a ? "ml-auto" : "flex-1 justify-center";
-  return /* @__PURE__ */ d(
-    "nav",
-    {
-      className: `${g} ${b}`.trim(),
-      ...u,
-      children: [
-        /* @__PURE__ */ e(
-          "a",
-          {
-            href: `#${m}`,
-            className: "sr-only focus:not-sr-only focus:absolute focus:left-20 focus:top-20 focus:z-20 focus:inline-flex focus:rounded-8 focus:bg-white focus:px-16 focus:py-10 focus:text-body-default focus:text-grey-950",
-            children: f
-          }
-        ),
-        /* @__PURE__ */ d("div", { className: k, children: [
-          /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e(
+  return /* @__PURE__ */ m("nav", { className: `${h} ${g}`.trim(), ...d, children: [
+    /* @__PURE__ */ e(
+      "a",
+      {
+        href: `#${f}`,
+        className: "sr-only focus:not-sr-only focus:absolute focus:left-20 focus:top-20 focus:z-20 focus:inline-flex focus:rounded-8 focus:bg-white focus:px-16 focus:py-10 focus:text-body-default focus:text-grey-950",
+        children: u
+      }
+    ),
+    /* @__PURE__ */ m("div", { className: k, children: [
+      /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e("a", { href: "/", className: "inline-flex shrink-0 items-center", "aria-label": "Home", children: typeof t == "string" ? /* @__PURE__ */ e("img", { src: t, alt: "", className: "h-auto min-h-32 max-h-32" }) : t }) }),
+      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${b ? `!block absolute top-[100%] left-0 w-full ${l.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((o, $) => {
+        var x, v;
+        return /* @__PURE__ */ m("div", { className: "relative group", children: [
+          /* @__PURE__ */ m(
             "a",
             {
-              href: "/",
-              className: "inline-flex shrink-0 items-center",
-              "aria-label": "Home",
-              children: typeof t == "string" ? /* @__PURE__ */ e(
-                "img",
-                {
-                  src: t,
-                  alt: "",
-                  className: "h-auto min-h-32 max-h-32"
-                }
-              ) : t
-            }
-          ) }),
-          /* @__PURE__ */ e(
-            "div",
-            {
-              className: `hidden lg:flex items-center gap-24 ${N}`.trim(),
-              children: s.map((l, $) => {
-                var v, p;
-                return /* @__PURE__ */ d(
-                  "div",
-                  {
-                    className: "relative group",
-                    children: [
-                      /* @__PURE__ */ d(
-                        "a",
-                        {
-                          href: l.href || "#",
-                          className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
-                          children: [
-                            l.label,
-                            ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
-                          ]
-                        }
-                      ),
-                      ((p = l.submenu) == null ? void 0 : p.length) > 0 && /* @__PURE__ */ e("div", { className: "hidden lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e(
-                        "ul",
-                        {
-                          className: `min-w-[320px] lg:rounded-8 p-nav-dd--padding ${o.dropdown}`,
-                          children: l.submenu.map((c, C) => /* @__PURE__ */ e(
-                            "li",
-                            {
-                              children: /* @__PURE__ */ d(
-                                "a",
-                                {
-                                  href: c.href || "#",
-                                  className: `flex items-start gap-12 p-12 transition-colors ${o.dropdownLink}`,
-                                  children: [
-                                    c.icon && /* @__PURE__ */ e(
-                                      "img",
-                                      {
-                                        src: c.icon,
-                                        alt: "",
-                                        className: "w-24 h-24 shrink-0 mt-2"
-                                      }
-                                    ),
-                                    /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
-                                      /* @__PURE__ */ e("span", { className: "font-medium", children: c.title }),
-                                      c.subtitle && /* @__PURE__ */ e("span", { className: "text-sm opacity-75", children: c.subtitle })
-                                    ] })
-                                  ]
-                                }
-                              )
-                            },
-                            `${l.label}-submenu-${C}`
-                          ))
-                        }
-                      ) })
-                    ]
-                  },
-                  `${l.label}-${$}`
-                );
-              })
+              href: o.href || "#",
+              className: `inline-flex items-center gap-10 text-body-default transition-colors ${l.link}`.trim(),
+              children: [
+                o.label,
+                ((x = o.submenu) == null ? void 0 : x.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
+              ]
             }
           ),
-          /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
-            F,
+          ((v = o.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${l.dropdown}`, children: o.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
+            "a",
             {
-              buttons: i,
-              className: "flex items-center gap-10"
+              href: p.href || "#",
+              className: `block p-10 text-body-default transition-colors ${l.dropdownLink}`,
+              children: p.label
             }
-          ) }),
-          /* @__PURE__ */ e(
-            "button",
-            {
-              type: "button",
-              className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${o.hamburger}`,
-              "aria-label": "Open menu",
-              "aria-expanded": w,
-              onClick: () => x((l) => !l),
-              children: w ? /* @__PURE__ */ e(z, { className: "w-20 h-20" }) : /* @__PURE__ */ e(M, { className: "w-20 h-20" })
-            }
-          )
-        ] }),
-        /* @__PURE__ */ e(
-          "div",
-          {
-            id: m,
-            tabIndex: -1,
-            className: "sr-only outline-none",
-            children: "End of navigation"
-          }
-        )
-      ]
-    }
-  );
+          ) }, `${o.label}-submenu-${C}`)) }) })
+        ] }, `${o.label}-${$}`);
+      }) }),
+      /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
+        F,
+        {
+          buttons: i,
+          className: "flex items-center gap-10"
+        }
+      ) }),
+      /* @__PURE__ */ e(
+        "button",
+        {
+          type: "button",
+          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${l.hamburger}`,
+          "aria-label": "Open menu",
+          "aria-expanded": b,
+          onClick: () => w((o) => !o),
+          children: b ? /* @__PURE__ */ e(O, { className: "w-20 h-20" }) : /* @__PURE__ */ e(L, { className: "w-20 h-20" })
+        }
+      )
+    ] }),
+    /* @__PURE__ */ e("div", { id: f, tabIndex: -1, className: "sr-only outline-none", children: "End of navigation" })
+  ] });
 }
 export {
-  D as default
+  A as default
 };
