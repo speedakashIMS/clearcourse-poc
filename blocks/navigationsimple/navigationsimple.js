@@ -84,6 +84,7 @@ function normalizeNavigationItems(blockData) {
 }
 
 export default async function decorate(block) {
+  console.log(block);
   const flatData = blockToMap(block, {
     schemas: {
       buttons: [
