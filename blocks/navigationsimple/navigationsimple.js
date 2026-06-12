@@ -71,7 +71,7 @@ function getIcon(subItem) {
  * normalize navigation model safely
  */
 function normalizeNavigationItems(blockData) {
-  console.log(blockData,'submenuitems-blockdata');
+  console.log(blockData);
   return toArray(blockData?.navigationitems).map((item) => ({
     label: item?.label || '',
     submenu: toArray(item?.submenuitems).map((subItem) => ({
