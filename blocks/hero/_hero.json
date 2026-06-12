@@ -110,6 +110,7 @@
           "label": "Overlay Color",
           "valueType": "string",
           "options": [
+            { "name": "None", "value": "none" },
             { "name": "Primary", "value": "primary" },
             { "name": "Secondary", "value": "secondary" },
             { "name": "Tertiary", "value": "tertiary" },

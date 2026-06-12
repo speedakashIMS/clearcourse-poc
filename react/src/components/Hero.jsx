@@ -20,6 +20,7 @@ const OVERLAY_FROM_CLASSES = {
 };
 
 const CONTENT_BG_WHEN_OVERLAY = {
+  none: 'bg-transparent',
   primary: 'bg-primary',
   secondary: 'bg-secondary',
   tertiary: 'bg-tertiary',
