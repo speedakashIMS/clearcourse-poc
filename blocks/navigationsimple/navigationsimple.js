@@ -4,6 +4,19 @@ import { createRoot } from 'react-dom/client';
 import NavigationSimple from '../../scripts/components/NavigationSimple.js';
 import { blockToMap, updateQueryParams } from '../../scripts/utils/block.js';
 
+/**
+ * Normalize any EDS output into an array
+ */
+function toArray(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'object') return Object.values(value);
+  return [];
+}
+
+/**
+ * UL fallback parser (legacy support)
+ */
 function parseNavLinks(ul) {
   return Array.from(ul.children)
     .filter((li) => li.tagName === 'LI')
@@ -12,7 +25,7 @@ function parseNavLinks(ul) {
       const childUl = li.querySelector(':scope > ul');
 
       const item = {
-        label: a?.textContent.trim() || li.firstChild?.textContent.trim() || '',
+        label: a?.textContent.trim() || '',
         href: a?.getAttribute('href') || '#',
       };
 
@@ -24,12 +37,18 @@ function parseNavLinks(ul) {
     });
 }
 
+/**
+ * boolean normalization
+ */
 function parseAlignNavRight(value) {
   if (value === true || value === 'true') return true;
   if (value === false || value === 'false') return false;
   return undefined;
 }
 
+/**
+ * icon resolver
+ */
 function getIcon(subItem) {
   if (!subItem) return undefined;
 
@@ -48,19 +67,18 @@ function getIcon(subItem) {
   return undefined;
 }
 
+/**
+ * normalize navigation model safely
+ */
 function normalizeNavigationItems(blockData) {
-  if (!Array.isArray(blockData?.navigationitems)) return [];
-
-  return blockData.navigationitems.map((item) => ({
-    label: item.label,
-    submenu: Array.isArray(item.submenuitems)
-      ? item.submenuitems.map((subItem) => ({
-        title: subItem.title,
-        subtitle: subItem.subtitle,
-        href: subItem.link?.url || subItem.link || '#',
-        icon: getIcon(subItem),
-      }))
-      : [],
+  return toArray(blockData?.navigationitems).map((item) => ({
+    label: item?.label || '',
+    submenu: toArray(item?.submenuitems).map((subItem) => ({
+      title: subItem?.title || '',
+      subtitle: subItem?.subtitle || '',
+      href: subItem?.link?.url || subItem?.link || '#',
+      icon: getIcon(subItem),
+    })),
   }));
 }
 
@@ -76,9 +94,13 @@ export default async function decorate(block) {
     },
   });
 
+  console.log('RAW blockData:', blockData);
+
   let navItems = normalizeNavigationItems(blockData);
 
-  // Fallback only if model data is missing or invalid
+  /**
+   * fallback ONLY if model is missing completely
+   */
   if (!navItems.length) {
     Array.from(block.children).forEach((row) => {
       const cells = Array.from(row.children);
@@ -95,15 +117,11 @@ export default async function decorate(block) {
     });
   }
 
-  const logo = blockData.logosource === 'url'
-    ? blockData.logourl
-    : blockData.logoasset?.src
-      ? updateQueryParams(blockData.logoasset.src, {
-        width: 64,
-        format: 'webp',
-        optimize: 'high',
-      })
-      : undefined;
+  const logo = blockData.logosource === 'url' ? blockData.logourl : blockData.logoasset?.src ? updateQueryParams(blockData.logoasset.src, {
+    width: 64,
+    format: 'webp',
+    optimize: 'high',
+  }) : undefined;
 
   const data = {
     fullWidth: blockData.fullwidth === 'true',
@@ -119,8 +137,7 @@ export default async function decorate(block) {
     variant: blockData.colorvariant || 'dark',
   };
 
-  console.log('NavigationSimple blockData:', blockData);
-  console.log('NavigationSimple navItems:', navItems);
+  console.log('FINAL navItems:', navItems);
 
   const root = createRoot(block);
   root.render(React.createElement(NavigationSimple, data));
