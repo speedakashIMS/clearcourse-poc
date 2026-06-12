@@ -677,6 +677,68 @@ function blockToMap(block, config = {}) {
   return result;
 }
 
+function parseBlockDeep(block) {
+  const result = {};
+
+  function parseCell(cell) {
+    // TEXT ONLY FIELD
+    if (!cell.querySelector('ul') && !cell.querySelector('li')) {
+      return cell.textContent.trim();
+    }
+
+    // CONTAINER FIELD (multi)
+    const list = cell.querySelector(':scope > ul');
+    if (!list) return null;
+
+    return Array.from(list.children)
+      .filter((li) => li.tagName === 'LI')
+      .map((li) => parseListItem(li));
+  }
+
+  function parseListItem(li) {
+    const obj = {};
+
+    const directChildren = Array.from(li.children);
+
+    directChildren.forEach((child, index) => {
+      // nested submenu (UL inside LI)
+      if (child.tagName === 'UL') {
+        obj.submenuitems = Array.from(child.children)
+          .filter((c) => c.tagName === 'LI')
+          .map(parseListItem);
+        return;
+      }
+
+      // text nodes inside LI
+      const text = child.textContent?.trim();
+
+      if (!text) return;
+
+      // heuristic mapping for navigation
+      if (index === 0) obj.label = text;
+      if (index === 1) obj.subtitle = text;
+    });
+
+    return obj;
+  }
+
+  Array.from(block.children).forEach((row) => {
+    const cells = Array.from(row.children);
+    const key = cells[0]?.textContent?.trim()?.toLowerCase();
+    const valueCell = cells[1];
+
+    if (!key || !valueCell) return;
+
+    const parsed = parseCell(valueCell);
+
+    if (parsed !== null) {
+      result[key] = parsed;
+    }
+  });
+
+  return result;
+}
+
 function updateQueryParams(encodedUrl, paramMap) {
   if (!encodedUrl || typeof paramMap !== 'object') return encodedUrl;
 
@@ -700,5 +762,6 @@ export {
   getBlockItemDataV2,
   getBlockExistingPropsCnt,
   blockToMap,
+  parseBlockDeep,
   updateQueryParams,
 };

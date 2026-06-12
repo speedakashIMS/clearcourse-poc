@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/extensions
 import { createRoot } from 'react-dom/client';
 import NavigationSimple from '../../scripts/components/NavigationSimple.js';
-import { blockToMap, updateQueryParams } from '../../scripts/utils/block.js';
+import { blockToMap, updateQueryParams, parseBlockDeep } from '../../scripts/utils/block.js';
 
 /**
  * Normalize any EDS output into an array
@@ -84,7 +84,7 @@ function normalizeNavigationItems(blockData) {
 }
 
 export default async function decorate(block) {
-  const blockData = blockToMap(block, {
+  const flatData = blockToMap(block, {
     schemas: {
       buttons: [
         'buttontext',
@@ -95,8 +95,13 @@ export default async function decorate(block) {
     },
   });
 
+  const deepData = parseBlockDeep(block);
+  const blockData = {
+    ...flatData,
+    navigationitems: deepData.navigationitems,
+  };
+ 
   console.log('RAW blockData:', blockData);
-
   let navItems = normalizeNavigationItems(blockData);
 
   /**

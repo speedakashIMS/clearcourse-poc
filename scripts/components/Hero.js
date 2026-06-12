@@ -2556,6 +2556,7 @@ const Xt = /* @__PURE__ */ ht(Ut), Kt = ({
   tertiary: "from-tertiary",
   white: "from-white"
 }, er = {
+  none: "bg-transparent",
   primary: "bg-primary",
   secondary: "bg-secondary",
   tertiary: "bg-tertiary",
