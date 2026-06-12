@@ -1,7 +1,7 @@
-import { jsx as e, jsxs as m } from "react/jsx-runtime";
+import { jsx as e, jsxs as d } from "react/jsx-runtime";
 import * as n from "react";
-import { useState as j, useId as M } from "react";
-function E({
+import { useState as j, useId as E } from "react";
+function L({
   title: r,
   titleId: t,
   ...s
@@ -24,7 +24,7 @@ function E({
     d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }));
 }
-const L = /* @__PURE__ */ n.forwardRef(E);
+const M = /* @__PURE__ */ n.forwardRef(L);
 function B({
   title: r,
   titleId: t,
@@ -49,7 +49,7 @@ function B({
   }));
 }
 const R = /* @__PURE__ */ n.forwardRef(B);
-function z({
+function O({
   title: r,
   titleId: t,
   ...s
@@ -72,7 +72,7 @@ function z({
     d: "M6 18 18 6M6 6l12 12"
   }));
 }
-const O = /* @__PURE__ */ n.forwardRef(z), S = ({
+const z = /* @__PURE__ */ n.forwardRef(O), S = ({
   text: r = "Button",
   href: t = void 0,
   variant: s = "light",
@@ -80,13 +80,13 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
   size: i = "btn-md",
   // btn-sm , btn-md
   className: a = "",
-  disabled: c = !1,
-  onClick: u = void 0,
+  disabled: h = !1,
+  onClick: f = void 0,
   attributes: b = {},
-  ...d
+  ...u
 }) => {
-  const w = (h) => {
-    switch (h) {
+  const x = (g) => {
+    switch (g) {
       case "light":
         return "btn-light";
       case "dark":
@@ -104,8 +104,8 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
       default:
         return "btn-light";
     }
-  }, f = (h) => {
-    switch (h) {
+  }, m = (g) => {
+    switch (g) {
       case "btn-sm":
         return "btn-sm";
       case "btn-md":
@@ -113,25 +113,25 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
       default:
         return "btn-md";
     }
-  }, o = `btn ${w(s)} ${f(i)} ${a}`.trim();
+  }, o = `btn ${x(s)} ${m(i)} ${a}`.trim();
   return t ? /* @__PURE__ */ e(
     "a",
     {
       href: t,
       className: o,
-      onClick: u,
-      ...d,
+      onClick: f,
+      ...u,
       ...b ?? {},
       children: r
     }
   ) : /* @__PURE__ */ e(
     "button",
     {
-      type: d.type || "button",
+      type: u.type || "button",
       className: o,
-      disabled: c,
-      onClick: u,
-      ...d,
+      disabled: h,
+      onClick: f,
+      ...u,
       ...b ?? {},
       children: r
     }
@@ -142,7 +142,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
   size: t = "btn-md",
   className: s = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
   ...i
-}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, c) => /* @__PURE__ */ e(
+}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, h) => /* @__PURE__ */ e(
   S,
   {
     text: a.text,
@@ -152,7 +152,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     onClick: a.onClick,
     attributes: a.attributes
   },
-  c
+  h
 )) }), y = {
   dark: {
     bar: "bg-secondary",
@@ -171,7 +171,7 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     hamburger: "border-secondary text-secondary hover:text-secondary-600 hover:border-secondary-400 focus-visible:text-secondary-600 focus-visible:border-secondary-400"
   },
   gradient: {
-    bar: "bg-gradient-to-r from-[var(--color-brand-tertiary)] to-[var(--color-primary)]",
+    bar: "bg-gradient-header",
     link: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-white lg:hover:text-white/80 lg:focus-visible:text-white/80",
     dropdown: "bg-secondary-800 lg:bg-white lg:shadow-lg",
     dropdownLink: "text-white hover:text-white/80 focus-visible:text-white/80 lg:text-secondary lg:hover:text-secondary-600 lg:focus-visible:text-secondary-600",
@@ -179,81 +179,147 @@ const O = /* @__PURE__ */ n.forwardRef(z), S = ({
     hamburger: "border-white text-white hover:text-white/80 hover:border-white/80 focus-visible:text-white/80 focus-visible:border-white/80"
   }
 };
-function A({
+function D({
   fullWidth: r = !1,
   logo: t,
   navItems: s = [],
-  // [{ label, href, submenu: [{ label, href }] }]
+  // [{ label, submenu: [{ title, subtitle, icon, href }] }]
   buttons: i = [],
-  // [{ text, variant, size, href, onClick }]
   alignNavRight: a = !0,
-  variant: c = "gradient",
-  // 'dark' | 'light' | 'gradient' |
-  skipLinkText: u = "Skip navigation",
+  variant: h = "gradient",
+  skipLinkText: f = "Skip navigation",
   className: b = "",
-  ...d
+  ...u
 }) {
-  const [g, w] = j(!1), f = M(), o = y[c] ?? y.dark, h = `w-full ${o.bar} relative`.trim(), k = [
+  const [w, x] = j(!1), m = E(), o = y[h] ?? y.dark, g = `w-full ${o.bar} relative`, k = [
     "flex items-center gap-nav-spacing-x pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r",
     r ? "w-full max-w-[1600px] mx-auto" : "container"
   ].filter(Boolean).join(" "), N = a ? "ml-auto" : "flex-1 justify-center";
-  return /* @__PURE__ */ m("nav", { className: `${h} ${b}`.trim(), ...d, children: [
-    /* @__PURE__ */ e(
-      "a",
-      {
-        href: `#${f}`,
-        className: "sr-only focus:not-sr-only focus:absolute focus:left-20 focus:top-20 focus:z-20 focus:inline-flex focus:rounded-8 focus:bg-white focus:px-16 focus:py-10 focus:text-body-default focus:text-grey-950",
-        children: u
-      }
-    ),
-    /* @__PURE__ */ m("div", { className: k, children: [
-      /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e("a", { href: "/", className: "inline-flex shrink-0 items-center", "aria-label": "Home", children: typeof t == "string" ? /* @__PURE__ */ e("img", { src: t, alt: "", className: "h-auto min-h-32 max-h-32" }) : t }) }),
-      /* @__PURE__ */ e("div", { className: `hidden lg:flex items-center gap-24 ${g ? `!block absolute top-[100%] left-0 w-full ${o.mobileMenu} z-10 px-20 space-y-12 lg:space-y-0 py-10` : "hidden"} ${N}`.trim(), children: s.map((l, $) => {
-        var x, v;
-        return /* @__PURE__ */ m("div", { className: "relative group", children: [
-          /* @__PURE__ */ m(
+  return /* @__PURE__ */ d(
+    "nav",
+    {
+      className: `${g} ${b}`.trim(),
+      ...u,
+      children: [
+        /* @__PURE__ */ e(
+          "a",
+          {
+            href: `#${m}`,
+            className: "sr-only focus:not-sr-only focus:absolute focus:left-20 focus:top-20 focus:z-20 focus:inline-flex focus:rounded-8 focus:bg-white focus:px-16 focus:py-10 focus:text-body-default focus:text-grey-950",
+            children: f
+          }
+        ),
+        /* @__PURE__ */ d("div", { className: k, children: [
+          /* @__PURE__ */ e("div", { className: "flex items-center", children: t && /* @__PURE__ */ e(
             "a",
             {
-              href: l.href || "#",
-              className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
-              children: [
-                l.label,
-                ((x = l.submenu) == null ? void 0 : x.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
-              ]
+              href: "/",
+              className: "inline-flex shrink-0 items-center",
+              "aria-label": "Home",
+              children: typeof t == "string" ? /* @__PURE__ */ e(
+                "img",
+                {
+                  src: t,
+                  alt: "",
+                  className: "h-auto min-h-32 max-h-32"
+                }
+              ) : t
+            }
+          ) }),
+          /* @__PURE__ */ e(
+            "div",
+            {
+              className: `hidden lg:flex items-center gap-24 ${N}`.trim(),
+              children: s.map((l, $) => {
+                var v, p;
+                return /* @__PURE__ */ d(
+                  "div",
+                  {
+                    className: "relative group",
+                    children: [
+                      /* @__PURE__ */ d(
+                        "a",
+                        {
+                          href: l.href || "#",
+                          className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
+                          children: [
+                            l.label,
+                            ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
+                          ]
+                        }
+                      ),
+                      ((p = l.submenu) == null ? void 0 : p.length) > 0 && /* @__PURE__ */ e("div", { className: "hidden lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e(
+                        "ul",
+                        {
+                          className: `min-w-[320px] lg:rounded-8 p-nav-dd--padding ${o.dropdown}`,
+                          children: l.submenu.map((c, C) => /* @__PURE__ */ e(
+                            "li",
+                            {
+                              children: /* @__PURE__ */ d(
+                                "a",
+                                {
+                                  href: c.href || "#",
+                                  className: `flex items-start gap-12 p-12 transition-colors ${o.dropdownLink}`,
+                                  children: [
+                                    c.icon && /* @__PURE__ */ e(
+                                      "img",
+                                      {
+                                        src: c.icon,
+                                        alt: "",
+                                        className: "w-24 h-24 shrink-0 mt-2"
+                                      }
+                                    ),
+                                    /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
+                                      /* @__PURE__ */ e("span", { className: "font-medium", children: c.title }),
+                                      c.subtitle && /* @__PURE__ */ e("span", { className: "text-sm opacity-75", children: c.subtitle })
+                                    ] })
+                                  ]
+                                }
+                              )
+                            },
+                            `${l.label}-submenu-${C}`
+                          ))
+                        }
+                      ) })
+                    ]
+                  },
+                  `${l.label}-${$}`
+                );
+              })
             }
           ),
-          ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e("div", { className: "block lg:absolute lg:left-0 lg:top-full lg:pt-12 lg:hidden lg:group-hover:block lg:z-50", children: /* @__PURE__ */ e("ul", { className: `min-w-[180px] lg:rounded-8 p-nav-dd--padding ${o.dropdown}`, children: l.submenu.map((p, C) => /* @__PURE__ */ e("li", { children: /* @__PURE__ */ e(
-            "a",
+          /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
+            F,
             {
-              href: p.href || "#",
-              className: `block p-10 text-body-default transition-colors ${o.dropdownLink}`,
-              children: p.label
+              buttons: i,
+              className: "flex items-center gap-10"
             }
-          ) }, `${l.label}-submenu-${C}`)) }) })
-        ] }, `${l.label}-${$}`);
-      }) }),
-      /* @__PURE__ */ e("div", { className: "hidden lg:flex nav-buttons", children: /* @__PURE__ */ e(
-        F,
-        {
-          buttons: i,
-          className: "flex items-center gap-10"
-        }
-      ) }),
-      /* @__PURE__ */ e(
-        "button",
-        {
-          type: "button",
-          className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${o.hamburger}`,
-          "aria-label": "Open menu",
-          "aria-expanded": g,
-          onClick: () => w((l) => !l),
-          children: g ? /* @__PURE__ */ e(O, { className: "w-20 h-20" }) : /* @__PURE__ */ e(L, { className: "w-20 h-20" })
-        }
-      )
-    ] }),
-    /* @__PURE__ */ e("div", { id: f, tabIndex: -1, className: "sr-only outline-none", children: "End of navigation" })
-  ] });
+          ) }),
+          /* @__PURE__ */ e(
+            "button",
+            {
+              type: "button",
+              className: `lg:hidden inline-flex items-center justify-center w-40 h-40 ms-auto rounded-8 border transition-colors ${o.hamburger}`,
+              "aria-label": "Open menu",
+              "aria-expanded": w,
+              onClick: () => x((l) => !l),
+              children: w ? /* @__PURE__ */ e(z, { className: "w-20 h-20" }) : /* @__PURE__ */ e(M, { className: "w-20 h-20" })
+            }
+          )
+        ] }),
+        /* @__PURE__ */ e(
+          "div",
+          {
+            id: m,
+            tabIndex: -1,
+            className: "sr-only outline-none",
+            children: "End of navigation"
+          }
+        )
+      ]
+    }
+  );
 }
 export {
-  A as default
+  D as default
 };

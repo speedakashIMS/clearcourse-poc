@@ -9,8 +9,8 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "NavigationSimple",
-              "model": "navigationsimple",
-              "key-value": true
+              "model": "navigationsimple"
+        
             }
           }
         }
@@ -39,20 +39,15 @@
           "valueType": "boolean",
           "value": false
         },
+
         {
           "component": "select",
           "name": "logosource",
           "label": "Logo Source",
           "valueType": "string",
           "options": [
-            {
-              "name": "URL",
-              "value": "url"
-            },
-            {
-              "name": "Assets",
-              "value": "assets"
-            }
+            { "name": "URL", "value": "url" },
+            { "name": "Assets", "value": "assets" }
           ]
         },
         {
@@ -61,12 +56,7 @@
           "label": "Logo URL",
           "valueType": "string",
           "condition": {
-            "===": [
-              {
-                "var": "logosource"
-              },
-              "url"
-            ]
+            "===": [{ "var": "logosource" }, "url"]
           }
         },
         {
@@ -75,14 +65,10 @@
           "label": "Logo Asset",
           "valueType": "string",
           "condition": {
-            "===": [
-              {
-                "var": "logosource"
-              },
-              "assets"
-            ]
+            "===": [{ "var": "logosource" }, "assets"]
           }
         },
+
         {
           "component": "boolean",
           "name": "alignnavigationright",
@@ -90,29 +76,91 @@
           "valueType": "boolean",
           "value": false
         },
+
         {
           "component": "select",
           "name": "colorvariant",
           "label": "Color Variant",
-          "options": [
-            {
-              "name": "Dark",
-              "value": "dark"
-            },
-            {
-              "name": "Light",
-              "value": "light"
-            }
-          ],
           "valueType": "string",
+          "options": [
+            { "name": "Dark", "value": "dark" },
+            { "name": "Light", "value": "light" },
+            { "name": "Gradient", "value": "gradient" }
+          ],
           "value": "dark"
         },
+
         {
-          "component": "richtext",
-          "name": "links",
-          "label": "Links",
-          "valueType": "string"
+          "component": "container",
+          "name": "navigationitems",
+          "label": "Navigation Items",
+          "multi": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "label",
+              "label": "Menu Label",
+              "valueType": "string"
+            },
+
+            {
+              "component": "container",
+              "name": "submenuitems",
+              "label": "Sub Menu Items",
+              "multi": true,
+              "fields": [
+                {
+                  "component": "text",
+                  "name": "title",
+                  "label": "Title",
+                  "valueType": "string"
+                },
+                {
+                  "component": "text",
+                  "name": "subtitle",
+                  "label": "Subtitle",
+                  "valueType": "string"
+                },
+                {
+                  "component": "aem-content",
+                  "name": "link",
+                  "label": "Link",
+                  "valueType": "string"
+                },
+
+                {
+                  "component": "select",
+                  "name": "iconsource",
+                  "label": "Icon Source",
+                  "valueType": "string",
+                  "options": [
+                    { "name": "URL", "value": "url" },
+                    { "name": "Assets", "value": "assets" }
+                  ]
+                },
+                {
+                  "component": "text",
+                  "name": "iconurl",
+                  "label": "Icon URL",
+                  "valueType": "string",
+                  "condition": {
+                    "===": [{ "var": "iconsource" }, "url"]
+                  }
+                },
+                {
+                  "component": "reference",
+                  "name": "iconasset",
+                  "label": "Icon Asset",
+                  "valueType": "string",
+                  "condition": {
+                    "===": [{ "var": "iconsource" }, "assets"]
+                  }
+                }
+              ]
+            }
+          ]
         },
+
         {
           "component": "container",
           "name": "buttons",
@@ -129,7 +177,7 @@
             {
               "component": "text",
               "name": "buttontextvalue",
-              "label": "Text", 
+              "label": "Text",
               "valueType": "string"
             },
             {
@@ -143,6 +191,7 @@
               "component": "select",
               "name": "buttonsizevalue",
               "label": "Size",
+              "valueType": "string",
               "options": [
                 { "name": "Small", "value": "btn-sm" },
                 { "name": "Medium", "value": "btn-md" }
@@ -162,30 +211,13 @@
               "label": "Variant",
               "valueType": "string",
               "options": [
-                {
-                  "name": "Light",
-                  "value": "light"
-                },
-                {
-                  "name": "Dark",
-                  "value": "dark"
-                },
-                {
-                  "name": "Light Outlined",
-                  "value": "light-outlined"
-                },
-                {
-                  "name": "Dark Outlined",
-                  "value": "dark-outlined"
-                },
-                {
-                  "name": "Light No Outline",
-                  "value": "light-no-outline"
-                },
-                {
-                  "name": "Dark No Outline",
-                  "value": "dark-no-outline"
-                }
+                { "name": "Light", "value": "light" },
+                { "name": "Dark", "value": "dark" },
+                { "name": "Light Outlined", "value": "light-outlined" },
+                { "name": "Dark Outlined", "value": "dark-outlined" },
+                { "name": "Light No Outline", "value": "light-no-outline" },
+                { "name": "Dark No Outline", "value": "dark-no-outline" },
+                { "name": "Secondary", "value": "secondary" }
               ],
               "value": "light"
             },
