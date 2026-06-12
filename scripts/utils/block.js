@@ -680,56 +680,90 @@ function blockToMap(block, config = {}) {
 function parseBlockDeep(block) {
   const result = {};
 
-  function getText(el) {
-    return el?.textContent?.trim() || '';
+  const getText = (el) => el?.textContent?.trim() || '';
+
+  function parseSubMenuList(ul) {
+    return Array.from(ul.children)
+      .filter((li) => li.tagName === 'LI')
+      .map((li) => {
+        const obj = {};
+
+        const children = Array.from(li.children);
+
+        let fieldIndex = 0;
+
+        children.forEach((child) => {
+          if (child.tagName === 'UL') {
+            obj.submenuitems = parseSubMenuList(child);
+            return;
+          }
+
+          const text = getText(child);
+          if (!text) return;
+
+          if (fieldIndex === 0) obj.title = text;
+          if (fieldIndex === 1) obj.subtitle = text;
+
+          fieldIndex++;
+        });
+
+        return obj;
+      });
   }
 
-  function parseCell(cell) {
+  function parseNavigationItems(cell) {
+    const ul = cell.querySelector(':scope > ul');
+    if (!ul) return [];
+
+    return Array.from(ul.children)
+      .filter((li) => li.tagName === 'LI')
+      .map((li) => {
+        const obj = {
+          submenuitems: [],
+        };
+
+        const children = Array.from(li.children);
+
+        let fieldIndex = 0;
+
+        children.forEach((child) => {
+          if (child.tagName === 'UL') {
+            obj.submenuitems = parseSubMenuList(child);
+            return;
+          }
+
+          const text = getText(child);
+          if (!text) return;
+
+          if (fieldIndex === 0) obj.label = text;
+
+          fieldIndex++;
+        });
+
+        return obj;
+      });
+  }
+
+  function parseCell(cell, key) {
     if (!cell) return null;
 
-    const list = cell.querySelector(':scope > ul');
+    // ✅ SPECIAL CASE: navigationitems
+    if (key === 'navigationitems') {
+      return parseNavigationItems(cell);
+    }
 
-    // SIMPLE FIELD
-    if (!list) {
+    const ul = cell.querySelector(':scope > ul');
+
+    // SIMPLE TEXT FIELD
+    if (!ul) {
       const text = getText(cell);
       return text || null;
     }
 
-    // CONTAINER FIELD
-    return Array.from(list.children)
+    // GENERIC LIST FIELD
+    return Array.from(ul.children)
       .filter((li) => li.tagName === 'LI')
-      .map(parseListItem);
-  }
-
-  function parseListItem(li) {
-    const obj = {
-      submenuitems: [],
-    };
-
-    const children = Array.from(li.childNodes).filter(
-      (n) => n.nodeType === 1,
-    );
-
-    let textIndex = 0;
-
-    children.forEach((child) => {
-      if (child.tagName === 'UL') {
-        obj.submenuitems = Array.from(child.children)
-          .filter((c) => c.tagName === 'LI')
-          .map(parseListItem);
-        return;
-      }
-
-      const text = getText(child);
-      if (!text) return;
-
-      if (textIndex === 0) obj.label = text;
-      if (textIndex === 1) obj.subtitle = text;
-
-      textIndex++;
-    });
-
-    return obj;
+      .map((li) => getText(li));
   }
 
   Array.from(block.children).forEach((row) => {
@@ -740,13 +774,15 @@ function parseBlockDeep(block) {
 
     if (!key || !valueCell) return;
 
-    const parsed = parseCell(valueCell);
+    const parsed = parseCell(valueCell, key);
 
-    // IMPORTANT FIX: allow arrays AND objects
     if (parsed !== null && parsed !== undefined) {
       result[key] = parsed;
     }
   });
+
+  // 🔥 ALWAYS guarantee structure
+  result.navigationitems = result.navigationitems || [];
 
   return result;
 }
