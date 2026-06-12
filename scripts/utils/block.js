@@ -677,7 +677,7 @@ function blockToMap(block, config = {}) {
   return result;
 }
 
-export function parseBlockDeep(block) {
+function parseBlockDeep(block) {
   const result = {
     navigationitems: [],
     buttons: [],
