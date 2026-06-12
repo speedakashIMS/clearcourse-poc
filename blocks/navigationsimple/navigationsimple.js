@@ -54,6 +54,8 @@ export default async function decorate(block) {
     },
   });
 
+  console.log(blockData);
+
   const data = {
     fullWidth: blockData.fullwidth === 'true',
     logo: blockData.logosource === 'url'
