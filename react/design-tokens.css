@@ -94,7 +94,7 @@
   --Atom-Text-Inputs-checkbox-br: var(--Units-Unit-4);
   --Atom-Text-Inputs-radio-br: var(--Units-Unit-9999);
   --Atom-Buttons-spacing-x: var(--Units-Unit-10);
-  --Atom-Buttons-br: var(--Units-Unit-10);
+  --Atom-Buttons-br: var(--Units-Unit-80);
   --Atom-Buttons-s-padding-x: var(--Units-Unit-10);
   --Atom-Buttons-s-padding-y: var(--Units-Unit-10);
   --Atom-Buttons-m-padding-x: var(--Units-Unit-20);
@@ -346,7 +346,7 @@
   --Atom-Text-Inputs-checkbox-br: var(--Units-Unit-4);
   --Atom-Text-Inputs-radio-br: var(--Units-Unit-9999);
   --Atom-Buttons-spacing-x: var(--Units-Unit-10);
-  --Atom-Buttons-br: var(--Units-Unit-10);
+  --Atom-Buttons-br: var(--Units-Unit-80);
   --Atom-Buttons-s-padding-x: var(--Units-Unit-10);
   --Atom-Buttons-s-padding-y: var(--Units-Unit-10);
   --Atom-Buttons-m-padding-x: var(--Units-Unit-20);
@@ -598,7 +598,7 @@
   --Atom-Text-Inputs-checkbox-br: var(--Units-Unit-4);
   --Atom-Text-Inputs-radio-br: var(--Units-Unit-9999);
   --Atom-Buttons-spacing-x: var(--Units-Unit-10);
-  --Atom-Buttons-br: var(--Units-Unit-10);
+  --Atom-Buttons-br: var(--Units-Unit-80);
   --Atom-Buttons-s-padding-x: var(--Units-Unit-10);
   --Atom-Buttons-s-padding-y: var(--Units-Unit-10);
   --Atom-Buttons-m-padding-x: var(--Units-Unit-20);
