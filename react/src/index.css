@@ -1446,10 +1446,10 @@
 /* End responsive overrides */
 
 /* Section container width (responsive, authorable via Section model) — constrains the section's child wrappers, section stays full-width */
-.section.section-m-1100 > div,.section.section-m-700 > div{margin-inline:auto}
-.section.section-m-1100 > div{max-width:1100px}
+.section.section-m-1140 > div,.section.section-m-700 > div{margin-inline:auto}
+.section.section-m-1140 > div{max-width:1140px}
 .section.section-m-700 > div{max-width:700px}
-@media (min-width:900px){.section.section-d-full > div{max-width:none;margin-inline:0}.section.section-d-1100 > div{max-width:1100px;margin-inline:auto}.section.section-d-700 > div{max-width:700px;margin-inline:auto}}
+@media (min-width:900px){.section.section-d-full > div{max-width:none;margin-inline:0}.section.section-d-1140 > div{max-width:1140px;margin-inline:auto}.section.section-d-700 > div{max-width:700px;margin-inline:auto}}
 
 /* Section horizontal padding (desktop only, authorable via Section model) */
 @media (min-width:900px){.section.section-pd-50{padding-inline:50px}.section.section-pd-100{padding-inline:100px}.section.section-pd-200{padding-inline:200px}.section.section-pd-300{padding-inline:300px}.section.section-pd-500{padding-inline:500px}}
