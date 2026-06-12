@@ -85,7 +85,7 @@ function normalizeNavigationItems(blockData) {
 
 export default async function decorate(block) {
   console.log(block);
-  const blockData = blockToMap(block, {
+  const flatData = blockToMap(block, {
     schemas: {
       buttons: [
         'buttontext',
@@ -96,11 +96,11 @@ export default async function decorate(block) {
     },
   });
 
-  // const deepData = parseBlockDeep(block);
-  // const blockData = {
-  //   ...flatData,
-  //   navigationitems: deepData.navigationitems,
-  // };
+  const deepData = parseBlockDeep(block);
+  const blockData = {
+    ...flatData,
+    navigationitems: deepData.navigationitems,
+  };
  
   console.log('RAW blockData:', blockData);
   let navItems = normalizeNavigationItems(blockData);
