@@ -8370,6 +8370,7 @@
         "component": "select",
         "name": "colorvariant",
         "label": "Color Variant",
+        "valueType": "string",
         "options": [
           {
             "name": "Dark",
@@ -8384,7 +8385,6 @@
             "value": "gradient"
           }
         ],
-        "valueType": "string",
         "value": "dark"
       },
       {
@@ -8416,6 +8416,56 @@
                 "name": "subtitle",
                 "label": "Subtitle",
                 "valueType": "string"
+              },
+              {
+                "component": "aem-content",
+                "name": "link",
+                "label": "Link",
+                "valueType": "string"
+              },
+              {
+                "component": "select",
+                "name": "iconsource",
+                "label": "Icon Source",
+                "valueType": "string",
+                "options": [
+                  {
+                    "name": "URL",
+                    "value": "url"
+                  },
+                  {
+                    "name": "Assets",
+                    "value": "assets"
+                  }
+                ]
+              },
+              {
+                "component": "text",
+                "name": "iconurl",
+                "label": "Icon URL",
+                "valueType": "string",
+                "condition": {
+                  "===": [
+                    {
+                      "var": "iconsource"
+                    },
+                    "url"
+                  ]
+                }
+              },
+              {
+                "component": "reference",
+                "name": "iconasset",
+                "label": "Icon Asset",
+                "valueType": "string",
+                "condition": {
+                  "===": [
+                    {
+                      "var": "iconsource"
+                    },
+                    "assets"
+                  ]
+                }
               }
             ]
           }
@@ -8451,6 +8501,7 @@
             "component": "select",
             "name": "buttonsizevalue",
             "label": "Size",
+            "valueType": "string",
             "options": [
               {
                 "name": "Small",
