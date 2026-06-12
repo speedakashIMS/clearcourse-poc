@@ -1,12 +1,12 @@
 import { jsx as e, jsxs as d } from "react/jsx-runtime";
-import * as r from "react";
+import * as n from "react";
 import { useState as j, useId as E } from "react";
 function L({
-  title: n,
+  title: r,
   titleId: t,
   ...s
 }, i) {
-  return /* @__PURE__ */ r.createElement("svg", Object.assign({
+  return /* @__PURE__ */ n.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -16,21 +16,21 @@ function L({
     "data-slot": "icon",
     ref: i,
     "aria-labelledby": t
-  }, s), n ? /* @__PURE__ */ r.createElement("title", {
+  }, s), r ? /* @__PURE__ */ n.createElement("title", {
     id: t
-  }, n) : null, /* @__PURE__ */ r.createElement("path", {
+  }, r) : null, /* @__PURE__ */ n.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
     d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }));
 }
-const M = /* @__PURE__ */ r.forwardRef(L);
+const M = /* @__PURE__ */ n.forwardRef(L);
 function B({
-  title: n,
+  title: r,
   titleId: t,
   ...s
 }, i) {
-  return /* @__PURE__ */ r.createElement("svg", Object.assign({
+  return /* @__PURE__ */ n.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -40,21 +40,21 @@ function B({
     "data-slot": "icon",
     ref: i,
     "aria-labelledby": t
-  }, s), n ? /* @__PURE__ */ r.createElement("title", {
+  }, s), r ? /* @__PURE__ */ n.createElement("title", {
     id: t
-  }, n) : null, /* @__PURE__ */ r.createElement("path", {
+  }, r) : null, /* @__PURE__ */ n.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
     d: "m19.5 8.25-7.5 7.5-7.5-7.5"
   }));
 }
-const R = /* @__PURE__ */ r.forwardRef(B);
+const R = /* @__PURE__ */ n.forwardRef(B);
 function O({
-  title: n,
+  title: r,
   titleId: t,
   ...s
 }, i) {
-  return /* @__PURE__ */ r.createElement("svg", Object.assign({
+  return /* @__PURE__ */ n.createElement("svg", Object.assign({
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -64,16 +64,16 @@ function O({
     "data-slot": "icon",
     ref: i,
     "aria-labelledby": t
-  }, s), n ? /* @__PURE__ */ r.createElement("title", {
+  }, s), r ? /* @__PURE__ */ n.createElement("title", {
     id: t
-  }, n) : null, /* @__PURE__ */ r.createElement("path", {
+  }, r) : null, /* @__PURE__ */ n.createElement("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
     d: "M6 18 18 6M6 6l12 12"
   }));
 }
-const z = /* @__PURE__ */ r.forwardRef(O), S = ({
-  text: n = "Button",
+const z = /* @__PURE__ */ n.forwardRef(O), S = ({
+  text: r = "Button",
   href: t = void 0,
   variant: s = "light",
   // light, dark, light-outlined, dark-outlined, light-no-outline, dark-no-outline, secondary
@@ -122,7 +122,7 @@ const z = /* @__PURE__ */ r.forwardRef(O), S = ({
       onClick: f,
       ...u,
       ...b ?? {},
-      children: n
+      children: r
     }
   ) : /* @__PURE__ */ e(
     "button",
@@ -133,16 +133,16 @@ const z = /* @__PURE__ */ r.forwardRef(O), S = ({
       onClick: f,
       ...u,
       ...b ?? {},
-      children: n
+      children: r
     }
   );
 }, F = ({
-  buttons: n = [],
+  buttons: r = [],
   // Array of button objects: [{ text, variant, size, href, onClick }]
   size: t = "btn-md",
   className: s = "flex flex-col items-stretch sm:items-center sm:flex-row sm:flex-wrap justify-center items-center gap-10",
   ...i
-}) => !n || n.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: n.map((a, h) => /* @__PURE__ */ e(
+}) => !r || r.length === 0 ? null : /* @__PURE__ */ e("div", { className: `container ${s}`, ...i, children: r.map((a, h) => /* @__PURE__ */ e(
   S,
   {
     text: a.text,
@@ -180,7 +180,7 @@ const z = /* @__PURE__ */ r.forwardRef(O), S = ({
   }
 };
 function D({
-  fullWidth: n = !1,
+  fullWidth: r = !1,
   logo: t,
   navItems: s = [],
   // [{ label, submenu: [{ title, subtitle, icon, href }] }]
@@ -193,7 +193,7 @@ function D({
 }) {
   const [w, x] = j(!1), m = E(), o = y[h] ?? y.dark, g = `w-full ${o.bar} relative`, k = [
     "flex items-center gap-nav-spacing-x pt-nav-padding-t pb-nav-padding-b pl-nav-padding-l pr-nav-padding-r",
-    n ? "w-full max-w-[1600px] mx-auto" : "container"
+    r ? "w-full max-w-[1600px] mx-auto" : "container"
   ].filter(Boolean).join(" "), N = a ? "ml-auto" : "flex-1 justify-center";
   return /* @__PURE__ */ d(
     "nav",
@@ -241,16 +241,10 @@ function D({
                         "a",
                         {
                           href: l.href || "#",
-                          className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`,
+                          className: `inline-flex items-center gap-10 text-body-default transition-colors ${o.link}`.trim(),
                           children: [
                             l.label,
-                            ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e(
-                              R,
-                              {
-                                className: "w-16 h-16 shrink-0",
-                                "aria-hidden": !0
-                              }
-                            )
+                            ((v = l.submenu) == null ? void 0 : v.length) > 0 && /* @__PURE__ */ e(R, { className: "w-16 h-16 shrink-0", "aria-hidden": !0 })
                           ]
                         }
                       ),

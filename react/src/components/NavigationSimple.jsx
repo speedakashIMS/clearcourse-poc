@@ -115,15 +115,11 @@ export default function NavigationSimple({
             >
               <a
                 href={item.href || '#'}
-                className={`inline-flex items-center gap-10 text-body-default transition-colors ${styles.link}`}
+                className={`inline-flex items-center gap-10 text-body-default transition-colors ${styles.link}`.trim()}
               >
                 {item.label}
-
                 {item.submenu?.length > 0 && (
-                  <ChevronDownIcon
-                    className="w-16 h-16 shrink-0"
-                    aria-hidden
-                  />
+                  <ChevronDownIcon className="w-16 h-16 shrink-0" aria-hidden />
                 )}
               </a>
 
